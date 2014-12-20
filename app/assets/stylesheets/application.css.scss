@@ -1,0 +1,39 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.logo-head {float: left; width: 75px;}
+  .logo-wrapper {float: left; width: auto; padding: 4px; background-color: #8e0010;}
+  .navbar-brand {padding: 0 15px !important;}
+  .dropdown2 .dropdown-menu {display: none;}
+  .dropdown2:hover .dropdown-menu {display: inline;}
+  .dropdown2 {
+    position: relative;
+}
+  .signup-wrapper {float: left; width: auto; padding: 15px; background-color: #8e0010; font: #fff;}
+  ul.nav.navbar-nav li.dropdown2 a {font-size: 24px; line-height: 24px; color: #fff;}
+  ul.nav.navbar-nav li.dropdown2 a:hover {font-size: 24px; line-height: 24px; color: #D4D4D4;}
+  .dropdown-menu {background-color: #8e0010 !important;}
+  .icon-cart {
+    background: url("//cdn.shopify.com/s/files/1/0705/8087/t/1/assets/icon-cart-small.png") no-repeat scroll 0 -20px rgba(0, 0, 0, 0) !important;}
+  html.no-js body div#transparency.wrapper.clearfix div.row.p0 section#content.clearfix div.jumbotron {background-color: #006894; color: #fff;}
+
+
+  // Lyric Center
+.container-md {width: 50%; margin: 50px 5%;}
+

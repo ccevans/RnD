@@ -1,3 +1,10 @@
+<% if !user_signed_in? %>
+  <div class="jumbotron">
+      <h1>Add Your Favorite Lyrics</h1>
+      <p>jk k kdfjdk fjdl j ldfjdl fjdlkfd flkdfjd flkdfjd fdlfjdfldjfdlfdj ldfjd fldjfd lfdjfdlkfjd flkdjfdlf kdjdljd lfdjfd lfjdldjfdlf dljd fldjd lfjdfldjf ldjfdlf jdlfdjf ldjfdlfjdlfjd lfdjf ldfjd lfjdf l.</p>
+      <p><%= link_to "Sign Up To Add Lyrics", new_user_registration_path, class: "btn btn-primary btn-lg" %></p>
+    </div>
+<% end %>
 
 <div class="container-md">
     <h1>Lyrics Center</h1>
