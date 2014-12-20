@@ -1,0 +1,37 @@
+<div class="panel panel-default">
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-md-4">
+				<%= @lyric.line %>
+				<%= @lyric.description %>
+				
+			<div class="table-responsive">
+				<table class="table">
+					<tbody>
+						<tr>
+							<td><strong>Artist:</strong></td>
+							<td><%= @lyric.artist %></td>
+						</tr>
+						<tr>
+							<td><strong>Song:</strong></td>
+							<td><%= @lyric.song %></td>
+						</tr>
+						<tr>
+							<td><strong>Album:</strong></td>
+							<td><%= @lyric.album %></td>
+						</tr>
+						<tr>
+							<td><strong>Link:</strong></td>
+							<td><%= link_to 'Link', @lyric.link %></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<%= link_to 'Edit', edit_lyric_path(@lyric) %> |
+<%= link_to 'Destroy', lyric_path(@lyric), method: :delete, data: {confirm: "Are you sure?" } %>
+<%= link_to 'Back', lyrics_path %>

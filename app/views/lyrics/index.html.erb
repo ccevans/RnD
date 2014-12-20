@@ -1,1 +1,34 @@
-<h1> Hello </h1>
+
+<div class="container-md">
+    <h1>Lyrics Center</h1>
+
+        <% @lyrics.each do |lyric| %>
+        <div class="panel panel-default">
+           <div class="panel-heading">
+            <%= link_to lyric.line, lyric %>
+          </div>
+            <table class="table table-condensed">
+              <tbody>
+                  <tr>
+                  	<td>Description: <%= lyric.description %></td>
+                    <td>Artist: <%= lyric.artist %></td>
+                    <td>Song: <%= lyric.song %></td>
+                    <td>Album: <%= lyric.album %></td>
+                    <td><%= link_to 'Link', lyric.link %></td>
+                    <td><%= link_to 'Show', lyric %></td>
+                    <td><%= link_to 'Edit', edit_lyric_path(lyric) %></td>
+                    <td><%= link_to 'Destroy', lyric, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                  </tr>
+                </tbody>
+            </table>
+          </div>
+        <% end %>
+      </tbody>
+    </table>
+
+    <br>
+
+    <%= link_to 'New Lyric', new_lyric_path %>
+
+</div>
+
