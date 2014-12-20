@@ -1,10 +1,9 @@
 class LyricsController < ApplicationController
-	before_action :find_post, only: [:show, :edit, :update, :destroy]
+	before_action :find_post, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
 	before_action :authenticate_user!, except: [:index, :show]
 
 	def index
 		@lyrics = Lyric.all.order("created_at DESC")
-		@comments = Comment.where(lyric_id: @lyric)
 	end
 
 	def show
@@ -42,6 +41,17 @@ class LyricsController < ApplicationController
 		@lyric.destroy
 		redirect_to root_path
 	end
+
+	def upvote
+		@lyric.upvote_by current_user
+		redirect_to :back
+	end
+
+	def downvote
+		@lyric.downvote_by current_user
+		redirect_to :back
+	end
+
 
 	private
 

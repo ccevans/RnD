@@ -14,6 +14,7 @@
                     <td>Artist: <%= lyric.artist %></td>
                     <td>Song: <%= lyric.song %></td>
                     <td>Album: <%= lyric.album %></td>
+                    <td><%= lyric.get_upvotes.size %> Likes</td>
                     <td><%= lyric.comments.count %> Comments</td>
                     <td><%= link_to 'Link', lyric.link %></td>
                     <td><%= link_to 'Show', lyric %></td>

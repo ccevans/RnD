@@ -29,6 +29,16 @@
 							<td><%= image_tag @lyric.user.avatar.url(:thumb) %>
 								<%= @lyric.user.username %></td>
 						</tr>
+							<tr>
+							<td>
+							Likes<%= @lyric.get_upvotes.size %>
+							Dislikes<%= @lyric.get_downvotes.size %>
+							</td>
+							<td>
+							<%= link_to 'Like', like_lyric_path(@lyric), method: :get %>
+							<%= link_to 'Dislike', dislike_lyric_path(@lyric), method: :get %>
+							</td>
+						</tr>
 						<tr>
 							<div id="comment">
 								<h2 class="comment_count">
