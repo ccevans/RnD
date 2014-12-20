@@ -4,10 +4,11 @@ class LyricsController < ApplicationController
 
 	def index
 		@lyrics = Lyric.all.order("created_at DESC")
+		@comments = Comment.where(lyric_id: @lyric)
 	end
 
 	def show
-
+		@comments = Comment.where(lyric_id: @lyric)
 	end
 
 	def new

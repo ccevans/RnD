@@ -1,0 +1,11 @@
+<%= simple_form_for([@lyric, @lyric.comments.build]) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :content, label: "Reply to thread" %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Comment", class: "button" %>
+  </div>
+<% end %>

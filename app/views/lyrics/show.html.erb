@@ -29,6 +29,19 @@
 							<td><%= image_tag @lyric.user.avatar.url(:thumb) %>
 								<%= @lyric.user.username %></td>
 						</tr>
+						<tr>
+							<div id="comment">
+								<h2 class="comment_count">
+								<%= pluralize(@lyric.comments.count, "Comment") %></h2>
+								<% @comments.each do |comment| %>
+								<div class="comment">
+									<p> <%= comment.user.username %></p>
+									<p> <%= comment.content %></p>
+								</div>
+								<% end %>
+								<%= render 'comments/form' %>
+							</div>
+						</tr>
 					</tbody>
 				</table>
 			</div>
