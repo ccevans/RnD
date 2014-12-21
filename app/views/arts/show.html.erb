@@ -1,0 +1,61 @@
+<div class="panel panel-default">
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-md-4">
+				<%= image_tag @art.image.url(:medium) %></br>
+				<%= @art.description %>
+				
+			<div class="table-responsive">
+				<table class="table">
+					<tbody>
+						<tr>
+							<td><strong>Artist:</strong></td>
+							<td><%= @art.artist %></td>
+						</tr>
+						<tr>
+							<td><strong>Type:</strong></td>
+							<td><%= @art.typeart %></td>
+						</tr>
+						<tr>
+							<td><strong>Link:</strong></td>
+							<td><%= link_to 'Link', @art.link %></td>
+						</tr>
+						<tr>
+							<td><strong>Username:</strong></td>
+							<td><%= image_tag @art.user.avatar.url(:thumb) %>
+								<%= @art.user.username %></td>
+						</tr>
+							<tr>
+							<td>
+							Likes<%= @art.get_upvotes.size %>
+							Dislikes<%= @art.get_downvotes.size %>
+							</td>
+							<td>
+							<%= link_to 'Like', like_art_path(@art), method: :get %>
+							<%= link_to 'Dislike', dislike_art_path(@art), method: :get %>
+							</td>
+						</tr>
+						<tr>
+							<div id="comment">
+								<h2 class="comment_count">
+								<%= pluralize(@art.commentarts.count, "Comment") %></h2>
+								<% @commentarts.each do |commentart| %>
+								<div class="comment">
+									<p> <%= commentart.user.username %></p>
+									<p> <%= commentart.content %></p>
+								</div>
+								<% end %>
+								<%= render 'commentarts/form' %>
+							</div>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<%= link_to 'Edit', edit_art_path(@art) %> |
+<%= link_to 'Destroy', art_path(@art), method: :delete, data: {confirm: "Are you sure?" } %>
+<%= link_to 'Back', arts_path %>

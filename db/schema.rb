@@ -11,16 +11,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141220235712) do
+ActiveRecord::Schema.define(version: 20141221205647) do
 
-  create_table "arts", force: true do |t|
+  create_table "admin_lyrics", force: true do |t|
+    t.text     "line"
     t.text     "description"
     t.string   "artist"
-    t.string   "type"
+    t.string   "song"
+    t.string   "album"
     t.string   "link"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "arts", force: true do |t|
+    t.text     "description"
+    t.string   "artist"
+    t.string   "typeart"
+    t.string   "link"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  create_table "commentarts", force: true do |t|
+    t.text     "content"
+    t.integer  "art_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "commentarts", ["art_id"], name: "index_commentarts_on_art_id"
+  add_index "commentarts", ["user_id"], name: "index_commentarts_on_user_id"
 
   create_table "comments", force: true do |t|
     t.text     "content"

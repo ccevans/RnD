@@ -1,0 +1,2 @@
+module AdminLyricsHelper
+end

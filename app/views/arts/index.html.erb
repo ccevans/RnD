@@ -1,1 +1,44 @@
-Hello
+<% if user_signed_in? %>
+  Hello <%= current_user.username %></br>
+  <p>Share lyrics that you are inspired by and see what lyrics inspire others.</p>
+<% else %>
+  <div class="jumbotron">
+      <h1>Add Your Favorite Lyrics</h1>
+      <p>jk k kdfjdk fjdl j ldfjdl fjdlkfd flkdfjd flkdfjd fdlfjdfldjfdlfdj ldfjd fldjfd lfdjfdlkfjd flkdjfdlf kdjdljd lfdjfd lfjdldjfdlf dljd fldjd lfjdfldjf ldjfdlf jdlfdjf ldjfdlfjdlfjd lfdjf ldfjd lfjdf l.</p>
+      <p><%= link_to "Sign Up To Add Artwork", new_user_registration_path, class: "btn btn-primary btn-lg" %></p>
+    </div>
+<% end %>
+
+<div class="container-md">
+    <h1>Designs Center</h1>
+
+        <% @arts.each do |art| %>
+        <div class="panel panel-default">
+           <div class="panel-heading">
+            <%= image_tag art.image.url(:small) %>
+          </div>
+            <table class="table table-condensed">
+              <tbody>
+                  <tr>
+                  	<td>Description: <%= art.description %></td>
+                    <td>Artist: <%= art.artist %></td>
+                    <td>Type: <%= art.typeart %></td>
+                    <td><%= art.get_upvotes.size %> Likes</td>
+                    <td><%= art.commentarts.count %> Comments</td>
+                    <td><%= link_to 'Link', art.link %></td>
+                    <td><%= link_to 'Show', art %></td>
+                    <td><%= link_to 'Edit', edit_art_path(art) %></td>
+                    <td><%= link_to 'Destroy', art, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                  </tr>
+                </tbody>
+            </table>
+          </div>
+        <% end %>
+      </tbody>
+    </table>
+
+    <br>
+
+    <%= link_to 'New Art', new_art_path %>
+
+</div>

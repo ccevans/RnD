@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'profiles/show'
+
   devise_for :users
 
   resources :lyrics do
@@ -11,10 +13,22 @@ Rails.application.routes.draw do
   	resources :comments
   end
 
-  resources :arts
+  resources :arts do
+    member do
+      get "like", to: "arts#upvote"
+      get "dislike", to: "arts#downvote"
+    end
+
+    resources :commentarts
+
+  end
+
+  resources :admin_lyrics
   
 
 
   root 'arts#index'
+
+  get '/:id', to: 'profiles#show'
   
 end

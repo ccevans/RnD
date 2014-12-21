@@ -1,0 +1,13 @@
+<div class="page-header">
+	<h1><%= @user.username %></h1>
+</div>
+
+<% if @lyrics %>
+	<% @lyrics.each do |lyric| %>
+		<div class="well">
+			<%= lyric.line %>
+			<hr />
+			<%= link_to time_ago_in_words(lyric.created_at), lyric_path(lyric) %> ago
+		</div>
+	<% end %>
+<% end %>
