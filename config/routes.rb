@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   devise_for :users
 
   resources :lyrics do
@@ -11,9 +10,11 @@ Rails.application.routes.draw do
 
   	resources :comments
   end
+
+  resources :arts
   
 
 
-  root 'lyrics#index'
+  root 'arts#index'
   
 end

@@ -1,4 +1,7 @@
-<% if !user_signed_in? %>
+<% if user_signed_in? %>
+  Hello <%= current_user.username %></br>
+  <p>Share lyrics that you are inspired by and see what lyrics inspire others.</p>
+<% else %>
   <div class="jumbotron">
       <h1>Add Your Favorite Lyrics</h1>
       <p>jk k kdfjdk fjdl j ldfjdl fjdlkfd flkdfjd flkdfjd fdlfjdfldjfdlfdj ldfjd fldjfd lfdjfdlkfjd flkdjfdlf kdjdljd lfdjfd lfjdldjfdlf dljd fldjd lfjdfldjf ldjfdlf jdlfdjf ldjfdlfjdlfjd lfdjf ldfjd lfjdf l.</p>
