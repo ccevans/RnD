@@ -60,6 +60,10 @@
 	</div>
 </div>
 
-<%= link_to 'Edit', edit_lyric_path(@lyric) %> |
+<% if can? :update, @lyric %>
+<%= link_to 'Edit', edit_lyric_path(@lyric) %> 
+<% end %>
+<% if can? :destroy, @lyric %>
 <%= link_to 'Destroy', lyric_path(@lyric), method: :delete, data: {confirm: "Are you sure?" } %>
+<% end %>
 <%= link_to 'Back', lyrics_path %>

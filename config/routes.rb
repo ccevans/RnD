@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+
+  resources :adminlyrics
+
   resources :lyrics do
   	member do
   		get "like", to: "lyrics#upvote"
@@ -23,11 +26,10 @@ Rails.application.routes.draw do
 
   end
 
-  resources :admin_lyrics
   
 
 
-  root 'arts#index'
+  root 'adminlyrics#index'
 
   get '/:id', to: 'profiles#show'
   

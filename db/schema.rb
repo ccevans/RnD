@@ -11,9 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141221205647) do
+ActiveRecord::Schema.define(version: 20141222143652) do
 
-  create_table "admin_lyrics", force: true do |t|
+  create_table "adminlyrics", force: true do |t|
     t.text     "line"
     t.text     "description"
     t.string   "artist"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20141221205647) do
     t.string   "link"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "arts", force: true do |t|
@@ -90,6 +91,7 @@ ActiveRecord::Schema.define(version: 20141221205647) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "role"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

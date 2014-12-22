@@ -7,6 +7,15 @@
   	<%= f.input :username, required: true, autofocus: true %>
     <%= f.input :email, required: true %>
     <%= f.file_field :avatar %>
+
+    
+
+   <% if can? :manage, :all %>
+    <%= f.collection_select :role, User::ROLES, :to_s, :humanize, :selected => 'registered' %>
+    <% else %>
+       <%= f.hidden_field :role, :value => 'registered' %>
+    <% end %>
+
     <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @validatable) %>
     <%= f.input :password_confirmation, required: true %>
   </div>

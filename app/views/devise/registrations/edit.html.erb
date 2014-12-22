@@ -8,6 +8,10 @@
     <%= f.input :email, required: true %>
     <%= f.file_field :avatar %>
 
+<% if can? :manage, :all %>
+    <%= f.collection_select :role, User::ROLES, :to_s, :humanize %>
+    <% end %>
+
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>

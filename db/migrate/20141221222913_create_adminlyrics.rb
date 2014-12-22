@@ -1,6 +1,6 @@
-class CreateAdminLyrics < ActiveRecord::Migration
+class CreateAdminlyrics < ActiveRecord::Migration
   def change
-    create_table :admin_lyrics do |t|
+    create_table :adminlyrics do |t|
       t.text :line
       t.text :description
       t.string :artist

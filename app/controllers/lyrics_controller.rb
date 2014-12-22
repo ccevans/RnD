@@ -1,6 +1,8 @@
 class LyricsController < ApplicationController
+	load_and_authorize_resource :only => [:show, :edit, :update, :destroy]
 	before_action :find_post, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
 	before_action :authenticate_user!, except: [:index, :show]
+	
 
 	def index
 		@lyrics = Lyric.all.order("created_at DESC")
@@ -29,7 +31,7 @@ class LyricsController < ApplicationController
 	end
 
 	def update
-		if @lyric.update(post_parmas)
+		if @lyric.update(post_params)
 			redirect_to @lyric
 		else
 			render 'edit'
