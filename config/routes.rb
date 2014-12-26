@@ -2,10 +2,27 @@ Rails.application.routes.draw do
 
   get 'profiles/show'
 
-  devise_for :users
+  devise_for :users, :controllers => { :invitations => 'user/invitation'}
+  
+
+  resources :profiles do
+    resources :users 
+    member do
+      get :follow
+      get :unfollow
+    end
+  end
 
 
-  resources :adminlyrics
+  resources :adminlyrics do
+    member do
+      get "like", to: "adminlyrics#upvote"
+      get "dislike", to: "adminlyrics#downvote"
+    end
+
+    resources :commentlyrics
+    
+  end
 
   resources :lyrics do
   	member do

@@ -1,7 +1,7 @@
 class AdminlyricsController < ApplicationController
 
 	load_and_authorize_resource :only => [:show, :new, :edit, :update, :destroy]
-	before_action :find_post, only: [:show, :edit, :update, :destroy]
+	before_action :find_post, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
 	before_action :authenticate_user!, except: [:index, :show]
 	
 
@@ -10,7 +10,7 @@ class AdminlyricsController < ApplicationController
 	end
 
 	def show
-		
+		@commentlyrics = Commentlyric.where(adminlyric_id: @adminlyric)
 	end
 
 	def new
@@ -44,6 +44,16 @@ class AdminlyricsController < ApplicationController
 	def destroy
 		@adminlyric.destroy
 		redirect_to root_path
+	end
+
+	def upvote
+		@adminlyric.upvote_by current_user
+		redirect_to :back
+	end
+
+	def downvote
+		@adminlyric.downvote_by current_user
+		redirect_to :back
 	end
 
 

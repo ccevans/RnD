@@ -23,6 +23,7 @@
                   	<td>Description: <%= art.description %></td>
                     <td>Artist: <%= art.artist %></td>
                     <td>Type: <%= art.typeart %></td>
+                    <td><%= art.impressionist_count(:filter=>:session_hash) %> Views</td>
                     <td><%= art.get_upvotes.size %> Likes</td>
                     <td><%= art.commentarts.count %> Comments</td>
                     <td><%= link_to 'Link', art.link %></td>

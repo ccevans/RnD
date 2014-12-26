@@ -27,6 +27,7 @@
 						</tr>
 							<tr>
 							<td>
+								<%= @art.impressionist_count(:filter=>:session_hash) %> Views
 							Likes<%= @art.get_upvotes.size %>
 							Dislikes<%= @art.get_downvotes.size %>
 							</td>

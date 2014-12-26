@@ -1,6 +1,9 @@
 <% if user_signed_in? %>
-  Hello <%= current_user.username %></br>
+<div class="jumbotron">
+  <h1>What up? <%= current_user.username %></h1> </br><h2>What you listening to today?</h2></br>
   <p>Share lyrics that you are inspired by and see what lyrics inspire others.</p>
+  <p><%= link_to "Sign Up To Add Lyrics", new_lyric_path, class: "btn btn-primary btn-lg" %></p>
+</div>
 <% else %>
   <div class="jumbotron">
       <h1>Add Your Favorite Lyrics</h1>
@@ -9,38 +12,26 @@
     </div>
 <% end %>
 
-<div class="container-md">
+
     <h1>Lyrics Center</h1>
 
-        <% @lyrics.each do |lyric| %>
-        <div class="panel panel-default">
-           <div class="panel-heading">
-            <%= link_to lyric.line, lyric %>
-          </div>
-            <table class="table table-condensed">
-              <tbody>
-                  <tr>
-                  	<td>Description: <%= lyric.description %></td>
-                    <td>Artist: <%= lyric.artist %></td>
-                    <td>Song: <%= lyric.song %></td>
-                    <td>Album: <%= lyric.album %></td>
-                    <td><%= lyric.get_upvotes.size %> Likes</td>
-                    <td><%= lyric.comments.count %> Comments</td>
-                    <td><%= link_to 'Link', lyric.link %></td>
-                    <td><%= link_to 'Show', lyric %></td>
-                    <td><%= link_to 'Edit', edit_lyric_path(lyric) %></td>
-                    <td><%= link_to 'Destroy', lyric, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                  </tr>
-                </tbody>
-            </table>
-          </div>
-        <% end %>
-      </tbody>
-    </table>
+    <% @lyrics.each do |lyric| %>
+    <div class="container-md">
+        <%= link_to lyric.line, lyric %>
+        <ul>
+        <li><%= lyric.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
+        <li><%= lyric.get_upvotes.size %> <span class="glyphicon glyphicon-heart" aria-hidden="true"></span></li>
+        <li><%= lyric.comments.count %> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></li>
+        <li><%= image_tag lyric.user.avatar.url(:mini) %><%= lyric.user.username %></li>
+      </ul>
+      </div>
+    <% end %>
 
+        
     <br>
-
-    <%= link_to 'New Lyric', new_lyric_path %>
+    <div class="lyric-footer">
+      <%= link_to 'New Lyric', new_lyric_path %>
+    </div>
 
 </div>
 

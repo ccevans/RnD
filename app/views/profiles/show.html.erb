@@ -1,4 +1,5 @@
 <div class="page-header">
+	<%= image_tag @user.avatar.url(:medium) %>
 	<h1><%= @user.username %></h1>
 	
 </div>
@@ -12,3 +13,40 @@
 		</div>
 	<% end %>
 <% end %>
+
+<%= link_to "Follow", follow_profile_path(@user.username) %>
+
+<%= link_to "Unfollow", unfollow_profile_path(@user.username) %>
+
+<p><%= @user.follow_count %> Following</p>
+<p><%= @user.followers_count %> Followers</p>
+
+
+	<p><%= @user.all_follows %></p>
+	<p><%= @user.all_following %></p>
+
+<% if @user.all_follows %>
+	<% @user.all_follows.each do |user| %>
+		<div>
+			<%= image_tag @user.avatar.url(:thumb) %>
+			<hr />
+			<%= @user.username %> 
+		</div>
+	<% end %>
+<% end %>
+
+
+	<% @user.all_following.each do |user| %>
+		<div>
+			<%= image_tag @user.avatar.url(:thumb) %>
+			<hr />
+			<%= @user.username %> 
+		</div>
+	<% end %>
+
+
+
+
+ 
+
+

@@ -8,6 +8,26 @@
 <strong>Link:</strong><%= link_to 'Link', @adminlyric.link %>
 <hr />	
 
+Likes<%= @adminlyric.get_upvotes.size %>
+Dislikes<%= @adminlyric.get_downvotes.size %>
+
+<%= link_to 'Like', like_adminlyric_path(@adminlyric), method: :get %>
+<%= link_to 'Dislike', dislike_adminlyric_path(@adminlyric), method: :get %>
+
+
+<div id="comment">
+	<h2 class="comment_count">
+	<%= pluralize(@adminlyric.commentlyrics.count, "Comment") %></h2>
+	<% @commentlyrics.each do |commentlyric| %>
+	<div class="comment">
+		<p> <%= commentlyric.user.username %></p>
+		<p> <%= commentlyric.content %></p>
+	</div>
+	<% end %>
+	<%= render 'commentlyrics/form' %>
+</div>
+			
+
 <% if can? :update, @adminlyric %>
 <%= link_to 'Edit', edit_adminlyric_path(@adminlyric) %> 
 <% end %>

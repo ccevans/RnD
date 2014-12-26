@@ -1,5 +1,6 @@
 class Art < ActiveRecord::Base
 	acts_as_votable
+	is_impressionable
 	belongs_to :user
 	has_many :commentarts
 	

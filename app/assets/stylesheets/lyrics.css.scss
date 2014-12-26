@@ -1,3 +1,66 @@
 // Place all the styles related to the Lyrics controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.container-md {width: 40%; margin: 50px 5%; height: auto; float: left;}
+
+div.container-md a {color: #000; font-size: 38px; line-height: 38px; text-align: center; font-family: 'Fredoka One', cursive; text-shadow: 1px 1px #bdc3c7;}
+div.container-md a:hover {color: #000; font-size: 38px; line-height: 38px; text-align: center; text-decoration: none; border: none;}
+
+
+
+div.container-md ul {list-style:none; color: #bdc3c7;}
+div.container-md ul li {float: left; padding: 5px; width: auto;}
+
+div.jumbotron {padding: 5px; margin: 5px 0;}
+div.jumbotron h1 { text-transform: uppercase; font-size: 18px; color: #000; font-family: 'Fredoka One', cursive; padding: 0; margin: 0;}
+div.jumbotron h2 { font-size: 18px; color: #000; font-family: 'Fredoka One', cursive; padding: 0; margin: 0;}
+
+div.container-md ul li img {-moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px; margin: 0 5px;}
+
+.lyric-footer {width: 80%; padding: 10px 10%; font-size: 20px; line-height: 20px; float: left;}
+
+div.container-show {width: 40%; height: auto; float: left; color: #000; margin: 10px 5% 10px 5%;}
+div.container-line {float: left; width: 100%; color: #000; font-size: 38px; line-height: 38px; text-align: center; font-family: 'Fredoka One', cursive; text-shadow: 1px 1px #bdc3c7;}
+div.container-profile {float: left; width: 100%; padding: 5px; color: #000; font-family: 'Open Sans', serif; font-size: 28px; line-height: 28px; background-color: #ecf0f1; margin: 20px 0 0 0;}
+div.container-desc {float: left; width: 100%; color: #000; padding: 20px; font-size: 24px; line-height: 24px; font-family: 'Open Sans', serif; background-color: #ecf0f1;}
+div.container-comment {float: left; width: 100%; padding: 5px;}
+div.container-more {float: left; width: 20%; padding: 5px; height: auto;}
+div.container-more ul {list-style:none; color: #bdc3c7;}
+div.container-more ul li {float: left; padding: 5px; width: 100%;}
+div.container-more ul li hr {margin: 0;}
+span.glyphicon {padding: 0 2px;}
+div.container-more ul li span.glyphicon.glyphicon-heart {padding: 0 2px;}
+div.container-show div.container-profile img {-moz-border-radius: 25px; -webkit-border-radius: 25px; border-radius: 25px; margin: 0 5px;}
+
+div.container-show div.container-profile hr {border-color: #fff; width: 90%; margin-left: 5%; margin-right: 5%;}
+
+html body div.container-show div.container-comment div.comment img {float: left; margin: 5px 5px 0 0; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px;}
+.username {
+font-size: 18px;
+color: #bdc3c7;
+margin: 0 0 5px 10px; 
+float: left;
+}
+.content {
+float: left;
+width: 90%;	
+margin: 0 5%;
+color: #000;
+}
+
+.time-created {
+	float: left;
+	color: #bdc3c7;
+	width: 90%;
+	margin: 0 5%;
+	font-size: 12px;
+}
+
+div.container-comment div.comment {float: left; width: 90%; margin: 10px 5%;}
+div.container-show div.container-comment h2.comment_count {font-size: 14px;}
+
+div.container-comment hr {margin-top: 0;}
+div.container-show div.container-comment div.comment hr {width: 100%; float: left; margin: 10px 0 0 0;}
+.back-footer {float: left; width: 80%; padding: 0 10%; font-size: 28px; color: #000;}
+

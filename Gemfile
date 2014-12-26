@@ -12,10 +12,14 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'simple_form', '~> 3.1.0'
 gem 'devise', '~> 3.4.1'
+gem 'devise_invitable', '~> 1.3.4'
 gem 'paperclip', '~> 4.2.1'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'bootstrap-sass', '~> 3.3.1.0'
 gem 'cancan', '~> 1.6.10'
+gem 'impressionist', '~> 1.5.1'
+gem 'acts_as_follower', '~> 0.2.1'
+gem 'merit', '~> 2.3.0'
 
 
 gem 'sdoc', '~> 0.4.0',          group: :doc

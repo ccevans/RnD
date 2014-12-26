@@ -1,69 +1,75 @@
-<div class="panel panel-default">
-	<div class="panel-body">
-		<div class="row">
-			<div class="col-md-4">
-				<%= @lyric.line %>
-				<%= @lyric.description %>
-				
-			<div class="table-responsive">
-				<table class="table">
-					<tbody>
-						<tr>
-							<td><strong>Artist:</strong></td>
-							<td><%= @lyric.artist %></td>
-						</tr>
-						<tr>
-							<td><strong>Song:</strong></td>
-							<td><%= @lyric.song %></td>
-						</tr>
-						<tr>
-							<td><strong>Album:</strong></td>
-							<td><%= @lyric.album %></td>
-						</tr>
-						<tr>
-							<td><strong>Link:</strong></td>
-							<td><%= link_to 'Link', @lyric.link %></td>
-						</tr>
-						<tr>
-							<td><strong>Username:</strong></td>
-							<td><%= image_tag @lyric.user.avatar.url(:thumb) %>
-								<%= @lyric.user.username %></td>
-						</tr>
-							<tr>
-							<td>
-							Likes<%= @lyric.get_upvotes.size %>
-							Dislikes<%= @lyric.get_downvotes.size %>
-							</td>
-							<td>
-							<%= link_to 'Like', like_lyric_path(@lyric), method: :get %>
-							<%= link_to 'Dislike', dislike_lyric_path(@lyric), method: :get %>
-							</td>
-						</tr>
-						<tr>
-							<div id="comment">
-								<h2 class="comment_count">
-								<%= pluralize(@lyric.comments.count, "Comment") %></h2>
-								<% @comments.each do |comment| %>
-								<div class="comment">
-									<p> <%= comment.user.username %></p>
-									<p> <%= comment.content %></p>
-								</div>
-								<% end %>
-								<%= render 'comments/form' %>
-							</div>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			</div>
-		</div>
+
+<div class="container-show">
+	<div class="container-line">
+	<%= @lyric.line %>
 	</div>
+	<div class="container-profile">
+		<%= image_tag @lyric.user.avatar.url(:thumb) %>
+		<%= @lyric.user.username %>
+<% @lyric.user.badges.each do |badge| %>
+  <%= badge.name %>
+<% end %>
+<%= @lyric.user.points %>
+</br>
+		<hr />
+	</div>
+	<div class="container-desc">
+		<%= @lyric.description %>
+	</div>
+
+	<div class="container-comment">
+	<h2 class="comment_count">
+		<%= pluralize(@lyric.comments.count, "Response") %></h2>
+		<hr />
+		<% @comments.each do |comment| %>
+			<div class="comment">
+				<%= image_tag comment.user.avatar.url(:mini) %>
+				<p class="username"> <%= comment.user.username %></p></br>
+				<p class="content"> <%= comment.content %></p>
+				<p class="time-created"><%= time_ago_in_words(comment.created_at) %></p>
+				<hr />
+			</div>
+		<% end %>
+	<%= render 'comments/form' %>
+</div>
 </div>
 
-<% if can? :update, @lyric %>
-<%= link_to 'Edit', edit_lyric_path(@lyric) %> 
+<div class="container-more">
+	<ul>
+		<li><%= @lyric.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
+		<li><hr /></li>
+		<li><span class="glyphicon glyphicon-heart" aria-hidden="true"></span><%= link_to 'Like?', like_lyric_path(@lyric), method: :get %> <%= @lyric.get_upvotes.size %> Likes</li>
+		<li><hr /></li>
+		<li><%= link_to 'Dislike', dislike_lyric_path(@lyric), method: :get %> Dislikes<%= @lyric.get_downvotes.size %></li>
+		<li><hr /></li>
+		<li><strong>Artist:</strong><%= @lyric.artist %></li>
+		<li><hr /></li>
+		<li><strong>Song:</strong><%= @lyric.song %></li>
+		<li><hr /></li>
+		<li><strong>Album:</strong><%= @lyric.album %></li>
+		<li><hr /></li>
+		<li><%= link_to 'More', @lyric.link %></li>
+		<li><hr /></li>
+		<li><% if can? :update, @lyric %>
+		<%= link_to 'Edit', edit_lyric_path(@lyric) %> | 
+		<% end %>
+		<% if can? :destroy, @lyric %>
+		<%= link_to 'Destroy', lyric_path(@lyric), method: :delete, data: {confirm: "Are you sure?" } %>
+		<% end %></li>
+	</ul>
+	</div>
+
+
+						
+
+<div class="back-footer">
+	<%= link_to 'Lyric Center', lyrics_path %>
+</div>
+
+<%= current_user.points %>
+
+<ul>
+<% current_user.badges.each do |badge| %>
+  <li><%= badge.name %></li>
 <% end %>
-<% if can? :destroy, @lyric %>
-<%= link_to 'Destroy', lyric_path(@lyric), method: :delete, data: {confirm: "Are you sure?" } %>
-<% end %>
-<%= link_to 'Back', lyrics_path %>
+</ul>
