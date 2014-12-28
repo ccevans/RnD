@@ -50,9 +50,23 @@
       
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
+          
           <li class="navbar-brand"><%= link_to "New Lyric", new_lyric_path, class: "active" %></li>
-          <li class="navbar-brand"><%= link_to "Account", edit_user_registration_path %></li>
-          <li class="navbar-brand"><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
+
+          <li class="dropdown2"><%= image_tag current_user.avatar.url(:thumb) %>
+            <ul class="dropdown-menu" role="menu">
+            <li><%= image_tag current_user.avatar.url(:mini) %><%= current_user.username %></li>
+            <li>Community Score: <%= current_user.points %></li>
+            <li>Community Level: <% current_user.badges.each do |badge| %>
+                <%= badge.name %>
+                <% end %></li>
+            <li class="divider"></li>
+            <li><%= link_to "Your Profile", profile_url(:id => current_user.username) %></li>
+            <li><%= link_to "Account", edit_user_registration_path %></li>
+            <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
+          </ul>
+
+          </li>
         <% else %>
           <li class="navbar-brand">
             <%= link_to "Sign Up", new_user_registration_path, class: "active" %></li>

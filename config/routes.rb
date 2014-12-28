@@ -2,16 +2,23 @@ Rails.application.routes.draw do
 
   get 'profiles/show'
 
+  get '/:id', to: 'profiles#show'
+
   devise_for :users, :controllers => { :invitations => 'user/invitation'}
-  
+
+    
 
   resources :profiles do
     resources :users 
+
     member do
       get :follow
       get :unfollow
     end
+  
   end
+
+  get 'tagged' => 'lyrics#tagged', :as => 'tagged'
 
 
   resources :adminlyrics do
@@ -46,8 +53,8 @@ Rails.application.routes.draw do
   
 
 
-  root 'adminlyrics#index'
+  root 'lyrics#index'
 
-  get '/:id', to: 'profiles#show'
+  
   
 end

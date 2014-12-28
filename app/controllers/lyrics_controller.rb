@@ -50,12 +50,20 @@ class LyricsController < ApplicationController
 
 	def upvote
 		@lyric.upvote_by current_user
-		redirect_to :back
+		redirect_to @lyric
 	end
 
 	def downvote
 		@lyric.downvote_by current_user
-		redirect_to :back
+		redirect_to @lyric
+	end
+
+	def tagged
+  		if params[:tag].present? 
+    		@lyrics = Lyric.tagged_with(params[:tag]).order("created_at desc")
+  		else 
+    		@lyrics = Lyric.all.order("created_at desc")
+  		end  
 	end
 
 
@@ -66,7 +74,7 @@ class LyricsController < ApplicationController
 	end
 
 	def post_params
-		params.require(:lyric).permit(:line, :description, :artist, :song, :album, :link)
+		params.require(:lyric).permit(:line, :description, :artist, :song, :album, :link, :tag_list)
 	end
 
 end

@@ -24,7 +24,7 @@ module Merit
       #   'photos#create'
       # ]
 
-      score 20, on: 'lyrics#create', to: :user
+      score 20, on: 'lyrics#create', to: :user, description: 'Plus 20 points'
 
       score (-20), on: 'lyrics#destroy', to: :user
     end

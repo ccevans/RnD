@@ -21,26 +21,29 @@
 <p><%= @user.follow_count %> Following</p>
 <p><%= @user.followers_count %> Followers</p>
 
-
-	<p><%= @user.all_follows %></p>
+<div class="follows2">
+	<p><%= @user.followers %></p>
+</div>
+<div class="following2">
 	<p><%= @user.all_following %></p>
+</div>
 
-<% if @user.all_follows %>
-	<% @user.all_follows.each do |user| %>
-		<div>
-			<%= image_tag @user.avatar.url(:thumb) %>
+
+	<% @user.followers.each do |user| %>
+		<div class="follows">
+			<%= image_tag user.avatar.url(:thumb) %>
 			<hr />
-			<%= @user.username %> 
+			<%= user.username %> 
 		</div>
 	<% end %>
-<% end %>
+
 
 
 	<% @user.all_following.each do |user| %>
-		<div>
-			<%= image_tag @user.avatar.url(:thumb) %>
+		<div class="following">
+			<%= image_tag user.avatar.url(:thumb) %>
 			<hr />
-			<%= @user.username %> 
+			<%= user.username %> 
 		</div>
 	<% end %>
 

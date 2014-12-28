@@ -4,12 +4,12 @@
 
 .container-md {width: 40%; margin: 50px 5%; height: auto; float: left;}
 
-div.container-md a {color: #000; font-size: 38px; line-height: 38px; text-align: center; font-family: 'Fredoka One', cursive; text-shadow: 1px 1px #bdc3c7;}
-div.container-md a:hover {color: #000; font-size: 38px; line-height: 38px; text-align: center; text-decoration: none; border: none;}
+div.container-md a {color: #000; font-size: 38px; line-height: 38px; text-align: left; font-family: 'Fredoka One', cursive; text-shadow: 1px 1px #bdc3c7;}
+div.container-md a:hover {color: #000; font-size: 38px; line-height: 38px; text-align: left; text-decoration: none; border: none;}
 
 
 
-div.container-md ul {list-style:none; color: #bdc3c7;}
+div.container-md ul {list-style:none; color: #bdc3c7; clear: both;}
 div.container-md ul li {float: left; padding: 5px; width: auto;}
 
 div.jumbotron {padding: 5px; margin: 5px 0;}
@@ -21,7 +21,7 @@ div.container-md ul li img {-moz-border-radius: 10px; -webkit-border-radius: 10p
 .lyric-footer {width: 80%; padding: 10px 10%; font-size: 20px; line-height: 20px; float: left;}
 
 div.container-show {width: 40%; height: auto; float: left; color: #000; margin: 10px 5% 10px 5%;}
-div.container-line {float: left; width: 100%; color: #000; font-size: 38px; line-height: 38px; text-align: center; font-family: 'Fredoka One', cursive; text-shadow: 1px 1px #bdc3c7;}
+div.container-line {float: left; width: 100%; color: #000; font-size: 38px; line-height: 38px; text-align: left; font-family: 'Fredoka One', cursive; text-shadow: 1px 1px #bdc3c7;}
 div.container-profile {float: left; width: 100%; padding: 5px; color: #000; font-family: 'Open Sans', serif; font-size: 28px; line-height: 28px; background-color: #ecf0f1; margin: 20px 0 0 0;}
 div.container-desc {float: left; width: 100%; color: #000; padding: 20px; font-size: 24px; line-height: 24px; font-family: 'Open Sans', serif; background-color: #ecf0f1;}
 div.container-comment {float: left; width: 100%; padding: 5px;}
@@ -63,4 +63,11 @@ div.container-show div.container-comment h2.comment_count {font-size: 14px;}
 div.container-comment hr {margin-top: 0;}
 div.container-show div.container-comment div.comment hr {width: 100%; float: left; margin: 10px 0 0 0;}
 .back-footer {float: left; width: 80%; padding: 0 10%; font-size: 28px; color: #000;}
+
+div.container-md ul li a {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #bdc3c7; text-shadow: none;}
+div.container-md ul li a:hover {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #000; text-shadow: none;}
+
+div.container-md ul.tag-list {margin-top: 0; margin-bottom: 0; padding: 0;}
+div.container-md ul.tag-list li {float: left; width: auto; margin-top: 0; margin-bottom: 0;}
+
 

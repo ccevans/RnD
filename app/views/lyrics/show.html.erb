@@ -1,7 +1,7 @@
 
 <div class="container-show">
 	<div class="container-line">
-	<%= @lyric.line %>
+	<%= simple_format(@lyric.line) %>
 	</div>
 	<div class="container-profile">
 		<%= image_tag @lyric.user.avatar.url(:thumb) %>
@@ -13,9 +13,11 @@
 </br>
 		<hr />
 	</div>
+	<% if @lyric.description %>
 	<div class="container-desc">
-		<%= @lyric.description %>
+		<%= simple_format(@lyric.description) %>
 	</div>
+	<% end %>
 
 	<div class="container-comment">
 	<h2 class="comment_count">
@@ -42,6 +44,11 @@
 		<li><hr /></li>
 		<li><%= link_to 'Dislike', dislike_lyric_path(@lyric), method: :get %> Dislikes<%= @lyric.get_downvotes.size %></li>
 		<li><hr /></li>
+		<li><% @lyric.tags.any? %>
+  			<% @lyric.tags.each do |tag| %>
+  			<%= link_to tag.name, tagged_url(:tag => tag.name) %>
+			<% end %></li>
+		<li><hr /></li>
 		<li><strong>Artist:</strong><%= @lyric.artist %></li>
 		<li><hr /></li>
 		<li><strong>Song:</strong><%= @lyric.song %></li>
@@ -60,16 +67,38 @@
 	</div>
 
 
+<%= link_to @lyric.user.username, profile_url(:id => @lyric.user.username) %>
+
+<div class="follows2">
+	<p><%= @user.all_follows %></p>
+</div>
+<div class="following2">
+	<p><%= @user.all_following %></p>
+</div>
+
+
+	<% @user.all_follows.each do |user| %>
+		<div class="follows">
+			<%= image_tag @user.avatar.url(:thumb) %>
+			<hr />
+			<%= @user.username %> 
+		</div>
+	<% end %>
+
+
+
+	<% @user.all_following.each do |all_following| %>
+		<div class="following">
+			<%= image_tag @user.avatar.url(:thumb) %>
+			<hr />
+			<%= @user.username %> 
+		</div>
+	<% end %>
+
 						
 
 <div class="back-footer">
 	<%= link_to 'Lyric Center', lyrics_path %>
 </div>
 
-<%= current_user.points %>
 
-<ul>
-<% current_user.badges.each do |badge| %>
-  <li><%= badge.name %></li>
-<% end %>
-</ul>

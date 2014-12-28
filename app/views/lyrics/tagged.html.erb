@@ -1,0 +1,29 @@
+<h1>Lyrics Center</h1>
+
+    <% @lyrics.each do |lyric| %>
+    <div class="container-md">
+        <%= link_to lyric.line, lyric %>
+        <ul>
+        <li><%= lyric.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
+        <li><%= lyric.get_upvotes.size %> <span class="glyphicon glyphicon-heart" aria-hidden="true"></span></li>
+        <li><%= lyric.comments.count %> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></li>
+        <li><%= image_tag lyric.user.avatar.url(:mini) %><%= lyric.user.username %></li>
+        <li><% lyric.tags.any? %>
+          Tags: <% lyric.tags.each do |tag| %>
+          <%= link_to tag.name, tagged_url(:tag => tag.name) %>
+          <% end %></li>
+     
+      </ul>
+      </div>
+    <% end %>
+
+        
+    <br>
+    <div class="lyric-footer">
+      <%= link_to 'New Lyric', new_lyric_path %>
+    </div>
+
+</div>
+
+
+

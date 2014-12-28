@@ -1,43 +1,16 @@
 <%= simple_form_for(@lyric) do |f| %>
-  <% if @lyric.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@lyric.errors.count, "error") %> prohibited this lyric from being saved:</h2>
 
-      <ul>
-      <% @lyric.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+      <%= f.error_notification %>
 
-    <div class="field">
-    <%= f.label :line %><br>
-    <%= f.text_area :line %>
-  </div>
+  <%= f.input :line, label: "Lyric" %>
+  <%= f.input :description, label: "Tell us more" %>
+  <%= f.input :artist, label: "Artist" %>
+  <%= f.input :song, label: "Song" %>
+  <%= f.input :album, label: "Album" %>
+  <%= f.input :link, label: "Link" %>
+  <%= f.input :tag_list, label: "Tags" %>
+  <%= f.button :submit, "Submit", class: "button" %>
 
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :artist %><br>
-    <%= f.text_field :artist %>
-  </div>
-  <div class="field">
-    <%= f.label :song %><br>
-    <%= f.text_field :song %>
-  </div>
-  <div class="field">
-    <%= f.label :album %><br>
-    <%= f.text_field :album %>
-  </div>
 
-    <div class="field">
-    <%= f.label :link %><br>
-    <%= f.text_field :link %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
 <% end %>

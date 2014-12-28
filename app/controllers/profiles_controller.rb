@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
 
-	before_action :find_post, only: [:show, :follow, :unfollow, :_following, :_followers]
+	before_action :find_post, only: [:show, :follow, :unfollow]
 
   def show
 
@@ -13,6 +13,16 @@ class ProfilesController < ApplicationController
   	end
 
   end
+
+  def all_following
+   @user = User.find_by_username(params[:username])
+   @users = User.find_by_username(params[:username]).all_following
+end
+
+def all_follows
+   @user = User.find_by_username(params[:username])
+   @users = User.find_by_username(params[:username]).followers
+end
 
 def follow
   @user = User.find_by_username(params[:id])
