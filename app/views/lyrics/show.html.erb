@@ -34,11 +34,14 @@
 		<li><span class="glyphicon glyphicon-heart" aria-hidden="true"></span><%= link_to 'Like?', like_lyric_path(@lyric), method: :get %> <%= @lyric.get_upvotes.size %>  Likes</li>
 		<li><hr /></li>
 		<li><%= link_to 'Dislike?', dislike_lyric_path(@lyric), method: :get %>  <%= @lyric.get_downvotes.size %>  Dislikes</li>
+		<% unless @lyric.tags.nil? || @lyric.tags.empty? %>
 		<li><hr /></li>
-		<li><% @lyric.tags.any? %>
+		<li>
   			<% @lyric.tags.each do |tag| %>
-  			<%= link_to tag.name, tagged_url(:tag => tag.name) %>
-			<% end %></li>
+  				<%= link_to tag.name, tagged_url(:tag => tag.name) %>
+  			<% end %>
+			</li>
+		<% end %>
 		<li><hr /></li>
 		<li><strong>Artist: </strong><%= @lyric.artist %></li>
 		<li><hr /></li>
@@ -63,7 +66,17 @@
 					<div class="following-show">
 						<p><%= @lyric.user.follow_count %> Following  | 
 						<%= @lyric.user.followers_count %> Followers</p>
-						<p><%= link_to "Follow", follow_profile_path(@lyric.user.username) %>  |  <%= link_to "Unfollow", unfollow_profile_path(@lyric.user.username) %></p>
+						<% if user_signed_in? %>
+							<% if current_user == @lyric.user %>
+								<p></p>
+							<% elsif  @lyric.user.all_following.include?(current_user) %>
+								<%= link_to "Unfollow", unfollow_profile_path(@lyric.user.username) %>
+							<% else %>
+								<%= link_to "Follow", follow_profile_path(@lyric.user.username) %>
+							<% end %>
+						<% else %>
+							<p><%= link_to "Sign Up To Follow", new_user_registration_path %></p>
+						<% end %>
 					</div>
 					<hr>
 					<div class="points-show">

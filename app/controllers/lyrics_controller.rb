@@ -1,14 +1,16 @@
 class LyricsController < ApplicationController
 	
+	before_action :tag_cloud, :only => [:index]
 	load_and_authorize_resource :only => [:show, :edit, :update, :destroy]
 	before_action :find_post, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
 	before_action :authenticate_user!, except: [:index, :show]
 	impressionist :actions=>[:show,:index], :unique => [:impressionable_type, :impressionable_id, :session_hash]
 	
 	
+	
 
 	def index
-		@lyrics = Lyric.paginate(:page => params[:page], :per_page => 2).order("created_at DESC")
+		@lyrics = Lyric.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
 	end
 
 	def show
@@ -65,6 +67,11 @@ class LyricsController < ApplicationController
     		@lyrics = Lyric.all.order("created_at desc")
   		end  
 	end
+
+	def tag_cloud
+		
+   		 @tags = Lyric.tag_counts_on(:tags)
+  	end
 
 
 	private

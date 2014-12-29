@@ -23,6 +23,8 @@ gem 'merit', '~> 2.3.0'
 gem 'acts-as-taggable-on', '~> 3.4.2'
 gem 'will_paginate', '~> 3.0.5'
 gem 'will_paginate-bootstrap'
+gem 'jquery-turbolinks'
+gem 'masonry-rails'
 
 
 gem 'sdoc', '~> 0.4.0',          group: :doc
