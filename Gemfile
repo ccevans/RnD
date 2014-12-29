@@ -21,6 +21,8 @@ gem 'impressionist', '~> 1.5.1'
 gem 'acts_as_follower', '~> 0.2.1'
 gem 'merit', '~> 2.3.0'
 gem 'acts-as-taggable-on', '~> 3.4.2'
+gem 'will_paginate', '~> 3.0.5'
+gem 'will_paginate-bootstrap'
 
 
 gem 'sdoc', '~> 0.4.0',          group: :doc

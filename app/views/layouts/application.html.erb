@@ -11,10 +11,21 @@
 </head>
 <body>
 <%= render 'layouts/header' %>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p> 
+
+<div class="notice flash-message"> <span style="background-color: #FFFF00"><%= notice %></span> </div>
+<div class="alert flash-message"> <span style="background-color: #FF0000"><%= alert %></span> </div> 
+
 
 <%= yield %>
 
 </body>
 </html>
+
+
+<script>
+  $(function() {
+     $('.flash-message').delay(500).fadeIn('normal', function() {
+        $(this).delay(2500).fadeOut();
+     });
+  });
+  </script>

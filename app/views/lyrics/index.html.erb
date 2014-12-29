@@ -40,6 +40,11 @@
       </div>
     <% end %>
 
+    <br>
+    <div class="center">
+      <%= will_paginate @lyrics, renderer: BootstrapPagination::Rails %>
+    </div>
+
         
     <br>
     <div class="lyric-footer">

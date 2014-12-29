@@ -3,22 +3,13 @@
 	<div class="container-line">
 	<%= simple_format(@lyric.line) %>
 	</div>
-	<div class="container-profile">
-		<%= image_tag @lyric.user.avatar.url(:thumb) %>
-		<%= @lyric.user.username %>
-<% @lyric.user.badges.each do |badge| %>
-  <%= badge.name %>
-<% end %>
-<%= @lyric.user.points %>
-</br>
-		<hr />
-	</div>
-	<% if @lyric.description %>
+	<% unless @lyric.description.nil? || @lyric.description.empty? %>
 	<div class="container-desc">
 		<%= simple_format(@lyric.description) %>
 	</div>
 	<% end %>
-
+	<div class="postedby">Posted By: <%= image_tag @lyric.user.avatar.url(:mini) %>  <%= link_to @lyric.user.username, profile_url(:id => @lyric.user.username) %></div>
+		
 	<div class="container-comment">
 	<h2 class="comment_count">
 		<%= pluralize(@lyric.comments.count, "Response") %></h2>
@@ -40,20 +31,20 @@
 	<ul>
 		<li><%= @lyric.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
 		<li><hr /></li>
-		<li><span class="glyphicon glyphicon-heart" aria-hidden="true"></span><%= link_to 'Like?', like_lyric_path(@lyric), method: :get %> <%= @lyric.get_upvotes.size %> Likes</li>
+		<li><span class="glyphicon glyphicon-heart" aria-hidden="true"></span><%= link_to 'Like?', like_lyric_path(@lyric), method: :get %> <%= @lyric.get_upvotes.size %>  Likes</li>
 		<li><hr /></li>
-		<li><%= link_to 'Dislike', dislike_lyric_path(@lyric), method: :get %> Dislikes<%= @lyric.get_downvotes.size %></li>
+		<li><%= link_to 'Dislike?', dislike_lyric_path(@lyric), method: :get %>  <%= @lyric.get_downvotes.size %>  Dislikes</li>
 		<li><hr /></li>
 		<li><% @lyric.tags.any? %>
   			<% @lyric.tags.each do |tag| %>
   			<%= link_to tag.name, tagged_url(:tag => tag.name) %>
 			<% end %></li>
 		<li><hr /></li>
-		<li><strong>Artist:</strong><%= @lyric.artist %></li>
+		<li><strong>Artist: </strong><%= @lyric.artist %></li>
 		<li><hr /></li>
-		<li><strong>Song:</strong><%= @lyric.song %></li>
+		<li><strong>Song: </strong><%= @lyric.song %></li>
 		<li><hr /></li>
-		<li><strong>Album:</strong><%= @lyric.album %></li>
+		<li><strong>Album: </strong><%= @lyric.album %></li>
 		<li><hr /></li>
 		<li><%= link_to 'More', @lyric.link %></li>
 		<li><hr /></li>
@@ -63,38 +54,31 @@
 		<% if can? :destroy, @lyric %>
 		<%= link_to 'Destroy', lyric_path(@lyric), method: :delete, data: {confirm: "Are you sure?" } %>
 		<% end %></li>
+		<li>	
+			<div class="container-profile">
+				<%= image_tag @lyric.user.avatar.url(:thumb) %>
+					<%= link_to @lyric.user.username, profile_url(:id => @lyric.user.username) %>
+					
+					</br>
+					<div class="following-show">
+						<p><%= @lyric.user.follow_count %> Following  | 
+						<%= @lyric.user.followers_count %> Followers</p>
+						<p><%= link_to "Follow", follow_profile_path(@lyric.user.username) %>  |  <%= link_to "Unfollow", unfollow_profile_path(@lyric.user.username) %></p>
+					</div>
+					<hr>
+					<div class="points-show">
+						Points | <%= @lyric.user.points %>
+					</div>
+					<div class="badge-show">
+						Badges:</br>
+						<% @lyric.user.badges.each do |badge| %>
+				  			<%= badge.name %>
+						<% end %>
+					</div>
+					
+			</div></li>
 	</ul>
 	</div>
-
-
-<%= link_to @lyric.user.username, profile_url(:id => @lyric.user.username) %>
-
-<div class="follows2">
-	<p><%= @user.all_follows %></p>
-</div>
-<div class="following2">
-	<p><%= @user.all_following %></p>
-</div>
-
-
-	<% @user.all_follows.each do |user| %>
-		<div class="follows">
-			<%= image_tag @user.avatar.url(:thumb) %>
-			<hr />
-			<%= @user.username %> 
-		</div>
-	<% end %>
-
-
-
-	<% @user.all_following.each do |all_following| %>
-		<div class="following">
-			<%= image_tag @user.avatar.url(:thumb) %>
-			<hr />
-			<%= @user.username %> 
-		</div>
-	<% end %>
-
 						
 
 <div class="back-footer">

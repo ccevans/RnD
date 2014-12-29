@@ -1,51 +1,119 @@
-<div class="page-header">
-	<%= image_tag @user.avatar.url(:medium) %>
-	<h1><%= @user.username %></h1>
-	
+<div class="profile-header">
+	<%= image_tag @user.profileimg.url(:large) %>
 </div>
-
-<% if @lyrics %>
-	<% @lyrics.each do |lyric| %>
-		<div class="well">
-			<%= lyric.line %>
-			<hr />
-			<%= link_to time_ago_in_words(lyric.created_at), lyric_path(lyric) %> ago
+<section class="profilesection">
+	<div class="profile-box">
+		<div class="profile-main">
+			<%= image_tag @user.avatar.url(:medium) %>
 		</div>
-	<% end %>
-<% end %>
+	<h1><%= @user.name %></h1>
+	<h2>profile/<%= @user.username %></h2>
+	<hr>
+	<div class="profile-bio">
+		<%= @user.bio %>
+	</div>
+	<hr>
+	<div class="profile-location">
+		<%= @user.location %>
+	</div>
 
-<%= link_to "Follow", follow_profile_path(@user.username) %>
-
-<%= link_to "Unfollow", unfollow_profile_path(@user.username) %>
-
-<p><%= @user.follow_count %> Following</p>
-<p><%= @user.followers_count %> Followers</p>
-
-<div class="follows2">
-	<p><%= @user.followers %></p>
-</div>
-<div class="following2">
-	<p><%= @user.all_following %></p>
-</div>
-
-
-	<% @user.followers.each do |user| %>
-		<div class="follows">
-			<%= image_tag user.avatar.url(:thumb) %>
-			<hr />
-			<%= user.username %> 
-		</div>
+	<div class="profile-location">
+		<%= link_to "Website", @user.website %>
+	</div>
+	<% if user_signed_in? %>
+		<% if current_user == @user %>
+			<p></p>
+		<% elsif  @user.followers.include?(current_user) %>
+			<%= link_to "Unfollow", unfollow_profile_path(@user.username) %>
+		<% else %>
+			<%= link_to "Follow", follow_profile_path(@user.username) %>
+		<% end %>
+	<% else %>
+		<p><%= link_to "Sign Up To Follow", new_user_registration_path %></p>
 	<% end %>
 
-
-
+	<p><%= @user.follow_count %> Following</p>
 	<% @user.all_following.each do |user| %>
 		<div class="following">
-			<%= image_tag user.avatar.url(:thumb) %>
-			<hr />
-			<%= user.username %> 
+			<%= link_to profile_url(:id => user.username) do %>
+				<% if user.avatar.url.present? %>
+				<%= image_tag user.avatar.url(:mini), :title => user.username %>
+				<% else %>
+				<%= image_tag("#{RAILS_ROOT}/public/images/mini/black-logo-gasmask.png") %>
+				<% end %>
+			<% end %>
 		</div>
 	<% end %>
+	<hr>
+	<p><%= @user.followers_count %> Followers</p>
+	<% @user.followers.each do |user| %>
+	<div class="follows">
+			<%= link_to profile_url(:id => user.username) do %>
+				<%= image_tag user.avatar.url(:mini), :title => user.username %>
+			<% end %>
+		</div>
+	<% end %>
+
+
+	
+</div>
+ 
+
+
+<div class="profile-lyrics">
+  <div role="tabpanel">
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Lyrics</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home">
+    		<% if @lyrics.any? %>
+				<% @lyrics.each do |lyric| %>
+					<div class="well">
+						<%= link_to simple_format(lyric.line), lyric_path(lyric) %>
+						<hr />
+						<span class="profile-time"><%= link_to time_ago_in_words(lyric.created_at), lyric_path(lyric) %> ago </span>
+					</div>
+				<% end %>
+			<% elsif current_user.id == @user.id %>
+				<p>No lyrics posted yet.  Add your favortie <%= link_to "Lyric", new_lyric_path %>.</p>
+			<% else %>
+				<p>No lyrics posted yet.</p>		
+			<% end %>
+
+    </div>
+    <div role="tabpanel" class="tab-pane" id="profile">Empty - add something1</div>
+    <div role="tabpanel" class="tab-pane" id="messages">Empty - add something2</div>
+    <div role="tabpanel" class="tab-pane" id="settings">Empty - add something3</div>
+  </div>
+</div>
+
+</div>
+
+</section>
+
+<script>
+  $(function () {
+    $('#myTab a:last').tab('show')
+  })
+
+  $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+  	e.target // newly activated tab
+  	e.relatedTarget // previous active tab
+	})
+
+  $('#myTab a[href="#home"]').tab('show')
+  $('#myTab a[href="#profile"]').tab('show')
+  $('#myTab a[href="#messages"]').tab('show')
+  $('#myTab a[href="#settings"]').tab('show')
+</script>
 
 
 

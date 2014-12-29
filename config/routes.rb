@@ -1,15 +1,11 @@
 Rails.application.routes.draw do
 
-  get 'profiles/show'
-
-  get '/:id', to: 'profiles#show'
 
   devise_for :users, :controllers => { :invitations => 'user/invitation'}
 
     
 
   resources :profiles do
-    resources :users 
 
     member do
       get :follow

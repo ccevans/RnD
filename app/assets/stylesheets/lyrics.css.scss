@@ -12,7 +12,7 @@ div.container-md a:hover {color: #000; font-size: 38px; line-height: 38px; text-
 div.container-md ul {list-style:none; color: #bdc3c7; clear: both;}
 div.container-md ul li {float: left; padding: 5px; width: auto;}
 
-div.jumbotron {padding: 5px; margin: 5px 0;}
+div.jumbotron {padding: 5px; margin: 100px 0 0 0;}
 div.jumbotron h1 { text-transform: uppercase; font-size: 18px; color: #000; font-family: 'Fredoka One', cursive; padding: 0; margin: 0;}
 div.jumbotron h2 { font-size: 18px; color: #000; font-family: 'Fredoka One', cursive; padding: 0; margin: 0;}
 
@@ -23,7 +23,7 @@ div.container-md ul li img {-moz-border-radius: 10px; -webkit-border-radius: 10p
 div.container-show {width: 40%; height: auto; float: left; color: #000; margin: 10px 5% 10px 5%;}
 div.container-line {float: left; width: 100%; color: #000; font-size: 38px; line-height: 38px; text-align: left; font-family: 'Fredoka One', cursive; text-shadow: 1px 1px #bdc3c7;}
 div.container-profile {float: left; width: 100%; padding: 5px; color: #000; font-family: 'Open Sans', serif; font-size: 28px; line-height: 28px; background-color: #ecf0f1; margin: 20px 0 0 0;}
-div.container-desc {float: left; width: 100%; color: #000; padding: 20px; font-size: 24px; line-height: 24px; font-family: 'Open Sans', serif; background-color: #ecf0f1;}
+div.container-desc {float: left; width: auto; color: #000; padding: 20px; font-size: 24px; line-height: 24px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; border-left: 4px solid #bdc3c7; margin-left: 20px;}
 div.container-comment {float: left; width: 100%; padding: 5px;}
 div.container-more {float: left; width: 20%; padding: 5px; height: auto;}
 div.container-more ul {list-style:none; color: #bdc3c7;}
@@ -69,5 +69,15 @@ div.container-md ul li a:hover {font-size: 14px; line-height: 14px; font-family:
 
 div.container-md ul.tag-list {margin-top: 0; margin-bottom: 0; padding: 0;}
 div.container-md ul.tag-list li {float: left; width: auto; margin-top: 0; margin-bottom: 0;}
+.postedby {color: #bdc3c7; clear: both; float: right; padding: 5px; width: auto;}
+div.postedby img {-moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px; margin: 0 5px;}
+div.postedby a {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #bdc3c7; text-shadow: none;}
+div.postedby a:hover {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #000; text-shadow: none;}
+div.container-more ul li div.container-profile img {-moz-border-radius: 25px; -webkit-border-radius: 25px; border-radius: 25px;}
 
+div.container-more ul li div.container-profile div.following-show {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #000; padding: 10px 0; text-align: center;}
+div.container-more ul li div.container-profile div.badge-show {font-size: 18px; line-height: 20px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #000; padding: 10px 0;}
+div.container-more ul li div.container-profile div.points-show {font-size: 18px; line-height: 18px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #000; padding: 5px 0;}
+
+html body div.container-more ul li div.container-profile hr { border: 1px solid #000; margin: 0 0 10px 0;}
 

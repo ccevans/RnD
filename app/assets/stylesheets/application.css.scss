@@ -35,5 +35,32 @@
 
 .simple_form {width: 50%; margin: 0 25%;}
 
+ul.nav.navbar-nav.navbar-right li.dropdown2 img {-moz-border-radius: 25px; -webkit-border-radius: 25px; border-radius: 25px;}
+
+.notice {font-size: 18px; color: #000; z-index: 1000; top: 100px; position: fixed; border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; width: 90%; padding: 0 5%; text-align: right;}
+.alert {font-size: 18px; color: #fff; z-index: 1000; top: 100px; position: fixed; border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; width: 90%; padding: 0 5%; text-align: right;}
+
+
+
+
+//Account - Edit Profile
+form#edit_user.simple_form.edit_user hr {border-width: 4px; margin-top: 5px;}
+div.form-break {font-size: 24px; line-height: 24px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #bdc3c7; margin-top: 40px;}
+form#edit_user.simple_form.edit_user input#user_profileimg {margin-top: 15px;}
+form#edit_user.simple_form.edit_user input#user_avatar {margin-top: 15px;}
+html body form#edit_user.simple_form.edit_user .avatar-img img {-moz-border-radius: 25px; -webkit-border-radius: 25px; border-radius: 25px;}
+html body div.profile-box2 img {float: left; width: 100px; height: 100px; -moz-border-radius: 50px; -webkit-border-radius: 50px; border-radius: 50px;}
+div.profile-box2 {width: 20%; margin: 50px 0 0 5%; float: left;}
+html body div.profile-box2 h1 {float: left; text-transform: uppercase; font-size: 24px; color: #bdc3c7;}
+form#edit_user.simple_form.edit_user {float: left; width: 50%; margin: 50px 0 0 5%;}
+.form-footer {float: left; width: 50%; margin: 25px 0 10px 30%;}
+div.form-footer hr {border-width: 4px; margin-top: 5px;}
+div.profile-box2 hr {border-width: 4px; margin-top: 5px;}
+
+//Sign In - Log In
+form#new_user.simple_form.new_user div.form-break {font-size: 24px; line-height: 24px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #bdc3c7; margin-top: 40px;}
+form#new_user.simple_form.new_user hr {border-width: 4px; margin-top: 5px;}
+
+
 
 
