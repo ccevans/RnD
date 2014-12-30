@@ -1,11 +1,20 @@
   <div id="campaigns" class="transitions-enabled">
     <div class="container-md">
     	<%= @campaign.title %>
+
+    	<%= image_tag @campaign.image.url(:large) %>
  
         <br />
         <%= simple_format(@campaign.description) %>
        <%= simple_format(@campaign.timer) %> 
-     
+
+
+  		<% if can? :update, @campaign %>
+		<%= link_to 'Edit', edit_campaign_path(@campaign) %> | 
+		<% end %>
+		<% if can? :destroy, @campaign %>
+		<%= link_to 'Destroy', campaign_path(@campaign), method: :delete, data: {confirm: "Are you sure?" } %>   
+		<% end %>
       
       </div>
     

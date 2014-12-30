@@ -50,7 +50,7 @@ class CampaignsController < ApplicationController
 	end
 
 	def campaign_params
-		params.require(:campaign).permit(:title, :description, :timer)
+		params.require(:campaign).permit(:title, :description, :timer, :image)
 	end
 
 end

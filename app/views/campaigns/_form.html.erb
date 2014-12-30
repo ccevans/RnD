@@ -1,10 +1,11 @@
-<%= simple_form_for(@campaign) do |f| %>
+<%= simple_form_for(@campaign, html: { multiport: true }) do |f| %>
 
       <%= f.error_notification %>
 
   <%= f.input :title, label: "Title" %>
   <%= f.input :description, label: "Tell us more" %>
   <%= f.input :timer, label: "Time" %>
+  <%= f.file_field :image %>
 
   <%= f.button :submit, "Submit", class: "button" %>
 

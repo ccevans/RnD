@@ -1,7 +1,8 @@
   <div id="campaigns" class="transitions-enabled">
     <% @campaigns.each do |campaign| %>
-    <div class="container-md">
+    <div class="campaign-md">
     	<%= link_to simple_format(campaign.title), campaign %>
+      <%= image_tag campaign.image.url(:medium) %>
  
         <br />
         <%= link_to simple_format(campaign.description), campaign %>
