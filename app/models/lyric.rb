@@ -4,5 +4,7 @@ class Lyric < ActiveRecord::Base
 	belongs_to :user
 	has_many :comments
 	acts_as_taggable_on :tags
+
+	 scope :by_tags, -> tags { where(:tags => tags) }
 	
 end

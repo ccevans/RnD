@@ -25,6 +25,8 @@ gem 'will_paginate', '~> 3.0.5'
 gem 'will_paginate-bootstrap'
 gem 'jquery-turbolinks'
 gem 'masonry-rails'
+gem 'has_scope', '~> 0.5.1'
+gem 'cocoon', '~> 1.2.6'
 
 
 gem 'sdoc', '~> 0.4.0',          group: :doc

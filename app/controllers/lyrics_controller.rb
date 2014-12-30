@@ -1,6 +1,7 @@
 class LyricsController < ApplicationController
 	
 	before_action :tag_cloud, :only => [:index]
+	has_scope :by_tags
 	load_and_authorize_resource :only => [:show, :edit, :update, :destroy]
 	before_action :find_post, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
 	before_action :authenticate_user!, except: [:index, :show]
@@ -10,7 +11,7 @@ class LyricsController < ApplicationController
 	
 
 	def index
-		@lyrics = Lyric.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+		@lyrics = apply_scopes(Lyric).all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
 	end
 
 	def show
