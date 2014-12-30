@@ -92,6 +92,16 @@
 			</div></li>
 	</ul>
 	</div>
+
+	<div id="random_post">
+		<h3> More Lyrics </h3>
+		<div class="container-show2">
+			<%= link_to simple_format(@random_lyric.line), @random_lyric %>
+			<%= @random_lyric.user.username %>
+		</div>
+	</div>
+			
+	</div>
 						
 
 <div class="back-footer">

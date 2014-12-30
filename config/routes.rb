@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  get 'pages/lyriclab'
+
   devise_for :users, :controllers => { :invitations => 'user/invitation'}
 
     

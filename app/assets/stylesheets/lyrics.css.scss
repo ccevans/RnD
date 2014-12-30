@@ -21,12 +21,12 @@ div.container-md ul li img {-moz-border-radius: 10px; -webkit-border-radius: 10p
 
 .lyric-footer {width: 80%; padding: 10px 10%; font-size: 20px; line-height: 20px; float: left;}
 
-div.container-show {width: 40%; height: auto; float: left; color: #000; margin: 125px 5% 10px 5%;}
+div.container-show {width: 35%; height: auto; float: left; color: #000; margin: 125px 5% 10px 5%;}
 div.container-line {float: left; width: 100%; color: #000; font-size: 38px; line-height: 38px; text-align: left; font-family: 'Fredoka One', cursive; text-shadow: 1px 1px #bdc3c7;}
 div.container-profile {float: left; width: 100%; padding: 5px; color: #000; font-family: 'Open Sans', serif; font-size: 28px; line-height: 28px; background-color: #ecf0f1; margin: 20px 0 0 0;}
 div.container-desc {float: left; width: auto; color: #000; padding: 20px; font-size: 24px; line-height: 24px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; border-left: 4px solid #bdc3c7; margin-left: 20px;}
 div.container-comment {float: left; width: 100%; padding: 5px;}
-div.container-more {float: left; width: 20%; padding: 5px; height: auto; margin-top: 125px;}
+div.container-more {float: left; width: 20%; padding: 5px 0; height: auto; margin-top: 125px;}
 div.container-more ul {list-style:none; color: #bdc3c7;}
 div.container-more ul li {float: left; padding: 5px; width: 100%;}
 div.container-more ul li hr {margin: 0;}
@@ -89,4 +89,6 @@ html body div.container-more ul li div.container-profile hr { border: 1px solid 
 .tagcloud {color: #000; width: 40%; margin: 5px 30%;}
 .tagcloud a {color: #bdc3c7; text-decoration: none;}
 .tagcloud a:hover {color: #000; text-decoration: none;}
+
+#random_post {width: 25%; padding: 0 5%; margin-top: 125px; float: left;}
 

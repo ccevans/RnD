@@ -15,6 +15,7 @@ class LyricsController < ApplicationController
 
 	def show
 		@comments = Comment.where(lyric_id: @lyric)
+		@random_lyric = Lyric.where.not(id: @lyric).order("RANDOM()").first
 		
 	end
 
