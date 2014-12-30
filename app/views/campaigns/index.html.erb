@@ -1,0 +1,13 @@
+  <div id="campaigns" class="transitions-enabled">
+    <% @campaigns.each do |campaign| %>
+    <div class="container-md">
+    	<%= link_to simple_format(campaign.title), campaign %>
+ 
+        <br />
+        <%= link_to simple_format(campaign.description), campaign %>
+        <%= simple_format(campaign.timer) %>
+     
+      
+      </div>
+    <% end %>
+  </div>

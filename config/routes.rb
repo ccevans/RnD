@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => { :invitations => 'user/invitation'}
 
-    
+  resources :campaigns
 
   resources :profiles do
 
@@ -48,10 +48,8 @@ Rails.application.routes.draw do
 
   end
 
-  
 
-
-  root 'lyrics#index'
+  root 'campaigns#index'
 
   
   

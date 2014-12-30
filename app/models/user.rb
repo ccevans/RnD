@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   has_many :arts, dependent: :destroy
   has_many :commentarts, dependent: :destroy
   has_many :commentlyrics, dependent: :destroy
+  has_many :campaigns
 
   has_attached_file :avatar, :styles => { :medium => "300x300#", :thumb => "50x50#", :mini => "20x20#"  }, :default_url => "/images/:style/black-logo-gasmask.png" 
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
