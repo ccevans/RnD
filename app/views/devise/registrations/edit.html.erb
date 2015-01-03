@@ -46,11 +46,11 @@
     <%= f.input :bio, required: false %>
   </div>
     
-<% if can? :manage, :all %>
+
     <div class="form-break">Update Role</div>
     <hr>
     <%= f.collection_select :role, User::ROLES, :to_s, :humanize %>
-    <% end %>
+   
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
