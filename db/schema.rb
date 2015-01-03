@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20150102233119) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.integer  "campaign_id",        default: 2
+    t.integer  "campaign_id"
   end
 
   create_table "badges_sashes", force: true do |t|
@@ -147,7 +147,7 @@ ActiveRecord::Schema.define(version: 20150102233119) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.integer  "campaign_id", default: 2
+    t.integer  "campaign_id"
   end
 
   create_table "merit_actions", force: true do |t|
