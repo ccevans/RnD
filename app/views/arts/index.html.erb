@@ -1,6 +1,9 @@
 <% if user_signed_in? %>
-  Hello <%= current_user.username %></br>
-  <p>Share lyrics that you are inspired by and see what lyrics inspire others.</p>
+  <div class="jumbotron">
+    <h1>What up? <%= current_user.username %></h1> </br><h2>What you listening to today?</h2></br>
+    <p>Share lyrics that you are inspired by and see what lyrics inspire others.</p>
+    <p><%= link_to "Sign Up To Add Lyrics", new_campaign_art_path(:campaign_id => 2), class: "btn btn-primary btn-lg" %></p>
+</div>
 <% else %>
   <div class="jumbotron">
       <h1>Add Your Favorite Lyrics</h1>
@@ -9,37 +12,52 @@
     </div>
 <% end %>
 
-<div class="container-md">
-    <h1>Designs Center</h1>
 
-        <% @arts.each do |art| %>
-        <div class="panel panel-default">
-           <div class="panel-heading">
-            <%= image_tag art.image.url(:small) %>
-          </div>
-            <table class="table table-condensed">
-              <tbody>
-                  <tr>
-                  	<td>Description: <%= art.description %></td>
-                    <td>Artist: <%= art.artist %></td>
-                    <td>Type: <%= art.typeart %></td>
-                    <td><%= art.impressionist_count(:filter=>:session_hash) %> Views</td>
-                    <td><%= art.get_upvotes.size %> Likes</td>
-                    <td><%= art.commentarts.count %> Comments</td>
-                    <td><%= link_to 'Link', art.link %></td>
-                    <td><%= link_to 'Show', art %></td>
-                    <td><%= link_to 'Edit', edit_art_path(art) %></td>
-                    <td><%= link_to 'Destroy', art, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                  </tr>
-                </tbody>
-            </table>
-          </div>
+<h1>Designs Center</h1>
+
+<div class="tagcloud">
+         <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+            <%= link_to tag.name, tagged_url(tag.name), :class => css_class %>
         <% end %>
-      </tbody>
-    </table>
+    </div>
 
-    <br>
+<div id="arts" class="transitions-enabled">
+    
+      <% @arts.each do |art| %>
+        <div class="container-md">
+         
+          <%= link_to campaign_art_path(@campaign, art) do %>
+            <%= image_tag art.image.url(:small) %>
+          <% end %>
 
-    <%= link_to 'New Art', new_art_path %>
-
+         <ul>
+              <li><%= art.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
+             <li><%= art.get_upvotes.size %> 
+                <%= link_to like_campaign_art_path(art.campaign, art), method: :get do %>
+                <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+                <% end %>
+            </li>
+            <li><%= art.commentarts.count %> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></li>
+              <li><%= image_tag art.user.avatar.url(:mini) %><%= link_to art.user.username, profile_url(:id => art.user.username) %></li>
+          </ul>
+          <br />
+        <ul class="tag-list">
+        <li><% art.tags.any? %>
+          <% art.tags.each do |tag| %>
+          <%= link_to tag.name, tagged_url(:tag => tag.name) %>
+          <% end %></li>
+        </ul>
+      </div>
+      <% end %>
 </div>
+
+ <br>
+    <div class="center">
+      <%= will_paginate @arts, renderer: BootstrapPagination::Rails %>
+    </div>
+
+        
+    <br>
+    <div class="art-footer">
+      <%= link_to 'New Design', new_campaign_art_path %>
+    </div>

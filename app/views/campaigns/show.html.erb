@@ -1,21 +1,123 @@
-  <div id="campaigns" class="transitions-enabled">
-    <div class="container-md">
-    	<%= @campaign.title %>
+<div class="campaign-header">
+    <%= image_tag @campaign.image.url(:large) %>
+</div>  
 
-    	<%= image_tag @campaign.image.url(:large) %>
- 
-        <br />
-        <%= simple_format(@campaign.description) %>
-       <%= simple_format(@campaign.timer) %> 
+  <div id="campaigns2">
+    <div class="campaign-show">
+   
+    	 <div class="campaignshow-info">
+        <h1><strong><%= @campaign.title %></strong></h1>
+        <div class="campaignshow-desc">
+          <%= simple_format(@campaign.description) %>
+        </div></br>
 
+        <div class="timer-button">
+          <h4>Rhymes</h4>
+        <% if @campaign.status == "free" %>
+              <%= link_to 'Add Lyrics', new_campaign_lyric_path(@campaign, @lyric), class: "submitbutton" %>
+        <% elsif @campaign.timer.nil? || @campaign.timer.empty? %>
+            <div class="timer-button2">Not open for submissions yet</div>
+        <% else %>
+           <span class="glyphicon glyphicon-time" aria-hidden="true"></span><span class="timer-line" data-countdown= <%= @campaign.timer %> ></span><br />
 
-  		<% if can? :update, @campaign %>
-		<%= link_to 'Edit', edit_campaign_path(@campaign) %> | 
-		<% end %>
-		<% if can? :destroy, @campaign %>
-		<%= link_to 'Destroy', campaign_path(@campaign), method: :delete, data: {confirm: "Are you sure?" } %>   
-		<% end %>
-      
+            <%= link_to 'Add Lyrics', new_campaign_lyric_path(@campaign, @lyric), class: "submitbutton" %>
+          
+        <% end %>
+        </div> 
+
+        <div class="timer-button">
+          <h4>Designs</h4>
+        <% if @campaign.status == "free" %>
+            <%= link_to 'Submit Designs', new_campaign_art_path(@campaign, @art), class: "submitbutton" %>
+        <% elsif @campaign.timer2.nil? || @campaign.timer2.empty? %>
+            <div class="timer-button2">Not open for submissions yet</div>
+        <% else %>
+          
+              <span class="glyphicon glyphicon-time" aria-hidden="true"></span><span class="timer-line" data-countdown= <%= @campaign.timer2 %> ></span><br />
+
+             <%= link_to 'Submit Designs', new_campaign_art_path(@campaign, @art), class: "submitbutton" %>
+          
+        <% end %>
+        </div>
+       </div>
+       
+       <div class="admin-footer">
+          <% if can? :update, @campaign %>
+        <%= link_to 'Edit', edit_campaign_path(@campaign) %> | 
+        <% end %>
+        <% if can? :destroy, @campaign %>
+        <%= link_to 'Destroy', campaign_path(@campaign), method: :delete, data: {confirm: "Are you sure?" } %>   
+        <% end %>
       </div>
+  </div>
+
+    	
+      <div class="campaign-lyric">
+        <h2>Lyrics</h2>
+        <% @lyrics.each do |lyric| %>
+          <div class="campaign-lyric-each">
+            <%= link_to lyric.line, campaign_lyric_path(@campaign, lyric) %>
+          <ul>
+              <li><%= lyric.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
+              <li><%= lyric.get_upvotes.size %> 
+                <%= link_to like_campaign_lyric_path(lyric.campaign, lyric), method: :get do %>
+                    <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+                  <% end %>
+                </li>
+              <li><%= lyric.comments.count %> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></li>
+              <li><%= image_tag lyric.user.avatar.url(:mini) %><%= link_to lyric.user.username, profile_url(:id => lyric.user.username) %></li>
+          </ul>
+          </div>
+          <% end %>
+      
+    </div>
+        
+    <div class="art-container">
+      <h2>Submitted Designs</h2>
+      <div id="campaign-art" class="transitions-enabled">
+         
+        <% @arts.each do |art| %>
+          <div class="campaign-art-each">
+            <%= link_to campaign_art_path(@campaign, art) do %>
+            <%= image_tag art.image.url(:small) %>
+          <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+
+      
+
     
   </div>
+
+
+  <script type="text/javascript">
+    $('[data-countdown]').each(function() {
+      var $this = $(this), finalDate = $(this).data('countdown');
+    
+    $this.countdown(finalDate)
+
+    .on('update.countdown', function(event) {
+      var format = '%-H hr %-M min %-S sec';
+      var format2 = '%-H hr %-M min';  
+      if (event.offset.days < 1) {
+          $this.closest('.price-info').addClass('red-status');
+      }   
+      if(event.offset.days > 0) {
+        format = '%-d day%!d, ' + format2;
+      }
+      if(event.offset.weeks > 0) {
+        format = '%-w week%!w ' + format2;
+      }
+    
+     $(this).html(event.strftime(format));
+   })
+   .on('finish.countdown', function(event) {
+     $(this).html('Closed for Submissions');
+    $this.closest('.timer-button').addClass('disabled').attr('disabled', 'disabled');
+      });
+    
+    });
+</script>

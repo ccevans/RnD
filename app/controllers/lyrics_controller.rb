@@ -4,6 +4,7 @@ class LyricsController < ApplicationController
 	has_scope :by_tags
 	load_and_authorize_resource :only => [:show, :edit, :update, :destroy]
 	before_action :find_post, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
+	before_action :set_campaign
 	before_action :authenticate_user!, except: [:index, :show]
 	impressionist :actions=>[:show,:index], :unique => [:impressionable_type, :impressionable_id, :session_hash]
 	
@@ -21,14 +22,16 @@ class LyricsController < ApplicationController
 	end
 
 	def new
-		@lyric = current_user.lyrics.build
+		@lyric = Lyric.new
 	end
 
 	def create
-		@lyric = current_user.lyrics.build(post_params)
+		@lyric = Lyric.new(post_params)
+		@lyric.user_id = current_user.id
+		@lyric.campaign_id = @campaign.id
 
 		if @lyric.save
-			redirect_to @lyric
+			redirect_to([@lyric.campaign, @lyric])
 		else
 			render 'new'
 		end
@@ -40,7 +43,7 @@ class LyricsController < ApplicationController
 
 	def update
 		if @lyric.update(post_params)
-			redirect_to @lyric
+			redirect_to([@lyric.campaign, @lyric])
 		else
 			render 'edit'
 		end
@@ -54,12 +57,12 @@ class LyricsController < ApplicationController
 
 	def upvote
 		@lyric.upvote_by current_user
-		redirect_to @lyric
+		redirect_to([@lyric.campaign, @lyric])
 	end
 
 	def downvote
 		@lyric.downvote_by current_user
-		redirect_to @lyric
+		redirect_to([@lyric.campaign, @lyric])
 	end
 
 	def tagged
@@ -81,6 +84,11 @@ class LyricsController < ApplicationController
 	def find_post
 		@lyric = Lyric.find(params[:id])
 	end
+
+	def set_campaign
+		@campaign = Campaign.find(params[:campaign_id])
+	end
+
 
 	def post_params
 		params.require(:lyric).permit(:line, :description, :artist, :song, :album, :link, :tag_list)

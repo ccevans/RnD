@@ -6,7 +6,9 @@ class ProfilesController < ApplicationController
 
   	@user = User.find_by_username(params[:id])
   	if @user
+      
   		@lyrics = @user.lyrics.all
+      @arts = @user.arts.all
   		render action: :show
   	else
   		render file: 'public/404', status: 404, formats: [:html]

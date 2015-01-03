@@ -5,6 +5,8 @@
   <%= f.input :title, label: "Title" %>
   <%= f.input :description, label: "Tell us more" %>
   <%= f.input :timer, label: "Time" %>
+  <%= f.input :timer2, label: "Time2" %>
+  <%= f.collection_select :status, Campaign::STATUS, :to_s, :humanize %>
   <%= f.file_field :image %>
 
   <%= f.button :submit, "Submit", class: "button" %>

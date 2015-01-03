@@ -3,6 +3,9 @@ class Art < ActiveRecord::Base
 	is_impressionable
 	belongs_to :user
 	has_many :commentarts
+	belongs_to :campaign
+	acts_as_taggable_on :tags
+	has_many :ratings
 	
 
 	has_attached_file :image, :styles => { :medium => "500x500#", :small => "300x300#" }, :default_url => "/images/:style/missing.png"

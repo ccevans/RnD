@@ -1,4 +1,3 @@
-
 <div class="container-show">
 	<div class="container-line">
 	<%= simple_format(@lyric.line) %>
@@ -27,13 +26,14 @@
 </div>
 </div>
 
+
 <div class="container-more">
 	<ul>
 		<li><%= @lyric.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
 		<li><hr /></li>
-		<li><span class="glyphicon glyphicon-heart" aria-hidden="true"></span><%= link_to 'Like?', like_lyric_path(@lyric), method: :get %> <%= @lyric.get_upvotes.size %>  Likes</li>
+		<li><span class="glyphicon glyphicon-heart" aria-hidden="true"></span><%= link_to 'Like?', like_campaign_lyric_path(@lyric.campaign, @lyric), method: :get %> <%= @lyric.get_upvotes.size %>  Likes</li>
 		<li><hr /></li>
-		<li><%= link_to 'Dislike?', dislike_lyric_path(@lyric), method: :get %>  <%= @lyric.get_downvotes.size %>  Dislikes</li>
+		<li><%= link_to 'Dislike?', dislike_campaign_lyric_path(@lyric.campaign, @lyric), method: :get %>  <%= @lyric.get_downvotes.size %>  Dislikes</li>
 		<% unless @lyric.tags.nil? || @lyric.tags.empty? %>
 		<li><hr /></li>
 		<li>
@@ -52,10 +52,10 @@
 		<li><%= link_to 'More', @lyric.link %></li>
 		<li><hr /></li>
 		<li><% if can? :update, @lyric %>
-		<%= link_to 'Edit', edit_lyric_path(@lyric) %> | 
+		<%= link_to 'Edit', edit_campaign_lyric_path(@lyric.campaign, @lyric) %> | 
 		<% end %>
 		<% if can? :destroy, @lyric %>
-		<%= link_to 'Destroy', lyric_path(@lyric), method: :delete, data: {confirm: "Are you sure?" } %>
+		<%= link_to 'Destroy', [@lyric.campaign, @lyric], method: :delete, data: {confirm: "Are you sure?" } %>
 		<% end %></li>
 		<li>	
 			<div class="container-profile">
@@ -96,7 +96,7 @@
 	<div id="random_post">
 		<h3> More Lyrics </h3>
 		<div class="container-show2">
-			<%= link_to simple_format(@random_lyric.line), @random_lyric %>
+			<%= link_to simple_format(@random_lyric.line), campaign_lyric_path(@campaign, @random_lyric) %>
 			<%= @random_lyric.user.username %>
 		</div>
 	</div>
@@ -105,7 +105,9 @@
 						
 
 <div class="back-footer">
-	<%= link_to 'Lyric Center', lyrics_path %>
+	<%= link_to 'Add Lyric', new_campaign_lyric_path(@campaign) %>
+	<%= link_to 'Lyric Center', campaign_lyrics_path %>
 </div>
+
 
 

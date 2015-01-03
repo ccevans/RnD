@@ -1,0 +1,47 @@
+<h1>Designs Center</h1>
+
+<div class="tagcloud">
+         <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+            <%= link_to tag.name, tagged_url(tag.name), :class => css_class %>
+        <% end %>
+    </div>
+
+<div id="arts" class="transitions-enabled">
+    
+      <% @arts.each do |art| %>
+        <div class="container-md">
+          <%= link_to campaign_art_path(@campaign, art) do %>
+            <%= image_tag art.image.url(:small) %>
+          <% end %>
+
+         <ul>
+              <li><%= art.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
+             <li><%= art.get_upvotes.size %> 
+                <%= link_to like_campaign_art_path(@campaign_art), method: :get do %>
+                <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+                <% end %>
+            </li>
+            <li><%= art.comments.count %> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></li>
+              <li><%= image_tag art.user.avatar.url(:mini) %><%= link_to art.user.username, profile_url(:id => art.user.username) %></li>
+          </ul>
+          <br />
+        <ul class="tag-list">
+        <li><% art.tags.any? %>
+          <% art.tags.each do |tag| %>
+          <%= link_to tag.name, tagged_url(:tag => tag.name) %>
+          <% end %></li>
+        </ul>
+      </div>
+      <% end %>
+</div>
+
+ <br>
+    <div class="center">
+      <%= will_paginate @arts, renderer: BootstrapPagination::Rails %>
+    </div>
+
+        
+    <br>
+    <div class="art-footer">
+      <%= link_to 'New Design', new_campaign_art_path %>
+    </div>

@@ -1,29 +1,52 @@
 <h1>Lyrics Center</h1>
-
+    <div class="tagcloud">
+         <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+            <%= link_to tag.name, tagged_url(tag.name), :class => css_class %>
+        <% end %>
+    </div>
+  <div id="lyrics" class="transitions-enabled">
     <% @lyrics.each do |lyric| %>
     <div class="container-md">
-        <%= link_to lyric.line, lyric %>
+
+        
+        <%= link_to lyric.line, campaign_lyric_path(@campaign, lyric) %>
         <ul>
         <li><%= lyric.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
-        <li><%= lyric.get_upvotes.size %> <span class="glyphicon glyphicon-heart" aria-hidden="true"></span></li>
+        <li><%= lyric.get_upvotes.size %> 
+          <%= link_to like_campaign_lyric_path(@campaign_lyric), method: :get do %>
+              <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+            <% end %>
+          </li>
         <li><%= lyric.comments.count %> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></li>
-        <li><%= image_tag lyric.user.avatar.url(:mini) %><%= lyric.user.username %></li>
+        <li><%= image_tag lyric.user.avatar.url(:mini) %><%= link_to lyric.user.username, profile_url(:id => lyric.user.username) %></li>
+        </ul>
+        <br />
+        <ul class="tag-list">
         <li><% lyric.tags.any? %>
-          Tags: <% lyric.tags.each do |tag| %>
+          <% lyric.tags.each do |tag| %>
           <%= link_to tag.name, tagged_url(:tag => tag.name) %>
           <% end %></li>
+        </ul>
      
-      </ul>
+      
       </div>
     <% end %>
+  </div>
+
+  
+
+ <br>
+    <div class="center">
+      <%= will_paginate @lyrics, renderer: BootstrapPagination::Rails %>
+    </div>
+
+   
 
         
     <br>
     <div class="lyric-footer">
-      <%= link_to 'New Lyric', new_lyric_path %>
+      <%= link_to 'New Lyric', new_campaign_lyric_path %>
     </div>
-
-</div>
 
 
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141230143334) do
+ActiveRecord::Schema.define(version: 20150102233119) do
 
   create_table "adminlyrics", force: true do |t|
     t.text     "line"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20141230143334) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "campaign_id",        default: 2
   end
 
   create_table "badges_sashes", force: true do |t|
@@ -61,6 +62,8 @@ ActiveRecord::Schema.define(version: 20141230143334) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.string   "timer2"
+    t.string   "status"
   end
 
   create_table "commentarts", force: true do |t|
@@ -144,6 +147,7 @@ ActiveRecord::Schema.define(version: 20141230143334) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.integer  "campaign_id", default: 2
   end
 
   create_table "merit_actions", force: true do |t|
@@ -178,6 +182,17 @@ ActiveRecord::Schema.define(version: 20141230143334) do
     t.integer "sash_id"
     t.string  "category", default: "default"
   end
+
+  create_table "ratings", force: true do |t|
+    t.integer  "rate"
+    t.integer  "art_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ratings", ["art_id"], name: "index_ratings_on_art_id"
+  add_index "ratings", ["user_id"], name: "index_ratings_on_user_id"
 
   create_table "sashes", force: true do |t|
     t.datetime "created_at"

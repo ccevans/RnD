@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
 		@comment.lyric_id = @lyric.id
 
 		if @comment.save
-			redirect_to lyric_path(@lyric)
+			redirect_to([@lyric.campaign, @lyric])
 		else
 			render 'new'
 		end

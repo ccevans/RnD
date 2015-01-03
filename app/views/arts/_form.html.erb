@@ -1,39 +1,15 @@
-<%= simple_form_for(@art) do |f| %>
-  <% if @art.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@art.errors.count, "error") %> prohibited this art from being saved:</h2>
+<%= simple_form_for([@campaign, @art]) do |f| %>
 
-      <ul>
-      <% @art.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+      <%= f.error_notification %>
 
-     <div class="field">
-    <%= f.label :image %><br>
-    <%= f.file_field :image %>
-  </div>
+  <%= f.file_field :image, label: "Image" %>
+  <%= f.input :description, label: "Tell us more" %>
+  <%= f.input :artist, label: "Artist" %>
+  <%= f.input :typeart, label: "Type of Art" %>
+  <%= f.input :link, label: "Link" %>
+  <%= f.input :tag_list, label: "Tags" %>
+  <%= f.button :submit, "Submit", class: "button" %>
 
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :artist %><br>
-    <%= f.text_field :artist %>
-  </div>
-  <div class="field">
-    <%= f.label :typeart %><br>
-    <%= f.text_field :typeart %>
-  </div>
 
-    <div class="field">
-    <%= f.label :link %><br>
-    <%= f.text_field :link %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
 <% end %>

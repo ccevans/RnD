@@ -66,7 +66,7 @@
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Lyrics</a></li>
-    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Designs</a></li>
     <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
     <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
   </ul>
@@ -77,19 +77,34 @@
     		<% if @lyrics.any? %>
 				<% @lyrics.each do |lyric| %>
 					<div class="well">
-						<%= link_to simple_format(lyric.line), lyric_path(lyric) %>
+						<%= lyric.line %>
 						<hr />
-						<span class="profile-time"><%= link_to time_ago_in_words(lyric.created_at), lyric_path(lyric) %> ago </span>
+						<span class="profile-time"><%= time_ago_in_words(lyric.created_at) %> ago </span>
 					</div>
 				<% end %>
 			<% elsif current_user.id == @user.id %>
-				<p>No lyrics posted yet.  Add your favortie <%= link_to "Lyric", new_lyric_path %>.</p>
+				<p>No lyrics posted yet.  Add your favortie Need Link to New Lyric.</p>
 			<% else %>
 				<p>No lyrics posted yet.</p>		
 			<% end %>
 
     </div>
-    <div role="tabpanel" class="tab-pane" id="profile">Empty - add something1</div>
+    <div role="tabpanel" class="tab-pane" id="profile">
+    	    		<% if @arts.any? %>
+				<% @arts.each do |art| %>
+					<div class="well">
+						<%= image_tag art.image.url(:small) %>
+						<hr />
+						<span class="profile-time"><%= time_ago_in_words(art.created_at) %> ago </span>
+					</div>
+				<% end %>
+			<% elsif current_user.id == @user.id %>
+				<p>No art posted yet.  Add your favortie Need Link to New Art.</p>
+			<% else %>
+				<p>No art posted yet.</p>		
+			<% end %>
+
+    </div>
     <div role="tabpanel" class="tab-pane" id="messages">Empty - add something2</div>
     <div role="tabpanel" class="tab-pane" id="settings">Empty - add something3</div>
   </div>

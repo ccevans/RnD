@@ -8,7 +8,7 @@ before_action :authenticate_user!
 		@commentart.art_id = @art.id
 
 		if @commentart.save
-			redirect_to art_path(@art)
+			redirect_to([@art.campaign, @art])
 		else
 			render 'new'
 		end

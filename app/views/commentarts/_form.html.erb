@@ -1,11 +1,7 @@
-<%= simple_form_for([@art, @art.commentarts.build]) do |f| %>
+<%= simple_form_for([@campaign, @art, @art.commentarts.build]) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :content, label: "Reply to thread" %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Comment", class: "button" %>
-  </div>
+  <%= f.input :content, label: "Reply to thread" %>
+	<%= f.button :submit, "Comment", class: "button" %>
+	
 <% end %>
