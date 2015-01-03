@@ -2,7 +2,7 @@
   <div class="jumbotron">
     <h1>What up? <%= current_user.username %></h1> </br><h2>What you listening to today?</h2></br>
     <p>Share lyrics that you are inspired by and see what lyrics inspire others.</p>
-    <p><%= link_to "Sign Up To Add Lyrics", new_campaign_art_path(:campaign_id => 2), class: "btn btn-primary btn-lg" %></p>
+    <p><%= link_to "Sign Up To Add Lyrics", new_campaign_art_path, class: "btn btn-primary btn-lg" %></p>
 </div>
 <% else %>
   <div class="jumbotron">
