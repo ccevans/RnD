@@ -60,7 +60,7 @@
           <ul>
               <li><%= lyric.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
               <li><%= lyric.get_upvotes.size %> 
-                <%= link_to like_campaign_lyric_path(lyric.campaign, lyric), method: :get do %>
+                <%= link_to like_lyric_path(lyric), method: :get do %>
                     <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
                   <% end %>
                 </li>

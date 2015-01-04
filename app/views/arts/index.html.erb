@@ -25,6 +25,8 @@
     
       <% @arts.each do |art| %>
         <div class="container-md">
+          
+          <%= rating_for art, "design", disable_after_rate: false  %>
          
           <%= link_to campaign_art_path(@campaign, art) do %>
             <%= image_tag art.image.url(:small) %>
@@ -32,11 +34,7 @@
 
          <ul>
               <li><%= art.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
-             <li><%= art.get_upvotes.size %> 
-                <%= link_to like_campaign_art_path(art.campaign, art), method: :get do %>
-                <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                <% end %>
-            </li>
+
             <li><%= art.commentarts.count %> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></li>
               <li><%= image_tag art.user.avatar.url(:mini) %><%= link_to art.user.username, profile_url(:id => art.user.username) %></li>
           </ul>

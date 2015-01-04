@@ -1,0 +1,18 @@
+<%= simple_form_for([@art, @art.ratings.build]]), :remote => true do |f| %>
+  <%= f.error_notification %>
+<div class="field">
+	<div id="star-rating"></div>
+</div>
+  
+	<%= f.button :submit, "Rate", class: "button" %>
+	
+<% end %>
+
+
+
+<script>
+$('#star-rating').raty({
+	path: '/assets/',
+	scoreName: 'rating[rate]'
+});
+</script>

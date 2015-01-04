@@ -27,8 +27,8 @@
         <li class="dropdown2">
           <a href="#">EXPERIMENT</a>
           <ul class="dropdown-menu" role="menu">
-            <li></li>
-            <li><a href="#">Submit A Design</a></li>
+            <li><%= link_to 'Submit Lyrics', "/campaigns/2/lyrics/new" %></li>
+            <li><%= link_to 'Submit Designs', "/campaigns/2/arts/new" %></li>
             <li class="divider"></li>
             <li><a href="#">LYRIC CENTER</a></li>
             <li><a href="#">DESIGN CENTER</a></li>
@@ -51,7 +51,7 @@
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           
-          <li class="navbar-brand"><%= link_to 'Add Lyric', "#" %></li>
+          <li class="navbar-brand"><%= link_to 'Add Lyric', "/campaigns/2/lyrics/new" %></li>
 
           <li class="dropdown2"><%= image_tag current_user.avatar.url(:thumb) %>
             <ul class="dropdown-menu" role="menu">

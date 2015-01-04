@@ -4,15 +4,16 @@ class LyricsController < ApplicationController
 	has_scope :by_tags
 	load_and_authorize_resource :only => [:show, :edit, :update, :destroy]
 	before_action :find_post, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
-	before_action :set_campaign
+	before_action :set_campaign, except: [:upvote, :downvote]
 	before_action :authenticate_user!, except: [:index, :show]
-	impressionist :actions=>[:show,:index], :unique => [:impressionable_type, :impressionable_id, :session_hash]
+	impressionist :actions => [:show,:index], :unique => [:impressionable_type, :impressionable_id, :session_hash]
 	
 	
 	
 
 	def index
 		@lyrics = apply_scopes(Lyric).all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+		@rating = Rating.new
 	end
 
 	def show
@@ -57,12 +58,12 @@ class LyricsController < ApplicationController
 
 	def upvote
 		@lyric.upvote_by current_user
-		redirect_to([@lyric.campaign, @lyric])
+		redirect_to :back
 	end
 
 	def downvote
 		@lyric.downvote_by current_user
-		redirect_to([@lyric.campaign, @lyric])
+		redirect_to :back
 	end
 
 	def tagged

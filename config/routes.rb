@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  post '/rate' => 'rater#create', :as => 'rate'
   get 'pages/lyriclab'
 
   get 'tagged' => 'lyrics#tagged', :as => 'tagged'
@@ -8,29 +9,25 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :invitations => 'user/invitation'}
 
   resources :campaigns do
-    resources :lyrics do
+    resources :lyrics
+
+      resources :arts 
+  end
+
+resources :lyrics, only: [] do
       member do
         get "like", to: "lyrics#upvote"
         get "dislike", to: "lyrics#downvote"
       end
 
-      resources :comments
+      resources :comments, shallow: true
     end
 
-      resources :arts do
-        member do
-          get "like", to: "arts#upvote"
-          get "dislike", to: "arts#downvote"
-        end
-
-        resources :commentarts
-
-      end
-  end
 
 
   resources :arts, only: [] do
     resources :ratings
+    resources :commentarts, shallow: true
   end
 
   resources :profiles do
@@ -42,16 +39,6 @@ Rails.application.routes.draw do
   
   end
 
-
-  resources :adminlyrics do
-    member do
-      get "like", to: "adminlyrics#upvote"
-      get "dislike", to: "adminlyrics#downvote"
-    end
-
-    resources :commentlyrics
-    
-  end
 
   root 'campaigns#index'
 

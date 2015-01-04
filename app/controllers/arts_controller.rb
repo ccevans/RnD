@@ -1,7 +1,7 @@
 class ArtsController < ApplicationController
 	before_action :tag_cloud, :only => [:index]
 	load_and_authorize_resource :only => [:show, :edit, :update, :destroy]
-	before_action :find_post, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
+	before_action :find_post, only: [:show, :edit, :update, :destroy]
 	before_action :set_campaign
 	before_action :authenticate_user!, except: [:index, :show]
 	impressionist :actions=>[:show,:index], :unique => [:impressionable_type, :impressionable_id, :session_hash]
@@ -11,9 +11,6 @@ class ArtsController < ApplicationController
 		@arts = Art.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
 		
 		@rating = Rating.new
-		
-		
-
 		
 	end
 
@@ -55,16 +52,6 @@ class ArtsController < ApplicationController
 	def destroy
 		@art.destroy
 		redirect_to root_path
-	end
-
-	def upvote
-		@art.upvote_by current_user
-		redirect_to([@art.campaign, @art])
-	end
-
-	def downvote
-		@art.downvote_by current_user
-		redirect_to([@art.campaign, @art])
 	end
 
 	def tagged

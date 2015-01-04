@@ -1,20 +1,11 @@
 
 <div class="container-show">
 	<div class="container-line">
-
+		<%= rating_for @art, "design", disable_after_rate: false  %>
 	<h2 class="rating_count"><%= pluralize(@art.ratings.count, "Vote") %></h2>
-	<%= render 'ratings/form' %>
 
-	<% @ratings.each do |rating| %>
-			<div class="comment">
-				<%= image_tag rating.user.avatar.url(:mini) %>
-				<p class="username"> <%= rating.user.username %></p></br>
-				<div class="star-rating" data-score= <%= rating.rate %> ></div>
-				<p class="content"> <%= rating.rate %></p>
-				<p class="time-created"><%= time_ago_in_words(rating.created_at) %></p>
-				<hr />
-			</div>
-		<% end %>
+
+
 
 	<%= image_tag @art.image.url(:medium) %>
 	</div>
@@ -47,9 +38,6 @@
 	<ul>
 		<li><%= @art.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
 		<li><hr /></li>
-		<li><span class="glyphicon glyphicon-heart" aria-hidden="true"></span><%= link_to 'Like?', like_campaign_art_path(@art.campaign, @art), method: :get %> <%= @art.get_upvotes.size %>  Likes</li>
-		<li><hr /></li>
-		<li><%= link_to 'Dislike?', dislike_campaign_art_path(@art.campaign, @art), method: :get %>  <%= @art.get_downvotes.size %>  Dislikes</li>
 		<% unless @art.tags.nil? || @art.tags.empty? %>
 		<li><hr /></li>
 		<li>

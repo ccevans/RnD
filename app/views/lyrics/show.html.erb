@@ -31,9 +31,9 @@
 	<ul>
 		<li><%= @lyric.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
 		<li><hr /></li>
-		<li><span class="glyphicon glyphicon-heart" aria-hidden="true"></span><%= link_to 'Like?', like_campaign_lyric_path(@lyric.campaign, @lyric), method: :get %> <%= @lyric.get_upvotes.size %>  Likes</li>
+		<li><span class="glyphicon glyphicon-heart" aria-hidden="true"></span><%= link_to 'Like?', like_lyric_path(@lyric), method: :get %> <%= @lyric.get_upvotes.size %>  Likes</li>
 		<li><hr /></li>
-		<li><%= link_to 'Dislike?', dislike_campaign_lyric_path(@lyric.campaign, @lyric), method: :get %>  <%= @lyric.get_downvotes.size %>  Dislikes</li>
+		<li><%= link_to 'Dislike?', dislike_lyric_path(@lyric), method: :get %>  <%= @lyric.get_downvotes.size %>  Dislikes</li>
 		<% unless @lyric.tags.nil? || @lyric.tags.empty? %>
 		<li><hr /></li>
 		<li>

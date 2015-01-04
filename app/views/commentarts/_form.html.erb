@@ -1,4 +1,4 @@
-<%= simple_form_for([@campaign, @art, @art.commentarts.build]) do |f| %>
+<%= simple_form_for([@art, @art.commentarts.build]) do |f| %>
   <%= f.error_notification %>
 
   <%= f.input :content, label: "Reply to thread" %>
