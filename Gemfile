@@ -27,6 +27,7 @@ gem 'jquery-turbolinks'
 gem 'masonry-rails'
 gem 'has_scope', '~> 0.5.1'
 gem 'cocoon', '~> 1.2.6'
+gem 'aws-sdk'
 
 
 gem 'sdoc', '~> 0.4.0',          group: :doc
