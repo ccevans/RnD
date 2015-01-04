@@ -15,3 +15,7 @@
 /log/*.log
 /tmp
 /public/system/campaigns/images
+/public/images
+/public/system/arts/images
+/public/system/users/avatars
+/public/system/users/profileimgs
