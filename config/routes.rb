@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 
-  post '/rate' => 'rater#create', :as => 'rate'
+
   get 'pages/lyriclab'
 
   get 'tagged' => 'lyrics#tagged', :as => 'tagged'
