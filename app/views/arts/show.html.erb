@@ -99,6 +99,7 @@
 	</ul>
 	</div>
 
+<% unless @random_art.empty? || @random_art.nil? %>
 	<div id="random_post">
 		<h3> More Designs </h3>
 		<div class="container-show2">
@@ -108,6 +109,7 @@
 			<%= @random_art.user.username %>
 		</div>
 	</div>
+	<% end %>
 			
 	</div>	
 
