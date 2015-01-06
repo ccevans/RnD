@@ -93,6 +93,7 @@
 	</ul>
 	</div>
 
+<% unless @random_lyric.empty? || @random_lyric.nil? %>
 	<div id="random_post">
 		<h3> More Lyrics </h3>
 		<div class="container-show2">
@@ -100,6 +101,7 @@
 			<%= @random_lyric.user.username %>
 		</div>
 	</div>
+	<% end %>
 			
 	</div>
 						
