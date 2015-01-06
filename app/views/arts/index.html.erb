@@ -1,20 +1,19 @@
 <% if user_signed_in? %>
-  <div class="jumbotron">
-    <h1>What up? <%= current_user.username %></h1> </br><h2>What you listening to today?</h2></br>
-    <p>Share lyrics that you are inspired by and see what lyrics inspire others.</p>
-    <p><%= link_to "Sign Up To Add Lyrics", new_campaign_art_path, class: "btn btn-primary btn-lg" %></p>
-</div>
+  <div class="header-art">
+    <h1>Welcome to The Design Center</h1>
+    <h2><%= current_user.name %></h2>
+    <p>Help us vote on our community designs.  Or contribute your own.  <br /><%= link_to "Submit Design", '/campaigns/2/arts/new' %></p>
+
+  </div>  
 <% else %>
-  <div class="jumbotron">
-      <h1>Add Your Favorite Lyrics</h1>
-      <p>jk k kdfjdk fjdl j ldfjdl fjdlkfd flkdfjd flkdfjd fdlfjdfldjfdlfdj ldfjd fldjfd lfdjfdlkfjd flkdjfdlf kdjdljd lfdjfd lfjdldjfdlf dljd fldjd lfjdfldjf ldjfdlf jdlfdjf ldjfdlfjdlfjd lfdjf ldfjd lfjdf l.</p>
-      <p><%= link_to "Sign Up To Add Artwork", new_user_registration_path, class: "btn btn-primary btn-lg" %></p>
-    </div>
+  <div class="header-art">
+     <h1>Welcome to The Design Center</h1>
+    <h2><%= link_to "Join To Contribute", new_user_registration_path %></h2>
+    <p>Help us vote on our community designs.  Or contribute your own.  <br /><%= link_to "Submit Design", '/campaigns/2' %></p>
+  </div>  
 <% end %>
 
-
-<h1>Designs Center</h1>
-
+<section class="art-section">
 <div class="tagcloud">
          <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
             <%= link_to tag.name, tagged_url(tag.name), :class => css_class %>
@@ -24,9 +23,9 @@
 <div id="arts" class="transitions-enabled">
     
       <% @arts.each do |art| %>
-        <div class="container-md">
+        <div class="container-art">
           
-          <%= rating_for art, "design", disable_after_rate: false  %>
+          <%= pluralize(art.ratings.count, "Vote") %> <span class="votebutton"><%= link_to 'Vote', campaign_art_path(@campaign, art) %></span>
          
           <%= link_to campaign_art_path(@campaign, art) do %>
             <%= image_tag art.image.url(:small) %>
@@ -59,3 +58,5 @@
     <div class="art-footer">
       <%= link_to 'New Design', new_campaign_art_path %>
     </div>
+
+  </section>

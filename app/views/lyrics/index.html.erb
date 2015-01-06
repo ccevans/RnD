@@ -1,19 +1,19 @@
 <% if user_signed_in? %>
-<div class="jumbotron">
-  <h1>What up? <%= current_user.username %></h1> </br><h2>What you listening to today?</h2></br>
-  <p>Share lyrics that you are inspired by and see what lyrics inspire others.</p>
-  <p><%= link_to "Sign Up To Add Lyrics", new_campaign_lyric_path, class: "btn btn-primary btn-lg" %></p>
-</div>
+  <div class="header-lyric">
+    <h1>Welcome to The Rhyme Center</h1>
+    <h2><%= current_user.name %></h2>
+    <p>Vote on your favorite lyrics or contribute the lyrics from your favorite artists.  <br /><%= link_to "Submit Lyrics", '/campaigns/2/lyrics/new' %></p>
+
+  </div>  
 <% else %>
-  <div class="jumbotron">
-      <h1>Add Your Favorite Lyrics</h1>
-      <p>jk k kdfjdk fjdl j ldfjdl fjdlkfd flkdfjd flkdfjd fdlfjdfldjfdlfdj ldfjd fldjfd lfdjfdlkfjd flkdjfdlf kdjdljd lfdjfd lfjdldjfdlf dljd fldjd lfjdfldjf ldjfdlf jdlfdjf ldjfdlfjdlfjd lfdjf ldfjd lfjdf l.</p>
-      <p><%= link_to "Sign Up To Add Lyrics", new_user_registration_path, class: "btn btn-primary btn-lg" %></p>
-    </div>
+  <div class="header-lyric">
+     <h1>Welcome to The Rhyme Center</h1>
+    <h2><%= link_to "Join To Contribute", new_user_registration_path %></h2>
+    <p>Vote on your favorite lyrics or contribute the lyrics from your favorite artists. <br /><%= link_to "Submit Lyrics", '/campaigns/2' %></p>
+  </div>  
 <% end %>
 
-
-  <h1>Lyrics Center</h1>
+<section class="lyric-section">
     <div class="tagcloud">
          <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
             <%= link_to tag.name, tagged_url(tag.name), :class => css_class %>
@@ -62,4 +62,4 @@
     <div class="lyric-footer">
       <%= link_to 'New Lyric', new_campaign_lyric_path %>
     </div>
-
+</section>

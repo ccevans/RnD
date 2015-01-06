@@ -5,8 +5,11 @@
 		
 	<h2 class="rating_count"><%= pluralize(@art.ratings.count, "Vote") %></h2>
 
+	Avg Score: <div class="star-rating" data-score= <%= @avg_rating %> ></div>
 
+	<hr>
 
+	<%= render 'ratings/form' %>
 
 	<%= image_tag @art.image.url(:medium) %>
 	</div>

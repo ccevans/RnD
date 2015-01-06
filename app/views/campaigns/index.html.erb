@@ -1,12 +1,23 @@
-<div class="header-campaign">
-  <h1>R&D Experiments</h1>
-  Let's build something crazy, something flammable.  Become part of our passionate community where we turn our favorite artists' lyrics into designs and tees.  Learn more here.
+<% if user_signed_in? %>
+  <div class="header-campaign">
+    <h1>Welcome to The LAB</h1>
+    <h2><%= current_user.name %></h2>
+    <p>Let's build something crazy, something flammable.  Contribute to the community where we turn our favorite artists' lyrics into designs and merch.  <br /><%= link_to "How It Works", '#' %></p>
 
-  <h3>Add Your Favorite Lyric</h3>
+  </div>  
+<% else %>
+  <div class="header-campaign">
+    <h1>Welcome to The LAB</h1>
+    <h2><%= link_to "Join Today", new_user_registration_path %></h2>
+    <p>Let's build something crazy, something flammable.  Become part of our passionate community where we turn our favorite artists' lyrics into designs and merch.  <br /><%= link_to "How It Works", '#' %></p>
 
-  <h3>Submit Your Designs</h3>
+  </div>  
+<% end %>
 
-</div>  
+<div class="explore-header">
+  <span class="explore-title">Explore</span> | <%= link_to "Rhyme Center", '/campaigns/2/lyrics' %> | <%= link_to "Design Center", '/campaigns/2/arts' %>
+  </div>
+
 
 
 
@@ -16,12 +27,8 @@
           <div class="campaign-img">
                   <%= image_tag @free_campaign.image.url(:medium) %>
               </div> 
+               <%= link_to 'Add Your Fav Lyrics & Designs', @free_campaign %>
 
-              <div class="campaign-info">
-                <ul>
-                  <li><strong><%= link_to simple_format(@free_campaign.title), @free_campaign %></strong></li>
-                </ul>
-              </div>
         </div>
   </section>
 

@@ -17,7 +17,18 @@ class ArtsController < ApplicationController
 	def show
 		@commentarts = Commentart.where(art_id: @art)
 		@ratings = Rating.where(art_id: @art)
+		
+		@current_rating = Rating.where(art_id: @art, user_id: current_user.id)
+		
+
 		@random_art = Art.where.not(id: @art).order("RANDOM()").first
+
+
+		if @ratings.blank?
+			@avg_rating = 0
+		else
+			@avg_rating = @ratings.average(:rate).round(2)
+		end
 	end
 
 	def new
