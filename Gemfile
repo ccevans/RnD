@@ -28,6 +28,10 @@ gem 'masonry-rails'
 gem 'has_scope', '~> 0.5.1'
 gem 'cocoon', '~> 1.2.6'
 gem 'aws-sdk'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'omniauth-linkedin'
 
 
 gem 'sdoc', '~> 0.4.0',          group: :doc

@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
 
-
+  match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
 
   get 'pages/lyriclab'
 
   get 'tagged' => 'lyrics#tagged', :as => 'tagged'
 
-  devise_for :users, :controllers => { :invitations => 'user/invitation'}
+  devise_for :users, :controllers => { :invitations => 'user/invitation', omniauth_callbacks: 'user/omniauth_callbacks'}
+
 
   resources :campaigns do
     resources :lyrics
