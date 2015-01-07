@@ -61,7 +61,7 @@
                 <%= badge.name %>
                 <% end %></li>
             <li class="divider"></li>
-            <li><%= link_to "Your Profile", profile_url(:id => current_user.username) %></li>
+            <li><%= link_to "Your Profile", profile_url(:id => current_user.name) %></li>
             <li><%= link_to "Account", edit_user_registration_path %></li>
             <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
           </ul>
