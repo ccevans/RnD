@@ -298,7 +298,6 @@ Devise.setup do |config|
 
   config.omniauth :facebook, "1538665039723236", "9d5ef16ff73b1dcd08b1d7064840fc1e"
   config.omniauth :twitter, "6wQY76qMwdyWcuAxxCF9Djals", "L5VonzKkGA4cBUEQZNLO1b6m9GG0uZycTrmWg8UpjLBgFT9lXm"
-  config.omniauth :linked_in, "KEY", "SECRET"
 
   
 end

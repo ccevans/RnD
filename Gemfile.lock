@@ -114,8 +114,6 @@ GEM
       rack (~> 1.0)
     omniauth-facebook (2.0.0)
       omniauth-oauth2 (~> 1.2)
-    omniauth-linkedin (0.2.0)
-      omniauth-oauth (~> 1.0)
     omniauth-oauth (1.0.1)
       oauth
       omniauth (~> 1.0)
@@ -224,7 +222,6 @@ DEPENDENCIES
   merit (~> 2.3.0)
   omniauth
   omniauth-facebook
-  omniauth-linkedin
   omniauth-twitter
   paperclip (~> 4.2.1)
   pg
