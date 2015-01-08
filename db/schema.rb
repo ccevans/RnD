@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150107043925) do
+ActiveRecord::Schema.define(version: 20150107211328) do
 
   create_table "adminlyrics", force: true do |t|
     t.text     "line"
@@ -50,6 +50,15 @@ ActiveRecord::Schema.define(version: 20150107043925) do
   add_index "badges_sashes", ["badge_id", "sash_id"], name: "index_badges_sashes_on_badge_id_and_sash_id"
   add_index "badges_sashes", ["badge_id"], name: "index_badges_sashes_on_badge_id"
   add_index "badges_sashes", ["sash_id"], name: "index_badges_sashes_on_sash_id"
+
+  create_table "booths", force: true do |t|
+    t.text     "song"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "booths", ["user_id"], name: "index_booths_on_user_id"
 
   create_table "campaigns", force: true do |t|
     t.string   "title"
@@ -111,6 +120,18 @@ ActiveRecord::Schema.define(version: 20150107043925) do
 
   add_index "follows", ["followable_id", "followable_type"], name: "fk_followables"
   add_index "follows", ["follower_id", "follower_type"], name: "fk_follows"
+
+  create_table "galleries", force: true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+  end
+
+  add_index "galleries", ["user_id"], name: "index_galleries_on_user_id"
 
   create_table "identities", force: true do |t|
     t.integer  "user_id"
