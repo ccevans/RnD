@@ -1,5 +1,9 @@
 <% @posts.each do |post| %>
+	
+	<%= link_to (image_tag post.image.url(:medium)) %>
 	<h2> <%= link_to post.title, post %> </h2>
+
+	<p><%= post.commentposts.count %> Comments</p>
 
 	<% end %>
 

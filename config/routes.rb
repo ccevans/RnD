@@ -8,7 +8,9 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => { :invitations => 'user/invitation', omniauth_callbacks: 'user/omniauth_callbacks'}
 
-resources :posts
+resources :posts do
+  resources :commentposts
+end
 
   resources :campaigns do
     resources :lyrics

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150108172927) do
+ActiveRecord::Schema.define(version: 20150108220530) do
 
   create_table "adminlyrics", force: true do |t|
     t.text     "line"
@@ -96,6 +96,17 @@ ActiveRecord::Schema.define(version: 20150108172927) do
 
   add_index "commentlyrics", ["adminlyric_id"], name: "index_commentlyrics_on_adminlyric_id"
   add_index "commentlyrics", ["user_id"], name: "index_commentlyrics_on_user_id"
+
+  create_table "commentposts", force: true do |t|
+    t.text     "content"
+    t.integer  "post_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "commentposts", ["post_id"], name: "index_commentposts_on_post_id"
+  add_index "commentposts", ["user_id"], name: "index_commentposts_on_user_id"
 
   create_table "comments", force: true do |t|
     t.text     "content"
@@ -223,6 +234,10 @@ ActiveRecord::Schema.define(version: 20150108172927) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "ratings", force: true do |t|

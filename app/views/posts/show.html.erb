@@ -1,7 +1,25 @@
+
+<%= image_tag @post.image.url(:large) %>
 <h1><%= @post.title %></h1>
 <p><%= @post.link %></p>
 <p><%= @post.description %></p>
 <p><%= @post.typeof %></p>
+
+	<div class="container-comment">
+	<h2 class="comment_count">
+		<%= pluralize(@post.commentposts.count, "Response") %></h2>
+		<hr />
+		<% @commentposts.each do |commentpost| %>
+			<div class="comment">
+				<%= image_tag commentpost.user.avatar.url(:mini) %>
+				<p class="username"> <%= commentpost.user.username %></p></br>
+				<p class="content"> <%= commentpost.content %></p>
+				<p class="time-created"><%= time_ago_in_words(commentpost.created_at) %></p>
+				<hr />
+			</div>
+		<% end %>
+	<%= render 'commentposts/form' %>
+</div>
 
 <%= link_to "Edit", edit_post_path(@post) %>
 <%= link_to "Destroy", post_path(@post), method: :delete, data: {confirm: "Are you sure?"} %>
