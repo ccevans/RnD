@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150108020851) do
+ActiveRecord::Schema.define(version: 20150108172927) do
 
   create_table "adminlyrics", force: true do |t|
     t.text     "line"
@@ -218,10 +218,11 @@ ActiveRecord::Schema.define(version: 20150108020851) do
     t.string   "title"
     t.string   "link"
     t.text     "description"
-    t.string   "type"
+    t.string   "typeof"
     t.boolean  "approve"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "ratings", force: true do |t|
