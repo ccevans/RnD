@@ -4,6 +4,11 @@
 	<h2> <%= link_to post.title, post %> </h2>
 
 	<p><%= post.commentposts.count %> Comments</p>
+	  <p><%= post.get_upvotes.size %> 
+          <%= link_to like_post_path(post), method: :get do %>
+              <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+            <% end %>
+          </p>
 
 	<% end %>
 
