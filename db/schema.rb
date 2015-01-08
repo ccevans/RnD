@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150107211328) do
+ActiveRecord::Schema.define(version: 20150108020851) do
 
   create_table "adminlyrics", force: true do |t|
     t.text     "line"
@@ -212,6 +212,16 @@ ActiveRecord::Schema.define(version: 20150107211328) do
   create_table "merit_scores", force: true do |t|
     t.integer "sash_id"
     t.string  "category", default: "default"
+  end
+
+  create_table "posts", force: true do |t|
+    t.string   "title"
+    t.string   "link"
+    t.text     "description"
+    t.string   "type"
+    t.boolean  "approve"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "ratings", force: true do |t|
