@@ -24,6 +24,16 @@
     
       <% @arts.each do |art| %>
         <div class="container-art">
+
+          <%= simple_form_for([art, art.ratings.build]) do |f| %>
+              <%= f.error_notification %>
+            <div class="field">
+              <div class="star-rating"></div>
+            </div>
+                <%= f.hidden_field :art_id, value: art.id %>
+              <%= f.button :submit, "Rate", class: "button" %>
+              
+            <% end %>
           
           <%= pluralize(art.ratings.count, "Vote") %> <span class="votebutton"><%= link_to 'Vote', campaign_art_path(@campaign, art) %></span>
          
@@ -60,3 +70,12 @@
     </div>
 
   </section>
+
+
+
+  <script>
+$('.star-rating').raty({
+  path: '/assets/',
+  scoreName: 'rating[rate]'
+});
+</script>

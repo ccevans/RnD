@@ -53,6 +53,10 @@ class PostsController < ApplicationController
 		redirect_to :back
 	end
 
+	
+
+
+
 private
 
 	def find_post
@@ -60,7 +64,7 @@ private
 	end
 
 	def post_params
-		params.require(:post).permit(:title, :description, :link, :typeof, :approve, :image)
+		params.require(:post).permit(:title, :description, :link, :typeof, :approve, :image, :videolink, :audiolink)
 	end
 
 end

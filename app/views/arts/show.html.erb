@@ -8,8 +8,23 @@
 	Avg Score: <div class="star-rating" data-score= <%= @avg_rating %> ></div>
 
 	<hr>
+	<% if user_signed_in? %>
 
-	<%= render 'ratings/form' %>
+		<% if @current_ratings.empty? || @current_ratings.nil? %>
+		
+			<%= render 'ratings/form' %>
+		<% else %>
+
+			<% @current_ratings.each do | current_rating| %>
+			Voted: <div class="star-rating" data-score= <%= current_rating.rate %> ></div>
+			<% end %>
+
+			
+		<% end %>
+	<% else %>
+		<%= render 'ratings/form' %>
+	<% end %>
+
 
 	<%= image_tag @art.image.url(:medium) %>
 	</div>

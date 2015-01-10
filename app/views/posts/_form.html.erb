@@ -3,9 +3,54 @@
 	<%= f.input :image %>
 	<%= f.input :description %>
 	<%= f.input :link %>
-	<%= f.input :typeof %>
+	<%= f.collection_select :typeof, Post::TYPEOFS, :to_s, :humanize, {}, {:onchange => 'displayQuestion(this.value)'} %>
+
+
+
+
+	<div id="audioQuestion" style="display:none;"><br/>
+    <%= f.input :audiolink %>
+ 
+  </div>
+
+  <div id="videoQuestion" style="display:block;"><br/>
+    <%= f.input :videolink %>
+  </div>
+
+    <div id="pictureQuestion" style="display:none;"><br/>
+    <%= f.input :image %>
+  </div>
+
 	<%= f.input :approve %>
 
 	<%= f.button :submit, "Submit", class: "button" %>
 
 <% end %>
+
+
+
+<script>
+function displayQuestion(answer) {
+
+  if (answer == "audio") { // hide the div that is not selected
+  	document.getElementById('audioQuestion').style.display = "block";
+
+    document.getElementById('videoQuestion').style.display = "none";
+    document.getElementById('pictureQuestion').style.display = "none";
+
+  } else if (answer == "video") {
+
+  	document.getElementById('videoQuestion').style.display = "block";
+    document.getElementById('audioQuestion').style.display = "none";
+    document.getElementById('pictureQuestion').style.display = "none";
+
+  } else if (answer == "picture") {
+    document.getElementById('pictureQuestion').style.display = "block";
+    document.getElementById('videoQuestion').style.display = "none";
+    document.getElementById('audioQuestion').style.display = "none";
+
+  }
+
+}
+
+</script>

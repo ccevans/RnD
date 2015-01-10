@@ -10,7 +10,10 @@ class ArtsController < ApplicationController
 	def index
 		@arts = Art.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
 		
-		@rating = Rating.new
+		@rating = Rating.new(art_id: @art)
+		
+
+
 		
 	end
 
@@ -18,7 +21,7 @@ class ArtsController < ApplicationController
 		@commentarts = Commentart.where(art_id: @art)
 		@ratings = Rating.where(art_id: @art)
 		
-		@current_rating = Rating.where(art_id: @art, user_id: current_user.id)
+		@current_ratings = Rating.where(art_id: @art, user_id: current_user.id).all.order("created_at DESC")
 		
 
 		@random_art = Art.where.not(id: @art).order("RANDOM()").first

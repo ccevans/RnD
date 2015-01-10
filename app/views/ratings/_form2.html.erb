@@ -1,9 +1,9 @@
-<%= simple_form_for([@art, @art.ratings.build]]), :remote => true do |f| %>
+<%= simple_form_for([@rating]) do |f| %>
   <%= f.error_notification %>
 <div class="field">
 	<div id="star-rating"></div>
 </div>
-  
+  	<%= f.hidden_field :art_id, value: art.id %>
 	<%= f.button :submit, "Rate", class: "button" %>
 	
 <% end %>

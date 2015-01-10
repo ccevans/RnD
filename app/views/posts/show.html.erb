@@ -4,6 +4,25 @@
 <p><%= @post.link %></p>
 <p><%= @post.description %></p>
 <p><%= @post.typeof %></p>
+<p><%= @post.approve %></p>
+
+<% unless @post.videolink.nil? || @post.videolink.empty? %>
+	<% if @post.typeof == 'video' %>
+		<p><%= raw(youtube_embed(@post.videolink)) %></p>
+	<% end %>
+<% end %>
+
+<% unless @post.audiolink.nil? || @post.audiolink.empty? %>
+	<% if @post.typeof == 'audio' %>
+		<p><%= raw(@post.audiolink) %></p>
+		<% end %>
+<% end %>
+
+<% unless @post.image.nil? || @post.image.blank? %>
+	<% if @post.typeof == 'picture' %>
+		<%= image_tag @post.image.url(:medium) %>
+		<% end %>
+<% end %>
 
 <span class="glyphicon glyphicon-heart" aria-hidden="true"></span><%= link_to 'Like?', like_post_path(@post), method: :get %> <%= @post.get_upvotes.size %>  Likes </br>
 
