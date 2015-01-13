@@ -64,6 +64,25 @@ form#new_user.simple_form.new_user hr {border-width: 4px; margin-top: 5px;}
 
 html body form#new_user.simple_form.new_user {margin-top: 75px; }
 
+.pagination > li > a, .pagination > li > span {background-color: none !important; border: none !important;}
+
+.pagination > .disabled > span, .pagination > .disabled > span:hover, .pagination > .disabled > span:focus, .pagination > .disabled > a, .pagination > .disabled > a:hover, .pagination > .disabled > a:focus {background-color: none !important; border: none !important;}
+
+.pagination > li > a, .pagination > li > span {
+    border: none;
+    color: #337ab7;
+    float: left;
+    line-height: 1.42857;
+    margin-left: -1px;
+    padding: 6px 12px;
+    position: relative;
+    text-decoration: none;
+    background-color: none !important;
+}
+
+.pagination {background-color: none;}
+
+
 
 
 

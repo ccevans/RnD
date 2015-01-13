@@ -67,7 +67,7 @@
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Lyrics</a></li>
     <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Designs</a></li>
-    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Posts</a></li>
     <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
   </ul>
 
@@ -105,7 +105,25 @@
 			<% end %>
 
     </div>
-    <div role="tabpanel" class="tab-pane" id="messages">Empty - add something2</div>
+    <div role="tabpanel" class="tab-pane" id="messages">
+    	    <% if @posts.any? %>
+				<% @posts.each do |post| %>
+					<div class="well">
+						<%= image_tag post.image.url(:small) %>
+						<hr />
+						<span class="profile-time"><%= time_ago_in_words(post.created_at) %> ago </span>
+					</div>
+				<% end %>
+			<% elsif current_user.id == @user.id %>
+				<p>No blog post posted yet.  <%= link_to 'Whats link to post? CC', "/campaigns/2/arts/new" %></p>
+			<% else %>
+				<p>No blog post posted yet.</p>		
+			<% end %>
+
+
+
+
+    </div>
     <div role="tabpanel" class="tab-pane" id="settings">Empty - add something3</div>
   </div>
 </div>

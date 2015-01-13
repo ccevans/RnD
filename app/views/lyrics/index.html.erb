@@ -51,7 +51,7 @@
   
 
  <br>
-    <div class="center">
+    <div class="paginate-box">
       <%= will_paginate @lyrics, renderer: BootstrapPagination::Rails %>
     </div>
 
@@ -63,3 +63,6 @@
       <%= link_to 'New Lyric', new_campaign_lyric_path %>
     </div>
 </section>
+
+
+<%= image_tag 'slide-gas.png', :class => "background-lyric" %>

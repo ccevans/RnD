@@ -1,5 +1,11 @@
 index
 
 <% @users.each do |user| %>
-   <div class="user-row"><%= user.username %></div>
+
+<%= image_tag user.avatar.url(:thumb) %>
+   <div class="user-row"><%= link_to user.username, "/profiles/#{user.username}" %></div>
+   <div class="user-row"><%= user.bio %></div>
+   <div class="user-row"><%= user.location %></div>
+
+
 <% end %>

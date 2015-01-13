@@ -4,6 +4,8 @@ class ProfilesController < ApplicationController
 
   def index
     @users = User.all.order("created_at DESC")
+    @user = User.find_by_username(params[:id])
+
 
   end
 
@@ -15,6 +17,7 @@ class ProfilesController < ApplicationController
       
   		@lyrics = @user.lyrics.all
       @arts = @user.arts.all
+      @posts = @user.posts.all
   		render action: :show
   	else
   		render file: 'public/404', status: 404, formats: [:html]

@@ -2,15 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.container-md {width: 305px; margin: 10px; }
+.container-md {width: 300px; margin: 25px; }
 #lyrics {margin: 0 auto;}
 
-div.container-md a {color: #000; font-size: 38px; line-height: 38px; text-align: left; font-family: 'Fredoka One', cursive; text-shadow: 1px 1px #bdc3c7;}
-div.container-md a:hover {color: #000; font-size: 38px; line-height: 38px; text-align: left; text-decoration: none; border: none;}
+div.container-md a {color: #000; font-size: 30px; line-height: 34px; text-align: left; font-family: 'Fredoka One', cursive; text-shadow: 1px 1px #bdc3c7;}
+div.container-md a:hover {color: #8e0010; font-size: 30px; line-height: 34px; text-align: left; text-decoration: none; border: none;}
 
 
 
-div.container-md ul {list-style:none; color: #bdc3c7; clear: both;}
+div.container-md ul {list-style:none; color: #000; clear: both;}
 div.container-md ul li {float: left; padding: 5px; width: auto;}
 
 div.jumbotron {padding: 5px; margin: 100px 0 0 0;}
@@ -65,8 +65,8 @@ div.container-comment hr {margin-top: 0;}
 div.container-show div.container-comment div.comment hr {width: 100%; float: left; margin: 10px 0 0 0;}
 .back-footer {float: left; width: 80%; padding: 0 10%; font-size: 28px; color: #000;}
 
-div.container-md ul li a {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #bdc3c7; text-shadow: none;}
-div.container-md ul li a:hover {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #000; text-shadow: none;}
+div.container-md ul li a {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #000; text-shadow: none;}
+div.container-md ul li a:hover {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #8e0010; text-shadow: none;}
 
 div.container-md ul.tag-list {margin-top: 0; margin-bottom: 0; padding: 0;}
 div.container-md ul.tag-list li {float: left; width: auto; margin-top: 0; margin-bottom: 0;}
@@ -82,17 +82,17 @@ div.container-more ul li div.container-profile div.points-show {font-size: 18px;
 
 html body div.container-more ul li div.container-profile hr { border: 1px solid #000; margin: 0 0 10px 0;}
 
-.css1 { font-size: 12px; }
-.css2 { font-size: 14px; }
-.css3 { font-size: 16px; }
-.css4 { font-size: 18px; }
+.css1 { font-size: 18px; }
+.css2 { font-size: 20px; }
+.css3 { font-size: 22px; }
+.css4 { font-size: 24px; }
 .tagcloud {color: #000; width: 40%; margin: 5px 30%;}
-.tagcloud a {color: #bdc3c7; text-decoration: none;}
-.tagcloud a:hover {color: #000; text-decoration: none;}
+.tagcloud a {color: #000; text-decoration: none;}
+.tagcloud a:hover {color: #8e0010; text-decoration: none;}
 
 #random_post {width: 25%; padding: 0 5%; margin-top: 125px; float: left;}
 
-.lyric-section {float: left; width: 100%; margin: 25px 0;}
+.lyric-section {position: absolute; width: 100%; margin: 125px 0; z-index: 10;}
 
 .header-lyric {float: left; margin-top: 75px; width: 100%; text-align: center; padding: 0 10%;}
 
@@ -104,4 +104,12 @@ div.header-lyric h2 a {width: auto; border: 2px solid #bdc3c7; color: #bdc3c7; b
 div.header-lyric h2 a:hover {width: auto; border: 2px solid #000; color: #000; border-radius: 15px; -moz-border-radius: 15px; -webkit-border-radius: 15px; padding: 5px 10px; text-decoration: none;}
 div.header-lyric p a {color: #bdc3c7;}
 div.header-lyric p a:hover {color: #000; text-decoration: none;}
+
+.background-lyric {position: fixed; z-index: 0; top: 0; left: 0; width: 100%; min-height: 600px; height: auto;}
+
+.paginate-box {margin: 0 auto; width: 250px;}
+
+.pagination > li > a, .pagination > li > span {background-color: none !important; border: none !important;}
+
+.pagination > .disabled > span, .pagination > .disabled > span:hover, .pagination > .disabled > span:focus, .pagination > .disabled > a, .pagination > .disabled > a:hover, .pagination > .disabled > a:focus {background-color: none !important; border: none !important;}
 
