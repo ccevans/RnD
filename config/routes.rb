@@ -48,6 +48,8 @@ resources :lyrics, only: [] do
   
   end
 
+  resources :products
+
 
   root 'campaigns#index'
 

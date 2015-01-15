@@ -31,7 +31,8 @@ gem 'aws-sdk'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
-gem 'shopify_app'
+gem 'shopify_api', '~> 3.2.6'
+gem 'thor', '~> 0.18.1'
 
 
 
