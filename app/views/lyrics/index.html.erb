@@ -1,24 +1,27 @@
+<section class="main-section">
 <% if user_signed_in? %>
   <div class="header-lyric">
-    <h1>Welcome to The Rhyme Center</h1>
+    <h1>The Rhyme Center</h1>
     <h2><%= current_user.name %></h2>
     <p>Vote on your favorite lyrics or contribute the lyrics from your favorite artists.  <br /><%= link_to "Submit Lyrics", '/campaigns/2/lyrics/new' %></p>
 
   </div>  
 <% else %>
   <div class="header-lyric">
-     <h1>Welcome to The Rhyme Center</h1>
+     <h1>The Rhyme Center</h1>
     <h2><%= link_to "Join To Contribute", new_user_registration_path %></h2>
     <p>Vote on your favorite lyrics or contribute the lyrics from your favorite artists. <br /><%= link_to "Submit Lyrics", '/campaigns/2' %></p>
   </div>  
 <% end %>
 
-<section class="lyric-section">
     <div class="tagcloud">
          <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
             <%= link_to tag.name, tagged_url(tag.name), :class => css_class %>
         <% end %>
     </div>
+
+<section class="lyric-section">
+
   <div id="lyrics" class="transitions-enabled">
     <% @lyrics.each do |lyric| %>
     <div class="container-md">
@@ -63,6 +66,7 @@
       <%= link_to 'New Lyric', new_campaign_lyric_path %>
     </div>
 </section>
+</section>
 
 
-<%= image_tag 'slide-gas.png', :class => "background-lyric" %>
+<%= image_tag 'lyric-background3.png', :class => "background-lyric" %>

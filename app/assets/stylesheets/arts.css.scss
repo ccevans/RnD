@@ -4,18 +4,24 @@
 
 form#new_rating.simple_form.new_rating {width: auto; margin: 0 auto;}
 
-.container-art {width: 300px; margin: 15px; }
+.container-art {width: 800px; margin: 50px; }
 #arts {margin: 0 auto;}
 div.container-art a img {width: 100%; height: auto;}
+
+div.container-art2 {float: left; width: 70%; height: auto; padding: 0;}
+div.container-art2 img {width: 100%; height: auto;}
+
 
 div.container-art ul {list-style:none; color: #bdc3c7; clear: both;}
 div.container-art ul li {float: left; padding: 5px; width: auto;}
 
 span.votebutton a {float: right; text-align: right;}
 
-.art-section {float: left; width: 100%; margin: 25px 0;}
+.art-section {float: left; width: 100%; margin: 0 0 0 0; padding: 25px 0; z-index: 10; background-color: #fff; background: url('stardust4.png');}
 
-.header-art {float: left; margin-top: 75px; width: 100%; text-align: center; padding: 0 10%;}
+.header-art {float: left; margin-top: 100px; width: 50%; text-align: center; padding: 0 10%;}
+
+.main-section {position: absolute; width: 100%; margin: 0; z-index: 10; background-color: none;}
 
 div.header-art h1 {float: left; width: 100%; text-align: center; color: #000; font-size: 38px; line-height: 38px; font-family: 'Fredoka One', cursive; text-shadow: 1px 1px #bdc3c7; margin: 0 0 10px 0;}
 div.header-art h2 {width: 100%; text-align: center; float: left; margin: 0; color: #000; margin: 10px 0; font-size: 22px; line-height: 22px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;}
@@ -28,3 +34,38 @@ div.header-art p a:hover {color: #000; text-decoration: none;}
 
 html body div.container-show div.container-line div.star-rating {width: 50%;}
 html body div.container-show div.container-line div.star-rating img {width: 15%; height: auto;}
+
+.css1 { font-size: 18px; }
+.css2 { font-size: 20px; }
+.css3 { font-size: 22px; }
+.css4 { font-size: 24px; }
+.tagcloud {float: left; color: #000; width: 40%; margin: 100px 5% 5px 5%; font-family: 'Fredoka One', cursive;}
+.tagcloud a {color: #fff; text-decoration: none;}
+.tagcloud a:hover {color: #f1c40f; text-decoration: none;}
+
+div.art-box form#new_rating.simple_form.new_rating {width: auto; float: left; margin: 0; padding: 0;}
+form#new_rating.simple_form.new_rating div.field div.star-rating {margin: 0 auto; }
+div.container-art.masonry-brick form#new_rating.simple_form.new_rating {border: none; padding: 0;}
+div.container-art.masonry-brick form#new_rating.simple_form.new_rating div.field {width: auto; float: left; padding: 10px 25px 10px 25px; }
+div.container-art.masonry-brick form#new_rating.simple_form.new_rating input {width: auto; color: #fff; font-size: 30px; padding: 25px 25px 10px 10px; background-color: none;}
+div.container-art.masonry-brick form#new_rating.simple_form.new_rating input.btn.btn-default {border: none; border-radius: none; background-color: #000; }
+
+
+.art-box {width: 100%; border-top: 2px solid #fff;}
+.vote-box {width: auto; font-size: 30px; color: #fff; padding: 10px 25px 10px 10px; float: left; text-align: center; line-height: 32px; border-right: 2px solid #fff;}
+.rate-box {width: auto; font-size: 30px; color: #fff; padding: 10px 10px 10px 25px; float: left; text-align: center; line-height: 32px; border-left: 2px solid #fff;}
+
+.art-box2 {width: 100%; border-top: 2px solid #000;}
+.vote-box2 {width: auto; font-size: 30px; color: #000; padding: 10px 25px 10px 10px; float: left; text-align: center; line-height: 32px; border-right: 2px solid #000;}
+.rate-box2 {width: auto; font-size: 30px; color: #000; padding: 10px 10px 10px 25px; float: left; text-align: center; line-height: 32px; border-left: 2px solid #000;}
+
+div.art-box2 form#new_rating.simple_form.new_rating {width: auto; float: left; margin: 0; padding: 0;}
+div.art-box2 form#new_rating.simple_form.new_rating div.field div.star-rating {margin: 0 auto; }
+div.art-box2 form#new_rating.simple_form.new_rating {border: none; padding: 0;}
+div.art-box2 form#new_rating.simple_form.new_rating div.field {width: auto; float: left; padding: 10px 25px 10px 25px; }
+div.art-box2 form#new_rating.simple_form.new_rating input {width: auto; color: #fff; font-size: 30px; padding: 25px 25px 10px 10px; background-color: none;}
+div.art-box2 form#new_rating.simple_form.new_rating input.btn.btn-default {border: none; border-radius: none; background-color: #000; }
+div.art-box2 div.star-rating {width: auto; float: left; padding: 10px 25px 10px 25px; }
+
+html body div.container-show div.container-art img {width: 100%; height: auto;}
+

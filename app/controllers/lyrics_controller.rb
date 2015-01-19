@@ -19,6 +19,19 @@ class LyricsController < ApplicationController
 	def show
 		@comments = Comment.where(lyric_id: @lyric)
 		@random_lyric = Lyric.where.not(id: @lyric).order("RANDOM()").first
+		@random_lyrics = Lyric.where.not(id: @lyric).order("RANDOM()").take(5)
+
+		if @lyric == Lyric.last
+			@next_lyric = Lyric.order(id: :asc).first
+		else
+			@next_lyric = Lyric.where("id > ?", @lyric).order(id: :asc).first
+		end
+
+		if @lyric == Lyric.first
+			@previous_lyric = Lyric.order(id: :asc).first
+		else
+			@previous_lyric = Lyric.where("id < ?", @lyric).order(id: :desc).first
+		end
 		
 	end
 
@@ -67,6 +80,7 @@ class LyricsController < ApplicationController
 	end
 
 	def tagged
+
   		if params[:tag].present? 
     		@lyrics = Lyric.tagged_with(params[:tag]).order("created_at desc")
   		else 

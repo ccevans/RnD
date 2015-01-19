@@ -1,48 +1,95 @@
+<section class="main-section">
 <% if user_signed_in? %>
   <div class="header-art">
-    <h1>Welcome to The Design Center</h1>
+    <h1>The Design Center</h1>
     <h2><%= current_user.name %></h2>
     <p>Help us vote on our community designs.  Or contribute your own.  <br /><%= link_to "Submit Design", '/campaigns/2/arts/new' %></p>
 
   </div>  
 <% else %>
   <div class="header-art">
-     <h1>Welcome to The Design Center</h1>
+     <h1>The Design Center</h1>
     <h2><%= link_to "Join To Contribute", new_user_registration_path %></h2>
     <p>Help us vote on our community designs.  Or contribute your own.  <br /><%= link_to "Submit Design", '/campaigns/2' %></p>
   </div>  
 <% end %>
 
-<section class="art-section">
 <div class="tagcloud">
          <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
             <%= link_to tag.name, tagged_url(tag.name), :class => css_class %>
         <% end %>
     </div>
 
+<section class="art-section">
+
+
 <div id="arts" class="transitions-enabled">
     
       <% @arts.each do |art| %>
         <div class="container-art">
+            <div class="art-box">
 
-          <%= simple_form_for([art, art.ratings.build]) do |f| %>
-              <%= f.error_notification %>
-            <div class="field">
-              <div class="star-rating"></div>
-            </div>
-                <%= f.hidden_field :art_id, value: art.id %>
-              <%= f.button :submit, "Rate", class: "button" %>
-              
+                 <% @current_ratings.each do | current_rating| %>
+                    Voted: <div class="star-rating" data-score= <%= current_rating.rate %> ></div>
+                    <% end %>
+
+
+
+              <div class="vote-box">
+                  <%= art.ratings.count %></br>Votes
+              </div>
+
+                <% if user_signed_in? %>
+
+                  <% if @current_ratings.empty? || @current_ratings.nil? %>
+                  
+                      <%= simple_form_for([art, art.ratings.build]) do |f| %>
+                      <%= f.error_notification %>
+
+                    <div class="field">
+                      <div class="star-rating"></div>
+                    </div>
+                        <%= f.hidden_field :art_id, value: art.id %>
+                      <%= f.button :submit, "Rate" %>
+                      
+                    <% end %>
+                  <% else %>
+
+                    <% @current_ratings.each do | current_rating| %>
+                    Voted: <div class="star-rating" data-score= <%= current_rating.rate %> ></div>
+                    <% end %>
+
+                    
+                  <% end %>
+                <% else %>
+                
+                  <%= simple_form_for([art, art.ratings.build]) do |f| %>
+                  <%= f.error_notification %>
+
+                <div class="field">
+                  <div class="star-rating"></div>
+                </div>
+                    <%= f.hidden_field :art_id, value: art.id %>
+                  <%= f.button :submit, "Rate" %>
+                  
+                <% end %>
             <% end %>
-          
-          <%= pluralize(art.ratings.count, "Vote") %> <span class="votebutton"><%= link_to 'Vote', campaign_art_path(@campaign, art) %></span>
+              <div class="rate-box">
+                <%= @avg_rating %></br>Avg Score
+              </div>
+          </div>
          
           <%= link_to campaign_art_path(@campaign, art) do %>
             <%= image_tag art.image.url(:small) %>
           <% end %>
 
+    
+
          <ul>
               <li><%= art.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
+              <li>
+                  <%= pluralize(art.ratings.count, "Vote") %> 
+              </li>
 
             <li><%= art.commentarts.count %> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></li>
               <li><%= image_tag art.user.avatar.url(:mini) %><%= link_to art.user.username, profile_url(:id => art.user.username) %></li>
@@ -70,6 +117,9 @@
     </div>
 
   </section>
+</section>
+
+<%= image_tag 'lyric-background3.png', :class => "background-lyric" %>
 
 
 

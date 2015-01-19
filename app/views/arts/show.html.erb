@@ -1,86 +1,82 @@
+<div class="stepbackward">
+			<%= link_to campaign_art_path(@campaign, @previous_art) do %>
+				<span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span>
+			<% end %>
+		</div>
+		<div class="stepforward">
+			<%= link_to campaign_art_path(@campaign, @next_art) do %>
+				<span class="glyphicon glyphicon-step-forward" aria-hidden="true"></span>
+			<% end %>
+		</div>
+
 
 <div class="container-show">
-	<div class="container-line">
-		
-		
-	<h2 class="rating_count"><%= pluralize(@art.ratings.count, "Vote") %></h2>
 
-	Avg Score: <div class="star-rating" data-score= <%= @avg_rating %> ></div>
+	<div class="art-box2">
+		<div class="vote-box2">
+			<%= @art.ratings.count %></br>Votes
+		</div>
 
-	<hr>
-	<% if user_signed_in? %>
+				<% if user_signed_in? %>
 
-		<% if @current_ratings.empty? || @current_ratings.nil? %>
-		
-			<%= render 'ratings/form' %>
-		<% else %>
+					<% if @current_ratings.empty? || @current_ratings.nil? %>
+					
+						<%= render 'ratings/form' %>
+					<% else %>
 
-			<% @current_ratings.each do | current_rating| %>
-			Voted: <div class="star-rating" data-score= <%= current_rating.rate %> ></div>
-			<% end %>
+						<% @current_ratings.each do | current_rating| %>
+						Voted: <div class="star-rating" data-score= <%= current_rating.rate %> ></div>
+						<% end %>
 
-			
-		<% end %>
-	<% else %>
-		<%= render 'ratings/form' %>
-	<% end %>
+						
+					<% end %>
+				<% else %>
+					<%= render 'ratings/form' %>
+				<% end %>
 
 
-	<%= image_tag @art.image.url(:medium) %>
+		  <div class="rate-box2">
+              <%= @avg_rating %></br>Avg Score
+          </div>
+
 	</div>
-	<% unless @art.description.nil? || @art.description.empty? %>
-	<div class="container-desc">
-		<%= simple_format(@art.description) %>
+
+
+	<div class="container-art2">
+
+			<%= image_tag @art.image.url(:medium) %>
 	</div>
-	<% end %>
-	<div class="postedby">Posted By: <%= image_tag @art.user.avatar.url(:mini) %>  <%= link_to @art.user.username, profile_url(:id => @art.user.username) %></div>
-		
-	<div class="container-comment">
-	<h2 class="comment_count">
-		<%= pluralize(@art.commentarts.count, "Response") %></h2>
-		<hr />
-		<% @commentarts.each do |commentart| %>
-			<div class="comment">
-				<%= image_tag commentart.user.avatar.url(:mini) %>
-				<p class="username"> <%= commentart.user.username %></p></br>
-				<p class="content"> <%= commentart.content %></p>
-				<p class="time-created"><%= time_ago_in_words(commentart.created_at) %></p>
-				<hr />
-			</div>
-		<% end %>
-	<%= render 'commentarts/form' %>
-</div>
-</div>
 
-
-<div class="container-more">
-	<ul>
-		<li><%= @art.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
-		<li><hr /></li>
-		<% unless @art.tags.nil? || @art.tags.empty? %>
-		<li><hr /></li>
+	<div class="container-extra">
+	 <ul>
+        <li><%= @art.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
+        <li><%= @art.commentarts.count %> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></li>
+     </ul>
+     
+        <% unless @art.tags.nil? || @art.tags.empty? %>
+        <ul>
 		<li>
   			<% @art.tags.each do |tag| %>
   				<%= link_to tag.name, tagged_url(:tag => tag.name) %>
   			<% end %>
 			</li>
+		</ul>
 		<% end %>
-		<li><hr /></li>
-		<li><strong>Artist: </strong><%= @art.artist %></li>
-		<li><hr /></li>
-		<li><strong>Song: </strong><%= @art.typeart %></li>
-		<li><hr /></li>
-		<li><%= link_to 'More', @art.link %></li>
-		<li><hr /></li>
-		<li><% if can? :update, @art %>
-		<%= link_to 'Edit', edit_campaign_art_path(@art.campaign, @art) %> | 
-		<% end %>
-		<% if can? :destroy, @art %>
-		<%= link_to 'Destroy', [@art.campaign, @art], method: :delete, data: {confirm: "Are you sure?" } %>
-		<% end %></li>
-		<li>	
-			<div class="container-profile">
-				<%= image_tag @art.user.avatar.url(:thumb) %>
+
+		   <ul>
+
+        	<li>Posted By: <a id="popoverExampleTwo" data-placement="auto left" data-trigger="click" return false;><%= image_tag @art.user.avatar.url(:mini) %><%= link_to @art.user.username, profile_url(:id => @art.user.username) %></a></li>
+        	
+        </ul>
+        <ul>
+        	<li><strong>Experiment</strong> |  <a id="popoverExampleThree" data-placement="auto left" data-trigger="click"><%= @art.campaign.title %> </a></li>
+        </ul>
+
+
+  <!-- Popover 2 hidden content -->
+  <div id="popoverExampleTwoHiddenContent" style="display: none">
+     <div>
+     	<%= image_tag @art.user.avatar.url(:thumb) %>
 					<%= link_to @art.user.username, profile_url(:id => @art.user.username) %>
 					
 					</br>
@@ -103,35 +99,179 @@
 					<div class="points-show">
 						Points | <%= @art.user.points %>
 					</div>
-					<div class="badge-show">
-						Badges:</br>
-						<% @art.user.badges.each do |badge| %>
-				  			<%= badge.name %>
-						<% end %>
-					</div>
-					
-			</div></li>
-	</ul>
-	</div>
 
 
-	<div id="random_post">
-		<h3> More Designs </h3>
-		<div class="container-show2">
-			<%= link_to campaign_art_path(@campaign, @random_art) do %>
-				<%= image_tag @random_art.image.url(:small) %>
-			<% end %>
-			<%= @random_art.user.username %>
-		</div>
-	</div>
+     </div>
+  </div>  
+  <!-- Popover 2 hidden title -->
+  <div id="popoverExampleTwoHiddenTitle" style="display: none">
+     
+  </div> 
 
+    <!-- Popover 2 hidden content -->
+  <div id="popoverExampleThreeHiddenContent" style="display: none">
+     <div>
+  
+
+
+     </div>
+  </div>  
+  <!-- Popover 2 hidden title -->
+  <div id="popoverExampleThreeHiddenTitle" style="display: none">
+     
+  </div> 
+
+ 
+        <div class="artist-info">
+		    <ul>
+		        <li><strong>Type of Art: </strong><%= @art.typeart %></li>
 			
-	</div>	
+				<li>| <%= link_to 'More Info', @art.link %></li>
 
-<div class="back-footer">
+			</ul>
+
+        </div>
+
+        <ul>
+        		<li><% if can? :update, @art %>
+		<%= link_to 'Edit', edit_campaign_art_path(@art.campaign, @art) %> | 
+		<% end %>
+		<% if can? :destroy, @art %>
+		<%= link_to 'Destroy', [@art.campaign, @art], method: :delete, data: {confirm: "Are you sure?" } %>
+		<% end %></li>
+
+        </ul>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+	<% unless @art.description.nil? || @art.description.empty? %>
+	<div class="container-desc">
+		<%= simple_format(@art.description) %>
+	</div>
+	<% end %>
+		
+	<div class="container-comment">
+	<h2 class="comment_count">
+		<%= pluralize(@art.commentarts.count, "Response") %></h2>
+		<hr />
+		<% @commentarts.each do |commentart| %>
+			<div class="comment">
+				<%= image_tag commentart.user.avatar.url(:mini) %>
+				<p class="username"> <%= commentart.user.username %></p></br>
+				<p class="content"> <%= commentart.content %></p>
+				<p class="time-created"><%= time_ago_in_words(commentart.created_at) %></p>
+				<hr />
+			</div>
+		<% end %>
+	<%= render 'commentarts/form' %>
+</div>
+</div>
+
+<section class="art-section">
+
+
+<div id="arts" class="transitions-enabled">
+    
+      <% @random_arts.each do |random_art| %>
+        <div class="container-art">
+            <div class="art-box">
+
+                 <% @current_ratings.each do | current_rating| %>
+                    Voted: <div class="star-rating" data-score= <%= current_rating.rate %> ></div>
+                    <% end %>
+
+
+
+              <div class="vote-box">
+                  <%= random_art.ratings.count %></br>Votes
+              </div>
+
+                <% if user_signed_in? %>
+
+                  <% if @current_ratings.empty? || @current_ratings.nil? %>
+                  
+                      <%= simple_form_for([random_art, random_art.ratings.build]) do |f| %>
+                      <%= f.error_notification %>
+
+                    <div class="field">
+                      <div class="star-rating"></div>
+                    </div>
+                        <%= f.hidden_field :art_id, value: art.id %>
+                      <%= f.button :submit, "Rate" %>
+                      
+                    <% end %>
+                  <% else %>
+
+                    <% @current_ratings.each do | current_rating| %>
+                    Voted: <div class="star-rating" data-score= <%= current_rating.rate %> ></div>
+                    <% end %>
+
+                    
+                  <% end %>
+                <% else %>
+                
+                  <%= simple_form_for([random_art, random_art.ratings.build]) do |f| %>
+                  <%= f.error_notification %>
+
+                <div class="field">
+                  <div class="star-rating"></div>
+                </div>
+                    <%= f.hidden_field :art_id, value: art.id %>
+                  <%= f.button :submit, "Rate" %>
+                  
+                <% end %>
+            <% end %>
+              <div class="rate-box">
+                <%= @avg_rating %></br>Avg Score
+              </div>
+          </div>
+         
+          <%= link_to campaign_art_path(@campaign, random_art) do %>
+            <%= image_tag random_art.image.url(:small) %>
+          <% end %>
+
+    
+
+         <ul>
+              <li><%= random_art.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
+              <li>
+                  <%= pluralize(random_art.ratings.count, "Vote") %> 
+              </li>
+
+            <li><%= random_art.commentarts.count %> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></li>
+              <li><%= image_tag random_art.user.avatar.url(:mini) %><%= link_to random_art.user.username, profile_url(:id => random_art.user.username) %></li>
+          </ul>
+          <br />
+        <ul class="tag-list">
+        <li><% random_art.tags.any? %>
+          <% random_art.tags.each do |tag| %>
+          <%= link_to tag.name, tagged_url(:tag => tag.name) %>
+          <% end %></li>
+        </ul>
+      </div>
+      <% end %>
+</div>
+
+        
+    <br>
+ <div class="back-footer">
 	<%= link_to 'Add Design', new_campaign_art_path(@campaign) %>
 	<%= link_to 'Design Center', campaign_arts_path %>
 </div>
+
+  </section>
+
+
+
 
 
 <script>
@@ -143,3 +283,36 @@ $('.star-rating').raty({
   }
 });
 </script>
+
+<script>
+$(function(){
+
+
+    // Enabling Popover Example 2 - JS (hidden content and title capturing)
+    $("#popoverExampleTwo").popover({
+        html : true, 
+        content: function() {
+          return $('#popoverExampleTwoHiddenContent').html();
+        },
+        title: function() {
+          return $('#popoverExampleTwoHiddenTitle').html();
+        }
+    });
+
+     // Enabling Popover Example 2 - JS (hidden content and title capturing)
+    $("#popoverExampleThree").popover({
+        html : true, 
+        content: function() {
+          return $('#popoverExampleThreeHiddenContent').html();
+        },
+        title: function() {
+          return $('#popoverExampleThreeHiddenTitle').html();
+        }
+    });
+
+});
+
+</script>
+
+
+

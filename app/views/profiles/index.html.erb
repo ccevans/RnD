@@ -1,11 +1,18 @@
-index
 
-<% @users.each do |user| %>
+<section class="lyric-section">
 
-<%= image_tag user.avatar.url(:thumb) %>
-   <div class="user-row"><%= link_to user.username, "/profiles/#{user.username}" %></div>
-   <div class="user-row"><%= user.bio %></div>
-   <div class="user-row"><%= user.location %></div>
+  <div id="lyrics" class="transitions-enabled">
+		<% @users.each do |user| %>
+
+			 <div class="container-md">
+					<%= image_tag user.avatar.url(:thumb) %>
+				   <div class="user-row"><%= link_to user.username, "/profiles/#{user.username}" %></div>
+				   <div class="user-row"><%= user.bio %></div>
+				   <div class="user-row"><%= user.location %></div>
+		   	</div>
 
 
-<% end %>
+		<% end %>
+	</div>
+
+</section>

@@ -11,9 +11,17 @@ class ArtsController < ApplicationController
 		@arts = Art.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
 		
 		@rating = Rating.new(art_id: @art)
-		
+
+		@ratings = Rating.where(art_id: @art)
+
+		@current_ratings = Rating.where(art_id: @art, user_id: current_user.id).all.order("created_at DESC")
 
 
+		if @ratings.blank?
+			@avg_rating = 0
+		else
+			@avg_rating = @ratings.average(:rate).round(2)
+		end
 		
 	end
 
@@ -25,6 +33,20 @@ class ArtsController < ApplicationController
 		
 
 		@random_art = Art.where.not(id: @art).order("RANDOM()").first
+
+		@random_arts = Art.where.not(id: @art).order("RANDOM()").take(5)
+
+		if @art == Art.last
+			@next_art = Art.order(id: :asc).first
+		else
+			@next_art = Art.where("id > ?", @art).order(id: :asc).first
+		end
+
+		if @art == Art.first
+			@previous_art = Art.order(id: :asc).first
+		else
+			@previous_art = Art.where("id < ?", @art).order(id: :desc).first
+		end
 
 
 		if @ratings.blank?

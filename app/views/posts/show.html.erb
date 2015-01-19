@@ -1,33 +1,158 @@
+<div class="stepbackward">
+			<%= link_to post_path(@previous_post) do %>
+				<span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span>
+			<% end %>
+		</div>
+		<div class="stepforward">
+			<%= link_to post_path(@next_post) do %>
+				<span class="glyphicon glyphicon-step-forward" aria-hidden="true"></span>
+			<% end %>
+			</div>
+<div class="container-show">
+	
+	<div class="container-post">
 
-<%= image_tag @post.image.url(:large) %>
-<h1><%= @post.title %></h1>
-<p><%= @post.link %></p>
-<p><%= @post.description %></p>
-<p><%= @post.typeof %></p>
-<p><%= @post.approve %></p>
+		<h1><%= @post.title %></h1>
+	
+		<% unless @post.videolink.nil? || @post.videolink.empty? %>
+			<% if @post.typeof == 'video' %>
+				<p><%= raw(youtube_embed(@post.videolink)) %></p>
+			<% end %>
+		<% end %>
 
-<% unless @post.videolink.nil? || @post.videolink.empty? %>
-	<% if @post.typeof == 'video' %>
-		<p><%= raw(youtube_embed(@post.videolink)) %></p>
+		<% unless @post.audiolink.nil? || @post.audiolink.empty? %>
+			<% if @post.typeof == 'audio' %>
+				<p><%= raw(@post.audiolink) %></p>
+				<% end %>
+		<% end %>
+
+		<% unless @post.image.nil? || @post.image.blank? %>
+			<% if @post.typeof == 'picture' %>
+				<%= image_tag @post.image.url(:medium) %>
+				<% end %>
+		<% end %>
+
+
+
+	</div>
+	
+<div class="container-post-extra">
+	<ul>
+		<li><%= link_to post_path(@previous_post) do %>
+				<span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span>
+			<% end %>
+			<%= link_to post_path(@next_post) do %>
+				<span class="glyphicon glyphicon-step-forward" aria-hidden="true"></span>
+			<% end %>
+
+		</li>
+	</ul>
+	 <ul>
+        <li><%= @post.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
+         <li><%= @post.commentposts.count %> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></li>
+        <li><%= @post.get_upvotes.size %> 
+          <%= link_to like_post_path(@post), method: :get do %>
+          <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+            <% end %>
+            <%= @post.get_downvotes.size %> 
+          <%= link_to dislike_post_path(@post), method: :get do %>
+          <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+            <% end %>
+          </li>
+       
+        
+        </ul>
+     
+        <% unless @post.tags.nil? || @post.tags.empty? %>
+        <ul>
+		<li>
+  			<% @post.tags.each do |tag| %>
+  				<%= link_to tag.name, tagged_url(:tag => tag.name) %>
+  			<% end %>
+			</li>
+		</ul>
+		<% end %>
+
+		       <div class="artist-info">
+		    <ul>
+			
+				<li>| <%= link_to 'More Info', @post.link %></li>
+
+			</ul>
+
+        </div>
+
+        <ul>
+        	<li>
+			<% if can? :manage, :all %>
+			Approval: <%= @post.approve %> |
+			<% end %>
+
+		</li>
+        		<li><% if can? :update, @post %>
+		<%= link_to 'Edit', edit_post_path(@post) %> | 
+		<% end %>
+		<% if can? :destroy, @post %>
+		<%= link_to 'Destroy', [@post], method: :delete, data: {confirm: "Are you sure?" } %>
+		<% end %></li>
+		
+
+        </ul>
+
+		   <ul>
+
+        	<li>Posted By: <a href="#" id="popoverExampleTwo" data-placement="auto left" data-trigger="click"><%= image_tag @post.user.avatar.url(:mini) %><%= link_to @post.user.username, profile_url(:id => @post.user.username) %></a></li>
+        	
+        </ul>
+     
+
+
+  <!-- Popover 2 hidden content -->
+  <div id="popoverExampleTwoHiddenContent" style="display: none">
+     <div>
+     	<%= image_tag @post.user.avatar.url(:thumb) %>
+					<%= link_to @post.user.username, profile_url(:id => @post.user.username) %>
+					
+					</br>
+					<div class="following-show">
+						<p><%= @post.user.follow_count %> Following  | 
+						<%= @post.user.followers_count %> Followers</p>
+						<% if user_signed_in? %>
+							<% if current_user == @post.user %>
+								<p></p>
+							<% elsif  @post.user.all_following.include?(current_user) %>
+								<%= link_to "Unfollow", unfollow_profile_path(@post.user.username) %>
+							<% else %>
+								<%= link_to "Follow", follow_profile_path(@post.user.username) %>
+							<% end %>
+						<% else %>
+							<p><%= link_to "Sign Up To Follow", new_user_registration_path %></p>
+						<% end %>
+					</div>
+					<hr>
+					<div class="points-show">
+						Points | <%= @post.user.points %>
+					</div>
+
+
+     </div>
+  </div>  
+  <!-- Popover 2 hidden title -->
+  <div id="popoverExampleTwoHiddenTitle" style="display: none">
+     
+  </div> 
+
+
+ 
+    </div>
+
+   <% unless @post.description.nil? || @post.description.empty? %>
+	<div class="container-post-desc">
+		 
+		<%= simple_format(@post.description) %>
+	</div>
 	<% end %>
-<% end %>
-
-<% unless @post.audiolink.nil? || @post.audiolink.empty? %>
-	<% if @post.typeof == 'audio' %>
-		<p><%= raw(@post.audiolink) %></p>
-		<% end %>
-<% end %>
-
-<% unless @post.image.nil? || @post.image.blank? %>
-	<% if @post.typeof == 'picture' %>
-		<%= image_tag @post.image.url(:medium) %>
-		<% end %>
-<% end %>
-
-<span class="glyphicon glyphicon-heart" aria-hidden="true"></span><%= link_to 'Like?', like_post_path(@post), method: :get %> <%= @post.get_upvotes.size %>  Likes </br>
-
-	<%= link_to 'Dislike?', dislike_post_path(@post), method: :get %>  <%= @post.get_downvotes.size %>  Dislikes
-
+		
 	<div class="container-comment">
 	<h2 class="comment_count">
 		<%= pluralize(@post.commentposts.count, "Response") %></h2>
@@ -43,7 +168,92 @@
 		<% end %>
 	<%= render 'commentposts/form' %>
 </div>
+</div>
 
-<%= link_to "Edit", edit_post_path(@post) %>
-<%= link_to "Destroy", post_path(@post), method: :delete, data: {confirm: "Are you sure?"} %>
-<%= link_to "Post page", posts_path %>
+<section class="post-section">
+
+  <div id="posts" class="transitions-enabled">
+    <% @random_posts.each do |random_post| %>
+    <div class="container-post-index">
+
+        
+        <%= link_to random_post.title, post_path(random_post) %>
+
+        <% unless random_post.videolink.nil? || random_post.videolink.empty? %>
+			<% if random_post.typeof == 'video' %>
+				<div class="video-box">
+				<p><%= raw(youtube_embed(random_post.videolink)) %></p>
+				</div>
+			<% end %>
+		<% end %>
+
+		<% unless random_post.audiolink.nil? || random_post.audiolink.empty? %>
+			<% if random_post.typeof == 'audio' %>
+				<p><%= raw(random_post.audiolink) %></p>
+				<% end %>
+		<% end %>
+
+		<% unless random_post.image.nil? || random_post.image.blank? %>
+			<% if random_post.typeof == 'picture' %>
+				<%= image_tag random_post.image.url(:medium) %>
+				<% end %>
+		<% end %>
+        <ul>
+        <li><%= random_post.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
+        <li><%= random_post.get_upvotes.size %> 
+          <%= link_to like_post_path(random_post), method: :get do %>
+              <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+            <% end %>
+          </li>
+        <li><%= random_post.commentposts.count %> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></li>
+        <li><%= image_tag random_post.user.avatar.url(:mini) %><%= link_to random_post.user.username, profile_url(:id => random_post.user.username) %></li>
+        </ul>
+        <br />
+        <ul class="tag-list">
+        <li><% random_post.tags.any? %>
+          <% random_post.tags.each do |tag| %>
+          <%= link_to tag.name, tagged_url(:tag => tag.name) %>
+          <% end %></li>
+        </ul>
+     
+      
+      </div>
+    <% end %>
+  </div>
+       
+    <br>
+    <div class="lyric-footer">
+      <%= link_to 'New Post', new_post_path %>
+    </div>
+</section>
+
+
+<script>
+$(function(){
+
+
+    // Enabling Popover Example 2 - JS (hidden content and title capturing)
+    $("#popoverExampleTwo").popover({
+        html : true, 
+        content: function() {
+          return $('#popoverExampleTwoHiddenContent').html();
+        },
+        title: function() {
+          return $('#popoverExampleTwoHiddenTitle').html();
+        }
+    });
+
+     // Enabling Popover Example 2 - JS (hidden content and title capturing)
+    $("#popoverExampleThree").popover({
+        html : true, 
+        content: function() {
+          return $('#popoverExampleThreeHiddenContent').html();
+        },
+        title: function() {
+          return $('#popoverExampleThreeHiddenTitle').html();
+        }
+    });
+
+});
+
+</script>

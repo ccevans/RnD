@@ -3,6 +3,11 @@ class Post < ActiveRecord::Base
 	is_impressionable
 	belongs_to :user
 	has_many :commentposts
+	acts_as_taggable_on :tags
+
+	scope :by_tags, -> tags { where(:tags => tags) }
+
+
 
 	 TYPEOFS = %w[video audio picture]
 

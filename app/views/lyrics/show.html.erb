@@ -1,65 +1,64 @@
-<div class="container-show">
-	<div class="container-line">
-	<%= simple_format(@lyric.line) %>
-	</div>
-	<% unless @lyric.description.nil? || @lyric.description.empty? %>
-	<div class="container-desc">
-		<%= simple_format(@lyric.description) %>
-	</div>
-	<% end %>
-	<div class="postedby">Posted By: <%= image_tag @lyric.user.avatar.url(:mini) %>  <%= link_to @lyric.user.username, profile_url(:id => @lyric.user.username) %></div>
-		
-	<div class="container-comment">
-	<h2 class="comment_count">
-		<%= pluralize(@lyric.comments.count, "Response") %></h2>
-		<hr />
-		<% @comments.each do |comment| %>
-			<div class="comment">
-				<%= image_tag comment.user.avatar.url(:mini) %>
-				<p class="username"> <%= comment.user.username %></p></br>
-				<p class="content"> <%= comment.content %></p>
-				<p class="time-created"><%= time_ago_in_words(comment.created_at) %></p>
-				<hr />
+<div class="stepbackward">
+			<%= link_to campaign_lyric_path(@campaign, @previous_lyric) do %>
+				<span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span>
+			<% end %>
+		</div>
+		<div class="stepforward">
+			<%= link_to campaign_lyric_path(@campaign, @next_lyric) do %>
+				<span class="glyphicon glyphicon-step-forward" aria-hidden="true"></span>
+			<% end %>
 			</div>
-		<% end %>
-	<%= render 'comments/form' %>
-</div>
-</div>
 
+<div class="container-show">
+	
+	<div class="container-line">
+		
 
-<div class="container-more">
-	<ul>
-		<li><%= @lyric.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
-		<li><hr /></li>
-		<li><span class="glyphicon glyphicon-heart" aria-hidden="true"></span><%= link_to 'Like?', like_lyric_path(@lyric), method: :get %> <%= @lyric.get_upvotes.size %>  Likes</li>
-		<li><hr /></li>
-		<li><%= link_to 'Dislike?', dislike_lyric_path(@lyric), method: :get %>  <%= @lyric.get_downvotes.size %>  Dislikes</li>
-		<% unless @lyric.tags.nil? || @lyric.tags.empty? %>
-		<li><hr /></li>
+	<%= simple_format(@lyric.line) %>
+
+		
+	</div>
+	
+<div class="container-extra">
+	 <ul>
+        <li><%= @lyric.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
+        <li><%= @lyric.get_upvotes.size %> 
+          <%= link_to like_lyric_path(@lyric), method: :get do %>
+          <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+            <% end %>
+            <%= @lyric.get_downvotes.size %> 
+          <%= link_to dislike_lyric_path(@lyric), method: :get do %>
+          <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+            <% end %>
+          </li>
+        <li><%= @lyric.comments.count %> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></li>
+        
+        </ul>
+     
+        <% unless @lyric.tags.nil? || @lyric.tags.empty? %>
+        <ul>
 		<li>
   			<% @lyric.tags.each do |tag| %>
   				<%= link_to tag.name, tagged_url(:tag => tag.name) %>
   			<% end %>
 			</li>
+		</ul>
 		<% end %>
-		<li><hr /></li>
-		<li><strong>Artist: </strong><%= @lyric.artist %></li>
-		<li><hr /></li>
-		<li><strong>Song: </strong><%= @lyric.song %></li>
-		<li><hr /></li>
-		<li><strong>Album: </strong><%= @lyric.album %></li>
-		<li><hr /></li>
-		<li><%= link_to 'More', @lyric.link %></li>
-		<li><hr /></li>
-		<li><% if can? :update, @lyric %>
-		<%= link_to 'Edit', edit_campaign_lyric_path(@lyric.campaign, @lyric) %> | 
-		<% end %>
-		<% if can? :destroy, @lyric %>
-		<%= link_to 'Destroy', [@lyric.campaign, @lyric], method: :delete, data: {confirm: "Are you sure?" } %>
-		<% end %></li>
-		<li>	
-			<div class="container-profile">
-				<%= image_tag @lyric.user.avatar.url(:thumb) %>
+
+		   <ul>
+
+        	<li>Posted By: <a href="#" id="popoverExampleTwo" data-placement="auto left" data-trigger="click"><%= image_tag @lyric.user.avatar.url(:mini) %><%= link_to @lyric.user.username, profile_url(:id => @lyric.user.username) %></a></li>
+        	
+        </ul>
+        <ul>
+        	<li><strong>Experiment</strong> |  <a href="#" id="popoverExampleThree" data-placement="auto left" data-trigger="click"><%= @lyric.campaign.title %> </a></li>
+        </ul>
+
+
+  <!-- Popover 2 hidden content -->
+  <div id="popoverExampleTwoHiddenContent" style="display: none">
+     <div>
+     	<%= image_tag @lyric.user.avatar.url(:thumb) %>
 					<%= link_to @lyric.user.username, profile_url(:id => @lyric.user.username) %>
 					
 					</br>
@@ -82,34 +81,174 @@
 					<div class="points-show">
 						Points | <%= @lyric.user.points %>
 					</div>
-					<div class="badge-show">
-						Badges:</br>
-						<% @lyric.user.badges.each do |badge| %>
-				  			<%= badge.name %>
+
+
+     </div>
+  </div>  
+  <!-- Popover 2 hidden title -->
+  <div id="popoverExampleTwoHiddenTitle" style="display: none">
+     
+  </div> 
+
+    <!-- Popover 2 hidden content -->
+  <div id="popoverExampleThreeHiddenContent" style="display: none">
+     <div>
+     	<%= image_tag @lyric.user.avatar.url(:thumb) %>
+					<%= link_to @lyric.user.username, profile_url(:id => @lyric.user.username) %>
+					
+					</br>
+					<div class="following-show">
+						<p><%= @lyric.user.follow_count %> Following  | 
+						<%= @lyric.user.followers_count %> Followers</p>
+						<% if user_signed_in? %>
+							<% if current_user == @lyric.user %>
+								<p></p>
+							<% elsif  @lyric.user.all_following.include?(current_user) %>
+								<%= link_to "Unfollow", unfollow_profile_path(@lyric.user.username) %>
+							<% else %>
+								<%= link_to "Follow", follow_profile_path(@lyric.user.username) %>
+							<% end %>
+						<% else %>
+							<p><%= link_to "Sign Up To Follow", new_user_registration_path %></p>
 						<% end %>
 					</div>
-					
-			</div></li>
-	</ul>
-	</div>
+					<hr>
+					<div class="points-show">
+						Points | <%= @lyric.user.points %>
+					</div>
 
 
-	<div id="random_post">
-		<h3> More Lyrics </h3>
-		<div class="container-show2">
-			<%= link_to simple_format(@random_lyric.line), campaign_lyric_path(@campaign, @random_lyric) %>
-			<%= @random_lyric.user.username %>
-		</div>
-	</div>
+     </div>
+  </div>  
+  <!-- Popover 2 hidden title -->
+  <div id="popoverExampleThreeHiddenTitle" style="display: none">
+     
+  </div> 
 
+
+        <div class="artist-info">
+		    <ul>
+		        <li><strong>Artist: </strong><%= @lyric.artist %></li>
+				
+				<li><strong>Song: </strong><%= @lyric.song %></li>
+				
+				<li><strong>Album: </strong><%= @lyric.album %></li>
 			
-	</div>
-						
+				<li>| <%= link_to 'More Info', @lyric.link %></li>
 
-<div class="back-footer">
-	<%= link_to 'Add Lyric', new_campaign_lyric_path(@campaign) %>
-	<%= link_to 'Lyric Center', campaign_lyrics_path %>
+			</ul>
+
+        </div>
+
+        <ul>
+        		<li><% if can? :update, @lyric %>
+		<%= link_to 'Edit', edit_campaign_lyric_path(@lyric.campaign, @lyric) %> | 
+		<% end %>
+		<% if can? :destroy, @lyric %>
+		<%= link_to 'Destroy', [@lyric.campaign, @lyric], method: :delete, data: {confirm: "Are you sure?" } %>
+		<% end %></li>
+
+        </ul>
+    </div>
+     <% unless @lyric.description.nil? || @lyric.description.empty? %>
+	<div class="container-desc">
+		 <%= image_tag @lyric.user.avatar.url(:mini) %><%= link_to @lyric.user.username, profile_url(:id => @lyric.user.username) %></br>
+		<%= simple_format(@lyric.description) %>
+	</div>
+	<% end %>
+		
+	<div class="container-comment">
+	<h2 class="comment_count">
+		<%= pluralize(@lyric.comments.count, "Response") %></h2>
+		<hr />
+		<% @comments.each do |comment| %>
+			<div class="comment">
+				<%= image_tag comment.user.avatar.url(:mini) %>
+				<p class="username"> <%= comment.user.username %></p></br>
+				<p class="content"> <%= comment.content %></p>
+				<p class="time-created"><%= time_ago_in_words(comment.created_at) %></p>
+				<hr />
+			</div>
+		<% end %>
+	<%= render 'comments/form' %>
 </div>
 
+
+
+</div>
+
+<section class="lyric-section">
+
+  <div id="lyrics" class="transitions-enabled">
+    <% @random_lyrics.each do |random_lyric| %>
+    <div class="container-md">
+
+        
+        <%= link_to random_lyric.line, campaign_lyric_path(@campaign, random_lyric) %>
+        <ul>
+        <li><%= random_lyric.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
+        <li><%= random_lyric.get_upvotes.size %> 
+          <%= link_to like_lyric_path(random_lyric), method: :get do %>
+              <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+            <% end %>
+          </li>
+        <li><%= random_lyric.comments.count %> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></li>
+        <li><%= image_tag random_lyric.user.avatar.url(:mini) %><%= link_to random_lyric.user.username, profile_url(:id => random_lyric.user.username) %></li>
+        </ul>
+        <br />
+        <ul class="tag-list">
+        <li><% random_lyric.tags.any? %>
+          <% random_lyric.tags.each do |tag| %>
+          <%= link_to tag.name, tagged_url(:tag => tag.name) %>
+          <% end %></li>
+        </ul>
+     
+      
+      </div>
+    <% end %>
+  </div>
+
+  <div class="back-footer">
+	<%= link_to 'Add Lyric', new_campaign_lyric_path(@campaign) %> | <%= link_to 'Lyric Center', campaign_lyrics_path %>
+</div>
+
+
+</section>
+
+
+						
+
+
+
+
+<script>
+$(function(){
+
+
+    // Enabling Popover Example 2 - JS (hidden content and title capturing)
+    $("#popoverExampleTwo").popover({
+        html : true, 
+        content: function() {
+          return $('#popoverExampleTwoHiddenContent').html();
+        },
+        title: function() {
+          return $('#popoverExampleTwoHiddenTitle').html();
+        }
+    });
+
+     // Enabling Popover Example 2 - JS (hidden content and title capturing)
+    $("#popoverExampleThree").popover({
+        html : true, 
+        content: function() {
+          return $('#popoverExampleThreeHiddenContent').html();
+        },
+        title: function() {
+          return $('#popoverExampleThreeHiddenTitle').html();
+        }
+    });
+
+});
+
+</script>
 
 
