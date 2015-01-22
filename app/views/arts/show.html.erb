@@ -12,35 +12,6 @@
 
 <div class="container-show">
 
-	<div class="art-box2">
-		<div class="vote-box2">
-			<%= @art.ratings.count %></br>Votes
-		</div>
-
-				<% if user_signed_in? %>
-
-					<% if @current_ratings.empty? || @current_ratings.nil? %>
-					
-						<%= render 'ratings/form' %>
-					<% else %>
-
-						<% @current_ratings.each do | current_rating| %>
-						Voted: <div class="star-rating" data-score= <%= current_rating.rate %> ></div>
-						<% end %>
-
-						
-					<% end %>
-				<% else %>
-					<%= render 'ratings/form' %>
-				<% end %>
-
-
-		  <div class="rate-box2">
-              <%= @avg_rating %></br>Avg Score
-          </div>
-
-	</div>
-
 
 	<div class="container-art2">
 
@@ -48,6 +19,35 @@
 	</div>
 
 	<div class="container-extra">
+    <ul>
+      <li>
+        <h2><span class="timer-line" data-countdown= <%= @art.campaign.timer2 %>></span></h2>
+          
+        <h2><%= @art.get_upvotes.size %> Votes</h2>
+           <% if @art.get_upvotes.size == 0 %>
+        <h2>No votes yet</h2>
+        <% else %>
+        <h2><%= @art.get_upvotes.sum(:vote_weight) / @art.get_upvotes.size %> / 5</h2>
+        <% end %>
+
+          <%= link_to voteof1_art_path(@art), method: :put do %>
+            <h2>1</h2>
+              <% end %>
+              <%= link_to voteof2_art_path(@art), method: :put do %>
+            <h2>2</h2>
+              <% end %>
+              <%= link_to voteof3_art_path(@art), method: :put do %>
+            <h2>3</h2>
+              <% end %>
+              <%= link_to voteof4_art_path(@art), method: :put do %>
+            <h2>4</h2>
+              <% end %>
+              <%= link_to voteof5_art_path(@art), method: :put do %>
+            <h2>5</h2>
+              <% end %>
+
+      </li>
+    </ul>
 	 <ul>
         <li><%= @art.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
         <li><%= @art.commentarts.count %> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></li>
@@ -65,7 +65,7 @@
 
 		   <ul>
 
-        	<li>Posted By: <a id="popoverExampleTwo" data-placement="auto left" data-trigger="click" return false;><%= image_tag @art.user.avatar.url(:mini) %><%= link_to @art.user.username, profile_url(:id => @art.user.username) %></a></li>
+        	<li>Posted By: <a class="popoverExampleTwo" data-placement="auto left" data-trigger="click" return false;><%= image_tag @art.user.avatar.url(:mini) %></a><%= link_to @art.user.username, profile_url(:id => @art.user.username) %></li>
         	
         </ul>
         <ul>
@@ -74,7 +74,7 @@
 
 
   <!-- Popover 2 hidden content -->
-  <div id="popoverExampleTwoHiddenContent" style="display: none">
+  <div class="popoverExampleTwoHiddenContent" style="display: none">
      <div>
      	<%= image_tag @art.user.avatar.url(:thumb) %>
 					<%= link_to @art.user.username, profile_url(:id => @art.user.username) %>
@@ -104,12 +104,12 @@
      </div>
   </div>  
   <!-- Popover 2 hidden title -->
-  <div id="popoverExampleTwoHiddenTitle" style="display: none">
+  <div class="popoverExampleTwoHiddenTitle" style="display: none">
      
   </div> 
 
     <!-- Popover 2 hidden content -->
-  <div id="popoverExampleThreeHiddenContent" style="display: none">
+  <div class="popoverExampleThreeHiddenContent" style="display: none">
      <div>
   
 
@@ -117,7 +117,7 @@
      </div>
   </div>  
   <!-- Popover 2 hidden title -->
-  <div id="popoverExampleThreeHiddenTitle" style="display: none">
+  <div class="popoverExampleThreeHiddenTitle" style="display: none">
      
   </div> 
 
@@ -142,14 +142,6 @@
 
         </ul>
     </div>
-
-
-
-
-
-
-
-
 
 
 
@@ -178,62 +170,11 @@
 
 <section class="art-section">
 
-
 <div id="arts" class="transitions-enabled">
     
       <% @random_arts.each do |random_art| %>
         <div class="container-art">
-            <div class="art-box">
-
-                 <% @current_ratings.each do | current_rating| %>
-                    Voted: <div class="star-rating" data-score= <%= current_rating.rate %> ></div>
-                    <% end %>
-
-
-
-              <div class="vote-box">
-                  <%= random_art.ratings.count %></br>Votes
-              </div>
-
-                <% if user_signed_in? %>
-
-                  <% if @current_ratings.empty? || @current_ratings.nil? %>
-                  
-                      <%= simple_form_for([random_art, random_art.ratings.build]) do |f| %>
-                      <%= f.error_notification %>
-
-                    <div class="field">
-                      <div class="star-rating"></div>
-                    </div>
-                        <%= f.hidden_field :art_id, value: art.id %>
-                      <%= f.button :submit, "Rate" %>
-                      
-                    <% end %>
-                  <% else %>
-
-                    <% @current_ratings.each do | current_rating| %>
-                    Voted: <div class="star-rating" data-score= <%= current_rating.rate %> ></div>
-                    <% end %>
-
-                    
-                  <% end %>
-                <% else %>
-                
-                  <%= simple_form_for([random_art, random_art.ratings.build]) do |f| %>
-                  <%= f.error_notification %>
-
-                <div class="field">
-                  <div class="star-rating"></div>
-                </div>
-                    <%= f.hidden_field :art_id, value: art.id %>
-                  <%= f.button :submit, "Rate" %>
-                  
-                <% end %>
-            <% end %>
-              <div class="rate-box">
-                <%= @avg_rating %></br>Avg Score
-              </div>
-          </div>
+     
          
           <%= link_to campaign_art_path(@campaign, random_art) do %>
             <%= image_tag random_art.image.url(:small) %>
@@ -244,17 +185,17 @@
          <ul>
               <li><%= random_art.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
               <li>
-                  <%= pluralize(random_art.ratings.count, "Vote") %> 
+                  Add Rating Count 
               </li>
 
             <li><%= random_art.commentarts.count %> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></li>
-              <li><%= image_tag random_art.user.avatar.url(:mini) %><%= link_to random_art.user.username, profile_url(:id => random_art.user.username) %></li>
+              <li><a class="popoverExampleTwo" data-placement="auto left" data-trigger="click" return false;><%= image_tag random_art.user.avatar.url(:mini) %></a><%= link_to random_art.user.username, profile_url(:id => random_art.user.username) %></li>
           </ul>
           <br />
         <ul class="tag-list">
         <li><% random_art.tags.any? %>
           <% random_art.tags.each do |tag| %>
-          <%= link_to tag.name, tagged_url(:tag => tag.name) %>
+          <%= link_to tag.name, campaign_filter_url(:tag => tag.name) %>
           <% end %></li>
         </ul>
       </div>
@@ -263,55 +204,72 @@
 
         
     <br>
- <div class="back-footer">
-	<%= link_to 'Add Design', new_campaign_art_path(@campaign) %>
-	<%= link_to 'Design Center', campaign_arts_path %>
-</div>
+    <div class="art-footer">
+      <%= link_to 'New Design', new_campaign_art_path %>
+    </div>
 
   </section>
 
 
 
 
-
-<script>
-$('.star-rating').raty({
-	path: '/assets/',
-	readOnly: true,
-  score: function() {
-    return $(this).attr('data-score');
-  }
-});
-</script>
-
 <script>
 $(function(){
 
 
     // Enabling Popover Example 2 - JS (hidden content and title capturing)
-    $("#popoverExampleTwo").popover({
+    $(".popoverExampleTwo").popover({
         html : true, 
         content: function() {
-          return $('#popoverExampleTwoHiddenContent').html();
+          return $('.popoverExampleTwoHiddenContent').html();
         },
         title: function() {
-          return $('#popoverExampleTwoHiddenTitle').html();
+          return $('.popoverExampleTwoHiddenTitle').html();
         }
     });
 
      // Enabling Popover Example 2 - JS (hidden content and title capturing)
-    $("#popoverExampleThree").popover({
+    $(".popoverExampleThree").popover({
         html : true, 
         content: function() {
-          return $('#popoverExampleThreeHiddenContent').html();
+          return $('.popoverExampleThreeHiddenContent').html();
         },
         title: function() {
-          return $('#popoverExampleThreeHiddenTitle').html();
+          return $('.popoverExampleThreeHiddenTitle').html();
         }
     });
 
 });
 
+</script>
+
+  <script type="text/javascript">
+    $('[data-countdown]').each(function() {
+      var $this = $(this), finalDate = $(this).data('countdown');
+    
+    $this.countdown(finalDate)
+
+    .on('update.countdown', function(event) {
+      var format = '%-H hr %-M min %-S sec';
+      var format2 = '%-H hr %-M min';  
+      if (event.offset.days < 1) {
+          $this.closest('.price-info').addClass('red-status');
+      }   
+      if(event.offset.days > 0) {
+        format = '%-d day%!d, ' + format2;
+      }
+      if(event.offset.weeks > 0) {
+        format = '%-w week%!w ' + format2;
+      }
+    
+     $(this).html(event.strftime(format));
+   })
+   .on('finish.countdown', function(event) {
+     $(this).html('Closed for Submissions');
+    $this.closest('.timer-button').addClass('disabled').attr('disabled', 'disabled');
+      });
+    
+    });
 </script>
 
 

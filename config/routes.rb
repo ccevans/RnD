@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get 'pages/lyriclab'
 
-  get 'tagged' => 'lyrics#tagged', :as => 'tagged'
+  get 'tagged' => 'posts#tagged', :as => 'tagged'
 
   devise_for :users, :controllers => { :invitations => 'user/invitation', omniauth_callbacks: 'user/omniauth_callbacks'}
 
@@ -18,9 +18,14 @@ resources :posts do
 end
 
   resources :campaigns do
-    resources :lyrics
+      resources :lyrics 
+      resources :arts
 
-      resources :arts 
+
+    get 'tagged' => 'arts#tagged', :as => 'filter'
+    get 'tagged' => 'lyrics#tagged', :as => 'tagged'
+
+    
   end
 
 resources :lyrics, only: [] do
@@ -35,6 +40,14 @@ resources :lyrics, only: [] do
 
 
   resources :arts, only: [] do
+    member do
+      put "voteof1", to: "arts#voteof1"
+      put "voteof2", to: "arts#voteof2"
+      put "voteof3", to: "arts#voteof3"
+      put "voteof4", to: "arts#voteof4"
+      put "voteof5", to: "arts#voteof5"
+    end
+
     resources :ratings
     resources :commentarts, shallow: true
   end

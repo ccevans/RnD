@@ -16,91 +16,118 @@
 
 <div class="tagcloud">
          <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
-            <%= link_to tag.name, tagged_url(tag.name), :class => css_class %>
+            <%= link_to tag.name, campaign_filter_url(:tag => tag.name), :class => css_class %>
         <% end %>
     </div>
 
 <section class="art-section">
+
+    <%= link_to 'Most Liked', :controller => 'arts', :sort_by => 'most_liked' %>
+
+    <%= link_to 'Most Viewed', :controller => 'arts', :sort_by => 'most_viewed' %>
+
+   <%= link_to 'Most Recent', :controller => 'arts', :sort_by => 'most_recent' %>
 
 
 <div id="arts" class="transitions-enabled">
     
       <% @arts.each do |art| %>
         <div class="container-art">
-            <div class="art-box">
-
-                 <% @current_ratings.each do | current_rating| %>
-                    Voted: <div class="star-rating" data-score= <%= current_rating.rate %> ></div>
-                    <% end %>
-
-
-
-              <div class="vote-box">
-                  <%= art.ratings.count %></br>Votes
-              </div>
-
-                <% if user_signed_in? %>
-
-                  <% if @current_ratings.empty? || @current_ratings.nil? %>
-                  
-                      <%= simple_form_for([art, art.ratings.build]) do |f| %>
-                      <%= f.error_notification %>
-
-                    <div class="field">
-                      <div class="star-rating"></div>
-                    </div>
-                        <%= f.hidden_field :art_id, value: art.id %>
-                      <%= f.button :submit, "Rate" %>
-                      
-                    <% end %>
-                  <% else %>
-
-                    <% @current_ratings.each do | current_rating| %>
-                    Voted: <div class="star-rating" data-score= <%= current_rating.rate %> ></div>
-                    <% end %>
-
-                    
-                  <% end %>
-                <% else %>
-                
-                  <%= simple_form_for([art, art.ratings.build]) do |f| %>
-                  <%= f.error_notification %>
-
-                <div class="field">
-                  <div class="star-rating"></div>
-                </div>
-                    <%= f.hidden_field :art_id, value: art.id %>
-                  <%= f.button :submit, "Rate" %>
-                  
-                <% end %>
-            <% end %>
-              <div class="rate-box">
-                <%= @avg_rating %></br>Avg Score
-              </div>
-          </div>
-         
+     
+         <div class="container-art2">
           <%= link_to campaign_art_path(@campaign, art) do %>
             <%= image_tag art.image.url(:small) %>
           <% end %>
+
+        </div>
+
+        <div class="container-extra">
+           <ul>
+      <li>
+        <h2><span class="timer-line" data-countdown= <%= art.campaign.timer2 %>></span></h2>
+          
+        <h2><%= art.get_upvotes.size %> Votes</h2>
+
+        <% if art.get_upvotes.size == 0 %>
+        <h2>No votes yet</h2>
+        <% else %>
+        <h2><%= art.get_upvotes.sum(:vote_weight) / art.get_upvotes.size %> / 5</h2>
+        <% end %>
+
+          <%= link_to voteof1_art_path(art), method: :put do %>
+            <h2>1</h2>
+              <% end %>
+              <%= link_to voteof2_art_path(art), method: :put do %>
+            <h2>2</h2>
+              <% end %>
+              <%= link_to voteof3_art_path(art), method: :put do %>
+            <h2>3</h2>
+              <% end %>
+              <%= link_to voteof4_art_path(art), method: :put do %>
+            <h2>4</h2>
+              <% end %>
+              <%= link_to voteof5_art_path(art), method: :put do %>
+            <h2>5</h2>
+              <% end %>
+
+      </li>
+    </ul>
 
     
 
          <ul>
               <li><%= art.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
               <li>
-                  <%= pluralize(art.ratings.count, "Vote") %> 
+                  Add Rating Count 
               </li>
 
             <li><%= art.commentarts.count %> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></li>
-              <li><%= image_tag art.user.avatar.url(:mini) %><%= link_to art.user.username, profile_url(:id => art.user.username) %></li>
+              <li><a class="popoverExampleTwo" data-placement="auto left" data-trigger="click" return false;><%= image_tag art.user.avatar.url(:mini) %></a><%= link_to art.user.username, profile_url(:id => art.user.username) %></li>
+
+                          <!-- Popover 2 hidden content -->
+                          <div class="popoverExampleTwoHiddenContent" style="display: none">
+                             <div>
+                              <%= image_tag art.user.avatar.url(:thumb) %>
+                                  <%= link_to art.user.username, profile_url(:id => art.user.username) %>
+                                  
+                                  </br>
+                                  <div class="following-show">
+                                    <p><%= art.user.follow_count %> Following  | 
+                                    <%= art.user.followers_count %> Followers</p>
+                                    <% if user_signed_in? %>
+                                      <% if current_user == art.user %>
+                                        <p></p>
+                                      <% elsif  art.user.all_following.include?(current_user) %>
+                                        <%= link_to "Unfollow", unfollow_profile_path(art.user.username) %>
+                                      <% else %>
+                                        <%= link_to "Follow", follow_profile_path(art.user.username) %>
+                                      <% end %>
+                                    <% else %>
+                                      <p><%= link_to "Sign Up To Follow", new_user_registration_path %></p>
+                                    <% end %>
+                                  </div>
+                                  <hr>
+                                  <div class="points-show">
+                                    Points | <%= art.user.points %>
+                                  </div>
+
+
+                             </div>
+                          </div>  
+                          <!-- Popover 2 hidden title -->
+                          <div class="popoverExampleTwoHiddenTitle" style="display: none">
+                             
+                          </div> 
+
           </ul>
           <br />
         <ul class="tag-list">
         <li><% art.tags.any? %>
           <% art.tags.each do |tag| %>
-          <%= link_to tag.name, tagged_url(:tag => tag.name) %>
+          <%= link_to tag.name, campaign_filter_url(:tag => tag.name) %>
           <% end %></li>
         </ul>
+      </div>
       </div>
       <% end %>
 </div>
@@ -122,10 +149,20 @@
 <%= image_tag 'lyric-background3.png', :class => "background-lyric" %>
 
 
+<script>
+$(function(){
 
-  <script>
-$('.star-rating').raty({
-  path: '/assets/',
-  scoreName: 'rating[rate]'
+
+    // Enabling Popover Example 2 - JS (hidden content and title capturing)
+    $(".popoverExampleTwo").popover({
+        html : true, 
+        content: function() {
+          return $('.popoverExampleTwoHiddenContent').html();
+        },
+        title: function() {
+          return $('.popoverExampleTwoHiddenTitle').html();
+        }
+    });
 });
+
 </script>

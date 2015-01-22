@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
 	acts_as_votable
-	is_impressionable
+	is_impressionable :counter_cache => true, :column_name => :counter_cache, :unique => :request_hash
 	belongs_to :user
 	has_many :commentposts
 	acts_as_taggable_on :tags

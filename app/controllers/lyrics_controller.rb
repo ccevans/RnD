@@ -1,19 +1,29 @@
 class LyricsController < ApplicationController
 	
-	before_action :tag_cloud, :only => [:index]
+	before_action :tag_cloud, :only => [:index, :tagged]
 	has_scope :by_tags
 	load_and_authorize_resource :only => [:show, :edit, :update, :destroy]
 	before_action :find_post, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
 	before_action :set_campaign, except: [:upvote, :downvote]
-	before_action :authenticate_user!, except: [:index, :show]
+	before_action :authenticate_user!, except: [:index, :show, :tagged]
 	impressionist :actions => [:show,:index], :unique => [:impressionable_type, :impressionable_id, :session_hash]
 	
 	
 	
 
 	def index
-		@lyrics = apply_scopes(Lyric).all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
-		@rating = Rating.new
+
+		case params[:sort_by]
+	      when 'most_liked'
+	        @lyrics = apply_scopes(Lyric).all.order(:cached_votes_up => :desc).paginate(:page => params[:page], :per_page => 10)
+	       when 'most_viewed'
+	        @lyrics = apply_scopes(Lyric).all.order(:counter_cache => :desc).paginate(:page => params[:page], :per_page => 10)
+	      when 'most_recent'
+	        @lyrics = apply_scopes(Lyric).all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+	      else
+	        @lyrics = apply_scopes(Lyric).all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+	    end
+
 	end
 
 	def show
@@ -28,7 +38,7 @@ class LyricsController < ApplicationController
 		end
 
 		if @lyric == Lyric.first
-			@previous_lyric = Lyric.order(id: :asc).first
+			@previous_lyric = Lyric.order(id: :asc).last
 		else
 			@previous_lyric = Lyric.where("id < ?", @lyric).order(id: :desc).first
 		end
@@ -82,9 +92,10 @@ class LyricsController < ApplicationController
 	def tagged
 
   		if params[:tag].present? 
-    		@lyrics = Lyric.tagged_with(params[:tag]).order("created_at desc")
+    		@lyrics = Lyric.tagged_with(params[:tag]).order("created_at desc").paginate(:page => params[:page], :per_page => 10)
   		else 
-    		@lyrics = Lyric.all.order("created_at desc")
+    		@lyrics = apply_scopes(Lyric).all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+
   		end  
 	end
 

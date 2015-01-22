@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150109040636) do
+ActiveRecord::Schema.define(version: 20150122005008) do
 
   create_table "adminlyrics", force: true do |t|
     t.text     "line"
@@ -38,7 +38,24 @@ ActiveRecord::Schema.define(version: 20150109040636) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "campaign_id"
+    t.string   "timer"
+    t.integer  "cached_votes_total",      default: 0
+    t.integer  "cached_votes_score",      default: 0
+    t.integer  "cached_votes_up",         default: 0
+    t.integer  "cached_votes_down",       default: 0
+    t.integer  "cached_weighted_score",   default: 0
+    t.integer  "cached_weighted_total",   default: 0
+    t.float    "cached_weighted_average", default: 0.0
+    t.integer  "counter_cache",           default: 0
   end
+
+  add_index "arts", ["cached_votes_down"], name: "index_arts_on_cached_votes_down"
+  add_index "arts", ["cached_votes_score"], name: "index_arts_on_cached_votes_score"
+  add_index "arts", ["cached_votes_total"], name: "index_arts_on_cached_votes_total"
+  add_index "arts", ["cached_votes_up"], name: "index_arts_on_cached_votes_up"
+  add_index "arts", ["cached_weighted_average"], name: "index_arts_on_cached_weighted_average"
+  add_index "arts", ["cached_weighted_score"], name: "index_arts_on_cached_weighted_score"
+  add_index "arts", ["cached_weighted_total"], name: "index_arts_on_cached_weighted_total"
 
   create_table "badges_sashes", force: true do |t|
     t.integer  "badge_id"
@@ -190,7 +207,23 @@ ActiveRecord::Schema.define(version: 20150109040636) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "campaign_id"
+    t.integer  "cached_votes_total",      default: 0
+    t.integer  "cached_votes_score",      default: 0
+    t.integer  "cached_votes_up",         default: 0
+    t.integer  "cached_votes_down",       default: 0
+    t.integer  "cached_weighted_score",   default: 0
+    t.integer  "cached_weighted_total",   default: 0
+    t.float    "cached_weighted_average", default: 0.0
+    t.integer  "counter_cache",           default: 0
   end
+
+  add_index "lyrics", ["cached_votes_down"], name: "index_lyrics_on_cached_votes_down"
+  add_index "lyrics", ["cached_votes_score"], name: "index_lyrics_on_cached_votes_score"
+  add_index "lyrics", ["cached_votes_total"], name: "index_lyrics_on_cached_votes_total"
+  add_index "lyrics", ["cached_votes_up"], name: "index_lyrics_on_cached_votes_up"
+  add_index "lyrics", ["cached_weighted_average"], name: "index_lyrics_on_cached_weighted_average"
+  add_index "lyrics", ["cached_weighted_score"], name: "index_lyrics_on_cached_weighted_score"
+  add_index "lyrics", ["cached_weighted_total"], name: "index_lyrics_on_cached_weighted_total"
 
   create_table "merit_actions", force: true do |t|
     t.integer  "user_id"
@@ -240,7 +273,23 @@ ActiveRecord::Schema.define(version: 20150109040636) do
     t.datetime "image_updated_at"
     t.string   "videolink"
     t.string   "audiolink"
+    t.integer  "cached_votes_total",      default: 0
+    t.integer  "cached_votes_score",      default: 0
+    t.integer  "cached_votes_up",         default: 0
+    t.integer  "cached_votes_down",       default: 0
+    t.integer  "cached_weighted_score",   default: 0
+    t.integer  "cached_weighted_total",   default: 0
+    t.float    "cached_weighted_average", default: 0.0
+    t.integer  "counter_cache",           default: 0
   end
+
+  add_index "posts", ["cached_votes_down"], name: "index_posts_on_cached_votes_down"
+  add_index "posts", ["cached_votes_score"], name: "index_posts_on_cached_votes_score"
+  add_index "posts", ["cached_votes_total"], name: "index_posts_on_cached_votes_total"
+  add_index "posts", ["cached_votes_up"], name: "index_posts_on_cached_votes_up"
+  add_index "posts", ["cached_weighted_average"], name: "index_posts_on_cached_weighted_average"
+  add_index "posts", ["cached_weighted_score"], name: "index_posts_on_cached_weighted_score"
+  add_index "posts", ["cached_weighted_total"], name: "index_posts_on_cached_weighted_total"
 
   create_table "ratings", force: true do |t|
     t.integer  "rate"
@@ -316,6 +365,7 @@ ActiveRecord::Schema.define(version: 20150109040636) do
     t.string   "location"
     t.text     "bio"
     t.string   "type"
+    t.string   "passion"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

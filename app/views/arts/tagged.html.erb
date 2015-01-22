@@ -1,34 +1,58 @@
-<h1>Designs Center</h1>
+<section class="main-section">
+<% if user_signed_in? %>
+  <div class="header-art">
+    <h1>The Design Center</h1>
+    <h2><%= current_user.name %></h2>
+    <p>Help us vote on our community designs.  Or contribute your own.  <br /><%= link_to "Submit Design", '/campaigns/2/arts/new' %></p>
+
+  </div>  
+<% else %>
+  <div class="header-art">
+     <h1>The Design Center</h1>
+    <h2><%= link_to "Join To Contribute", new_user_registration_path %></h2>
+    <p>Help us vote on our community designs.  Or contribute your own.  <br /><%= link_to "Submit Design", '/campaigns/2' %></p>
+  </div>  
+<% end %>
 
 <div class="tagcloud">
          <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
-            <%= link_to tag.name, tagged_url(tag.name), :class => css_class %>
+            <%= link_to tag.name, campaign_filter_url(:tag => tag.name), :class => css_class %>
         <% end %>
     </div>
+
+<section class="art-section">
+
+    <%= link_to 'Most Liked', :controller => 'arts', :sort_by => 'most_liked' %>
+
+   <%= link_to 'Most Recent', :controller => 'arts', :sort_by => 'most_recent' %>
+
 
 <div id="arts" class="transitions-enabled">
     
       <% @arts.each do |art| %>
-        <div class="container-md">
+        <div class="container-art">
+     
+         
           <%= link_to campaign_art_path(@campaign, art) do %>
             <%= image_tag art.image.url(:small) %>
           <% end %>
 
+    
+
          <ul>
               <li><%= art.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
-             <li><%= art.get_upvotes.size %> 
-                <%= link_to like_campaign_art_path(@campaign_art), method: :get do %>
-                <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                <% end %>
-            </li>
-            <li><%= art.comments.count %> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></li>
+              <li>
+                  Add Rating Count 
+              </li>
+
+            <li><%= art.commentarts.count %> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></li>
               <li><%= image_tag art.user.avatar.url(:mini) %><%= link_to art.user.username, profile_url(:id => art.user.username) %></li>
           </ul>
           <br />
         <ul class="tag-list">
         <li><% art.tags.any? %>
           <% art.tags.each do |tag| %>
-          <%= link_to tag.name, tagged_url(:tag => tag.name) %>
+          <%= link_to tag.name, campaign_filter_url(:tag => tag.name) %>
           <% end %></li>
         </ul>
       </div>
@@ -45,3 +69,8 @@
     <div class="art-footer">
       <%= link_to 'New Design', new_campaign_art_path %>
     </div>
+
+  </section>
+</section>
+
+<%= image_tag 'lyric-background3.png', :class => "background-lyric" %>

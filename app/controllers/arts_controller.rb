@@ -1,37 +1,31 @@
 class ArtsController < ApplicationController
-	before_action :tag_cloud, :only => [:index]
+	before_action :tag_cloud, :only => [:index, :tagged]
+	has_scope :by_tags
 	load_and_authorize_resource :only => [:show, :edit, :update, :destroy]
-	before_action :find_post, only: [:show, :edit, :update, :destroy]
-	before_action :set_campaign
-	before_action :authenticate_user!, except: [:index, :show]
+	before_action :find_post, only: [:show, :edit, :update, :destroy, :voteof1, :voteof2, :voteof3, :voteof4, :voteof5]
+	before_action :set_campaign, except: [:voteof1, :voteof2, :voteof3, :voteof4, :voteof5]
+	before_action :authenticate_user!, except: [:index, :show, :tagged]
 	impressionist :actions=>[:show,:index], :unique => [:impressionable_type, :impressionable_id, :session_hash]
+	
 
 
 	def index
-		@arts = Art.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
-		
-		@rating = Rating.new(art_id: @art)
-
-		@ratings = Rating.where(art_id: @art)
-
-		@current_ratings = Rating.where(art_id: @art, user_id: current_user.id).all.order("created_at DESC")
-
-
-		if @ratings.blank?
-			@avg_rating = 0
-		else
-			@avg_rating = @ratings.average(:rate).round(2)
-		end
+		case params[:sort_by]
+	      when 'most_liked'
+	        @arts = apply_scopes(Art).all.order(:cached_weighted_total => :desc).paginate(:page => params[:page], :per_page => 10)
+	    	when 'most_viewed'
+	        @arts = apply_scopes(Art).all.order(:counter_cache => :desc).paginate(:page => params[:page], :per_page => 10)
+	      when 'most_recent'
+	        @arts = apply_scopes(Art).all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+	      else
+			@arts = apply_scopes(Art).all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+	    end
 		
 	end
 
 	def show
 		@commentarts = Commentart.where(art_id: @art)
-		@ratings = Rating.where(art_id: @art)
 		
-		@current_ratings = Rating.where(art_id: @art, user_id: current_user.id).all.order("created_at DESC")
-		
-
 		@random_art = Art.where.not(id: @art).order("RANDOM()").first
 
 		@random_arts = Art.where.not(id: @art).order("RANDOM()").take(5)
@@ -43,17 +37,11 @@ class ArtsController < ApplicationController
 		end
 
 		if @art == Art.first
-			@previous_art = Art.order(id: :asc).first
+			@previous_art = Art.order(id: :asc).last
 		else
 			@previous_art = Art.where("id < ?", @art).order(id: :desc).first
 		end
 
-
-		if @ratings.blank?
-			@avg_rating = 0
-		else
-			@avg_rating = @ratings.average(:rate).round(2)
-		end
 	end
 
 	def new
@@ -90,18 +78,45 @@ class ArtsController < ApplicationController
 		redirect_to root_path
 	end
 
+
 	def tagged
   		if params[:tag].present? 
-    		@arts = Art.tagged_with(params[:tag]).order("created_at desc")
+    		@arts = Art.tagged_with(params[:tag]).order("created_at desc").paginate(:page => params[:page], :per_page => 10)
   		else 
-    		@arts = Art.all.order("created_at desc")
-  		end  
+    		@arts = apply_scopes(Art).all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+  		end 
 	end
 
 	def tag_cloud
 		
    		 @tags = Art.tag_counts_on(:tags)
   	end
+
+  	def voteof1
+		@art.vote_by :voter => current_user, :vote => 'one', :vote_weight => 1
+		redirect_to :back
+   
+	end
+
+	def voteof2
+		@art.vote_by :voter => current_user, :vote => 'two', :vote_weight => 2
+		redirect_to :back
+	end
+
+	def voteof3
+		@art.vote_by :voter => current_user, :vote => 'three', :vote_weight => 3
+		redirect_to :back
+	end
+
+	def voteof4
+		@art.vote_by :voter => current_user, :vote => 'four', :vote_weight => 4
+		redirect_to :back
+	end
+
+	def voteof5
+		@art.vote_by :voter => current_user, :vote => 'five', :vote_weight => 5
+		redirect_to :back
+	end
 
 
 	private
@@ -115,7 +130,7 @@ class ArtsController < ApplicationController
 	end
 
 	def post_params
-		params.require(:art).permit( :image, :description, :artist, :typeart, :link)
+		params.require(:art).permit( :image, :description, :artist, :typeart, :link, :tag_list)
 	end
 
 

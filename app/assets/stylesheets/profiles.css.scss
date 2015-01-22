@@ -25,3 +25,22 @@ div.profile-box div.profile-bio {font-size: 18px; line-height: 18px; font-family
 div.profile-box div.profile-location {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #000; width: 100%; margin: 10px 0;}
 div.profile-box h2 {text-align: center; font-size: 14px; line-height: 14px; margin: 0px 0 5px 0; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #bdc3c7;}
 div.profile-box h1 {text-align: center; margin: 5px 0; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #000;}
+
+.container-profiles {width: 200px; margin: 25px; }
+#profiles {margin: 0 auto;}
+
+div.container-profiles a {color: #fff; font-size: 30px; line-height: 34px; text-align: left; font-family: 'Fredoka One', cursive; text-shadow: 0px 0px #bdc3c7;}
+div.container-profiles a:hover {color: #95a5a6; font-size: 30px; line-height: 34px; text-align: left; text-decoration: none; border: none; text-shadow: 0px 0px #bdc3c7;}
+
+
+
+div.container-profiles ul {list-style:none; color: #fff; clear: both;}
+div.container-profiles ul li {float: left; padding: 5px; width: auto;}
+
+div.container-profiles ul li img {-moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px; margin: 0 5px;}
+
+div.container-profiles ul li a {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #fff; text-shadow: none;}
+div.container-profiles ul li a:hover {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #f1c40f; text-shadow: none;}
+
+.profile-section-index {float: left; border-top: 0px solid #fff; width: 100%; margin: 0 0 0 0; padding: 25px 0; z-index: 10; background-color: #000; background: url('stardust4.png');}
+

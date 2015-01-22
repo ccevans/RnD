@@ -1,13 +1,13 @@
 
-<section class="lyric-section">
+<section class="profile-section-index">
 
-  <div id="lyrics" class="transitions-enabled">
+  <div id="profiles" class="transitions-enabled">
 		<% @users.each do |user| %>
 
-			 <div class="container-md">
+			 <div class="container-profiles">
 					<%= image_tag user.avatar.url(:thumb) %>
 				   <div class="user-row"><%= link_to user.username, "/profiles/#{user.username}" %></div>
-				   <div class="user-row"><%= user.bio %></div>
+				   <div class="user-row"><%= user.passion %></div>
 				   <div class="user-row"><%= user.location %></div>
 		   	</div>
 

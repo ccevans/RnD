@@ -1,52 +1,68 @@
-<h1>Lyrics Center</h1>
+<section class="main-section">
+    <% if user_signed_in? %>
+      <div class="header-lyric">
+        <h1>The Rhyme Center</h1>
+        <h2><%= current_user.name %></h2>
+        <p>Vote on your favorite lyrics or contribute the lyrics from your favorite artists.  <br />
+          <%= link_to "Submit Lyrics", '/campaigns/2/lyrics/new' %></p>
+      </div>  
+    <% else %>
+      <div class="header-lyric">
+         <h1>The Rhyme Center</h1>
+        <h2><%= link_to "Join To Contribute", new_user_registration_path %></h2>
+        <p>Vote on your favorite lyrics or contribute the lyrics from your favorite artists. <br />
+          <%= link_to "Submit Lyrics", '/campaigns/2' %></p>
+      </div>  
+    <% end %>
+
     <div class="tagcloud">
          <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
-            <%= link_to tag.name, tagged_url(tag.name), :class => css_class %>
+            <%= link_to tag.name, campaign_tagged_url(:tag => tag.name), :class => css_class %>
         <% end %>
     </div>
-  <div id="lyrics" class="transitions-enabled">
-    <% @lyrics.each do |lyric| %>
-    <div class="container-md">
 
-        
-        <%= link_to lyric.line, campaign_lyric_path(@campaign, lyric) %>
-        <ul>
-        <li><%= lyric.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
-        <li><%= lyric.get_upvotes.size %> 
-          <%= link_to like_campaign_lyric_path(@campaign_lyric), method: :get do %>
-              <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-            <% end %>
-          </li>
-        <li><%= lyric.comments.count %> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></li>
-        <li><%= image_tag lyric.user.avatar.url(:mini) %><%= link_to lyric.user.username, profile_url(:id => lyric.user.username) %></li>
-        </ul>
-        <br />
-        <ul class="tag-list">
-        <li><% lyric.tags.any? %>
-          <% lyric.tags.each do |tag| %>
-          <%= link_to tag.name, tagged_url(:tag => tag.name) %>
-          <% end %></li>
-        </ul>
-     
-      
+    <section class="lyric-section">
+
+      <div id="lyrics" class="transitions-enabled">
+        <% @lyrics.each do |lyric| %>
+        <div class="container-md">
+
+            
+            <%= link_to lyric.line, campaign_lyric_path(@campaign, lyric) %>
+            <ul>
+            <li><%= lyric.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
+            <li><%= lyric.get_upvotes.size %> 
+              <%= link_to like_lyric_path(lyric), method: :get do %>
+                  <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+                <% end %>
+              </li>
+            <li><%= lyric.comments.count %> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></li>
+            <li><%= image_tag lyric.user.avatar.url(:mini) %><%= link_to lyric.user.username, profile_url(:id => lyric.user.username) %></li>
+            </ul>
+            <br />
+            <ul class="tag-list">
+            <li><% lyric.tags.any? %>
+              <% lyric.tags.each do |tag| %>
+              <%= link_to tag.name, campaign_tagged_url(:tag => tag.name) %>
+              <% end %></li>
+            </ul>
+         
+          
+          </div>
+        <% end %>
       </div>
-    <% end %>
-  </div>
 
-  
+        <br>
+        <div class="paginate-box">
+          <%= will_paginate @lyrics, renderer: BootstrapPagination::Rails %>
+        </div>
 
- <br>
-    <div class="center">
-      <%= will_paginate @lyrics, renderer: BootstrapPagination::Rails %>
-    </div>
-
-   
-
-        
-    <br>
-    <div class="lyric-footer">
-      <%= link_to 'New Lyric', new_campaign_lyric_path %>
-    </div>
+        <br>
+        <div class="lyric-footer">
+          <%= link_to 'New Lyric', new_campaign_lyric_path %>
+        </div>
+    </section>
+</section>
 
 
-
+<%= image_tag 'lyric-background3.png', :class => "background-lyric" %>

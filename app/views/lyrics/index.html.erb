@@ -16,11 +16,17 @@
 
     <div class="tagcloud">
          <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
-            <%= link_to tag.name, tagged_url(tag.name), :class => css_class %>
+            <%= link_to tag.name, campaign_tagged_url(:tag => tag.name), :class => css_class %>
         <% end %>
     </div>
 
 <section class="lyric-section">
+
+  <%= link_to 'Most Liked', :controller => 'lyrics', :sort_by => 'most_liked' %>
+
+   <%= link_to 'Most Viewed', :controller => 'lyrics', :sort_by => 'most_viewed' %>
+
+   <%= link_to 'Most Recent', :controller => 'lyrics', :sort_by => 'most_recent' %>
 
   <div id="lyrics" class="transitions-enabled">
     <% @lyrics.each do |lyric| %>
@@ -36,13 +42,49 @@
             <% end %>
           </li>
         <li><%= lyric.comments.count %> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></li>
-        <li><%= image_tag lyric.user.avatar.url(:mini) %><%= link_to lyric.user.username, profile_url(:id => lyric.user.username) %></li>
+        <li><a class="popoverExampleTwo" data-placement="auto left" data-trigger="click" return false;><%= image_tag lyric.user.avatar.url(:mini) %></a><%= link_to lyric.user.username, profile_url(:id => lyric.user.username) %></li>
+
+                    <!-- Popover 2 hidden content -->
+                          <div class="popoverExampleTwoHiddenContent" style="display: none">
+                             <div>
+                              <%= image_tag lyric.user.avatar.url(:thumb) %>
+                                  <%= link_to lyric.user.username, profile_url(:id => lyric.user.username) %>
+                                  
+                                  </br>
+                                  <div class="following-show">
+                                    <p><%= lyric.user.follow_count %> Following  | 
+                                    <%= lyric.user.followers_count %> Followers</p>
+                                    <% if user_signed_in? %>
+                                      <% if current_user == lyric.user %>
+                                        <p></p>
+                                      <% elsif  lyric.user.all_following.include?(current_user) %>
+                                        <%= link_to "Unfollow", unfollow_profile_path(lyric.user.username) %>
+                                      <% else %>
+                                        <%= link_to "Follow", follow_profile_path(lyric.user.username) %>
+                                      <% end %>
+                                    <% else %>
+                                      <p><%= link_to "Sign Up To Follow", new_user_registration_path %></p>
+                                    <% end %>
+                                  </div>
+                                  <hr>
+                                  <div class="points-show">
+                                    Points | <%= lyric.user.points %>
+                                  </div>
+
+
+                             </div>
+                          </div>  
+                          <!-- Popover 2 hidden title -->
+                          <div class="popoverExampleTwoHiddenTitle" style="display: none">
+                             
+                          </div> 
+
         </ul>
         <br />
         <ul class="tag-list">
         <li><% lyric.tags.any? %>
           <% lyric.tags.each do |tag| %>
-          <%= link_to tag.name, tagged_url(:tag => tag.name) %>
+          <%= link_to tag.name, campaign_tagged_url(:tag => tag.name) %>
           <% end %></li>
         </ul>
      
@@ -70,3 +112,22 @@
 
 
 <%= image_tag 'lyric-background3.png', :class => "background-lyric" %>
+
+
+<script>
+$(function(){
+
+
+    // Enabling Popover Example 2 - JS (hidden content and title capturing)
+    $(".popoverExampleTwo").popover({
+        html : true, 
+        content: function() {
+          return $('.popoverExampleTwoHiddenContent').html();
+        },
+        title: function() {
+          return $('.popoverExampleTwoHiddenTitle').html();
+        }
+    });
+});
+
+</script>

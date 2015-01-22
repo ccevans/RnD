@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
         devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:name, :username, :email, :password, :role) }
-        devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:name, :username, :email, :password, :current_password, :avatar, :role, :profileimg, :website, :location, :bio, {booths_attributes: [:id, :song, :_destroy]}, {galleries_attributes: [:id, :picture, :_destroy]}) }
+        devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:name, :username, :email, :password, :current_password, :avatar, :role, :profileimg, :website, :location, :bio, :passion, {booths_attributes: [:id, :song, :_destroy]}, {galleries_attributes: [:id, :picture, :_destroy]}) }
     end
 
   rescue_from CanCan::AccessDenied do |exception|

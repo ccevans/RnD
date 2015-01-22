@@ -101,14 +101,14 @@
 
 		   <ul>
 
-        	<li>Posted By: <a href="#" id="popoverExampleTwo" data-placement="auto left" data-trigger="click"><%= image_tag @post.user.avatar.url(:mini) %><%= link_to @post.user.username, profile_url(:id => @post.user.username) %></a></li>
+        	<li>Posted By: <a href="#" class="popoverExampleTwo" data-placement="auto left" data-trigger="click"><%= image_tag @post.user.avatar.url(:mini) %><%= link_to @post.user.username, profile_url(:id => @post.user.username) %></a></li>
         	
         </ul>
      
 
 
   <!-- Popover 2 hidden content -->
-  <div id="popoverExampleTwoHiddenContent" style="display: none">
+  <div class="popoverExampleTwoHiddenContent" style="display: none">
      <div>
      	<%= image_tag @post.user.avatar.url(:thumb) %>
 					<%= link_to @post.user.username, profile_url(:id => @post.user.username) %>
@@ -138,7 +138,7 @@
      </div>
   </div>  
   <!-- Popover 2 hidden title -->
-  <div id="popoverExampleTwoHiddenTitle" style="display: none">
+  <div class="popoverExampleTwoHiddenTitle" style="display: none">
      
   </div> 
 
@@ -206,7 +206,47 @@
             <% end %>
           </li>
         <li><%= random_post.commentposts.count %> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></li>
-        <li><%= image_tag random_post.user.avatar.url(:mini) %><%= link_to random_post.user.username, profile_url(:id => random_post.user.username) %></li>
+        <li><a class="popoverExampleTwo" data-placement="auto left" data-trigger="click" return false;><%= image_tag random_post.user.avatar.url(:mini) %></a><%= link_to random_post.user.username, profile_url(:id => random_post.user.username) %></li>
+        					<!-- Popover 2 hidden content -->
+                          <div class="popoverExampleTwoHiddenContent" style="display: none">
+                             <div>
+                              <%= image_tag random_post.user.avatar.url(:thumb) %>
+                                  <%= link_to random_post.user.username, profile_url(:id => random_post.user.username) %>
+                                  
+                                  </br>
+                                  <div class="following-show">
+                                    <p><%= random_post.user.follow_count %> Following  | 
+                                    <%= random_post.user.followers_count %> Followers</p>
+                                    <% if user_signed_in? %>
+                                      <% if current_user == random_post.user %>
+                                        <p></p>
+                                      <% elsif  random_post.user.all_following.include?(current_user) %>
+                                        <%= link_to "Unfollow", unfollow_profile_path(random_post.user.username) %>
+                                      <% else %>
+                                        <%= link_to "Follow", follow_profile_path(random_post.user.username) %>
+                                      <% end %>
+                                    <% else %>
+                                      <p><%= link_to "Sign Up To Follow", new_user_registration_path %></p>
+                                    <% end %>
+                                  </div>
+                                  <hr>
+                                  <div class="points-show">
+                                    Points | <%= random_post.user.points %>
+                                  </div>
+
+
+                             </div>
+                          </div>  
+                          <!-- Popover 2 hidden title -->
+                          <div class="popoverExampleTwoHiddenTitle" style="display: none">
+                             
+                          </div> 
+
+
+
+
+
+
         </ul>
         <br />
         <ul class="tag-list">
@@ -233,24 +273,24 @@ $(function(){
 
 
     // Enabling Popover Example 2 - JS (hidden content and title capturing)
-    $("#popoverExampleTwo").popover({
+    $(".popoverExampleTwo").popover({
         html : true, 
         content: function() {
-          return $('#popoverExampleTwoHiddenContent').html();
+          return $('.popoverExampleTwoHiddenContent').html();
         },
         title: function() {
-          return $('#popoverExampleTwoHiddenTitle').html();
+          return $('.popoverExampleTwoHiddenTitle').html();
         }
     });
 
      // Enabling Popover Example 2 - JS (hidden content and title capturing)
-    $("#popoverExampleThree").popover({
+    $(".popoverExampleThree").popover({
         html : true, 
         content: function() {
-          return $('#popoverExampleThreeHiddenContent').html();
+          return $('.popoverExampleThreeHiddenContent').html();
         },
         title: function() {
-          return $('#popoverExampleThreeHiddenTitle').html();
+          return $('.popoverExampleThreeHiddenTitle').html();
         }
     });
 

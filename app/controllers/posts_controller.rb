@@ -2,14 +2,23 @@ class PostsController < ApplicationController
 	before_action :find_post, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
 	before_action :authenticate_user!, except: [:index, :show]
 	has_scope :by_tags
-	before_action :tag_cloud, :only => [:index]
+	before_action :tag_cloud, :only => [:index, :tagged]
 	load_and_authorize_resource :only => [:show, :edit, :update, :destroy]
 	impressionist :actions => [:show,:index], :unique => [:impressionable_type, :impressionable_id, :session_hash]
 
 
 
 	def index
-		@posts = apply_scopes(Post).all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+		case params[:sort_by]
+	      when 'most_liked'
+	        @posts = apply_scopes(Post).all.order(:cached_votes_up => :desc).paginate(:page => params[:page], :per_page => 10)
+	    when 'most_viewed'
+	        @posts = apply_scopes(Post).all.order(:counter_cache => :desc).paginate(:page => params[:page], :per_page => 10)
+	      when 'most_recent'
+	        @posts = apply_scopes(Post).all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+	      else
+	        @posts = apply_scopes(Post).all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+	    end
 
 	end
 
@@ -25,7 +34,7 @@ class PostsController < ApplicationController
 		end
 
 		if @post == Post.first
-			@previous_post = Post.order(id: :asc).first
+			@previous_post = Post.order(id: :asc).last
 		else
 			@previous_post = Post.where("id < ?", @post).order(id: :desc).first
 		end
@@ -73,13 +82,13 @@ class PostsController < ApplicationController
 		redirect_to :back
 	end
 
-	
 	def tagged
 
   		if params[:tag].present? 
-    		@posts = Post.tagged_with(params[:tag]).order("created_at desc")
+    		@posts = Post.tagged_with(params[:tag]).order("created_at desc").paginate(:page => params[:page], :per_page => 10)
   		else 
-    		@posts = Post.all.order("created_at desc")
+    		@posts = apply_scopes(Post).all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+
   		end  
 	end
 
