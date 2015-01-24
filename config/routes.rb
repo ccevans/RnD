@@ -22,7 +22,7 @@ end
       resources :arts
 
 
-    get 'tagged' => 'arts#tagged', :as => 'filter'
+    get 'filter' => 'arts#tagged', :as => 'filter'
     get 'tagged' => 'lyrics#tagged', :as => 'tagged'
 
     

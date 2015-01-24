@@ -175,10 +175,44 @@
       <% @random_arts.each do |random_art| %>
         <div class="container-art">
      
-         
+         <div class="container-art2">
           <%= link_to campaign_art_path(@campaign, random_art) do %>
             <%= image_tag random_art.image.url(:small) %>
           <% end %>
+        </div>
+
+
+        <div class="container-extra">
+      <ul>
+      <li>
+        <h2><span class="timer-line" data-countdown= <%= random_art.campaign.timer2 %>></span></h2>
+          
+        <h2><%= random_art.get_upvotes.size %> Votes</h2>
+
+        <% if random_art.get_upvotes.size == 0 %>
+        <h2>No votes yet</h2>
+        <% else %>
+        <h2><%= random_art.get_upvotes.sum(:vote_weight) / random_art.get_upvotes.size %> / 5</h2>
+        <% end %>
+
+          <%= link_to voteof1_art_path(random_art), method: :put do %>
+            <h2>1</h2>
+              <% end %>
+              <%= link_to voteof2_art_path(random_art), method: :put do %>
+            <h2>2</h2>
+              <% end %>
+              <%= link_to voteof3_art_path(random_art), method: :put do %>
+            <h2>3</h2>
+              <% end %>
+              <%= link_to voteof4_art_path(random_art), method: :put do %>
+            <h2>4</h2>
+              <% end %>
+              <%= link_to voteof5_art_path(random_art), method: :put do %>
+            <h2>5</h2>
+              <% end %>
+
+      </li>
+    </ul>
 
     
 
@@ -190,6 +224,42 @@
 
             <li><%= random_art.commentarts.count %> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></li>
               <li><a class="popoverExampleTwo" data-placement="auto left" data-trigger="click" return false;><%= image_tag random_art.user.avatar.url(:mini) %></a><%= link_to random_art.user.username, profile_url(:id => random_art.user.username) %></li>
+
+                          <!-- Popover 2 hidden content -->
+                          <div class="popoverExampleTwoHiddenContent" style="display: none">
+                             <div>
+                              <%= image_tag random_art.user.avatar.url(:thumb) %>
+                                  <%= link_to random_art.user.username, profile_url(:id => random_art.user.username) %>
+                                  
+                                  </br>
+                                  <div class="following-show">
+                                    <p><%= random_art.user.follow_count %> Following  | 
+                                    <%= random_art.user.followers_count %> Followers</p>
+                                    <% if user_signed_in? %>
+                                      <% if current_user == random_art.user %>
+                                        <p></p>
+                                      <% elsif  random_art.user.all_following.include?(current_user) %>
+                                        <%= link_to "Unfollow", unfollow_profile_path(random_art.user.username) %>
+                                      <% else %>
+                                        <%= link_to "Follow", follow_profile_path(random_art.user.username) %>
+                                      <% end %>
+                                    <% else %>
+                                      <p><%= link_to "Sign Up To Follow", new_user_registration_path %></p>
+                                    <% end %>
+                                  </div>
+                                  <hr>
+                                  <div class="points-show">
+                                    Points | <%= random_art.user.points %>
+                                  </div>
+
+
+                             </div>
+                          </div>  
+                          <!-- Popover 2 hidden title -->
+                          <div class="popoverExampleTwoHiddenTitle" style="display: none">
+                             
+                          </div> 
+
           </ul>
           <br />
         <ul class="tag-list">
@@ -198,6 +268,7 @@
           <%= link_to tag.name, campaign_filter_url(:tag => tag.name) %>
           <% end %></li>
         </ul>
+      </div>   
       </div>
       <% end %>
 </div>

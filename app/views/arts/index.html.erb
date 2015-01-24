@@ -16,8 +16,22 @@
 
 <div class="tagcloud">
          <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+           
             <%= link_to tag.name, campaign_filter_url(:tag => tag.name), :class => css_class %>
+         
         <% end %>
+    </div>
+
+    <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+        Sort
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+        <li role="presentation"><%= link_to 'Most Liked', :controller => 'arts', :sort_by => 'most_liked' %></li>
+        <li role="presentation"><%= link_to 'Most Viewed', :controller => 'arts', :sort_by => 'most_viewed' %></li>
+        <li role="presentation"><%= link_to 'Most Recent', :controller => 'arts', :sort_by => 'most_recent' %></li>
+      </ul>
     </div>
 
 <section class="art-section">
@@ -165,4 +179,33 @@ $(function(){
     });
 });
 
+</script>
+
+  <script type="text/javascript">
+    $('[data-countdown]').each(function() {
+      var $this = $(this), finalDate = $(this).data('countdown');
+    
+    $this.countdown(finalDate)
+
+    .on('update.countdown', function(event) {
+      var format = '%-H hr %-M min %-S sec';
+      var format2 = '%-H hr %-M min';  
+      if (event.offset.days < 1) {
+          $this.closest('.price-info').addClass('red-status');
+      }   
+      if(event.offset.days > 0) {
+        format = '%-d day%!d, ' + format2;
+      }
+      if(event.offset.weeks > 0) {
+        format = '%-w week%!w ' + format2;
+      }
+    
+     $(this).html(event.strftime(format));
+   })
+   .on('finish.countdown', function(event) {
+     $(this).html('Closed for Submissions');
+    $this.closest('.timer-button').addClass('disabled').attr('disabled', 'disabled');
+      });
+    
+    });
 </script>

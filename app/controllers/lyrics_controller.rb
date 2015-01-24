@@ -81,12 +81,24 @@ class LyricsController < ApplicationController
 
 	def upvote
 		@lyric.upvote_by current_user
-		redirect_to :back
+
+		 respond_to do |format|
+    		format.html {redirect_to :back }
+    		format.json { render json: { count: @lyric.cached_votes_score } }
+    	format.js { render :layout => false }
+    
+    	end
+
 	end
 
 	def downvote
 		@lyric.downvote_by current_user
-		redirect_to :back
+
+			 respond_to do |format|
+    		format.html {redirect_to :back }
+    		format.json { render json: { count: @lyric.cached_votes_score } }
+    		format.js { render :layout => false }
+    	end
 	end
 
 	def tagged

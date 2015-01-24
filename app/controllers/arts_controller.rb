@@ -1,5 +1,5 @@
 class ArtsController < ApplicationController
-	before_action :tag_cloud, :only => [:index, :tagged]
+	before_action :tag_cloud, :only => [:index, :filter]
 	has_scope :by_tags
 	load_and_authorize_resource :only => [:show, :edit, :update, :destroy]
 	before_action :find_post, only: [:show, :edit, :update, :destroy, :voteof1, :voteof2, :voteof3, :voteof4, :voteof5]
@@ -79,7 +79,7 @@ class ArtsController < ApplicationController
 	end
 
 
-	def tagged
+	def filter
   		if params[:tag].present? 
     		@arts = Art.tagged_with(params[:tag]).order("created_at desc").paginate(:page => params[:page], :per_page => 10)
   		else 

@@ -15,13 +15,37 @@
       </div>  
     <% end %>
 
-    <div class="tagcloud">
-         <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
-            <%= link_to tag.name, campaign_tagged_url(:tag => tag.name), :class => css_class %>
-        <% end %>
+    <section class="lyric-section">
+
+      <div class="sort-box">
+        <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+        Sort
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+        <li role="presentation"><%= link_to 'Most Liked', :controller => 'lyrics', :sort_by => 'most_liked' %></li>
+        <li role="presentation"><%= link_to 'Most Viewed', :controller => 'lyrics', :sort_by => 'most_viewed' %></li>
+        <li role="presentation"><%= link_to 'Most Recent', :controller => 'lyrics', :sort_by => 'most_recent' %></li>
+      </ul>
     </div>
 
-    <section class="lyric-section">
+    <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+        Filter
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+
+         <% @tags.each do |tag| %>
+              <% if tag.taggings_count > 4 %>
+              <li role="presentation"><%= link_to tag.name, campaign_tagged_url(:tag => tag.name) %></li>
+              <% end %>
+          
+            <% end %>
+      </ul>
+    </div>
+  </div>
 
       <div id="lyrics" class="transitions-enabled">
         <% @lyrics.each do |lyric| %>
