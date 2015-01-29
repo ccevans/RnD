@@ -1,0 +1,47 @@
+<section>
+<h1>Hello There</h1>
+	
+	<% @products.each do |product| %>
+    <div class="container-md">
+
+        <%= link_to product.title, "http://rhymes-and-designs.myshopify.com/collections/frontpage/products/#{product.handle}" %>
+      
+      </div>
+    <% end %>
+
+     <% @open_campaigns.each do |open_campaign| %>
+    	<div class="campaign-md">
+        <div class="campaign-img">
+            <%= image_tag open_campaign.image.url(:medium) %>
+        </div> 
+
+        <div class="campaign-info">
+          <ul>
+            <li><strong><%= link_to simple_format(open_campaign.title), open_campaign %></strong></li>
+        </ul>
+    	</div>
+    </div>
+    <% end %>
+
+
+
+
+    <% @posts.each do |post| %>
+    <div class="container-post-index">
+
+      <%= link_to post.title, post_path(post) %>
+      </div>
+     <% end %>
+
+      	<% @users.each do |user| %>
+			<div class="container-profiles">
+				<%= image_tag user.avatar.url(:thumb) %>
+				<div class="user-row"><%= link_to user.username, "/profiles/#{user.username}" %></div>
+			</div>
+		<% end %>
+
+
+
+
+
+</section>

@@ -15,7 +15,14 @@
 </head>
 <body>
 
-<%= render 'layouts/header' %>
+  <% if current_page?(root_path) %>
+    <%= render 'layouts/header' %>
+
+   <% else %>
+    
+    <%= render 'layouts/home_header' %>
+<% end %>
+
 
 <div class="notice flash-message"> <span style="background-color: #FFFF00"><%= notice %></span> </div>
 <div class="alert flash-message"> <span style="background-color: #FF0000"><%= alert %></span> </div> 

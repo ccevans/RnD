@@ -8,7 +8,13 @@ before_action :authenticate_user!
 		@commentart.art_id = @art.id
 
 		if @commentart.save
-			redirect_to([@art.campaign, @art])
+
+		respond_to do |format|
+    		format.html {redirect_to([@art.campaign, @art])}
+    		format.json
+    		format.js
+    	end
+    	
 		else
 			render 'new'
 		end

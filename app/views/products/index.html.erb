@@ -1,7 +1,12 @@
  <% @products.each do |product| %>
     <div class="container-md">
 
-        
+
+    	<%= image_tag product.image.src(:medium) %>
+
+		
+
+
 
         <%= link_to product.title, "http://rhymes-and-designs.myshopify.com/collections/frontpage/products/#{product.handle}" %>
      

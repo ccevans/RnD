@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   get 'pages/lyriclab'
 
+  get 'pages/launch'
+
   get 'tagged' => 'posts#tagged', :as => 'tagged'
 
   devise_for :users, :controllers => { :invitations => 'user/invitation', omniauth_callbacks: 'user/omniauth_callbacks'}
@@ -62,6 +64,9 @@ resources :lyrics, only: [] do
   end
 
   resources :products
+
+  resources :homeinfo
+
 
 
   root 'campaigns#index'

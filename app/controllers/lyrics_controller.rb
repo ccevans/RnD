@@ -2,27 +2,50 @@ class LyricsController < ApplicationController
 	
 	before_action :tag_cloud, :only => [:index, :tagged]
 	has_scope :by_tags
+	has_scope :by_campaign, :using => [:campaign_id]
 	load_and_authorize_resource :only => [:show, :edit, :update, :destroy]
 	before_action :find_post, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
 	before_action :set_campaign, except: [:upvote, :downvote]
 	before_action :authenticate_user!, except: [:index, :show, :tagged]
 	impressionist :actions => [:show,:index], :unique => [:impressionable_type, :impressionable_id, :session_hash]
-	
-	
+
+	respond_to :html, :json, :js
+
 	
 
 	def index
 
 		case params[:sort_by]
 	      when 'most_liked'
-	        @lyrics = apply_scopes(Lyric).all.order(:cached_votes_up => :desc).paginate(:page => params[:page], :per_page => 10)
+	        @lyrics = apply_scopes(Lyric).all.order(:cached_votes_up => :desc).paginate(:page => params[:page], :per_page => 100)
 	       when 'most_viewed'
-	        @lyrics = apply_scopes(Lyric).all.order(:counter_cache => :desc).paginate(:page => params[:page], :per_page => 10)
+	        @lyrics = apply_scopes(Lyric).all.order(:counter_cache => :desc).paginate(:page => params[:page], :per_page => 100)
 	      when 'most_recent'
-	        @lyrics = apply_scopes(Lyric).all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+	        @lyrics = apply_scopes(Lyric).all.order("created_at DESC").paginate(:page => params[:page], :per_page => 100)
 	      else
-	        @lyrics = apply_scopes(Lyric).all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+	        @lyrics = apply_scopes(Lyric).all.order("created_at DESC").paginate(:page => params[:page], :per_page => 100)
 	    end
+
+
+
+
+	    @posts = Post.all.order(:counter_cache => :desc).take(2)
+
+	   	@arts = Art.all.order(:cached_weighted_total => :desc).take(2)
+
+		 @open_campaigns = Campaign.open.all.order("created_at DESC").take(3)
+
+		 shop_url = "https://904f9b0264e54b02b853afb4449f41d1:e6c5e55a93a848105a2194a645ee8a65@rhymes-and-designs.myshopify.com/admin"
+		 ShopifyAPI::Base.site = shop_url
+		 @products = ShopifyAPI::Product.find(:all, :params => {:limit => 4})
+
+		 @users = User.all.order("RANDOM()").take(4)
+
+		 respond_to do |format|
+    		format.html
+    		format.json
+    		format.js
+    	end
 
 	end
 
@@ -84,7 +107,7 @@ class LyricsController < ApplicationController
 
 		 respond_to do |format|
     		format.html {redirect_to :back }
-    		format.json { render json: { count: @lyric.cached_votes_score } }
+    		format.json { render json: { count: @lyric.cached_votes_up, count2: @lyric.cached_votes_down }}
     	format.js { render :layout => false }
     
     	end
@@ -96,7 +119,7 @@ class LyricsController < ApplicationController
 
 			 respond_to do |format|
     		format.html {redirect_to :back }
-    		format.json { render json: { count: @lyric.cached_votes_score } }
+    		format.json { render json: {  count: @lyric.cached_votes_up, count2: @lyric.cached_votes_down } }
     		format.js { render :layout => false }
     	end
 	end
@@ -116,8 +139,19 @@ class LyricsController < ApplicationController
    		 @tags = Lyric.tag_counts_on(:tags)
   	end
 
+  	 def all_following
+		   @user = User.find_by_username(params[:username])
+		   @users = User.find_by_username(params[:username]).all_following
+		end
+
+		def all_follows
+		   @user = User.find_by_username(params[:username])
+		   @users = User.find_by_username(params[:username]).followers
+		end
+
 
 	private
+
 
 	def find_post
 		@lyric = Lyric.find(params[:id])

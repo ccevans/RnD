@@ -36,12 +36,6 @@
 
 <section class="art-section">
 
-    <%= link_to 'Most Liked', :controller => 'arts', :sort_by => 'most_liked' %>
-
-    <%= link_to 'Most Viewed', :controller => 'arts', :sort_by => 'most_viewed' %>
-
-   <%= link_to 'Most Recent', :controller => 'arts', :sort_by => 'most_recent' %>
-
 
 <div id="arts" class="transitions-enabled">
     
@@ -62,10 +56,12 @@
           
         <h2><%= art.get_upvotes.size %> Votes</h2>
 
-        <% if art.get_upvotes.size == 0 %>
-        <h2>No votes yet</h2>
-        <% else %>
-        <h2><%= art.get_upvotes.sum(:vote_weight) / art.get_upvotes.size %> / 5</h2>
+        <% if can? :manage, :all %>
+            <% if art.get_upvotes.size == 0 %>
+            <h2>No votes yet</h2>
+            <% else %>
+            <h2><%= art.get_upvotes.sum(:vote_weight) / art.get_upvotes.size %> / 5</h2>
+            <% end %>
         <% end %>
 
           <%= link_to voteof1_art_path(art), method: :put do %>
@@ -135,15 +131,12 @@
 
           </ul>
           <br />
-        <ul class="tag-list">
-        <li><% art.tags.any? %>
-          <% art.tags.each do |tag| %>
-          <%= link_to tag.name, campaign_filter_url(:tag => tag.name) %>
-          <% end %></li>
-        </ul>
+
       </div>
       </div>
       <% end %>
+
+       <div class="back-top" title="Top of Page"> <a href="#top" onclick="return false;"><i class="glyphicon glyphicon-chevron-up"></i> Back to Top</a></div> 
 </div>
 
  <br>
@@ -208,4 +201,25 @@ $(function(){
       });
     
     });
+</script>
+
+<script>
+// fade in #back-top
+$(function () {
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 300) {
+            $('.back-top').fadeIn();
+        } else {
+            $('.back-top').fadeOut();
+        }
+    });
+
+    // scroll body to 0px on click
+    $('.back-top').click(function () {
+        $('body,html').animate({
+            scrollTop: 0
+        }, 1600);
+        return false;
+    });
+});
 </script>

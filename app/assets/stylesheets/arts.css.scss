@@ -4,7 +4,7 @@
 
 form#new_rating.simple_form.new_rating {width: auto; margin: 0 auto;}
 
-.container-art {width: 800px; margin: 50px; }
+.container-art {width: 90%; margin: 25px 5%; float: left; }
 #arts {margin: 0 auto;}
 div.container-art a img {width: 100%; height: auto;}
 
@@ -17,9 +17,9 @@ div.container-art ul li {float: left; padding: 5px; width: auto;}
 
 span.votebutton a {float: right; text-align: right;}
 
-.art-section {float: left; width: 100%; margin: 0 0 0 0; padding: 25px 0; z-index: 10; background-color: #fff; background: url('stardust4.png');}
+.art-section {float: left; border-top: 0px solid #fff; width: 60%; margin: 0 0 0 0; padding: 25px 0; z-index: 10; background-color: #000; background: url('stardust4.png');}
 
-.header-art {float: left; margin-top: 100px; width: 50%; text-align: center; padding: 0 10%;}
+.header-art {float: left; margin-top: 100px; width: 40%; text-align: center; padding: 0 10%;}
 
 .main-section {position: absolute; width: 100%; margin: 0; z-index: 10; background-color: none;}
 
@@ -71,3 +71,4 @@ html body div.container-show div.container-art img {width: 100%; height: auto;}
 
 a.popoverExampleTwo img {width: auto !important; height: auto;}
 
+.voted-color {background-color: #ff0000;}

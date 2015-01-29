@@ -1,4 +1,4 @@
-<%= simple_form_for([@lyric, @lyric.comments.build]) do |f| %>
+<%= simple_form_for([@lyric, @lyric.comments.build], remote: true) do |f| %>
   <%= f.error_notification %>
 
   <%= f.input :content, label: "Reply to thread" %>

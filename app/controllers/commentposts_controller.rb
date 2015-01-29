@@ -8,7 +8,12 @@ class CommentpostsController < ApplicationController
 		@commentpost.post_id = @post.id
 
 		if @commentpost.save
-			redirect_to post_path(@post)
+
+		respond_to do |format|
+    		format.html {redirect_to post_path(@post)}
+    		format.json
+    		format.js
+    	end
 		else
 			render 'new'
 		end

@@ -5,20 +5,38 @@ class PostsController < ApplicationController
 	before_action :tag_cloud, :only => [:index, :tagged]
 	load_and_authorize_resource :only => [:show, :edit, :update, :destroy]
 	impressionist :actions => [:show,:index], :unique => [:impressionable_type, :impressionable_id, :session_hash]
-
-
+	before_action :set_campaign
+	respond_to :html, :json, :js
 
 	def index
 		case params[:sort_by]
 	      when 'most_liked'
-	        @posts = apply_scopes(Post).all.order(:cached_votes_up => :desc).paginate(:page => params[:page], :per_page => 10)
+	        @posts = apply_scopes(Post).all.order(:cached_votes_up => :desc)
 	    when 'most_viewed'
-	        @posts = apply_scopes(Post).all.order(:counter_cache => :desc).paginate(:page => params[:page], :per_page => 10)
+	        @posts = apply_scopes(Post).all.order(:counter_cache => :desc)
 	      when 'most_recent'
-	        @posts = apply_scopes(Post).all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+	        @posts = apply_scopes(Post).all.order("created_at DESC")
 	      else
-	        @posts = apply_scopes(Post).all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+	        @posts = apply_scopes(Post).all.order("created_at DESC")
 	    end
+
+	    @posts = Post.all.order(:counter_cache => :desc).take(2)
+
+	   	@arts = Art.all.order(:cached_weighted_total => :desc).take(2)
+
+		 @open_campaigns = Campaign.open.all.order("created_at DESC").take(3)
+
+		 shop_url = "https://904f9b0264e54b02b853afb4449f41d1:e6c5e55a93a848105a2194a645ee8a65@rhymes-and-designs.myshopify.com/admin"
+		 ShopifyAPI::Base.site = shop_url
+		 @products = ShopifyAPI::Product.find(:all, :params => {:limit => 4})
+
+		 @users = User.all.order("RANDOM()").take(4)
+
+		 respond_to do |format|
+    		format.html
+    		format.json
+    		format.js
+    	end
 
 	end
 

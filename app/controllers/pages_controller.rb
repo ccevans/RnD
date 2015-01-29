@@ -1,4 +1,7 @@
 class PagesController < ApplicationController
-  def lyriclab
+
+
+  def launch
+
   end
 end

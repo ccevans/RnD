@@ -1,0 +1,7 @@
+	<div class="comment">
+		<%= image_tag commentpost.user.avatar.url(:mini) %>
+		<p class="username"> <%= commentpost.user.username %></p></br>
+			<p class="content"> <%= commentpost.content %></p>			
+			<p class="time-created"><%= time_ago_in_words(commentpost.created_at) %></p>
+				<hr />
+	</div>

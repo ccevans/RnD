@@ -22,12 +22,12 @@
 <div class="container-extra">
 	 <ul>
         <li><%= @lyric.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
-        <li><span class="vcount-<%= @lyric.id %>"><%= @lyric.get_upvotes.size %> </span>
-          <%= link_to like_lyric_path(@lyric), class: 'vpos', remote: true, method: :get do %>
+        <li><span class="up"><%= @lyric.get_upvotes.size %> </span>
+          <%= link_to like_lyric_path(@lyric), class: 'voteup', remote: true, data: { type: :json }, method: :get do %>
           <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
             <% end %>
-            <span class="ncount-<%= @lyric.id %>"><%= @lyric.get_downvotes.size %></span>
-          <%= link_to dislike_lyric_path(@lyric), class: 'npos', remote: true, method: :get do %>
+            <span class="down"><%= @lyric.get_downvotes.size %></span>
+          <%= link_to dislike_lyric_path(@lyric), class: 'votedown', remote: true, data: { type: :json }, method: :get do %>
           <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
             <% end %>
           </li>
@@ -160,15 +160,13 @@
 	<h2 class="comment_count">
 		<%= pluralize(@lyric.comments.count, "Response") %></h2>
 		<hr />
-		<% @comments.each do |comment| %>
-			<div class="comment">
-				<%= image_tag comment.user.avatar.url(:mini) %>
-				<p class="username"> <%= comment.user.username %></p></br>
-				<p class="content"> <%= comment.content %></p>
-				<p class="time-created"><%= time_ago_in_words(comment.created_at) %></p>
-				<hr />
-			</div>
-		<% end %>
+
+
+   <div id="comments">
+     <%= render @lyric.comments %>
+   </div>
+
+
 	<%= render 'comments/form' %>
 </div>
 
@@ -289,18 +287,29 @@ $(function(){
 
 </script>
 
-<script>
-$('.vpos').bind('ajax:success', function(e, data, status, xhr) {
- $('.vcount-<%= @lyric.id %>').html('<%=escape_javascript @lyric.get_upvotes.size.to_s %>');
-});
-
-  </script>
-
   <script>
-$('.npos').bind('ajax:success', function(e, data, status, xhr) {
- $('.ncount-<%= @lyric.id %>').html('<%=escape_javascript @lyric.get_downvotes.size.to_s %>');
-});
+
+    $('.voteup')
+  .on('ajax:success', function (e, data, status, xhr) { 
+    $('.up').html(data.count);
+    $('.down').html(data.count2);
+  });
+
+    </script>
+
+      <script>
+
+    $('.votedown')
+  .on('ajax:success', function (e, data, status, xhr) { 
+    
+    $('.down').html(data.count2);
+    $('.up').html(data.count);
+  });
+
+    </script>
+
  
-  </script>
+
+
 
 

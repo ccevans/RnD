@@ -8,7 +8,13 @@ class CommentsController < ApplicationController
 		@comment.lyric_id = @lyric.id
 
 		if @comment.save
-			redirect_to([@lyric.campaign, @lyric])
+			
+
+		respond_to do |format|
+    		format.html {redirect_to([@lyric.campaign, @lyric])}
+    		format.json
+    		format.js
+    	end
 		else
 			render 'new'
 		end

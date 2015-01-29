@@ -7,6 +7,7 @@ class ArtsController < ApplicationController
 	before_action :authenticate_user!, except: [:index, :show, :tagged]
 	impressionist :actions=>[:show,:index], :unique => [:impressionable_type, :impressionable_id, :session_hash]
 	
+	respond_to :html, :json, :js
 
 
 	def index
@@ -94,28 +95,53 @@ class ArtsController < ApplicationController
 
   	def voteof1
 		@art.vote_by :voter => current_user, :vote => 'one', :vote_weight => 1
-		redirect_to :back
+
+		respond_to do |format|
+    		format.html {redirect_to :back }
+    		format.json { render json: {  count: @art.cached_votes_up } }
+    		format.js { render :layout => false }
+    	end
    
 	end
 
 	def voteof2
 		@art.vote_by :voter => current_user, :vote => 'two', :vote_weight => 2
-		redirect_to :back
+		
+		respond_to do |format|
+    		format.html {redirect_to :back }
+    		format.json { render json: {  count: @art.cached_votes_up } }
+    		format.js { render :layout => false }
+    	end
 	end
 
 	def voteof3
 		@art.vote_by :voter => current_user, :vote => 'three', :vote_weight => 3
-		redirect_to :back
+		
+		respond_to do |format|
+    		format.html {redirect_to :back }
+    		format.json { render json: {  count: @art.cached_votes_up } }
+    		format.js { render :layout => false }
+    	end
 	end
 
 	def voteof4
 		@art.vote_by :voter => current_user, :vote => 'four', :vote_weight => 4
-		redirect_to :back
+		
+		respond_to do |format|
+    		format.html {redirect_to :back }
+    		format.json { render json: {  count: @art.cached_votes_up } }
+    		format.js { render :layout => false }
+    	end
 	end
 
 	def voteof5
 		@art.vote_by :voter => current_user, :vote => 'five', :vote_weight => 5
-		redirect_to :back
+		
+		respond_to do |format|
+    		format.html {redirect_to :back }
+    		format.json { render json: {  count: @art.cached_votes_up } }
+    		format.js { render :layout => false }
+    	end
 	end
 
 

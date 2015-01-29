@@ -5,12 +5,17 @@
     <h2><%= current_user.name %></h2>
     <p>Vote on your favorite lyrics or contribute the lyrics from your favorite artists.  <br /><%= link_to "Submit Lyrics", '/campaigns/2/lyrics/new' %></p>
 
+      <div class="results"></div>
+
   </div>  
 <% else %>
   <div class="header-lyric">
      <h1>Community Blog</h1>
     <h2><%= link_to "Join To Contribute", new_user_registration_path %></h2>
     <p>Vote on your favorite lyrics or contribute the lyrics from your favorite artists. <br /><%= link_to "Submit Lyrics", '/campaigns/2' %></p>
+
+    <div class="results"></div>
+
   </div>  
 <% end %>
 
@@ -111,14 +116,13 @@
       
       </div>
     <% end %>
+
+    <div class="back-top" title="Top of Page"> <a href="#top" onclick="return false;"><i class="glyphicon glyphicon-chevron-up"></i> Back to Top</a></div> 
   </div>
 
   
 
  <br>
-    <div class="paginate-box">
-      <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
-    </div>
 
    
 
@@ -154,4 +158,25 @@ $(function(){
     });
 });
 
+</script>
+
+<script>
+// fade in #back-top
+$(function () {
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 300) {
+            $('.back-top').fadeIn();
+        } else {
+            $('.back-top').fadeOut();
+        }
+    });
+
+    // scroll body to 0px on click
+    $('.back-top').click(function () {
+        $('body,html').animate({
+            scrollTop: 0
+        }, 1600);
+        return false;
+    });
+});
 </script>

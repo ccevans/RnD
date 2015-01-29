@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_merit
+  acts_as_voter
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -25,6 +26,8 @@ class User < ActiveRecord::Base
   has_many :booths
   has_many :posts, dependent: :destroy
   has_many :commentposts, dependent: :destroy
+
+
 
 
   

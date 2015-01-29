@@ -30,21 +30,44 @@
         <h2><%= @art.get_upvotes.sum(:vote_weight) / @art.get_upvotes.size %> / 5</h2>
         <% end %>
 
-          <%= link_to voteof1_art_path(@art), method: :put do %>
+          <h2><span class="up">0 </span></h2>
+
+          <% if @current_user.voted_for? @art %>
+              Yes sir
+              <% else %>
+              No sir
+              <% end %>
+
+
+
+          <% if @current_user.voted_for? @art %>
+            <div class="votebox2">
+            You already voted
+          </div>
+          <% else %>
+
+          <div class="votebox2">
+            <div>
+
+          <div class="votebox">
+            <%= link_to voteof1_art_path(@art), class: 'voteup', remote: true, data: { type: :json }, method: :put do %>
             <h2>1</h2>
               <% end %>
-              <%= link_to voteof2_art_path(@art), method: :put do %>
+              <%= link_to voteof2_art_path(@art), class: 'voteup', remote: true, data: { type: :json }, method: :put do %>
             <h2>2</h2>
               <% end %>
-              <%= link_to voteof3_art_path(@art), method: :put do %>
+              <%= link_to voteof3_art_path(@art), class: 'voteup', remote: true, data: { type: :json }, method: :put do %>
             <h2>3</h2>
               <% end %>
-              <%= link_to voteof4_art_path(@art), method: :put do %>
+              <%= link_to voteof4_art_path(@art), class: 'voteup', remote: true, data: { type: :json }, method: :put do %>
             <h2>4</h2>
               <% end %>
-              <%= link_to voteof5_art_path(@art), method: :put do %>
+              <%= link_to voteof5_art_path(@art), class: 'voteup', remote: true, data: { type: :json }, method: :put do %>
             <h2>5</h2>
               <% end %>
+            </div>
+
+          <% end %>
 
       </li>
     </ul>
@@ -52,16 +75,8 @@
         <li><%= @art.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
         <li><%= @art.commentarts.count %> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></li>
      </ul>
-     
-        <% unless @art.tags.nil? || @art.tags.empty? %>
-        <ul>
-		<li>
-  			<% @art.tags.each do |tag| %>
-  				<%= link_to tag.name, tagged_url(:tag => tag.name) %>
-  			<% end %>
-			</li>
-		</ul>
-		<% end %>
+    
+	
 
 		   <ul>
 
@@ -155,15 +170,11 @@
 	<h2 class="comment_count">
 		<%= pluralize(@art.commentarts.count, "Response") %></h2>
 		<hr />
-		<% @commentarts.each do |commentart| %>
-			<div class="comment">
-				<%= image_tag commentart.user.avatar.url(:mini) %>
-				<p class="username"> <%= commentart.user.username %></p></br>
-				<p class="content"> <%= commentart.content %></p>
-				<p class="time-created"><%= time_ago_in_words(commentart.created_at) %></p>
-				<hr />
-			</div>
-		<% end %>
+
+     <div id="comments">
+     <%= render @art.commentarts %>
+   </div>
+
 	<%= render 'commentarts/form' %>
 </div>
 </div>
@@ -262,12 +273,6 @@
 
           </ul>
           <br />
-        <ul class="tag-list">
-        <li><% random_art.tags.any? %>
-          <% random_art.tags.each do |tag| %>
-          <%= link_to tag.name, campaign_filter_url(:tag => tag.name) %>
-          <% end %></li>
-        </ul>
       </div>   
       </div>
       <% end %>
@@ -343,5 +348,13 @@ $(function(){
     });
 </script>
 
+  <script>
 
+      $('.voteup')
+    .on('ajax:success', function (e, data, status, xhr) { 
+      $('.up').html(data.count);
+      $('.votebox2').html('You already voted');
+      $('.votebox').addClass('hidden');
+    });
 
+    </script>
