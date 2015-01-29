@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   get 'tagged' => 'posts#tagged', :as => 'tagged'
 
-  devise_for :users, :controllers => { :invitations => 'user/invitation', omniauth_callbacks: 'user/omniauth_callbacks'}
+  devise_for :users, :controllers => { :registrations => 'user/registrations', :invitations => 'user/invitation', omniauth_callbacks: 'user/omniauth_callbacks'}
 
 resources :posts do
   member do

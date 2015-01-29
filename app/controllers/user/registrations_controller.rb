@@ -5,6 +5,9 @@ class User::RegistrationsController < Devise::RegistrationsController
 def create
     @user = build_resource # Needed for Merit
     super
+    if resource.save
+       ExampleMailer.sample_email(resource).deliver
+    end
   end
 
   def update
