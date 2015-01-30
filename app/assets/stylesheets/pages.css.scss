@@ -1,3 +1,24 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#launch-box {width: 350px; float: left; margin: 0 0 0 10px;}
+#launch-box2 {width: 350px; float: left; margin: 0 0 0 0;}
+#launch-box-word {width: 350px; float: left; margin: 5px 5px 25px 5px; background-color: #8e0010; color: #fff; height: auto; min-height: 200px;}
+#launch-box3 {width: 500px; float: left; margin: 0 5px 0 0;}
+#launch-box2-word {width: 325px; float: left; margin: 5px 5px 0px 25px; background-color: #8e0010; color: #fff; height: auto; min-height: 200px;}
+#launch-box4 {width: 350px; float: left; margin: 0 0 0 5px;}
+#launch-box5 {width: 325px; float: left; margin: 0 0 0 0;}
+#launch-box3-word {width: 350px; float: left; margin: 5px; background-color: #8e0010; color: #fff; height: auto; min-height: 200px;}
+#launch-box4-word {width: 350px; float: left; margin: 5px; background-color: #8e0010; color: #fff; height: auto; min-height: 200px;}
+#launch-box6 {width: 325px; float: left; margin: 0 0 0 0;}
+#launch-box7 {width: 350px; float: left; margin: 0 0 0 0;}
+#launch-box8 {width: 350px; float: left; margin: 0 0 0 0;}
+
+img.launch-img {float: left; width: 100%; }
+
+.clear {float: left; clear: both;}
+.launch-float-box {float: left; width: 350px; }
+
+html body section.launch-section div#launch.transitions-enabled.masonry {width: 90% !important; margin: 0 5% !important; height: auto !important }
+.launch-part {float: left;}
