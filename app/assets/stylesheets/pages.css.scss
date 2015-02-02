@@ -66,6 +66,8 @@ div.launch-box-artist h4 {margin-top: 20px;}
 
 .howitworks-img {float: left; width: 100%; margin: 0 0 10px 0;}
 
+.howitworks-mobile {float: left; width: 100%; margin: 0; display: none;}
+
 @media only screen and (min-width: 500px) and (max-width: 900px){
 
 
@@ -139,7 +141,7 @@ div.launch-box-artist h4 {margin-top: 20px;}
 
 	.howitworks-img {float: left; width: 100%; margin: 0 0 10px 0;}
 
-
+	.howitworks-mobile {float: left; width: 100%; margin: 0; display: inline;}
 
 
 
