@@ -2,15 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#launch-top {width: 60%; float: left; margin: 0 0 0 0; padding: 0; color: #fff; height: auto; background-color: none;}
 #launch-box {width: 350px; float: left; margin: 0 0 0 10px;}
 #launch-box2 {width: 350px; float: left; margin: 0 0 0 0;}
-#launch-box-word {width: 350px; float: left; margin: 5px 5px 25px 5px; background-color: #8e0010; color: #fff; height: auto; min-height: 200px;}
+#launch-box-word {width: 350px; float: left; margin: 5px 5px 25px 5px; background-color: #8e0010; color: #fff; height: auto; min-height: 200px; padding: 10px;}
 #launch-box3 {width: 500px; float: left; margin: 0 5px 0 0;}
-#launch-box2-word {width: 325px; float: left; margin: 5px 5px 0px 25px; background-color: #8e0010; color: #fff; height: auto; min-height: 200px;}
+#launch-box2-word {width: 325px; float: left; margin: 5px 5px 0px 25px; background-color: #8e0010; color: #fff; height: auto; min-height: 200px; padding: 10px;}
 #launch-box4 {width: 350px; float: left; margin: 0 0 0 5px;}
 #launch-box5 {width: 325px; float: left; margin: 0 0 0 0;}
-#launch-box3-word {width: 350px; float: left; margin: 5px; background-color: #8e0010; color: #fff; height: auto; min-height: 200px;}
-#launch-box4-word {width: 350px; float: left; margin: 5px; background-color: #8e0010; color: #fff; height: auto; min-height: 200px;}
+#launch-box3-word {width: 500px; float: left; margin: 5px; background-color: #8e0010; color: #fff; height: auto; min-height: 200px; padding: 10px;}
+#launch-box4-word {width: 350px; float: left; margin: 5px; background-color: #8e0010; color: #fff; height: auto; min-height: 200px; padding: 10px;}
 #launch-box6 {width: 325px; float: left; margin: 0 0 0 0;}
 #launch-box7 {width: 350px; float: left; margin: 0 0 0 0;}
 #launch-box8 {width: 350px; float: left; margin: 0 0 0 0;}
@@ -20,5 +21,40 @@ img.launch-img {float: left; width: 100%; }
 .clear {float: left; clear: both;}
 .launch-float-box {float: left; width: 350px; }
 
-html body section.launch-section div#launch.transitions-enabled.masonry {width: 90% !important; margin: 0 5% !important; height: auto !important }
+.launch-section {background-color: #000;}
+
+html body section.launch-section div#launch.transitions-enabled.masonry {width: 90% !important; margin: 0 5% !important; height: auto !important; float: left; }
 .launch-part {float: left;}
+
+.launch-section h2 {font-size: 20px; line-height: 20px; }
+
+.signup-launch {width: 100%; margin: 0; padding: 0 0; min-height: 600px; height: auto; background: url('rnd-background.jpg'); background-size: 100% auto; background-repeat: no-repeat; background-color: #000; position: static;}
+
+.signup-box {width: 400px; text-align: center; padding: 0; margin: 0 auto; color: #fff; font-size: 30px; line-height: 30px; display: none;}
+
+section.signup-launch div.signup-box a.signup-button { float: left; color: #fff; font-variant: small-caps; text-decoration: none; background-color: #8e0010; padding: 5px 25px; border: 3px solid #8e0010; border-radius: 40px; margin: 0 10px; }
+section.signup-launch div.signup-box a.signup-button:hover {color: #fff; font-variant: small-caps; text-decoration: none; border: 3px solid #fff;}
+
+section.signup-launch div.signup-box a.signup-question { float: left; color: #fff; font-variant: small-caps; text-decoration: none; background-color: #8e0010; padding: 5px 25px; border: 3px solid #8e0010; border-radius: 40px; margin: 0 10px; }
+section.signup-launch div.signup-box a.signup-question:hover {color: #fff; font-variant: small-caps; text-decoration: none; border: 3px solid #fff;}
+
+.logo-head-launch {position: absolute; width: 200px; height: auto; margin: 0 auto; top: 0; left: 40%; display:none;}
+
+.signup-box2 {width: 400px; text-align: center; padding: 0; margin: 0 auto; color: #fff; font-size: 30px; line-height: 30px; }
+
+div.signup-box2 a.signup-button { float: left; color: #fff; font-variant: small-caps; text-decoration: none; background-color: #8e0010; padding: 5px 25px; border: 3px solid #8e0010; border-radius: 40px; margin: 0 10px; }
+div.signup-box2 a.signup-button:hover {color: #fff; font-variant: small-caps; text-decoration: none; border: 3px solid #fff;}
+
+div.signup-box2 a.signup-question { float: left; color: #fff; font-variant: small-caps; text-decoration: none; background-color: #8e0010; padding: 5px 25px; border: 3px solid #8e0010; border-radius: 40px; margin: 0 10px; }
+div.signup-box2 a.signup-question:hover {color: #fff; font-variant: small-caps; text-decoration: none; border: 3px solid #fff;}
+
+.logo-head-launch2 {float: left; width: 30%; height: auto; margin: 0 35%;}
+.launch-box {float: left; margin: 0; padding: 0 10%;}
+
+.launch-box-artist {float: left; margin: 0; padding: 0 10%; display: none;}
+
+div.launch-box h4 {margin-top: 20px;}
+
+div.launch-box-artist h4 {margin-top: 20px;}
+
+.howitworks-img {float: left; width: 100%; margin: 0 0 10px 0;}

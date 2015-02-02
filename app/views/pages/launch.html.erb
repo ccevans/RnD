@@ -1,6 +1,68 @@
+<section class="signup-launch">
+
+	<div  id="launch-top">
+
+		
+
+		<div id="box1" class="launch-box">	
+			<h2>SUBMIT YOUR FAVORITE LYRICS FROM YOUR FAVORITE ARTISTS.</h2>
+
+			<h2>VOTE ON & BUY DESIGNS INSPIRED BY DOPE LYRICS</h2>
+
+			<h4>Full Site Launching Soon...Join The Community Today.</h4>
+
+			<p>We are a community driven brand that vote and decide on top designs inspired by lyrics of the communities' favorite artists.  We are a platform based on passion where we showcase the passion of our members to develop a positive community that design dope merch.</p>
+
+			<div class="signup-box2">
+				<%= link_to "Artist?", '#', class: "signup-question", onclick: "showstuff('box2'); hidestuff('box1'); return false;" %>
+
+				<%= link_to "Sign Up", new_user_registration_path, class: "signup-button" %>
+			</div>
+		</div>
+
+		<div id="box2" class="launch-box-artist">	
+			<h2>SHOWCASE YOUR WORK AND SUBMIT THE LYRICS OF YOUR TOP TRACKS.</h2>
+
+			<h2>SHOWCASE YORU PASSION AND SUBMIT DESIGNS INSPIRED BY MUSIC</h2>
+
+			<h4>Full Site Launching Soon...Join The Community Today.</h4>
+
+			<p>Our community consists of creatives and artists of all types.  Vocal artists submit your best lyrics from your top tracks for rewards, profit sharing deals and exposure.  Visual artists submit artwork with our experiments and get rewards, profit sharing deals and exposure.</p>
+
+			<div class="signup-box2">
+				<%= link_to "Fan?", '#', class: "signup-question", onclick: "showstuff('box1'); hidestuff('box2'); return false;" %>
+
+				<%= link_to "Sign Up", new_user_registration_path, class: "signup-button" %>
+			</div>
+		</div>
+
+			
+			<%= image_tag 'white-logo-gasmask.png', :class => "logo-head-launch2" %>
+
+</div>
+
+
+<a href="#" onclick="showstuff('box2'); hidestuff('box1'); return false;">
+
+
+</section>
+
 <section class="launch-section">
 
+			<%= image_tag 'rnd-howitworks2.png', :class => "howitworks-img" %>
+	
+	<div class="signup-box">
+
+		<%= link_to "Ready?", new_user_registration_path, class: "signup-question" %>
+
+		<%= link_to "Sign Up", new_user_registration_path, class: "signup-button" %>
+		
+	</div>
+
+
 <div id="launch" class="transitions-enabled">
+
+
 
 <div class="launch-part" id="launch-box">
 <%= image_tag 'launch-1.jpg', :class => "launch-img" %>
@@ -10,6 +72,10 @@
 
 <div class="launch-part" id="launch-box-word">
 <h1>Community.</h1>
+
+<h2>R&D is a community platform.</h2>
+
+<p>Our platform brings together different backgrounds and artists around the topics of art, music and culture.  Our community consist of artists of all types, creatives, music lovers, art collectors, curators, trend setters to name a few.</p>
 
 
 </div>
@@ -30,6 +96,9 @@
 
 	<div class="launch-part" id="launch-box2-word">
 	<h1>Passion.</h1>
+	<h2>Inspiring passion is the mission.</h2>
+
+	<p>This community driven brand was started off of passion.  A passion for music, art, culture and tech.  The platform is designed for anybody to be able to contribute to our experiments to showcase their passions and express themselves.</p>
 
 	</div>
 
@@ -49,6 +118,13 @@
 
 <div class="launch-part" id="launch-box3-word">
 <h1>Music.</h1>
+<h2>Music connects us all.</h2>
+
+<p>We are inspired by music and the lyrics that make them dope.  We take the lyrics of your favorite artists for inspiration to create dope designs and merch. </p>
+
+<p>On our community platform, you will be able to contribute your favorite lines based on the focus/theme of each experiment.  Let us know what your favorite line is from the hottest most recent rap album or submit that line you live by from a classic album.</p>
+
+<p>Local artists and upcoming artists look out for opportunities to submit your own music or partner with us to market your next music project.</p>
 
 
 </div>
@@ -69,7 +145,13 @@
 
 <div class="launch-part" id="launch-box4-word">
 <h1>Art.</h1>
+<h2>Art is the best form of expresson.</h2>
 
+<p>We take the top lyrics from the community and design dope art based on the lyrics to develop tees and merch.</p>
+
+<p>Artists of all types, will be able to submit their artwork inspired by vocal artists lyrics.  Our community will rate each artwork submitted to help decide which artwork is printed on tees and other merch.</p>
+
+<p>Illustrators, designers, photographers, painters and all other creatives submit your artwork to promote your brand and get dope rewards.</p>
 
 </div>
 
@@ -85,3 +167,24 @@
 
 </div>
 </section>
+
+
+
+<script type="text/javascript">
+<!--
+    function toggle_visibility(id) {
+       var e = document.getElementById(id);
+       if(e.style.display == 'inline')
+          e.style.display = 'none';
+       else
+          e.style.display = 'inline';
+    }
+function showstuff(id){
+   document.getElementById(id).style.display = 'inline';
+}
+ 
+function hidestuff(id){
+   document.getElementById(id).style.display = 'none';
+}
+//-->
+</script>
