@@ -8,7 +8,7 @@
 #launch-box-word {width: 350px; float: left; margin: 5px 5px 25px 5px; background-color: #8e0010; color: #fff; height: auto; min-height: 200px; padding: 10px;}
 #launch-box3 {width: 500px; float: left; margin: 0 5px 0 0;}
 #launch-box2-word {width: 325px; float: left; margin: 5px 5px 0px 25px; background-color: #8e0010; color: #fff; height: auto; min-height: 200px; padding: 10px;}
-#launch-box4 {width: 350px; float: left; margin: 0 0 0 5px;}
+#launch-box4 {width: 350px; float: left; margin: 5px;}
 #launch-box5 {width: 325px; float: left; margin: 0 0 0 0;}
 #launch-box3-word {width: 500px; float: left; margin: 5px; background-color: #8e0010; color: #fff; height: auto; min-height: 200px; padding: 10px;}
 #launch-box4-word {width: 350px; float: left; margin: 5px; background-color: #8e0010; color: #fff; height: auto; min-height: 200px; padding: 10px;}
@@ -48,7 +48,14 @@ div.signup-box2 a.signup-button:hover {color: #fff; font-variant: small-caps; te
 div.signup-box2 a.signup-question { float: left; color: #fff; font-variant: small-caps; text-decoration: none; background-color: #8e0010; padding: 5px 25px; border: 3px solid #8e0010; border-radius: 40px; margin: 0 10px; }
 div.signup-box2 a.signup-question:hover {color: #fff; font-variant: small-caps; text-decoration: none; border: 3px solid #fff;}
 
-.logo-head-launch2 {float: left; width: 30%; height: auto; margin: 0 35%;}
+.logo-head-launch2 {
+    display: block;
+    height: auto;
+    margin: 0 auto 0 auto;
+    position: static;
+    width: 25%;
+}
+
 .launch-box {float: left; margin: 0; padding: 0 10%;}
 
 .launch-box-artist {float: left; margin: 0; padding: 0 10%; display: none;}
