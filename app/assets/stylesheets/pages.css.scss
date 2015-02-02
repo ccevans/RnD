@@ -65,3 +65,82 @@ div.launch-box h4 {margin-top: 20px;}
 div.launch-box-artist h4 {margin-top: 20px;}
 
 .howitworks-img {float: left; width: 100%; margin: 0 0 10px 0;}
+
+@media only screen and (min-width: 500px) and (max-width: 900px){
+
+
+
+	}
+
+
+
+
+@media screen and (max-width: 500px){
+	#launch-top {width: 100%; float: left; margin: 0 0 0 0; padding: 0; color: #fff; height: auto; background-color: none;}
+
+	#launch-box {width: 450px; float: left; margin: 0 0 0 10px;}
+	#launch-box2 {width: 400px; float: left; margin: 0 0 0 0;}
+	#launch-box-word {width: 400px; float: left; margin: 5px 5px 25px 5px; background-color: #8e0010; color: #fff; height: auto; min-height: 200px; padding: 10px;}
+	#launch-box3 {width: 500px; float: left; margin: 0 5px 0 0;}
+	#launch-box2-word {width: 425px; float: left; margin: 5px 5px 0px 25px; background-color: #8e0010; color: #fff; height: auto; min-height: 200px; padding: 10px;}
+	#launch-box4 {width: 450px; float: left; margin: 5px;}
+	#launch-box5 {width: 425px; float: left; margin: 0 0 0 0;}
+	#launch-box3-word {width: 500px; float: left; margin: 5px; background-color: #8e0010; color: #fff; height: auto; min-height: 200px; padding: 10px;}
+	#launch-box4-word {width: 450px; float: left; margin: 5px; background-color: #8e0010; color: #fff; height: auto; min-height: 200px; padding: 10px;}
+	#launch-box6 {width: 425px; float: left; margin: 0 0 0 0;}
+	#launch-box7 {width: 450px; float: left; margin: 0 0 0 0;}
+	#launch-box8 {width: 450px; float: left; margin: 0 0 0 0;}
+
+	img.launch-img {float: left; width: 100%; }
+
+	.clear {float: left; clear: both;}
+	.launch-float-box {float: left; width: 450px; }
+
+	.launch-section {background-color: #000;}
+
+	html body section.launch-section div#launch.transitions-enabled.masonry {width: 100% !important; margin: 0 !important; height: auto !important; float: left; }
+	.launch-part {float: left;}
+
+	.launch-section h2 {font-size: 20px; line-height: 20px; }
+
+	.signup-launch {width: 100%; margin: 0; padding: 0 0; min-height: 600px; height: auto; background: url('rnd-background-mobile.jpg'); background-size: 100% auto; background-repeat: no-repeat; background-color: #000; position: static;}
+
+	.signup-box {width: 100%; text-align: center; padding: 0; margin: 0 auto; color: #fff; font-size: 30px; line-height: 30px; display: none;}
+
+	section.signup-launch div.signup-box a.signup-button { float: left; color: #fff; font-variant: small-caps; text-decoration: none; background-color: #8e0010; padding: 5px 25px; border: 3px solid #8e0010; border-radius: 40px; margin: 0 10px; }
+	section.signup-launch div.signup-box a.signup-button:hover {color: #fff; font-variant: small-caps; text-decoration: none; border: 3px solid #fff;}
+
+	section.signup-launch div.signup-box a.signup-question { float: left; color: #fff; font-variant: small-caps; text-decoration: none; background-color: #8e0010; padding: 5px 25px; border: 3px solid #8e0010; border-radius: 40px; margin: 0 10px; }
+	section.signup-launch div.signup-box a.signup-question:hover {color: #fff; font-variant: small-caps; text-decoration: none; border: 3px solid #fff;}
+
+	.signup-box2 {width: 100%; text-align: center; padding: 0; margin: 0 auto; color: #fff; font-size: 30px; line-height: 30px; }
+
+	div.signup-box2 a.signup-button { float: left; color: #fff; font-variant: small-caps; text-decoration: none; background-color: #8e0010; padding: 5px 25px; border: 3px solid #8e0010; border-radius: 40px; margin: 0 10px; }
+	div.signup-box2 a.signup-button:hover {color: #fff; font-variant: small-caps; text-decoration: none; border: 3px solid #fff;}
+
+	div.signup-box2 a.signup-question { float: left; color: #fff; font-variant: small-caps; text-decoration: none; background-color: #8e0010; padding: 5px 25px; border: 3px solid #8e0010; border-radius: 40px; margin: 0 10px; }
+	div.signup-box2 a.signup-question:hover {color: #fff; font-variant: small-caps; text-decoration: none; border: 3px solid #fff;}
+
+	.logo-head-launch2 {
+	    display: block;
+	    height: auto;
+	    margin: 0 auto 0 auto;
+	    position: static;
+	    width: 30%;
+	}
+
+	.launch-box {float: left; margin: 0; padding: 0 10%;}
+
+	.launch-box-artist {float: left; margin: 0; padding: 0 10%; display: none;}
+
+	div.launch-box h4 {margin-top: 20px;}
+
+	div.launch-box-artist h4 {margin-top: 20px;}
+
+	.howitworks-img {float: left; width: 100%; margin: 0 0 10px 0;}
+
+
+
+
+
+}
