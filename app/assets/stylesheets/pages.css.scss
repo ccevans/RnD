@@ -70,7 +70,7 @@ div.launch-box-artist h4 {margin-top: 20px;}
 
 @media only screen and (min-width: 640px) and (max-width: 900px){
 
-	div.launch-box h2 {font-size: 24px; line-height: 24px; }
+	.signup-launch {width: 100%; margin: 0; padding: 0 0; min-height: 600px; height: auto; background: url('rnd-background.jpg'); background-size: 100% auto; background-repeat: no-repeat; background-color: #000; position: static;}
 
 
 
@@ -179,7 +179,7 @@ div.launch-box-artist h4 {margin-top: 20px;}
 
 	.launch-section h2 {font-size: 18px; line-height: 18px; }
 
-	.signup-launch {width: 100%; margin: 0; padding: 0 0; min-height: 800px; height: auto; background: url('rnd-background-mobile.jpg'); background-size: 100% auto; background-repeat: no-repeat; background-color: #000; position: static;}
+	.signup-launch {width: 100%; margin: 0; padding: 0 0; min-height: 700px; height: auto; background: url('rnd-background-mobile.jpg'); background-size: 100% auto; background-repeat: no-repeat; background-color: #000; position: static;}
 
 	.signup-box {width: 100%; text-align: center; padding: 0; margin: 0 auto; color: #fff; font-size: 30px; line-height: 30px; display: none;}
 
@@ -202,22 +202,29 @@ div.launch-box-artist h4 {margin-top: 20px;}
 	    height: auto;
 	    margin: 0 auto 0 auto;
 	    position: static;
-	    width: 30%;
+	    width: 25%;
 	}
 
 	.launch-box {float: left; margin: 0; padding: 0 10%;}
 
 	.launch-box-artist {float: left; margin: 0; padding: 0 10%; display: none;}
 
-	div.launch-box h4 {margin-top: 20px;}
+	div.launch-box h4 {margin-top: 20px; font-size: 16px; line-height: 16px;}
 
-	div.launch-box-artist h4 {margin-top: 20px;}
+	div.launch-box-artist h4 {margin-top: 20px; font-size: 16px; line-height: 16px;}
 
 	.howitworks-img {float: left; width: 100%; margin: 0 0 10px 0; display: none;}
 
 	.howitworks-mobile {float: left; width: 100%; margin: 0; display: inline;}
 
 	div.launch-box h2 {font-size: 18px; line-height: 18px; }
+
+	div.launch-box p {font-size: 14px; line-height: 16px;}
+
+
+	div.launch-box-artist h2 {font-size: 18px; line-height: 18px; }
+
+	div.launch-box-artist p {font-size: 14px; line-height: 16px;}
 
 
 	}
