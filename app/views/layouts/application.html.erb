@@ -15,13 +15,12 @@
 </head>
 <body>
 
-  <% if current_page?(root_path) %>
-    
+  <% if current_page?(root_path) || current_page?(new_user_registration_path) %>
     <%= render 'layouts/home_header' %>
-   <% else %>
+<% else %>
     <%= render 'layouts/header' %>
-    
 <% end %>
+
 
 
 <div class="notice flash-message"> <span style="background-color: #FFFF00"><%= notice %></span> </div>
