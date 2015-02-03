@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#launch-top {width: 60%; float: left; margin: 0 0 0 0; padding: 0; color: #fff; height: auto; background-color: #000;}
+#launch-top {width: 60%; float: left; margin: 0 0 0 0; padding: 0; color: #fff; height: auto; background-color: none;}
 #launch-box {width: 350px; float: left; margin: 0 0 0 10px;}
 #launch-box2 {width: 350px; float: left; margin: 0 0 0 0;}
 #launch-box-word {width: 350px; float: left; margin: 5px 5px 25px 5px; background-color: #8e0010; color: #fff; height: auto; min-height: 200px; padding: 10px;}
@@ -105,7 +105,7 @@ div.launch-box-artist h4 {margin-top: 20px;}
 
 	.launch-section h2 {font-size: 16px; line-height: 16px; }
 
-	.signup-launch {width: 100%; margin: 0; padding: 0 0; min-height: 800px; height: auto; background: url('rnd-background-mobile.jpg'); background-size: 100% auto; background-repeat: no-repeat; background-color: #000; position: static;}
+	.signup-launch {width: 100%; margin: 0; padding: 0 0; min-height: 750px; height: auto; background: url('rnd-background-mobile.jpg'); background-size: 100% auto; background-repeat: no-repeat; background-color: #000; position: static;}
 
 	.signup-box {width: 100%; text-align: center; padding: 0; margin: 0 auto; color: #fff; font-size: 30px; line-height: 30px; display: none;}
 
