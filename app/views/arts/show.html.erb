@@ -14,14 +14,19 @@
 
 
 	<div class="container-art2">
-
+      <% unless @art.image.nil? %>
 			<%= image_tag @art.image.url(:medium) %>
+      <% end %>
 	</div>
 
 	<div class="container-extra">
     <ul>
       <li>
-        <h2><span class="timer-line" data-countdown= <%= @art.campaign.timer2 %>></span></h2>
+        <h2>
+          <% unless @art.campaign.timer2.nil? || @art.campaign.timer2.empty? %>
+          <span class="timer-line" data-countdown= <%= @art.campaign.timer2 %>></span>
+          <% end %>
+        </h2>
           
         <h2><%= @art.get_upvotes.size %> Votes</h2>
            <% if @art.get_upvotes.size == 0 %>
@@ -31,13 +36,6 @@
         <% end %>
 
           <h2><span class="up">0 </span></h2>
-
-          <% if @current_user.voted_for? @art %>
-              Yes sir
-              <% else %>
-              No sir
-              <% end %>
-
 
 
           <% if @current_user.voted_for? @art %>
@@ -80,19 +78,25 @@
 
 		   <ul>
 
-        	<li>Posted By: <a class="popoverExampleTwo" data-placement="auto left" data-trigger="click" return false;><%= image_tag @art.user.avatar.url(:mini) %></a><%= link_to @art.user.username, profile_url(:id => @art.user.username) %></li>
+        	<li>Posted By: <% unless @art.user.avatar.nil? %><a class="popoverExampleTwo" data-placement="auto left" data-trigger="click" return false;><%= image_tag @art.user.avatar.url(:mini) %></a><% end %> <% unless @art.user.username.nil? || @art.user.username.empty? %><%= link_to @art.user.username, profile_url(:id => @art.user.username) %><% end %></li>
         	
         </ul>
         <ul>
+          <% unless @art.campaign.title.nil? || @art.campaign.title.empty? %>
         	<li><strong>Experiment</strong> |  <a id="popoverExampleThree" data-placement="auto left" data-trigger="click"><%= @art.campaign.title %> </a></li>
+          <% end %>
         </ul>
 
 
   <!-- Popover 2 hidden content -->
   <div class="popoverExampleTwoHiddenContent" style="display: none">
      <div>
+      <% unless @art.user.avatar.nil? %>
      	<%= image_tag @art.user.avatar.url(:thumb) %>
+      <% end %>
+      <% unless @art.user.username.nil? || @art.user.username.empty? %>
 					<%= link_to @art.user.username, profile_url(:id => @art.user.username) %>
+          <% end %>
 					
 					</br>
 					<div class="following-show">
@@ -111,9 +115,11 @@
 						<% end %>
 					</div>
 					<hr>
+          <% unless @art.user.points.nil? %>
 					<div class="points-show">
 						Points | <%= @art.user.points %>
 					</div>
+          <% end %>
 
 
      </div>
@@ -139,9 +145,13 @@
  
         <div class="artist-info">
 		    <ul>
+          <% unless @art.typeart.nil? || @art.typeart.empty? %>
 		        <li><strong>Type of Art: </strong><%= @art.typeart %></li>
+            <% end %>
 			
+        <% unless @art.link.nil? || @art.link.empty? %>
 				<li>| <%= link_to 'More Info', @art.link %></li>
+        <% end %>
 
 			</ul>
 
@@ -158,7 +168,7 @@
         </ul>
     </div>
 
-
+<div class="clear"></div>
 
 	<% unless @art.description.nil? || @art.description.empty? %>
 	<div class="container-desc">
@@ -188,7 +198,9 @@
      
          <div class="container-art2">
           <%= link_to campaign_art_path(@campaign, random_art) do %>
+            <% unless random_art.image.nil? %>
             <%= image_tag random_art.image.url(:small) %>
+            <% end %>
           <% end %>
         </div>
 
@@ -196,7 +208,9 @@
         <div class="container-extra">
       <ul>
       <li>
+        <% unless random_art.campaign.timer2.nil? || random_art.campaign.timer2.empty? %>
         <h2><span class="timer-line" data-countdown= <%= random_art.campaign.timer2 %>></span></h2>
+        <% end %>
           
         <h2><%= random_art.get_upvotes.size %> Votes</h2>
 
@@ -229,18 +243,19 @@
 
          <ul>
               <li><%= random_art.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
-              <li>
-                  Add Rating Count 
-              </li>
 
             <li><%= random_art.commentarts.count %> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></li>
-              <li><a class="popoverExampleTwo" data-placement="auto left" data-trigger="click" return false;><%= image_tag random_art.user.avatar.url(:mini) %></a><%= link_to random_art.user.username, profile_url(:id => random_art.user.username) %></li>
+              <li><% unless random_art.user.avatar.nil? %><a class="popoverExampleTwo" data-placement="auto left" data-trigger="click" return false;><%= image_tag random_art.user.avatar.url(:mini) %></a><% end %><% unless random_art.user.username.nil? || random_art.user.username.empty? %><%= link_to random_art.user.username, profile_url(:id => random_art.user.username) %><% end %></li>
 
                           <!-- Popover 2 hidden content -->
                           <div class="popoverExampleTwoHiddenContent" style="display: none">
                              <div>
+                              <% unless random_art.user.avatar.nil? %>
                               <%= image_tag random_art.user.avatar.url(:thumb) %>
+                              <% end %>
+                              <% unless random_art.user.username.nil? || random_art.user.username.empty? %>
                                   <%= link_to random_art.user.username, profile_url(:id => random_art.user.username) %>
+                                  <% end %>
                                   
                                   </br>
                                   <div class="following-show">
@@ -259,9 +274,11 @@
                                     <% end %>
                                   </div>
                                   <hr>
+                                  <% unless random_art.user.points.nil? %>
                                   <div class="points-show">
                                     Points | <%= random_art.user.points %>
                                   </div>
+                                  <% end %>
 
 
                              </div>

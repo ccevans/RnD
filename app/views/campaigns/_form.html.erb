@@ -9,6 +9,11 @@
   <%= f.collection_select :status, Campaign::STATUS, :to_s, :humanize %>
   <%= f.file_field :image %>
 
+    <%= f.input :artist, label: "Artist" %>
+  <%= f.input :song, label: "Song" %>
+  <%= f.input :album, label: "Album" %>
+  <%= f.input :link, label: "Link" %>
+
   <%= f.button :submit, "Submit", class: "button" %>
 
 

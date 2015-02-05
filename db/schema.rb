@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150122005008) do
+ActiveRecord::Schema.define(version: 20150204190208) do
 
   create_table "adminlyrics", force: true do |t|
     t.text     "line"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20150122005008) do
     t.integer  "cached_weighted_total",   default: 0
     t.float    "cached_weighted_average", default: 0.0
     t.integer  "counter_cache",           default: 0
+    t.boolean  "chosen"
   end
 
   add_index "arts", ["cached_votes_down"], name: "index_arts_on_cached_votes_down"
@@ -90,6 +91,10 @@ ActiveRecord::Schema.define(version: 20150122005008) do
     t.datetime "image_updated_at"
     t.string   "timer2"
     t.string   "status"
+    t.string   "artist"
+    t.string   "album"
+    t.string   "song"
+    t.string   "link"
   end
 
   create_table "commentarts", force: true do |t|
@@ -215,6 +220,7 @@ ActiveRecord::Schema.define(version: 20150122005008) do
     t.integer  "cached_weighted_total",   default: 0
     t.float    "cached_weighted_average", default: 0.0
     t.integer  "counter_cache",           default: 0
+    t.boolean  "chosen"
   end
 
   add_index "lyrics", ["cached_votes_down"], name: "index_lyrics_on_cached_votes_down"

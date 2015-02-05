@@ -14,13 +14,6 @@
   </div>  
 <% end %>
 
-<div class="tagcloud">
-         <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
-           
-            <%= link_to tag.name, campaign_filter_url(:tag => tag.name), :class => css_class %>
-         
-        <% end %>
-    </div>
 
     <div class="dropdown">
       <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
@@ -44,7 +37,9 @@
      
          <div class="container-art2">
           <%= link_to campaign_art_path(@campaign, art) do %>
-            <%= image_tag art.image.url(:small) %>
+            <% unless art.image.nil? %>
+              <%= image_tag art.image.url(:small) %>
+              <% end %>
           <% end %>
 
         </div>
@@ -52,7 +47,11 @@
         <div class="container-extra">
            <ul>
       <li>
-        <h2><span class="timer-line" data-countdown= <%= art.campaign.timer2 %>></span></h2>
+        <h2>
+            <% unless art.campaign.timer2.nil? || art.campaign.timer2.empty? %>
+              <span class="timer-line" data-countdown= <%= art.campaign.timer2 %>></span>
+            <% end %>
+        </h2>
           
         <h2><%= art.get_upvotes.size %> Votes</h2>
 
@@ -87,18 +86,21 @@
 
          <ul>
               <li><%= art.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
-              <li>
-                  Add Rating Count 
-              </li>
 
             <li><%= art.commentarts.count %> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></li>
-              <li><a class="popoverExampleTwo" data-placement="auto left" data-trigger="click" return false;><%= image_tag art.user.avatar.url(:mini) %></a><%= link_to art.user.username, profile_url(:id => art.user.username) %></li>
+              <li>
+                <% unless art.user.avatar.nil? %>
+                <a class="popoverExampleTwo" data-placement="auto left" data-trigger="click" return false;><%= image_tag art.user.avatar.url(:mini) %></a><% end %><% unless art.user.username.nil? || art.user.username.empty? %><%= link_to art.user.username, profile_url(:id => art.user.username) %><% end %></li>
 
                           <!-- Popover 2 hidden content -->
                           <div class="popoverExampleTwoHiddenContent" style="display: none">
                              <div>
+                              <% unless art.user.avatar.nil? %>
                               <%= image_tag art.user.avatar.url(:thumb) %>
+                              <% end %>
+                              <% unless art.user.username.nil? || art.user.username.empty? %>
                                   <%= link_to art.user.username, profile_url(:id => art.user.username) %>
+                                  <% end %>
                                   
                                   </br>
                                   <div class="following-show">
@@ -117,9 +119,11 @@
                                     <% end %>
                                   </div>
                                   <hr>
+                                  <% unless art.user.points.nil? %>
                                   <div class="points-show">
                                     Points | <%= art.user.points %>
                                   </div>
+                                  <% end %>
 
 
                              </div>

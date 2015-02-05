@@ -2,12 +2,35 @@
 
       <%= f.error_notification %>
 
+  <% if can? :manage, :all %>
+  <%= f.input :chosen %>
+  <% end %>
+
+  <% if @art.chosen == true %>
+  Your artwork has been chosen!
+
+  <% if can? :manage, :all %>
+
+    <%= f.file_field :image, label: "Image" %>
+  <%= f.input :description, label: "Tell us more" %>
+  <%= f.input :typeart, label: "Type of Art" %>
+  <%= f.input :link, label: "Link" %>
+  <%= f.input :tag_list, label: "Tags", input_html: { maxlength: 36 } %>
+  <%= f.button :submit, "Submit", class: "button" %>
+
+
+  <% end %>
+
+  <% else %>
+
   <%= f.file_field :image, label: "Image" %>
   <%= f.input :description, label: "Tell us more" %>
   <%= f.input :typeart, label: "Type of Art" %>
   <%= f.input :link, label: "Link" %>
   <%= f.input :tag_list, label: "Tags", input_html: { maxlength: 36 } %>
   <%= f.button :submit, "Submit", class: "button" %>
+
+  <% end %>
 
 
 

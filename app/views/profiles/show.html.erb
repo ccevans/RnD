@@ -1,28 +1,44 @@
+<% if @user.profileimg.present? %>
 <div class="profile-header">
 	<%= image_tag @user.profileimg.url(:large) %>
 </div>
+<% end %>
 <section class="profilesection">
 	<div class="profile-box">
+		<% if @user.avatar.present? %>
 		<div class="profile-main">
 			<%= image_tag @user.avatar.url(:medium) %>
 		</div>
+		<% end %>
+	<% if @user.name.present? %>
 	<h1><%= @user.name %></h1>
+	<% end %>
+	<% if @user.username.present? %>
 	<h2>profile/<%= @user.username %></h2>
+	<% end %>
 	<hr>
+	<% if @user.bio.present? %>
 	<div class="profile-bio">
 		<%= @user.bio %>
 	</div>
+	<% end %>
+	<% if @user.passion.present? %>
 	<div class="profile-bio">
 		<%= @user.passion %>
 	</div>
+	<% end %>
 	<hr>
+	<% if @user.location.present? %>
 	<div class="profile-location">
 		<%= @user.location %>
 	</div>
+	<% end %>
 
+	<% if @user.website.present? %>
 	<div class="profile-location">
 		<%= link_to "Website", @user.website %>
 	</div>
+	<% end %>
 	<% if user_signed_in? %>
 		<% if current_user == @user %>
 			<p></p>

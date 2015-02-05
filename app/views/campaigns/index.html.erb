@@ -25,7 +25,9 @@
   <div id="campaigns" class="transitions-enabled">
         <div class="free-campaign">
           <div class="campaign-img">
+                <% unless @free_campaign.image.nil? %>
                   <%= image_tag @free_campaign.image.url(:medium) %>
+                  <% end %>
               </div> 
                <%= link_to 'Add Your Fav Lyrics & Designs', @free_campaign %>
 
@@ -37,14 +39,20 @@
 <div id="campaigns2" class="transitions-enabled">
   <% @open_campaigns.each do |open_campaign| %>
     <div class="campaign-md">
+       <% unless open_campaign.image.nil? %>
         <div class="campaign-img">
             <%= image_tag open_campaign.image.url(:medium) %>
         </div> 
+        <% end %>
 
         <div class="campaign-info">
           <ul>
+             <% unless open_campaign.title.nil? || open_campaign.title.empty? %>
             <li><strong><%= link_to simple_format(open_campaign.title), open_campaign %></strong></li>
+            <% end %>
+            <% unless open_campaign.timer.nil? || open_campaign.timer.empty? %>
             <li><%= open_campaign.timer %> Left</li>
+            <% end %>
             <li>Reward: $100 plus royalties</li>
           </ul>
 
@@ -59,14 +67,20 @@
 <div id="campaigns3" class="transitions-enabled">
       <% @closed_campaigns.each do |closed_campaign| %>
     <div class="campaign-md">
+      <% unless closed_campaign.image.nil? %>
         <div class="campaign-img">
             <%= image_tag closed_campaign.image.url(:medium) %>
         </div> 
+        <% end %>
 
         <div class="campaign-info">
           <ul>
+            <% unless closed_campaign.title.nil? || closed_campaign.title.empty? %>
             <li><strong><%= link_to simple_format(closed_campaign.title), closed_campaign %></strong></li>
+            <% end %>
+            <% unless closed_campaign.timer.nil? || closed_campaign.timer.empty? %>
             <li><%= closed_campaign.timer %> Left</li>
+            <% end %>
             <li>Reward: $100 plus royalties</li>
           </ul>
 

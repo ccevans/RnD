@@ -156,7 +156,7 @@ class ArtsController < ApplicationController
 	end
 
 	def post_params
-		params.require(:art).permit( :image, :description, :artist, :typeart, :link, :tag_list)
+		params.require(:art).permit( :image, :description, :artist, :typeart, :link, :tag_list, :chosen)
 	end
 
 

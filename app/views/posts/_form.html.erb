@@ -1,4 +1,45 @@
 <%= simple_form_for @post do |f| %>
+
+<% if can? :manage, :all %>
+  <%= f.input :approve %>
+  <% end %>
+
+
+<% if @post.approve == true %>
+  Your post has been approved!
+
+<% if can? :manage, :all %>
+  <%= f.input :title %>
+  <%= f.input :image %>
+  <%= f.input :description %>
+  <%= f.input :link %>
+  <%= f.collection_select :typeof, Post::TYPEOFS, :to_s, :humanize, {}, {:onchange => 'displayQuestion(this.value)'} %>
+
+
+
+
+  <div id="audioQuestion" style="display:none;"><br/>
+    <%= f.input :audiolink %>
+ 
+  </div>
+
+  <div id="videoQuestion" style="display:block;"><br/>
+    <%= f.input :videolink %>
+  </div>
+
+    <div id="pictureQuestion" style="display:none;"><br/>
+    <%= f.input :image %>
+  </div>
+  
+  <%= f.input :tag_list, label: "Tags", input_html: { maxlength: 36 } %>
+
+
+
+
+  <%= f.button :submit, "Submit", class: "button" %>
+  <% end %>
+
+<% else %>
 	<%= f.input :title %>
 	<%= f.input :image %>
 	<%= f.input :description %>
@@ -23,9 +64,12 @@
   
   <%= f.input :tag_list, label: "Tags", input_html: { maxlength: 36 } %>
 
-	<%= f.input :approve %>
+
+
 
 	<%= f.button :submit, "Submit", class: "button" %>
+
+  <% end %>
 
 <% end %>
 

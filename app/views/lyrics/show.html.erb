@@ -11,13 +11,13 @@
 
 <div class="container-show">
 	
+   <% if @lyric.line.present? %>
 	<div class="container-line">
 		
-
 	<%= simple_format(@lyric.line) %>
 
-		
 	</div>
+  <% end %>
 	
 <div class="container-extra">
 	 <ul>
@@ -47,20 +47,25 @@
 
 		   <ul>
 
-        	<li>Posted By: <a href="#" class="popoverExampleTwo" data-placement="auto left" data-trigger="click"><%= image_tag @lyric.user.avatar.url(:mini) %><%= link_to @lyric.user.username, profile_url(:id => @lyric.user.username) %></a></li>
+        	<li>Posted By:  <% if @lyric.user.avatar.present? %><a href="#" class="popoverExampleTwo" data-placement="auto left" data-trigger="click"><%= image_tag @lyric.user.avatar.url(:mini) %></a><% end %> <% if @lyric.user.username.present? %><%= link_to @lyric.user.username, profile_url(:id => @lyric.user.username) %><% end %></li>
         	
         </ul>
+        <% if @lyric.campaign.title.present? %>
         <ul>
         	<li><strong>Experiment</strong> |  <a href="#" class="popoverExampleThree" data-placement="auto left" data-trigger="click"><%= @lyric.campaign.title %> </a></li>
         </ul>
+        <% end %>
 
 
 				  <!-- Popover 2 hidden content -->
 				  <div class="popoverExampleTwoHiddenContent" style="display: none">
 				     <div>
+            <% if @lyric.user.avatar.present? %>
 				     	<%= image_tag @lyric.user.avatar.url(:thumb) %>
+              <% end %>
+              <% if @lyric.user.username.present? %>
 									<%= link_to @lyric.user.username, profile_url(:id => @lyric.user.username) %>
-									
+									<% end %>
 						</br>
 						<div class="following-show">
 							<p><%= @lyric.user.follow_count %> Following  | 
@@ -78,9 +83,11 @@
 							<% end %>
 						</div>
 						<hr>
+            <% if @lyric.user.points.present? %>
 						<div class="points-show">
 							Points | <%= @lyric.user.points %>
 						</div>
+            <% end %>
 
 
 	     			</div>
@@ -92,33 +99,27 @@
 
     <!-- Popover 2 hidden content -->
   <div class="popoverExampleThreeHiddenContent" style="display: none">
-     <div>
-     	<%= image_tag @lyric.user.avatar.url(:thumb) %>
-					<%= link_to @lyric.user.username, profile_url(:id => @lyric.user.username) %>
-					
-					</br>
-					<div class="following-show">
-						<p><%= @lyric.user.follow_count %> Following  | 
-						<%= @lyric.user.followers_count %> Followers</p>
-						<% if user_signed_in? %>
-							<% if current_user == @lyric.user %>
-								<p></p>
-							<% elsif  @lyric.user.all_following.include?(current_user) %>
-								<%= link_to "Unfollow", unfollow_profile_path(@lyric.user.username) %>
-							<% else %>
-								<%= link_to "Follow", follow_profile_path(@lyric.user.username) %>
-							<% end %>
-						<% else %>
-							<p><%= link_to "Sign Up To Follow", new_user_registration_path %></p>
-						<% end %>
-					</div>
-					<hr>
-					<div class="points-show">
-						Points | <%= @lyric.user.points %>
-					</div>
+
+       <% if @campaign.image.present? %>
+      <div class="campaign-img">
+            <%= image_tag @campaign.image.url(:medium) %>
+        </div> 
+        <% end %>
+
+        <div class="campaign-info">
+          <ul>
+            <% if @campaign.title.present? %>
+            <li><strong><%= link_to simple_format(@campaign.title), @campaign %></strong></li>
+            <% end %>
+            <% if @campaign.timer.present? %>
+            <li><%= @campaign.timer %> Left</li>
+            <% end %>
+          </ul>
+        </div>
 
 
-     </div>
+
+
   </div>  
   <!-- Popover 2 hidden title -->
   <div class="popoverExampleThreeHiddenTitle" style="display: none">
@@ -128,13 +129,48 @@
 
         <div class="artist-info">
 		    <ul>
-		        <li><strong>Artist: </strong><%= @lyric.artist %></li>
-				
-				<li><strong>Song: </strong><%= @lyric.song %></li>
-				
-				<li><strong>Album: </strong><%= @lyric.album %></li>
-			
-				<li>| <%= link_to 'More Info', @lyric.link %></li>
+		        <li>
+               <% if @campaign.artist.nil? || @campaign.artist.empty? %>
+                    <% if @lyric.artist.present? %>
+                    <strong>Artist: </strong><%= @lyric.artist %>
+                    <% end %>
+                    <% else %>
+                    <strong>Artist: </strong> <%= @campaign.artist %>
+                    <% end %>
+                  </li>
+
+              <li>
+               <% if @campaign.album.nil? || @campaign.album.empty? %>
+                    <% if @lyric.album.present? %>
+                    <strong>Album: </strong><%= @lyric.album %>
+                    <% end %>
+                    <% else %>
+                    <strong>Album: </strong> <%= @campaign.album %>
+                     <% end %>
+                  </li>
+
+              <li>
+               <% if @campaign.song.nil? || @campaign.song.empty? %>
+                    <% if @lyric.song.present? %>
+                    <strong>Song: </strong><%= @lyric.song %>
+                    <% end %>
+                    <% else %>
+                    <strong>Song: </strong> <%= @campaign.song %>
+                     <% end %>
+                  </li>
+
+              <li>
+               <% if @campaign.link.nil? || @campaign.link.empty? %>
+                    <% if @lyric.link.present? %>
+                    <%= link_to 'More Info', @lyric.link %>
+                    <% end %>
+                    
+                    <% else %>
+
+                    <%= link_to 'More Info', @campaign.link %>
+                     <% end %>
+                 
+                  </li>
 
 			</ul>
 
@@ -174,14 +210,22 @@
 
 </div>
 
+<section class="home-info">
+
+
+
+
+</section>
+
 <section class="lyric-section">
 
   <div id="lyrics" class="transitions-enabled">
     <% @random_lyrics.each do |random_lyric| %>
     <div class="container-md">
 
-        
+        <% if random_lyric.line.present? %>
         <%= link_to random_lyric.line, campaign_lyric_path(@campaign, random_lyric) %>
+        <% end %>
         <ul>
         <li><%= random_lyric.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
         <li><%= random_lyric.get_upvotes.size %> 
@@ -190,12 +234,16 @@
             <% end %>
           </li>
         <li><%= random_lyric.comments.count %> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></li>
-        <li><a href="#" id="popoverExampleTwo" data-placement="auto left" data-trigger="click"><%= image_tag random_lyric.user.avatar.url(:mini) %></a><%= link_to random_lyric.user.username, profile_url(:id => random_lyric.user.username) %></li>
+        <li><% if random_lyric.user.avatar.present? %><a href="#" id="popoverExampleTwo" data-placement="auto left" data-trigger="click"><%= image_tag random_lyric.user.avatar.url(:mini) %></a><% end %><% if random_lyric.user.username.present? %><%= link_to random_lyric.user.username, profile_url(:id => random_lyric.user.username) %><% end %></li>
         				<!-- Popover 2 hidden content -->
                           <div class="popoverExampleTwoHiddenContent" style="display: none">
                              <div>
+                              <% if random_lyric.user.avatar.present? %>
                               <%= image_tag random_lyric.user.avatar.url(:thumb) %>
+                              <% end %>
+                              <% if random_lyric.user.username.present? %>
                                   <%= link_to random_lyric.user.username, profile_url(:id => random_lyric.user.username) %>
+                                  <% end %>
                                   
                                   </br>
                                   <div class="following-show">
@@ -214,9 +262,11 @@
                                     <% end %>
                                   </div>
                                   <hr>
+                                  <% if random_lyric.user.points.present? %>
                                   <div class="points-show">
                                     Points | <%= random_lyric.user.points %>
                                   </div>
+                                  <% end %>
 
 
                              </div>

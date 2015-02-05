@@ -5,10 +5,18 @@
 		<% @users.each do |user| %>
 
 			 <div class="container-profiles">
+			 	<% if user.avatar.present? %>
 					<%= image_tag user.avatar.url(:thumb) %>
+					<% end %>
+				<% if user.username.present? %>
 				   <div class="user-row"><%= link_to user.username, "/profiles/#{user.username}" %></div>
+				   <% end %>
+				<% if user.passion.present? %>
 				   <div class="user-row"><%= user.passion %></div>
+				   <% end %>
+				<% if user.location.present? %>
 				   <div class="user-row"><%= user.location %></div>
+				<% end %>
 		   	</div>
 
 

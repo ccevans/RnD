@@ -53,14 +53,13 @@
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           
-          <li class="navbar-brand"><%= link_to 'Add Lyric', "/campaigns/2/lyrics/new" %></li>
-            <li class="dropdown2"><%= image_tag current_user.avatar.url(:thumb) %>
+          <li class="navbar-brand"><%= link_to 'Add Lyric', "/campaigns/" %></li>
+            <li class="dropdown2"><% unless current_user.avatar.nil? %><%= image_tag current_user.avatar.url(:thumb) %><% end %>
             <ul class="dropdown-menu" role="menu">
-            <li><%= image_tag current_user.avatar.url(:mini) %><%= current_user.username %></li>
+            <li><% unless current_user.avatar.nil? %><%= image_tag current_user.avatar.url(:mini) %><% end %><% unless current_user.username.nil? || current_user.username.empty? %><%= current_user.username %><% end %></li>
+            <% unless current_user.points.nil? %>
             <li>Community Score: <%= current_user.points %></li>
-            <li>Community Level: <% current_user.badges.each do |badge| %>
-                <%= badge.name %>
-                <% end %></li>
+            <% end %>
             <li class="divider"></li>
             <li><% if current_user.username.present? %>
               <%= link_to "Your Profile", profile_url(:id => current_user.username) %>

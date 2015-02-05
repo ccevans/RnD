@@ -1,7 +1,13 @@
 	<div class="comment">
+		<% unless commentart.user.avatar.nil? %>
 		<%= image_tag commentart.user.avatar.url(:mini) %>
+		<% end %>
+		<% unless commentart.user.username.nil? || commentart.user.username.empty? %>
 		<p class="username"> <%= commentart.user.username %></p></br>
-			<p class="content"> <%= commentart.content %></p>			
+		<% end %>
+		<% unless commentart.content.nil? || commentart.content.empty? %>
+			<p class="content"> <%= commentart.content %></p>	
+			<% end %>		
 			<p class="time-created"><%= time_ago_in_words(commentart.created_at) %></p>
 				<hr />
 	</div>

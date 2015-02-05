@@ -4,23 +4,13 @@
 
   <div class="results"></div>
 
-  <div class="header-lyric">
-
-    <%= image_tag current_user.avatar.url(:thumb) %><% if current_user.username.present? %><%= link_to "Your Profile", profile_url(:id => current_user.username) %><% end %>
-  </br>
-
-    Community Score: <%= current_user.points %>
-
-  </div>
-
-
-
-
 
   <div class="header-lyric">
   <% if user_signed_in? %>
     <h1>The Rhyme Center</h1>
+    <% if current_user.name.present? %>
     <h2><%= current_user.name %></h2>
+    <% end %>
     <p>Vote on your favorite lyrics or contribute the lyrics from your favorite artists.  <br /><%= link_to "Submit Lyrics", '/campaigns/2/lyrics/new' %></p>
   <% else %>
   <h1>The Rhyme Center</h1>
@@ -71,8 +61,9 @@
     <% @lyrics.each do |lyric| %>
     <div class="container-md">
 
-        
+        <% if lyric.line.present? %>
         <%= link_to lyric.line, campaign_lyric_path(@campaign, lyric) %>
+        <% end %>
         <ul>
         <li><%= lyric.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
         <li><%= lyric.get_upvotes.size %> 
@@ -81,14 +72,17 @@
             <% end %>
           </li>
         <li><%= lyric.comments.count %> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></li>
-        <li><a class="popoverExampleTwo" data-placement="auto left" data-trigger="click" return false;><%= image_tag lyric.user.avatar.url(:mini) %></a><%= link_to lyric.user.username, profile_url(:id => lyric.user.username) %></li>
+        <li><% if lyric.user.avatar.present? %><a class="popoverExampleTwo" data-placement="auto left" data-trigger="click" return false;><%= image_tag lyric.user.avatar.url(:mini) %></a><% end %><% if lyric.user.username.present? %><%= link_to lyric.user.username, profile_url(:id => lyric.user.username) %><% end%></li>
 
                     <!-- Popover 2 hidden content -->
                           <div class="popoverExampleTwoHiddenContent" style="display: none">
                              <div>
+                              <% if lyric.user.avatar.present? %>
                               <%= image_tag lyric.user.avatar.url(:thumb) %>
+                              <% end %>
+                              <% if lyric.user.username.present? %>
                                   <%= link_to lyric.user.username, profile_url(:id => lyric.user.username) %>
-                                  
+                                  <% end %>
                                   </br>
                                   <div class="following-show">
                                     <p><%= lyric.user.follow_count %> Following  | 
@@ -106,9 +100,12 @@
                                     <% end %>
                                   </div>
                                   <hr>
+                                   <% if lyric.user.points.present? %>
                                   <div class="points-show">
+                                   
                                     Points | <%= lyric.user.points %>
                                   </div>
+                                  <% end %>
 
 
                              </div>

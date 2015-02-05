@@ -4,9 +4,26 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Hi <%= @user.name %></h1>
-    <p>
-      Sample mail sent using smtp.
-    </p>
+  <% if @user.name.nil? || @user.name.empty? %>
+    <p>Hello Team,</p>
+  <% else %>
+    <p>Hi <%= @user.name %>,</p>
+  <% end %>
+  <p>Welcome to the Lab. The people of <strong>Rhymes & Designs</strong> would like to thank you for joining our art community. Now it’s time to build.</p>
+  <p>Through joining the R&D community you are entitled to the following benefits:</p>
+  <ul>
+    <li>Exposure to dope verbal and visual art, from classic material to the newest heat.</li>
+    <li>Join the creative process by submitting lyrics and voting on each piece before it goes into production.</li>
+    <li>Become eligible for rewards such as autographed items, concert tickets, artist meet-and-greets, and discounted merch.</li>
+    <li>Be among the first to see what R&D is dropping, and what artists we are working with.</li>
+    <li>Be part of a community of Art lovers, creators, and others who “Inspire Passion”.</li>
+  </ul>
+
+  <p>Now that you’re with it, stay tuned for more info regarding our upcoming experiments. And if you’re not already doing so, follow us on <a href="http://instagram.com/rhymesdesigns/">IG</a> and <a href="https://twitter.com/rhymesdesigns">Twitter</a> <strong>@RhymesDesigns</strong></p>
+
+  <p>Inspire Passion,</p>
+  </br>
+  <p>Rhymes & Designs </p>
+
   </body>
 </html>

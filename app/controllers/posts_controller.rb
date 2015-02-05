@@ -5,7 +5,6 @@ class PostsController < ApplicationController
 	before_action :tag_cloud, :only => [:index, :tagged]
 	load_and_authorize_resource :only => [:show, :edit, :update, :destroy]
 	impressionist :actions => [:show,:index], :unique => [:impressionable_type, :impressionable_id, :session_hash]
-	before_action :set_campaign
 	respond_to :html, :json, :js
 
 	def index

@@ -2,10 +2,12 @@
 <% if user_signed_in? %>
   <div class="header-lyric">
     <h1>Community Blog</h1>
+    <% if current_user.name.present? %>
     <h2><%= current_user.name %></h2>
+    <% end %>
     <p>Vote on your favorite lyrics or contribute the lyrics from your favorite artists.  <br /><%= link_to "Submit Lyrics", '/campaigns/2/lyrics/new' %></p>
 
-      <div class="results"></div>
+      
 
   </div>  
 <% else %>
@@ -14,7 +16,7 @@
     <h2><%= link_to "Join To Contribute", new_user_registration_path %></h2>
     <p>Vote on your favorite lyrics or contribute the lyrics from your favorite artists. <br /><%= link_to "Submit Lyrics", '/campaigns/2' %></p>
 
-    <div class="results"></div>
+    
 
   </div>  
 <% end %>
@@ -37,8 +39,9 @@
     <% @posts.each do |post| %>
     <div class="container-post-index">
 
-        
+       <% if post.title.present? %> 
         <%= link_to post.title, post_path(post) %>
+        <% end %>
 
         <% unless post.videolink.nil? || post.videolink.empty? %>
 			<% if post.typeof == 'video' %>
@@ -67,13 +70,17 @@
             <% end %>
           </li>
         <li><%= post.commentposts.count %> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></li>
-        <li><a class="popoverExampleTwo" data-placement="auto left" data-trigger="click" return false;><%= image_tag post.user.avatar.url(:mini) %></a><%= link_to post.user.username, profile_url(:id => post.user.username) %></li>
+        <li><% if post.user.avatar.present? %><a class="popoverExampleTwo" data-placement="auto left" data-trigger="click" return false;><%= image_tag post.user.avatar.url(:mini) %></a><% end %><% if post.user.username.present? %><%= link_to post.user.username, profile_url(:id => post.user.username) %><% end %></li>
 
                            <!-- Popover 2 hidden content -->
                           <div class="popoverExampleTwoHiddenContent" style="display: none">
                              <div>
+                              <% if post.user.avatar.present? %>
                               <%= image_tag post.user.avatar.url(:thumb) %>
+                              <% end %>
+                              <% if post.user.username.present? %>
                                   <%= link_to post.user.username, profile_url(:id => post.user.username) %>
+                                  <% end %>
                                   
                                   </br>
                                   <div class="following-show">
@@ -92,9 +99,11 @@
                                     <% end %>
                                   </div>
                                   <hr>
+                                  <% if post.user.points.present? %>
                                   <div class="points-show">
                                     Points | <%= post.user.points %>
                                   </div>
+                                  <% end %>
 
 
                              </div>

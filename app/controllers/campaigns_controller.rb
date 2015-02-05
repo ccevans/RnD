@@ -14,8 +14,8 @@ class CampaignsController < ApplicationController
 	end
 
 	def show
-		@lyrics = Lyric.where(campaign_id: @campaign.id).order("created_at DESC")
-		@arts = Art.where(campaign_id: @campaign.id).order("created_at DESC")
+		@lyrics = Lyric.where(campaign_id: @campaign.id).order(:cached_votes_up => :desc)
+		@arts = Art.where(campaign_id: @campaign.id).order(:cached_weighted_total => :desc)
 		@time = Time.now 
 	end
 
@@ -59,7 +59,7 @@ class CampaignsController < ApplicationController
 	end
 
 	def campaign_params
-		params.require(:campaign).permit(:title, :description, :timer, :timer2, :image, :status)
+		params.require(:campaign).permit(:title, :description, :timer, :timer2, :image, :status, :artist, :song, :album, :link,)
 	end
 
 end
