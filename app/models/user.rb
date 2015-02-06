@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
-
+  validates_uniqueness_of :username
+  validates :username, format: { with: /\A[a-zA-Z0-9]+\Z/ }
 
 
 
@@ -82,7 +83,7 @@ class User < ActiveRecord::Base
       if user.nil?
         user = User.new(
           name: auth.extra.raw_info.name,
-          #username: auth.info.nickname || auth.uid,
+          username: auth.info.nickname || auth.uid,
           email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
           password: Devise.friendly_token[0,20]
         )
