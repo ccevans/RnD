@@ -8,7 +8,7 @@
 
 			<h2>WELCOME TO THE LAB.</h2>
 			<% unless current_user.name.nil? || current_user.name.empty? %>
-    			<p> <%= current_user.name %></p>
+    			<p> <strong><%= current_user.name %></strong></p>
   			<% end %>
   		</br>
   		<p>Stay tuned for more info regarding our upcoming experiments.</p>
