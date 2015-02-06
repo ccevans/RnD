@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
+  validates_uniqueness_of :username
+
 
   ROLES = %w[registered admin moderator editor banned]
 

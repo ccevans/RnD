@@ -34,6 +34,7 @@ gem 'omniauth-facebook'
 gem 'shopify_api', '~> 3.2.6'
 gem 'thor', '~> 0.18.1'
 gem 'figaro'
+gem 'font-awesome-sass'
 
 
 
