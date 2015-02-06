@@ -14,7 +14,7 @@
         <%= f.text_field :email, :autofocus => true, :value => '', class: 'form-control input-lg', placeholder: 'Example: email@me.com' %>
         <p class="help-block">Please confirm your email address. No spam.</p>
       </div>
-      <%= f.input :username, required: true, placeholder: 'profile address', hint: "http://rhymesanddesigns.com/johndoe"  %>
+      <%= f.input :username, required: true, input_html: { maxlength: 20 }, placeholder: 'profile address', hint: "http://rhymesanddesigns.com/johndoe"  %>
     </div>
     <div class="actions">
       <%= f.submit 'Continue', :class => 'btn btn-primary' %>

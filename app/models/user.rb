@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   validates_uniqueness_of :username
+  validates :username, format: { with: /\A[a-zA-Z0-9]+\Z/ }
+
+
 
 
   ROLES = %w[registered admin moderator editor banned]
