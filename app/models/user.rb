@@ -11,8 +11,6 @@ class User < ActiveRecord::Base
   validates :username, format: { with: /\A[a-zA-Z0-9]+\Z/ }
 
 
-
-
   ROLES = %w[registered admin moderator editor banned]
 
   def role?(base_role)
@@ -31,9 +29,6 @@ class User < ActiveRecord::Base
   has_many :booths
   has_many :posts, dependent: :destroy
   has_many :commentposts, dependent: :destroy
-
-
-
 
   
   has_attached_file :avatar, :styles => { :medium => "300x300#", :thumb => "50x50#", :mini => "20x20#"  }, :default_url => "/images/:style/black-logo-gasmask.png" 
@@ -84,6 +79,7 @@ class User < ActiveRecord::Base
         user = User.new(
           name: auth.extra.raw_info.name,
           username: auth.info.nickname || auth.uid,
+          avatar: auth.info.image,
           email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
           password: Devise.friendly_token[0,20]
         )
