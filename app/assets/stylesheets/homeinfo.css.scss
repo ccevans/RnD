@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.home-info {float: left; border-top: 0px solid #fff; width: 40%; margin: 0 0 0 0; padding: 25px 5%; z-index: 10; background-color: none; background: none;}
+.home-info {float: left; border-top: 0px solid #fff; width: 20%; margin: 0px 0 0 80%; padding: 0; z-index: 10; background-color: none; background: none;}
 .home-products {float: left; width: 100%; padding: 0 0; margin: 0;}
 .home-campaigns {float: left; width: 100%; padding: 0; margin: 0;}
 .home-posts {float: left; width: 100%; padding: 0 ; margin: 25px 0;}
@@ -15,4 +15,6 @@ div.campaign-homeinfo a {position: relative; top: 0; left: 0;}
 
 div.home-products a img {width: 50%; height: auto; max-height: 300px; float: left;}
 
-.home-section {margin-top: 100px;}
+.home-section {margin-top: 50px;}
+
+.info-image {width: 100%; height: auto; float: left; margin: 0; padding: 0;}

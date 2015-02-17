@@ -1,39 +1,38 @@
 <section class="main-section">
-<% if user_signed_in? %>
-  <div class="header-lyric">
-    <h1>Community Blog</h1>
-    <% if current_user.name.present? %>
-    <h2><%= current_user.name %></h2>
-    <% end %>
-    <p>Vote on your favorite lyrics or contribute the lyrics from your favorite artists.  <br /><%= link_to "Submit Lyrics", '/campaigns/2/lyrics/new' %></p>
-
-      
-
-  </div>  
-<% else %>
-  <div class="header-lyric">
-     <h1>Community Blog</h1>
-    <h2><%= link_to "Join To Contribute", new_user_registration_path %></h2>
-    <p>Vote on your favorite lyrics or contribute the lyrics from your favorite artists. <br /><%= link_to "Submit Lyrics", '/campaigns/2' %></p>
-
-    
-
-  </div>  
-<% end %>
-
-    <div class="tagcloud">
-         <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
-            <%= link_to tag.name, tagged_url(:tag => tag.name), :class => css_class %>
-        <% end %>
-    </div>
 
 <section class="post-section">
 
-     <%= link_to 'Most Liked', :controller => 'posts', :sort_by => 'most_liked' %>
+    <div class="sort-box">
+    <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+        Sort
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+        <li role="presentation"><%= link_to 'Most Liked', :controller => 'posts', :sort_by => 'most_liked' %></li>
+        <li role="presentation"><%= link_to 'Most Viewed', :controller => 'posts', :sort_by => 'most_viewed' %></li>
+        <li role="presentation"><%= link_to 'Most Recent', :controller => 'posts', :sort_by => 'most_recent' %></li>
+      </ul>
+    </div>
 
-     <%= link_to 'Most Viewed', :controller => 'posts', :sort_by => 'most_viewed' %>
 
-   <%= link_to 'Most Recent', :controller => 'posts', :sort_by => 'most_recent' %>
+        <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+        Filter
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+
+         <% @tags.each do |tag| %>
+              <% if tag.taggings_count > 4 %>
+              <li role="presentation"><%= link_to tag.name, tagged_url(:tag => tag.name) %></li>
+              <% end %>
+          
+            <% end %>
+      </ul>
+    </div>
+  </div>
+
 
   <div id="posts" class="transitions-enabled">
     <% @posts.each do |post| %>
@@ -141,6 +140,16 @@
       <%= link_to 'New Post', new_post_path %>
     </div>
 </section>
+
+<section class="home-info">
+
+
+  <div class="results"></div>
+    
+
+</section>
+
+
 </section>
 
 
@@ -188,4 +197,48 @@ $(function () {
         return false;
     });
 });
+</script>
+
+<script>
+$(window).scroll(function () {
+    var winTop = $(this).scrollTop(),
+        winBottom = winTop + $(this).height(),
+        left = $('.home-info'),
+        leftBottom = left.height(),
+        right = $('.post-section'),
+        rightBottom = right.height();
+    //when the user reached the bottom of '#leftShort' set its position to fixed 
+    //to prevent it from moving on scroll 
+    if (rightBottom <= leftBottom){
+
+
+    } else{
+
+          if (winBottom >= leftBottom) {
+        left.css({
+            'position': 'fixed',
+            'bottom': '0px',
+            
+        });
+    } else {
+        //when the user scrolls back up revert its position to relative
+        // to make it move up together with '#rightLong'
+        left.css({
+            'position': 'relative',
+            'bottom': 'auto'
+
+        });
+    }
+
+    }
+
+
+});
+
+</script>
+
+<script>
+
+  $('.results').html("<%= j render(:partial => 'homeinfo/index') %>")
+
 </script>

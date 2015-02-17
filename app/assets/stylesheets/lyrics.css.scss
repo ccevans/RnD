@@ -2,15 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.container-md {width: 90%; margin: 25px 5%; float: left; }
+.container-md {width: 80%; margin: 25px 10%; float: left;}
 #lyrics {margin: 0 auto;}
 
-div.container-md a {color: #fff; font-size: 30px; line-height: 34px; text-align: left; font-family: 'Fredoka One', cursive; text-shadow: 0px 0px #bdc3c7;}
+div.container-md a {color: #000; font-size: 30px; line-height: 34px; text-align: left; font-family: 'Fredoka One', cursive; text-shadow: 0px 0px #bdc3c7;}
 div.container-md a:hover {color: #95a5a6; font-size: 30px; line-height: 34px; text-align: left; text-decoration: none; border: none; text-shadow: 0px 0px #bdc3c7;}
 
-
-
-div.container-md ul {list-style:none; color: #fff; clear: both;}
+div.container-md ul {list-style:none; color: #000; clear: both;}
 div.container-md ul li {float: left; padding: 5px; width: auto;}
 
 div.jumbotron {padding: 5px; margin: 100px 0 0 0;}
@@ -21,8 +19,7 @@ div.container-md ul li img {-moz-border-radius: 10px; -webkit-border-radius: 10p
 
 .lyric-footer {width: 80%; padding: 10px 10%; font-size: 20px; line-height: 20px; float: left;}
 
-div.container-show {width: 100%; height: auto; float: left; color: #fff; padding: 125px 15% 10px 15%; background-color: #000; background: url('stardust4.png'); color: #fff;}
-
+div.container-show {width: 100%; height: auto; float: left; color: #000; padding: 125px 15% 10px 15%; background-color: #fff; color: #000;}
 div.container-extra {width: 30%; height: auto; float: left; padding: 0; }
 
 div.container-show ul {list-style:none; color: #bdc3c7; clear: both; float: right;}
@@ -31,10 +28,9 @@ div.container-show ul li img {-moz-border-radius: 10px; -webkit-border-radius: 1
 div.container-show ul li a {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #bdc3c7; text-shadow: none;}
 div.container-show ul li a:hover {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #000; text-shadow: none; text-decoration: none;}
 
-
-div.container-line {float: left; width: 70%; height: auto; min-height: 100px; color: #fff; font-size: 38px; line-height: 38px; padding: 0; text-align: left; font-family: 'Fredoka One', cursive; text-shadow: 1px 1px #bdc3c7;}
-div.container-profile {float: left; width: 40%; padding: 5px; color: #fff; font-family: 'Open Sans', serif; font-size: 28px; line-height: 28px; background-color: #ecf0f1; margin: 20px 5%;}
-div.container-desc {float: left; width: auto; color: #fff; padding: 20px; font-size: 24px; line-height: 24px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; border-left: 4px solid #bdc3c7; margin-left: 20px;}
+div.container-line {float: left; width: 70%; height: auto; min-height: 100px; color: #000; font-size: 38px; line-height: 38px; padding: 0; text-align: left; font-family: 'Fredoka One', cursive; text-shadow: 1px 1px #bdc3c7;}
+div.container-profile {float: left; width: 40%; padding: 5px; color: #000; font-family: 'Open Sans', serif; font-size: 28px; line-height: 28px; background-color: #ecf0f1; margin: 20px 5%;}
+div.container-desc {float: left; width: auto; color: #000; padding: 20px; font-size: 24px; line-height: 24px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; border-left: 4px solid #bdc3c7; margin-left: 20px;}
 div.container-comment {float: left; width: 100%; padding: 5px;}
 div.container-more {float: left; width: 100%; padding: 5px 0; height: auto; margin-top: 25px;}
 div.container-more ul {list-style:none; color: #bdc3c7;}
@@ -68,7 +64,7 @@ color: #000;
 	font-size: 12px;
 }
 
-div.container-campaign {float: left; width: 40%; padding: 5px; color: #fff; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-size: 28px; line-height: 28px; background-color: #ecf0f1; margin: 20px 5%;}
+div.container-campaign {float: left; width: 40%; padding: 5px; color: #000; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-size: 28px; line-height: 28px; background-color: #ecf0f1; margin: 20px 5%;}
 
 div.container-comment div.comment {float: left; width: 90%; margin: 10px 5%;}
 div.container-show div.container-comment h2.comment_count {font-size: 14px;}
@@ -81,7 +77,7 @@ div.container-show div.container-desc img {float: left; margin: 5px 5px 0 0; -mo
 div.container-show div.container-desc a {color: #bdc3c7; margin: 0 0 5px 5px; float: left; font-size: 18px; }
 div.container-show div.container-desc p {float: left; margin: 5px 0 0 0;}
 
-div.container-md ul li a {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #fff; text-shadow: none;}
+div.container-md ul li a {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #000; text-shadow: none;}
 div.container-md ul li a:hover {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #f1c40f; text-shadow: none;}
 
 div.container-md ul.tag-list {margin-top: 0; margin-bottom: 0; padding: 0;}
@@ -108,15 +104,15 @@ html body div.container-more ul li div.container-profile hr { border: 1px solid 
 
 #random_post {width: 25%; padding: 0 5%; margin-top: 125px; float: left;}
 
-.lyric-section {float: left; border-top: 0px solid #fff; width: 60%; margin: 0 0 0 0; padding: 25px 0; z-index: 10; background-color: #000; background: url('stardust4.png'); border-left: 2px solid #fff;}
+.lyric-section {position: absolute; left: 0; width: 80%; margin: 0 0 0 0; padding: 25px 0; z-index: 10; background-color: #fff;}
 
 .header-lyric {float: left; margin-top: 100px; width: 100%; text-align: center; padding: 0 10%;}
 
-.main-section {position: absolute; width: 100%; margin: 0; z-index: 10; background: url('stardust4.png');}
+.main-section {position: absolute; width: 100%; margin: 0; z-index: 10;}
 
-div.header-lyric h1 {float: left; width: 100%; text-align: center; color: #fff; font-size: 38px; line-height: 38px; font-family: 'Fredoka One', cursive; text-shadow: 1px 1px #000; margin: 0 0 10px 0;}
-div.header-lyric h2 {width: 100%; text-align: center; float: left; margin: 0; color: #fff; margin: 10px 0; font-size: 22px; line-height: 22px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;}
-div.header-lyric p {float: left; width: 100%; text-align: center; padding: 5px 20%; font-size: 18px; line-height: 20px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #fff;}
+div.header-lyric h1 {float: left; width: 100%; text-align: center; color: #000; font-size: 38px; line-height: 38px; font-family: 'Fredoka One', cursive; text-shadow: 1px 1px #000; margin: 0 0 10px 0;}
+div.header-lyric h2 {width: 100%; text-align: center; float: left; margin: 0; color: #000; margin: 10px 0; font-size: 22px; line-height: 22px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;}
+div.header-lyric p {float: left; width: 100%; text-align: center; padding: 5px 20%; font-size: 18px; line-height: 20px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #000;}
 
 div.header-lyric h2 a {width: auto; border: 2px solid #bdc3c7; color: #bdc3c7; border-radius: 15px; -moz-border-radius: 15px; -webkit-border-radius: 15px; padding: 5px 10px;}
 div.header-lyric h2 a:hover {width: auto; border: 2px solid #000; color: #000; border-radius: 15px; -moz-border-radius: 15px; -webkit-border-radius: 15px; padding: 5px 10px; text-decoration: none;}
@@ -139,11 +135,11 @@ div.stepforward a span.glyphicon.glyphicon-step-forward {color: #bdc3c7;}
 div.stepbackward a span.glyphicon.glyphicon-step-backward:hover {color: #8e0010;}
 div.stepforward a span.glyphicon.glyphicon-step-forward:hover {color: #8e0010;}
 
-section.lyric-section div.back-footer a {font-size: 30px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #fff;}
-section.lyric-section div.back-footer {font-size: 30px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #fff;}
+section.lyric-section div.back-footer a {font-size: 30px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #000;}
+section.lyric-section div.back-footer {font-size: 30px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #000;}
 
-html body section.lyric-section div#lyrics.transitions-enabled.masonry {width: 90% !important; padding: 0 auto;}
-html body div.container-show div.container-comment div.comment p.content {color: #fff;}
+html body section.lyric-section div#lyrics.transitions-enabled.masonry {width: 100% !important; padding: 0 auto;}
+html body div.container-show div.container-comment div.comment p.content {color: #000;}
 
 div.popover-content {color: #bdc3c7;}
 div.popover-content a {color: #bdc3c7 !important;}
@@ -166,15 +162,15 @@ section.lyric-section div#lyrics.transitions-enabled.masonry {float: left;}
     opacity:0.6;
     font-size: 14px;
     line-height: 14px;
-    color: #fff; 
+    color: #000; 
     border-radius: 10px;
-    border: 2px solid #fff;
+    border: 2px solid #000;
     padding: 10px 5px;
 }
 
 .back-top:hover {opacity: 0.8;}
 
-.back-top a {color: #fff;}
-.back-top a:hover {color: #fff; text-decoration: none;}
+.back-top a {color: #000;}
+.back-top a:hover {color: #000; text-decoration: none;}
 
 #tasks {float: left;}

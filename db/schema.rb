@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150204190208) do
+ActiveRecord::Schema.define(version: 20150217005240) do
 
   create_table "adminlyrics", force: true do |t|
     t.text     "line"
@@ -372,6 +372,7 @@ ActiveRecord::Schema.define(version: 20150204190208) do
     t.text     "bio"
     t.string   "type"
     t.string   "passion"
+    t.string   "video"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

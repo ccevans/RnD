@@ -1,26 +1,5 @@
-<% if user_signed_in? %>
-  <div class="header-campaign">
-    <h1>Welcome to The LAB</h1>
-    <h2><%= current_user.name %></h2>
-    <p>Let's build something crazy, something flammable.  Contribute to the community where we turn our favorite artists' lyrics into designs and merch.  <br /><%= link_to "How It Works", '#' %></p>
 
-  </div>  
-<% else %>
-  <div class="header-campaign">
-    <h1>Welcome to The LAB</h1>
-    <h2><%= link_to "Join Today", new_user_registration_path %></h2>
-    <p>Let's build something crazy, something flammable.  Become part of our passionate community where we turn our favorite artists' lyrics into designs and merch.  <br /><%= link_to "How It Works", '#' %></p>
-
-  </div>  
-<% end %>
-
-<div class="explore-header">
-  <span class="explore-title">Explore</span> | <%= link_to "Rhyme Center", '/campaigns/2/lyrics' %> | <%= link_to "Design Center", '/campaigns/2/arts' %>
-  </div>
-
-
-
-
+<section class="campaign-section2">
 <section class="campaign-section">
   <div id="campaigns" class="transitions-enabled">
         <div class="free-campaign">
@@ -91,5 +70,64 @@
 
   </div>
 </section>
+
+
+
+</section>
+
+<section class="home-info">
+
+
+  <div class="results"></div>
+    
+
+</section>
+
+<script>
+
+  $('.results').html("<%= j render(:partial => 'homeinfo/index') %>")
+
+</script>
+
+<script>
+$(window).scroll(function () {
+    var winTop = $(this).scrollTop(),
+        winBottom = winTop + $(this).height(),
+        left = $('.home-info'),
+        leftBottom = left.height(),
+        right = $('.campaign-section2'),
+        rightBottom = right.height();
+    //when the user reached the bottom of '#leftShort' set its position to fixed 
+    //to prevent it from moving on scroll 
+    if (rightBottom <= leftBottom){
+
+
+    } else{
+
+          if (winBottom >= leftBottom) {
+        left.css({
+            'position': 'fixed',
+            'bottom': '0px',
+            
+        });
+    } else {
+        //when the user scrolls back up revert its position to relative
+        // to make it move up together with '#rightLong'
+        left.css({
+            'position': 'relative',
+            'bottom': 'auto'
+
+        });
+    }
+
+    }
+
+
+});
+
+</script>
+
+
+
 
  

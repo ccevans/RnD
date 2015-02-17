@@ -1,3 +1,4 @@
+<section class="campaign-section2"
 <% unless @campaign.image.nil? %>
 <div class="campaign-header">
     <%= image_tag @campaign.image.url(:large) %>
@@ -61,15 +62,25 @@
       </div>
   </div>
 
-    	
-      <div class="campaign-lyric">
-        <h2>Lyrics</h2>
-        <% @lyrics.each do |lyric| %>
-          <div class="campaign-lyric-each">
-            <% unless lyric.line.nil? || lyric.line.empty? %>
-            <%= link_to lyric.line, campaign_lyric_path(@campaign, lyric) %>
-            <% end %>
-          <ul>
+    <div class="tab-box" role="tabpanel">
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Lyrics</a></li>
+          <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Designs</a></li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="home">
+              <div class="campaign-lyric">
+                <h2>Lyrics</h2>
+                <% @lyrics.each do |lyric| %>
+                  <div class="campaign-lyric-each">
+                    <% unless lyric.line.nil? || lyric.line.empty? %>
+                    <%= link_to lyric.line, campaign_lyric_path(@campaign, lyric) %>
+                    <% end %>
+                  <ul>
               <li><%= lyric.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
               <li><%= lyric.get_upvotes.size %> 
                 <%= link_to like_lyric_path(lyric), method: :get do %>
@@ -83,29 +94,45 @@
           <% end %>
       
     </div>
-        
-    <div class="art-container">
-      <h2>Submitted Designs</h2>
-      <div id="campaign-art" class="transitions-enabled">
-         
-        <% @arts.each do |art| %>
-          <div class="campaign-art-each">
-            <%= link_to campaign_art_path(@campaign, art) do %>
 
-            <% unless art.image.nil? %>
-            <%= image_tag art.image.url(:small) %>
-            <% end %>
-          <% end %>
           </div>
-        <% end %>
+          <div role="tabpanel" class="tab-pane" id="profile">
+          <div class="art-container">
+              <h2>Submitted Designs</h2>
+              <div id="campaign-art" class="transitions-enabled">
+                 
+                <% @arts.each do |art| %>
+                  <div class="campaign-art-each">
+                    <%= link_to campaign_art_path(@campaign, art) do %>
+
+                    <% unless art.image.nil? %>
+                    <%= image_tag art.image.url(:small) %>
+                    <% end %>
+                  <% end %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
       </div>
-    </div>
 
 
       
 
     
   </div>
+</section>
+
+<section class="home-info">
+
+
+  <div class="results"></div>
+    
+
+</section>
 
 
   <script type="text/javascript">
@@ -135,4 +162,48 @@
       });
     
     });
+</script>
+
+<script>
+
+  $('.results').html("<%= j render(:partial => 'homeinfo/index') %>")
+
+</script>
+
+<script>
+$(window).scroll(function () {
+    var winTop = $(this).scrollTop(),
+        winBottom = winTop + $(this).height(),
+        left = $('.home-info'),
+        leftBottom = left.height(),
+        right = $('.campaign-section2'),
+        rightBottom = right.height();
+    //when the user reached the bottom of '#leftShort' set its position to fixed 
+    //to prevent it from moving on scroll 
+    if (rightBottom <= leftBottom){
+
+
+    } else{
+
+          if (winBottom >= leftBottom) {
+        left.css({
+            'position': 'fixed',
+            'bottom': '0px',
+            
+        });
+    } else {
+        //when the user scrolls back up revert its position to relative
+        // to make it move up together with '#rightLong'
+        left.css({
+            'position': 'relative',
+            'bottom': 'auto'
+
+        });
+    }
+
+    }
+
+
+});
+
 </script>

@@ -43,40 +43,12 @@
   </div>
 
   <div class="form-group">
-    <%= f.input :bio, required: false, label: 'Add a lyric that you live by' %>
+    <%= f.input :bio, required: false, label: 'Enter your bio and/or fav lyric' %>
   </div>
 
    <div class="form-group">
     <%= f.input :passion, required: false, label: 'What is your passion?' %>
   </div>
-
-  <div class="booths-edit">
-      <h3>Listening Booth</h3>
-      <div id="booth">
-          <%= f.simple_fields_for :booths do |booth| %>
-            <%= render 'devise/booths_fields', f: booth %>
-            <% end %>
-            <div class="links">
-                <%= link_to_add_association 'Add songs', f, :booths, :partial => 'devise/booths_fields', class: "btn btn-default add-button" %>
-            </div>
-          
-      </div>
-  </div>
-
-    <div class="galleries-edit">
-      <h3>Gallery</h3>
-      <div id="gallery">
-          <%= f.simple_fields_for :galleries do |gallery| %>
-            <%= render 'devise/galleries_fields', f: gallery %>
-            <% end %>
-            <div class="links">
-                <%= link_to_add_association 'Add images', f, :galleries, :partial => 'devise/galleries_fields', class: "btn btn-default add-button" %>
-            </div>
-          
-      </div>
-  </div>
-
-
 
     
 <% if can? :manage, :all %>

@@ -1,26 +1,31 @@
-<div class="stepbackward">
-			<%= link_to campaign_lyric_path(@campaign, @previous_lyric) do %>
-				<span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span>
-			<% end %>
-		</div>
-		<div class="stepforward">
-			<%= link_to campaign_lyric_path(@campaign, @next_lyric) do %>
-				<span class="glyphicon glyphicon-step-forward" aria-hidden="true"></span>
-			<% end %>
-			</div>
+
+
+
+<section class="lyric-section">
+
+  <div class="stepbackward">
+      <%= link_to campaign_lyric_path(@campaign, @previous_lyric) do %>
+        <span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span>
+      <% end %>
+    </div>
+    <div class="stepforward">
+      <%= link_to campaign_lyric_path(@campaign, @next_lyric) do %>
+        <span class="glyphicon glyphicon-step-forward" aria-hidden="true"></span>
+      <% end %>
+      </div>
 
 <div class="container-show">
-	
+  
    <% if @lyric.line.present? %>
-	<div class="container-line">
-		
-	<%= simple_format(@lyric.line) %>
+  <div class="container-line">
+    
+  <%= simple_format(@lyric.line) %>
 
-	</div>
+  </div>
   <% end %>
-	
+  
 <div class="container-extra">
-	 <ul>
+   <ul>
         <li><%= @lyric.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
         <li><span class="up"><%= @lyric.get_upvotes.size %> </span>
           <%= link_to like_lyric_path(@lyric), class: 'voteup', remote: true, data: { type: :json }, method: :get do %>
@@ -37,63 +42,63 @@
      
         <% unless @lyric.tags.nil? || @lyric.tags.empty? %>
         <ul>
-		<li>
-  			<% @lyric.tags.each do |tag| %>
-  				<%= link_to tag.name, campaign_tagged_url(:tag => tag.name) %>
-  			<% end %>
-			</li>
-		</ul>
-		<% end %>
+    <li>
+        <% @lyric.tags.each do |tag| %>
+          <%= link_to tag.name, campaign_tagged_url(:tag => tag.name) %>
+        <% end %>
+      </li>
+    </ul>
+    <% end %>
 
-		   <ul>
+       <ul>
 
-        	<li>Posted By:  <% if @lyric.user.avatar.present? %><a href="#" class="popoverExampleTwo" data-placement="auto left" data-trigger="click"><%= image_tag @lyric.user.avatar.url(:mini) %></a><% end %> <% if @lyric.user.username.present? %><%= link_to @lyric.user.username, profile_url(:id => @lyric.user.username) %><% end %></li>
-        	
+          <li>Posted By:  <% if @lyric.user.avatar.present? %><a href="#" class="popoverExampleTwo" data-placement="auto left" data-trigger="click"><%= image_tag @lyric.user.avatar.url(:mini) %></a><% end %> <% if @lyric.user.username.present? %><%= link_to @lyric.user.username, profile_url(:id => @lyric.user.username) %><% end %></li>
+          
         </ul>
         <% if @lyric.campaign.title.present? %>
         <ul>
-        	<li><strong>Experiment</strong> |  <a href="#" class="popoverExampleThree" data-placement="auto left" data-trigger="click"><%= @lyric.campaign.title %> </a></li>
+          <li><strong>Experiment</strong> |  <a href="#" class="popoverExampleThree" data-placement="auto left" data-trigger="click"><%= @lyric.campaign.title %> </a></li>
         </ul>
         <% end %>
 
 
-				  <!-- Popover 2 hidden content -->
-				  <div class="popoverExampleTwoHiddenContent" style="display: none">
-				     <div>
+          <!-- Popover 2 hidden content -->
+          <div class="popoverExampleTwoHiddenContent" style="display: none">
+             <div>
             <% if @lyric.user.avatar.present? %>
-				     	<%= image_tag @lyric.user.avatar.url(:thumb) %>
+              <%= image_tag @lyric.user.avatar.url(:thumb) %>
               <% end %>
               <% if @lyric.user.username.present? %>
-									<%= link_to @lyric.user.username, profile_url(:id => @lyric.user.username) %>
-									<% end %>
-						</br>
-						<div class="following-show">
-							<p><%= @lyric.user.follow_count %> Following  | 
-							<%= @lyric.user.followers_count %> Followers</p>
-							<% if user_signed_in? %>
-								<% if current_user == @lyric.user %>
-									<p></p>
-								<% elsif  @lyric.user.all_following.include?(current_user) %>
-									<%= link_to "Unfollow", unfollow_profile_path(@lyric.user.username) %>
-								<% else %>
-									<%= link_to "Follow", follow_profile_path(@lyric.user.username) %>
-								<% end %>
-							<% else %>
-								<p><%= link_to "Sign Up To Follow", new_user_registration_path %></p>
-							<% end %>
-						</div>
-						<hr>
+                  <%= link_to @lyric.user.username, profile_url(:id => @lyric.user.username) %>
+                  <% end %>
+            </br>
+            <div class="following-show">
+              <p><%= @lyric.user.follow_count %> Following  | 
+              <%= @lyric.user.followers_count %> Followers</p>
+              <% if user_signed_in? %>
+                <% if current_user == @lyric.user %>
+                  <p></p>
+                <% elsif  @lyric.user.all_following.include?(current_user) %>
+                  <%= link_to "Unfollow", unfollow_profile_path(@lyric.user.username) %>
+                <% else %>
+                  <%= link_to "Follow", follow_profile_path(@lyric.user.username) %>
+                <% end %>
+              <% else %>
+                <p><%= link_to "Sign Up To Follow", new_user_registration_path %></p>
+              <% end %>
+            </div>
+            <hr>
             <% if @lyric.user.points.present? %>
-						<div class="points-show">
-							Points | <%= @lyric.user.points %>
-						</div>
+            <div class="points-show">
+              Points | <%= @lyric.user.points %>
+            </div>
             <% end %>
 
 
-	     			</div>
-					  </div>  
-					  <!-- Popover 2 hidden title -->
-					  <div class="popoverExampleTwoHiddenTitle" style="display: none">
+            </div>
+            </div>  
+            <!-- Popover 2 hidden title -->
+            <div class="popoverExampleTwoHiddenTitle" style="display: none">
      
   </div> 
 
@@ -128,8 +133,8 @@
 
 
         <div class="artist-info">
-		    <ul>
-		        <li>
+        <ul>
+            <li>
                <% if @campaign.artist.nil? || @campaign.artist.empty? %>
                     <% if @lyric.artist.present? %>
                     <strong>Artist: </strong><%= @lyric.artist %>
@@ -172,30 +177,30 @@
                  
                   </li>
 
-			</ul>
+      </ul>
 
         </div>
 
         <ul>
-        		<li><% if can? :update, @lyric %>
-		<%= link_to 'Edit', edit_campaign_lyric_path(@lyric.campaign, @lyric) %> | 
-		<% end %>
-		<% if can? :destroy, @lyric %>
-		<%= link_to 'Destroy', [@lyric.campaign, @lyric], method: :delete, data: {confirm: "Are you sure?" } %>
-		<% end %></li>
+            <li><% if can? :update, @lyric %>
+    <%= link_to 'Edit', edit_campaign_lyric_path(@lyric.campaign, @lyric) %> | 
+    <% end %>
+    <% if can? :destroy, @lyric %>
+    <%= link_to 'Destroy', [@lyric.campaign, @lyric], method: :delete, data: {confirm: "Are you sure?" } %>
+    <% end %></li>
 
         </ul>
     </div>
      <% unless @lyric.description.nil? || @lyric.description.empty? %>
-	<div class="container-desc">
-		<%= simple_format(@lyric.description) %>
-	</div>
-	<% end %>
-		
-	<div class="container-comment">
-	<h2 class="comment_count">
-		<%= pluralize(@lyric.comments.count, "Response") %></h2>
-		<hr />
+  <div class="container-desc">
+    <%= simple_format(@lyric.description) %>
+  </div>
+  <% end %>
+    
+  <div class="container-comment">
+  <h2 class="comment_count">
+    <%= pluralize(@lyric.comments.count, "Response") %></h2>
+    <hr />
 
 
    <div id="comments">
@@ -203,21 +208,14 @@
    </div>
 
 
-	<%= render 'comments/form' %>
+  <%= render 'comments/form' %>
 </div>
 
 
 
 </div>
 
-<section class="home-info">
 
-
-
-
-</section>
-
-<section class="lyric-section">
 
   <div id="lyrics" class="transitions-enabled">
     <% @random_lyrics.each do |random_lyric| %>
@@ -301,6 +299,14 @@
 
 </section>
 
+  <section class="home-info">
+
+
+  <div class="results"></div>
+    
+
+</section>
+
 
 						
 
@@ -358,6 +364,49 @@ $(function(){
 
     </script>
 
+    <script>
+$(window).scroll(function () {
+    var winTop = $(this).scrollTop(),
+        winBottom = winTop + $(this).height(),
+        left = $('.home-info'),
+        leftBottom = left.height(),
+        right = $('.lyric-section'),
+        rightBottom = right.height();
+    //when the user reached the bottom of '#leftShort' set its position to fixed 
+    //to prevent it from moving on scroll 
+    if (rightBottom <= leftBottom){
+
+
+    } else{
+
+          if (winBottom >= leftBottom) {
+        left.css({
+            'position': 'fixed',
+            'bottom': '0px',
+            
+        });
+    } else {
+        //when the user scrolls back up revert its position to relative
+        // to make it move up together with '#rightLong'
+        left.css({
+            'position': 'relative',
+            'bottom': 'auto'
+
+        });
+    }
+
+    }
+
+
+});
+
+</script>
+
+<script>
+
+  $('.results').html("<%= j render(:partial => 'homeinfo/index') %>")
+
+</script>
  
 
 

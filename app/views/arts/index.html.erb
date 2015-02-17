@@ -1,20 +1,8 @@
 <section class="main-section">
-<% if user_signed_in? %>
-  <div class="header-art">
-    <h1>The Design Center</h1>
-    <h2><%= current_user.name %></h2>
-    <p>Help us vote on our community designs.  Or contribute your own.  <br /><%= link_to "Submit Design", '/campaigns/2/arts/new' %></p>
 
-  </div>  
-<% else %>
-  <div class="header-art">
-     <h1>The Design Center</h1>
-    <h2><%= link_to "Join To Contribute", new_user_registration_path %></h2>
-    <p>Help us vote on our community designs.  Or contribute your own.  <br /><%= link_to "Submit Design", '/campaigns/2' %></p>
-  </div>  
-<% end %>
+<section class="art-section">
 
-
+  <div class="sort-box">
     <div class="dropdown">
       <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
         Sort
@@ -26,8 +14,7 @@
         <li role="presentation"><%= link_to 'Most Recent', :controller => 'arts', :sort_by => 'most_recent' %></li>
       </ul>
     </div>
-
-<section class="art-section">
+  </div>
 
 
 <div id="arts" class="transitions-enabled">
@@ -148,13 +135,20 @@
       <%= will_paginate @arts, renderer: BootstrapPagination::Rails %>
     </div>
 
-        
-    <br>
-    <div class="art-footer">
-      <%= link_to 'New Design', new_campaign_art_path %>
-    </div>
 
   </section>
+
+<section class="home-info">
+
+
+  <div class="results"></div>
+    
+
+</section>
+
+
+
+
 </section>
 
 <%= image_tag 'lyric-background3.png', :class => "background-lyric" %>
@@ -226,4 +220,48 @@ $(function () {
         return false;
     });
 });
+</script>
+
+<script>
+$(window).scroll(function () {
+    var winTop = $(this).scrollTop(),
+        winBottom = winTop + $(this).height(),
+        left = $('.home-info'),
+        leftBottom = left.height(),
+        right = $('.art-section'),
+        rightBottom = right.height();
+    //when the user reached the bottom of '#leftShort' set its position to fixed 
+    //to prevent it from moving on scroll 
+    if (rightBottom <= leftBottom){
+
+
+    } else{
+
+          if (winBottom >= leftBottom) {
+        left.css({
+            'position': 'fixed',
+            'bottom': '0px',
+            
+        });
+    } else {
+        //when the user scrolls back up revert its position to relative
+        // to make it move up together with '#rightLong'
+        left.css({
+            'position': 'relative',
+            'bottom': 'auto'
+
+        });
+    }
+
+    }
+
+
+});
+
+</script>
+
+<script>
+
+  $('.results').html("<%= j render(:partial => 'homeinfo/index') %>")
+
 </script>

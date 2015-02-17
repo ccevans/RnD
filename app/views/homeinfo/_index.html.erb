@@ -1,63 +1,10 @@
 <div class="home-section">
 
-   <% unless @open_campaigns.nil? || @open_campaigns.empty? %>
-    <div class="home-campaigns">
-
-         <% @open_campaigns.each do |open_campaign| %>
-         <div class="campaign-box">
-          
-            <div class="campaign-img">
-                <%= image_tag open_campaign.image.url(:medium) %>
-            </div> 
-
-            <div class="campaign-homeinfo">
-            
-          </div>
-        </div>
-
-        <% end %>
-      </div>
-  <% end %>
-	
-  <% unless @products.nil? %>
-    <div class="home-products">
-  	<% @products.each do |product| %>
-
-          <%= link_to "http://rhymes-and-designs.myshopify.com/collections/frontpage/products/#{product.handle}" do %>
-
-          <%= image_tag product.image.src(:medium) %>
-          <% end %>
-        
-      <% end %>
-
-    </div>
-  <% end %>
-
-
-<% unless @posts.nil? || @posts.empty? %>
-  <div class="home-posts">
-      <% @posts.each do |post| %>
-
-        <%= link_to post.title, post_path(post) %>
-
-       <% end %>
-     </div>
-   <% end %>
-
-
-<% unless @users.nil? || @users.empty? %>
-  <div class="home-users">
-        	<% @users.each do |user| %>
-
-  				<%= image_tag user.avatar.url(:thumb) %>
-  				<div class="user-row"><%= link_to user.username, "/profiles/#{user.username}" %></div>
-  		<% end %>
-    </div>
-
-<% end %>
-
-
-
+   <%= image_tag 'rnd-join-info1.png', :class => "info-image" %>
+   <%= image_tag 'rnd-lab-info2.png', :class => "info-image" %>
+   <%= image_tag 'rnd-design-info3.png', :class => "info-image" %>
+   <%= image_tag 'rnd-rhyme-info4.png', :class => "info-image" %>
+  <%= image_tag 'rnd-products-info5.png', :class => "info-image" %>
 
 
 </div>
