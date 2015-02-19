@@ -139,6 +139,7 @@
 
 
     <div class="profile-video2">
+    	<% if @videos.any? %>
     <% @videos.each do |video| %>
     	<% if video.approve == true %>
     		<% unless video.videolink.nil? || video.videolink.empty? %>
@@ -148,10 +149,12 @@
 
     	<% end %>
 		<% end %>
+		<% end %>
 	</div>
 
 
     <div class="profile-video">
+    	<% if @videos.any? %>
     <% @videos.each do |video| %>
     	<% if video.approve == true %>
     	<% if @video.image.present? %>
@@ -167,6 +170,7 @@
 
     	<% end %>
     	
+		<% end %>
 		<% end %>
 		<% end %>
 	</div>
