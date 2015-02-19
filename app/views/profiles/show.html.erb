@@ -123,6 +123,55 @@
 
 
 	</div>
+	<div class="video-photo-box">
+		 <div class="dropdown">
+	      <a  href="#" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+	        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+	      </a>
+	      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+	        <li role="presentation"><%= link_to 'Add Video', new_video_path %></li>
+	        <li role="presentation"><%= link_to 'New Photo', new_photo_path, remote: true %></li>
+	        <li role="presentation"><div id="photo-form" style="display:none;"></div></li>
+	        
+	      </ul>
+    </div>
+
+
+
+    <div class="profile-video2">
+    <% @videos.each do |video| %>
+    	<% if video.approve == true %>
+    		<% unless video.videolink.nil? || video.videolink.empty? %>
+			
+				<p><%= raw(youtube_embed(video.videolink)) %></p>
+			<% end %>
+
+    	<% end %>
+		<% end %>
+	</div>
+
+
+    <div class="profile-video">
+    <% @videos.each do |video| %>
+    	<% if video.approve == true %>
+    	<% if @video.image.present? %>
+    		<%= image_tag video.image.url(:medium) %>
+    		<%= link_to video.videolink, class: "fancybox-media" do %>
+    		<span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
+    		<% end %>
+    	<% else %>
+    		<% unless video.videolink.nil? || video.videolink.empty? %>
+			
+				<p><%= raw(youtube_embed(video.videolink)) %></p>
+			<% end %>
+
+    	<% end %>
+    	
+		<% end %>
+		<% end %>
+	</div>
+
+	</div>
 		
 
 
@@ -133,15 +182,15 @@
 
 			  <!-- Nav tabs -->
 			  <ul class="nav nav-tabs" role="tablist">
-			    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Lyrics</a></li>
+			  	<li role="presentation" class="active"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Portfolio</a></li>
+			    <li role="presentation"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Lyrics</a></li>
 			    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Designs</a></li>
-			    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Posts</a></li>
-			    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+			    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Posts</a>
 			  </ul>
 
 			  <!-- Tab panes -->
 			  <div class="tab-content">
-			    <div role="tabpanel" class="tab-pane active" id="home">
+			    <div role="tabpanel" class="tab-pane" id="home">
 			    		<% if @lyrics.any? %>
 							<% @lyrics.each do |lyric| %>
 									    <div class="container-md">
@@ -212,27 +261,22 @@
 
 			    </div>
 
-			    <div role="tabpanel" class="tab-pane" id="settings">
-			    	  	    <% if @user.galleries.any? %>
+			    <div role="tabpanel" class="tab-pane active" id="settings">
 
-							<% @user.galleries.each do |gallerie| %>
-								<div class="well">
-									<%= image_tag gallerie.picture.url %>
-								
-								</div>
-							<% end %>	
-						<% end %>
+					
+					    <%= link_to new_photo_path, remote: true do %>
+					      <button class="btn btn-default">New</button>
+					    <% end %>
+				
+					  <div class="transitions-enabled" id="photos"><%= render @photos %></div>
+			
+
+			   
+
+						
 			    </div>
 			  </div>
 			</div>
-
-
-
-
-
-
-
-
 
 	</div>
 
@@ -319,6 +363,20 @@ $(window).scroll(function () {
   $('.results').html("<%= j render(:partial => 'homeinfo/index') %>")
 
 </script>
+
+<script>
+$(document).ready(function() {
+	$('.fancybox-media').fancybox({
+		openEffect  : 'none',
+		closeEffect : 'none',
+		helpers : {
+			media : {}
+		}
+	});
+});
+</script>
+
+
 
 
 

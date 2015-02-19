@@ -1,0 +1,24 @@
+
+			<div class="photo <%= photo.id %>">
+			<% unless photo.image.nil? %>
+			 
+				 <%= link_to photo.image.url(:large), class: "fancybox" do %>
+				<%= image_tag photo.image.url(:medium) %>
+				<% end %>
+			<% end %>
+
+				<% if can? :destroy, photo %>
+				<%= link_to photo, class: "delete-link", remote: true, method: :delete,  data: { confirm: 'Are you sure?' } do %>
+				<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+
+				<% end %>
+				<% end %>    
+	
+			</div>
+
+
+<script>
+    $(document).ready(function() {
+        $('.fancybox').fancybox();
+    });
+</script>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150217005240) do
+ActiveRecord::Schema.define(version: 20150218232236) do
 
   create_table "adminlyrics", force: true do |t|
     t.text     "line"
@@ -264,6 +264,17 @@ ActiveRecord::Schema.define(version: 20150217005240) do
     t.string  "category", default: "default"
   end
 
+  create_table "photos", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "link"
+  end
+
   create_table "posts", force: true do |t|
     t.string   "title"
     t.string   "link"
@@ -380,6 +391,19 @@ ActiveRecord::Schema.define(version: 20150217005240) do
   add_index "users", ["invitations_count"], name: "index_users_on_invitations_count"
   add_index "users", ["invited_by_id"], name: "index_users_on_invited_by_id"
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "videos", force: true do |t|
+    t.string   "title"
+    t.string   "videolink"
+    t.boolean  "approve"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
 
   create_table "votes", force: true do |t|
     t.integer  "votable_id"

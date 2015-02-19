@@ -3,12 +3,6 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-	$('#profiles').imagesLoaded ->
-		$('#profiles').masonry
-			itemSelector: '.container-profiles'
-			isFitWidth: true
-
-$ ->
 	$('#photos').imagesLoaded ->
 		$('#photos').masonry
 			itemSelector: '.photo'

@@ -1,0 +1,34 @@
+<%= simple_form_for(@video) do |f| %>
+
+      <%= f.error_notification %>
+
+  <% if can? :manage, :all %>
+  <%= f.input :approve %>
+  <% end %>
+
+  <% if @video.approve == true %>
+  Your video has been approved.
+
+  <% if can? :manage, :all %>
+  <%= f.input :title, label: "Title" %>
+  <%= f.file_field :image %>
+  <%= f.input :videolink, label: "Add Youtube Video Link" %>
+
+  <%= f.button :submit, "Submit", class: "button" %>
+
+
+  <% end %>
+
+  <% else %>
+
+  <%= f.input :title, label: "Title" %>
+  <%= f.file_field :image %>
+  <%= f.input :videolink, label: "Add Youtube Video Link" %>
+
+  <%= f.button :submit, "Submit", class: "button" %>
+
+  <% end %>
+
+
+
+<% end %>

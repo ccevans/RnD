@@ -1,0 +1,5 @@
+$('.<%= @photo.id %>').closest('div').fadeOut();
+$('.<%= @photo.id %>').closest('div').style.display = "none";
+
+
+$('#photos').html("<%= j (render @photos) %>");

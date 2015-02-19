@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => { :registrations => 'user/registrations', :invitations => 'user/invitation', omniauth_callbacks: 'user/omniauth_callbacks'}
 
+
+
 resources :posts do
   member do
     get "like", to: "posts#upvote"
@@ -66,6 +68,9 @@ resources :lyrics, only: [] do
   resources :products
 
   resources :homeinfo
+
+  resources :videos
+  resources :photos
 
 
 

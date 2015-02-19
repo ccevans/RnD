@@ -1,4 +1,4 @@
-module ProfilesHelper
+module VideoHelper
 
 	def youtube_embed(youtube_url)
   		if youtube_url[/youtu\.be\/([^\?]*)/]

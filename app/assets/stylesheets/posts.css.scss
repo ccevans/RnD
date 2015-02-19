@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 html body form#edit_post_5.simple_form.edit_post {margin-top: 125px;}
-div.container-show {background: url('stardust4.png'); color: #fff;}
+div.container-show {background-color: #fff; color: #000;}
 div.container-post {float: left; width: 70%; height: auto; min-height: 100px; color: #000;}
 
 div.container-post img {float: left; width: 100%; height: auto;}
@@ -33,7 +33,7 @@ div.container-post-index ul li a:hover {font-size: 14px; line-height: 14px; font
 div.container-post-index ul.tag-list {margin-top: 0; margin-bottom: 0; padding: 0;}
 div.container-post-index ul.tag-list li {float: left; width: auto; margin-top: 0; margin-bottom: 0;}
 
-.post-section {position: absolute; left: 0; border-top: 0px solid #fff; width: 80%; border-top: 0px solid #fff; margin: 0 0 0 0; padding: 25px 0; z-index: 10; background-color: #000; background: url('stardust4.png');}
+.post-section {position: absolute; left: 0; border-top: 0px solid #fff; width: 80%; border-top: 0px solid #fff; margin: 0 0 0 0; padding: 25px 0; z-index: 10; background-color: #fff;}
 
 .video-box {width: 100%; height: auto; float: left;}
 

@@ -1,0 +1,8 @@
+<%= simple_form_for @photo, remote: true do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.file_field :image %>
+
+	<%= f.button :submit, "Add Image", class: "button" %>
+	
+<% end %>

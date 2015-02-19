@@ -1,6 +1,9 @@
 class ProfilesController < ApplicationController
-
+  before_action :all_photos, only: [:show]
+  before_action :set_photos, only: [:destroy]
 	before_action :find_post, only: [:show, :follow, :unfollow]
+
+  respond_to :html, :json, :js
 
   def index
     @users = User.all.order("created_at DESC")
@@ -11,7 +14,9 @@ class ProfilesController < ApplicationController
 
 
   def show
-
+    
+    @videos = Video.where(user_id: @user)
+    @video = Video.where(user_id: @user).first
   	@user = User.find_by_username(params[:id])
   	if @user
       
@@ -71,6 +76,15 @@ private
 	def find_post
 		@user = User.find_by_username(params[:id])
 	end
+
+  def all_photos
+        @user = User.find_by_username(params[:id])
+        @photos = Photo.where(user_id: @user)
+      end
+
+      def set_photos
+        @photo = Photo.find(params[:id])
+      end
   
   
   
