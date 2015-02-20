@@ -233,7 +233,7 @@
 									      
 									      </div>
 							<% end %>
-						<% elsif current_user.id == @user.id %>
+						<% elsif current_user == @user %>
 							<p>No lyrics posted yet.  <%= link_to 'Add Your Favorite Lyrics', "/campaigns/2/lyrics/new" %></p>
 						<% else %>
 							<p>No lyrics posted yet.</p>		
@@ -263,7 +263,7 @@
 									<span class="profile-time"><%= time_ago_in_words(art.created_at) %> ago </span>
 								</div>
 							<% end %>
-						<% elsif current_user.id == @user.id %>
+						<% elsif current_user == @user %>
 							<p>No art posted yet.  <%= link_to 'Add Your Favorite Artwork', "/campaigns/2/arts/new" %></p>
 						<% else %>
 							<p>No art posted yet.</p>		
@@ -290,7 +290,7 @@
 									<span class="profile-time"><%= time_ago_in_words(post.created_at) %> ago </span>
 								</div>
 							<% end %>
-						<% elsif current_user.id == @user.id %>
+						<% elsif current_user == @user %>
 							<p>No blog post posted yet.  <%= link_to 'Whats link to post? CC', "/campaigns/2/arts/new" %></p>
 						<% else %>
 							<p>No blog post posted yet.</p>		
@@ -315,7 +315,7 @@
 			    		<% if @photos.any? %>
 				
 					  <div class="transitions-enabled" id="photos"><%= render @photos %></div>
-					  <% elsif current_user.id == @user.id %>
+					  <% elsif current_user == @user %>
 
 					  	<%= link_to new_photo_path, remote: true do %>
 					      <button class="btn btn-default">New</button>
