@@ -148,11 +148,13 @@ div.photo a.more-link {position: absolute; bottom: 25px; text-align: center; wid
 div.photo a.more-link:hover {position: absolute; bottom: 25px; font-size: 18px; line-height: 18px; color: #000; text-decoration: none; opacity: 1;}
 div#photos.transitions-enabled.masonry div.photo:hover a.more-link {display: inline;}
 
+div.video-photo-box div.profile-video2 p iframe {width: 100%;}
+
 
 @media screen and (max-width: 500px){
     .profile-topbox1 {
     float: left;
-    margin: 0px 0 0;
+    margin: -25px 0 0 0;
     padding: 0;
     width: 40%;}
 
@@ -194,6 +196,41 @@ div#photos.transitions-enabled.masonry div.photo:hover a.more-link {display: inl
     div.profile-topbox2 div.profile-location {font-size: 14px; line-height:14px;}
     div.profile-topbox2 h2 {font-size: 14px; line-height:14px;}
     div.video-photo-box div.profile-video2 p iframe {width: 100%;}
+
+    div.profile-topbox div.profile-topbox2 div.profile-bio {
+    font-size: 18px;
+    line-height: 20px;}
+
+    div.profile-topbox2 div.profile-passion {
+    font-size: 14px;
+    line-height: 14px;}
+
+    span.glyphicon.glyphicon-cog {font-size: 20px; line-height: 20px;}
+    div.profile-topbox div.profile-main img {
+    border-radius: 5px;
+    margin: 0 10%;
+    padding: 0;
+    width: 80%;}
+
+    div.profile-topbox div.profile-topbox2 div.tab-box ul.nav.nav-tabs {
+    border-bottom: 1px solid #dddddd;
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;}
+
+    div.tab-box ul.nav.nav-tabs li.active a {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    color: #000;
+    font-size: 16px;
+    line-height: 16px;}
+    div.tab-box ul.nav.nav-tabs li a {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    color: #000;
+    font-size: 14px;
+    line-height: 14px;}
+    div.tab-box ul.nav.nav-tabs li a {padding: 4px;}
+
+
 
     }
 
