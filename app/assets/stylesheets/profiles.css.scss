@@ -125,3 +125,24 @@ div.video-photo-box div.dropdown.open ul.dropdown-menu li a {border-radius: 4px;
 
 div.video-photo-box div.profile-video a.fancybox-media {position: absolute; top: 0; margin-top: 100px; left: 45%; font-size: 36px; line-height: 36px; color: #fff; text-shadow: 2px 2px #000;}
 div.video-photo-box div.profile-video a.fancybox-media:hover {position: absolute; top: 0; margin-top: 100px; left: 45%; font-size: 36px; line-height: 36px; color: #bdc3c7; text-shadow: 2px 2px #000;}
+
+.soon-info {width: 100%; padding: 10px 20%; font-size: 22px; line-height: 24px; color: #000; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif;}
+.info-image2 {
+    float: left;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    width: 50%;
+}
+
+div.profile-topbox div.profile-topbox2 div.tab-box ul.nav.nav-tabs {
+    border-bottom: 1px solid #dddddd;
+    margin: 0 auto;
+    padding: 0 25%;
+    width: 100%;
+}
+
+div.photo a.more-link {position: absolute; bottom: 25px; text-align: center; width: 40%; margin: 0 30%; padding: 5px; font-size: 18px; line-height: 18px; color: #000; background-color: #fff; border-radius: 25px; display: none; opacity: .8; font-variant: small-caps;}
+div.photo a.more-link:hover {position: absolute; bottom: 25px; font-size: 18px; line-height: 18px; color: #000; text-decoration: none; opacity: 1;}
+div#photos.transitions-enabled.masonry div.photo:hover a.more-link {display: inline;}
+

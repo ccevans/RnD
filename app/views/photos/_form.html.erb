@@ -1,7 +1,8 @@
 <%= simple_form_for @photo, remote: true do |f| %>
   <%= f.error_notification %>
 
-  <%= f.file_field :image %>
+  <%= f.file_field :image, required: true %>
+  <%= f.input :link, required: false, hint: "Add link to more info" %>
 
 	<%= f.button :submit, "Add Image", class: "button" %>
 	

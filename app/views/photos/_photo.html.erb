@@ -3,8 +3,12 @@
 			<% unless photo.image.nil? %>
 			 
 				 <%= link_to photo.image.url(:large), class: "fancybox" do %>
-				<%= image_tag photo.image.url(:medium) %>
+					<%= image_tag photo.image.url(:medium) %>
 				<% end %>
+			<% end %>
+
+			<% if photo.link.present? %>
+				<%= link_to "More Info", photo.link, :target => "_blank", class: "more-link" %>
 			<% end %>
 
 				<% if can? :destroy, photo %>

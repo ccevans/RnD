@@ -4,16 +4,16 @@
 <section class="profile-back">
 <div class="profile-lyrics">
 	<% if @user.profileimg.present? %>
-<div class="profile-header">
-	<%= image_tag @user.profileimg.url(:large) %>
-</div>
+		<div class="profile-header">
+			<%= image_tag @user.profileimg.url(:large) %>
+		</div>
 
-<% elsif %>
-<div class="profile-header">
-	<%= image_tag 'profile-missing.png' %>
-</div>
+	<% elsif %>
+		<div class="profile-header">
+			<%= image_tag 'profile-missing.png' %>
+		</div>
 
-<% end %>
+	<% end %>
 
 
 <div class="profile-topbox">
@@ -24,39 +24,40 @@
 		<div class="profile-topbox3">
 		<div class="profile-topbox1">
 		<% if @user.avatar.present? %>
-				<div class="profile-main">
-					<%= image_tag @user.avatar.url(:medium) %>
-				</div>
+			<div class="profile-main">
+				<%= image_tag @user.avatar.url(:medium) %>
+			</div>
 
-				<% elsif %>
-				<div class="profile-main">
-					<%= image_tag 'red-gasmask.png' %>
-				</div>
+		<% elsif %>
+			<div class="profile-main">
+				<%= image_tag 'red-gasmask.png' %>
+			</div>
 
-				<% end %>
+		<% end %>
 
-				<% if @user.name.present? %>
-				<h1><%= @user.name %></h1>
-				<% end %>
-				<% if @user.username.present? %>
-				<h2>@<%= @user.username %></h2>
-				<% end %>
+		<% if @user.name.present? %>
+			<h1><%= @user.name %></h1>
+		<% end %>
+
+		<% if @user.username.present? %>
+			<h2>@<%= @user.username %></h2>
+		<% end %>
 				<hr>
 
-				<% if @user.location.present? %>
-				<div class="profile-location">
-					<%= @user.location %>
-				</div>
-				<% end %>
+		<% if @user.location.present? %>
+			<div class="profile-location">
+				<%= @user.location %>
+			</div>
+		<% end %>
 
-				<% if @user.website.present? %>
-				<div class="profile-location">
-					<%= link_to "Website", @user.website %>
-				</div>
-				<% end %>
+		<% if @user.website.present? %>
+			<div class="profile-location">
+				<%= link_to "Website", @user.website, :target => "_blank" %>
+			</div>
+		<% end %>
 
-				<div class="profile-follow-button">
-					<% if user_signed_in? %>
+		<div class="profile-follow-button">
+				<% if user_signed_in? %>
 					<% if current_user == @user %>
 						<p></p>
 					<% elsif  @user.followers.include?(current_user) %>
@@ -70,7 +71,7 @@
 		</div>
 
 
-		</div>
+	</div>
 
 
 		<div class="container-fluid">
@@ -124,55 +125,68 @@
 
 	</div>
 	<div class="video-photo-box">
-		 <div class="dropdown">
-	      <a  href="#" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-	        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-	      </a>
-	      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-	        <li role="presentation"><%= link_to 'Add Video', new_video_path %></li>
-	        <li role="presentation"><%= link_to 'New Photo', new_photo_path, remote: true %></li>
-	        <li role="presentation"><div id="photo-form" style="display:none;"></div></li>
-	        
-	      </ul>
-    </div>
+		<% if user_signed_in? && current_user == @user %>
+		
+			 <div class="dropdown">
+		      <a  href="#" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+		        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+		      </a>
+		      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+		      	<li role="presentation"><h5>Profile Settings</h5></li>
+
+		      	<li role="presentation"><%= link_to "Account", edit_user_registration_path %></li>
+		      	<% if @videos.any? %>
+
+		      	<% else %>
+		        <li role="presentation"><%= link_to 'Add Video', new_video_path %></li>
+		        <% end %>
+		        <li role="presentation"><%= link_to 'Add Photo', new_photo_path, remote: true %></li>
+		        <li role="presentation"><div id="photo-form" style="display:none;"></div></li>
+		        
+		      </ul>
+	    	</div>
+	    <% end %>
 
 
 
     <div class="profile-video2">
     	<% if @videos.any? %>
-    <% @videos.each do |video| %>
-    	<% if video.approve == true %>
-    		<% unless video.videolink.nil? || video.videolink.empty? %>
-			
-				<p><%= raw(youtube_embed(video.videolink)) %></p>
+		    <% @videos.each do |video| %>
+		    	<% if video.approve == true %>
+		    		<% unless video.videolink.nil? || video.videolink.empty? %>
+					
+						<p><%= raw(youtube_embed(video.videolink)) %></p>
+					<% end %>
+		    	<% end %>
 			<% end %>
-
-    	<% end %>
-		<% end %>
 		<% end %>
 	</div>
 
 
     <div class="profile-video">
-    	<% if @videos.any? %>
-    <% @videos.each do |video| %>
-    	<% if video.approve == true %>
-    	<% if @video.image.present? %>
-    		<%= image_tag video.image.url(:medium) %>
-    		<%= link_to video.videolink, class: "fancybox-media" do %>
-    		<span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
-    		<% end %>
-    	<% else %>
-    		<% unless video.videolink.nil? || video.videolink.empty? %>
-			
-				<p><%= raw(youtube_embed(video.videolink)) %></p>
-			<% end %>
+    <% if @videos.any? %>
+	    <% @videos.each do |video| %>
+	    	<% if video.approve == true %>
+		    	<% if @video.image.present? %>
+		    		<%= image_tag video.image.url(:medium) %>
+		    		<%= link_to video.videolink, class: "fancybox-media" do %>
+		    		<span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
+		    		<% end %>
+	    		<% else %>
+		    		<% unless video.videolink.nil? || video.videolink.empty? %>
+					
+						<p><%= raw(youtube_embed(video.videolink)) %></p>
+					<% end %>
 
-    	<% end %>
-    	
+	    		<% end %>
+	    	
+			<% end %>
 		<% end %>
-		<% end %>
-		<% end %>
+	<% elsif current_user.id == @user.id %>
+			Add Video to Profile
+	<% else %>
+
+	<% end %>
 	</div>
 
 	</div>
@@ -195,6 +209,7 @@
 			  <!-- Tab panes -->
 			  <div class="tab-content">
 			    <div role="tabpanel" class="tab-pane" id="home">
+			    	<% if can? :manage, :all %>
 			    		<% if @lyrics.any? %>
 							<% @lyrics.each do |lyric| %>
 									    <div class="container-md">
@@ -223,6 +238,15 @@
 						<% else %>
 							<p>No lyrics posted yet.</p>		
 						<% end %>
+					<% else %>
+						<div class="soon-info">
+							<p>Rhyme Center where you can participate in our creative process by voting and submitting your favorite lyrics to different Experiments avaialable soon.</p></br>
+							<%= image_tag 'rnd-lab-info2.png', :class => "info-image2" %>
+							<%= image_tag 'rnd-rhyme-info4.png', :class => "info-image2" %>
+							<%= image_tag 'rnd-design-info3.png', :class => "info-image2" %>
+							<%= image_tag 'rnd-products-info5.png', :class => "info-image2" %>
+						</div>
+					<% end %>
 
 
 
@@ -230,6 +254,7 @@
 
 			    </div>
 			    <div role="tabpanel" class="tab-pane" id="profile">
+			    	<% if can? :manage, :all %>
 			    	    		<% if @arts.any? %>
 							<% @arts.each do |art| %>
 								<div class="well">
@@ -243,9 +268,20 @@
 						<% else %>
 							<p>No art posted yet.</p>		
 						<% end %>
+					<% else %>
+						<div class="soon-info">
+							<p>Design Center where you can participate in our creative process by voting and submitting artwork to different Experiments avaialable soon.</p></br>
+							<%= image_tag 'rnd-lab-info2.png', :class => "info-image2" %>
+							<%= image_tag 'rnd-rhyme-info4.png', :class => "info-image2" %>
+							<%= image_tag 'rnd-design-info3.png', :class => "info-image2" %>
+							<%= image_tag 'rnd-products-info5.png', :class => "info-image2" %>
+						</div>
+					<% end %>
+
 
 			    </div>
 			    <div role="tabpanel" class="tab-pane" id="messages">
+			    	<% if can? :manage, :all %>
 			    	    <% if @posts.any? %>
 							<% @posts.each do |post| %>
 								<div class="well">
@@ -259,6 +295,16 @@
 						<% else %>
 							<p>No blog post posted yet.</p>		
 						<% end %>
+					<% else %>
+						<div class="soon-info">
+							<p>Community Blog where you can post updates on yourself or your creative community available soon.</p></br>
+
+							<%= image_tag 'rnd-lab-info2.png', :class => "info-image2" %>
+							<%= image_tag 'rnd-rhyme-info4.png', :class => "info-image2" %>
+							<%= image_tag 'rnd-design-info3.png', :class => "info-image2" %>
+							<%= image_tag 'rnd-products-info5.png', :class => "info-image2" %>
+						</div>
+					<% end %>
 
 
 
@@ -266,13 +312,18 @@
 			    </div>
 
 			    <div role="tabpanel" class="tab-pane active" id="settings">
-
-					
-					    <%= link_to new_photo_path, remote: true do %>
-					      <button class="btn btn-default">New</button>
-					    <% end %>
+			    		<% if @photos.any? %>
 				
 					  <div class="transitions-enabled" id="photos"><%= render @photos %></div>
+					  <% elsif current_user.id == @user.id %>
+
+					  	<%= link_to new_photo_path, remote: true do %>
+					      <button class="btn btn-default">New</button>
+					    <% end %>
+					    <% else %>
+					    No items added yet.
+
+					  <% end %>
 			
 
 			   
