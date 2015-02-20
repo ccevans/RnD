@@ -125,27 +125,7 @@
 
 	</div>
 	<div class="video-photo-box">
-		<% if user_signed_in? && current_user == @user %>
-		
-			 <div class="dropdown">
-		      <a  href="#" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-		        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-		      </a>
-		      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-		      	<li role="presentation"><h5>Profile Settings</h5></li>
 
-		      	<li role="presentation"><%= link_to "Account", edit_user_registration_path %></li>
-		      	<% if @videos.any? %>
-
-		      	<% else %>
-		        <li role="presentation"><%= link_to 'Add Video', new_video_path %></li>
-		        <% end %>
-		        <li role="presentation"><%= link_to 'Add Photo', new_photo_path, remote: true %></li>
-		        <li role="presentation"><div id="photo-form" style="display:none;"></div></li>
-		        
-		      </ul>
-	    	</div>
-	    <% end %>
 
 
 
@@ -190,6 +170,28 @@
 	</div>
 
 	</div>
+
+			<% if user_signed_in? && current_user == @user %>
+		
+			 <div class="dropdown">
+		      <a  href="#" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+		        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+		      </a>
+		      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+		      	<li role="presentation"><h5>Profile Settings</h5></li>
+
+		      	<li role="presentation"><%= link_to "Account", edit_user_registration_path %></li>
+		      	<% if @videos.any? %>
+
+		      	<% else %>
+		        <li role="presentation"><%= link_to 'Add Video', new_video_path %></li>
+		        <% end %>
+		        <li role="presentation"><%= link_to 'Add Photo', new_photo_path, remote: true %></li>
+		        <li role="presentation"><div id="photo-form" style="display:none;"></div></li>
+		        
+		      </ul>
+	    	</div>
+	    <% end %>
 		
 
 

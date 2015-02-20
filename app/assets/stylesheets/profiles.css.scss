@@ -82,7 +82,7 @@ div.profile-topbox2 div.panel.panel-default.follow-box div.panel-body div.follow
 div.profile-topbox2 div.panel.panel-default.follow-box div.panel-heading {padding: 5px 10px;}
 div.profile-topbox2 div.panel.panel-default.follow-box div.panel-body {padding: 5px;}
 
-div.profile-topbox2 div.container-fluid {float: left; width: 35%; padding: 25px 2.5%; margin: 0; background-color: whitesmoke; color: #000; border-radius: 5px;}
+div.profile-topbox2 div.container-fluid {float: left; width: 35%; padding: 40px 2.5%; margin: 0; background-color: whitesmoke; color: #000; border-radius: 5px;}
 
 div.tab-box ul.nav.nav-tabs li.active a {color: #000; font-size: 18px; line-height: 18px; background-color: none; background: none;}
 div.tab-box ul.nav.nav-tabs li a {color: #000; font-size: 16px; line-height: 16px; background-color: none; background: none;}
@@ -98,12 +98,14 @@ div.profile-topbox3 div.container-fluid div.panel.panel-default.follow-box div.p
 
 div.galleries-edit div.user-photo img {width: 20%; max-height: 200px; float: left; padding: 0; margin: 2px;}
 
-.video-photo-box {float: left; width: 40%; padding: 25px 5%;}
+.video-photo-box {float: left; width: 40%; padding: 40px 5%;}
 
 div.video-photo-box div#photos-mini div.photo img {width: 30%; height: auto; float: left;}
 div.video-photo-box div#photos-mini {display: none;}
-div.video-photo-box div.dropdown {
+
+div.profile-topbox3 div.dropdown {
     margin-right: 5px;
+    margin-top: 5px;
     position: absolute;
     right: 0;}
 
@@ -111,8 +113,8 @@ div.video-photo-box div.dropdown {
 .profile-video {position: relative; width: 100%; height: auto; display: none;}
 .profile-video img {float: left; width: 100%; height: auto; border-radius: 5px;}
 
-div.video-photo-box div.dropdown a#dropdownMenu1 {color: #000;}
-div.video-photo-box div.dropdown a#dropdownMenu1:hover {color: #bdc3c7;}
+div.profile-topbox3 div.dropdown a#dropdownMenu1 {color: #000;}
+div.profile-topbox3 div.dropdown a#dropdownMenu1:hover {color: #bdc3c7;}
 span.glyphicon.glyphicon-cog {font-size: 28px; line-height: 28px;}
 
 
@@ -120,8 +122,8 @@ div.photo a.delete-link {position: absolute; top: 0; right: 0; font-size: 18px; 
 div.photo a.delete-link:hover {position: absolute; top: 0; right: 0; font-size: 18px; line-height: 18px; color: #bdc3c7; text-shadow: 2px 2px #000;}
 div#photos.transitions-enabled.masonry div.photo:hover a.delete-link {display: inline;}
 
-div.video-photo-box div.dropdown.open ul.dropdown-menu {background-color: #bdc3c7 !important; padding: 0; color: #000;}
-div.video-photo-box div.dropdown.open ul.dropdown-menu li a {border-radius: 4px;}
+div.profile-topbox3 div.dropdown.open ul.dropdown-menu {background-color: #bdc3c7 !important; padding: 0; color: #000;}
+div.profile-topbox3 div.dropdown.open ul.dropdown-menu li a {border-radius: 4px;}
 
 div.video-photo-box div.profile-video a.fancybox-media {position: absolute; top: 0; margin-top: 100px; left: 45%; font-size: 36px; line-height: 36px; color: #fff; text-shadow: 2px 2px #000;}
 div.video-photo-box div.profile-video a.fancybox-media:hover {position: absolute; top: 0; margin-top: 100px; left: 45%; font-size: 36px; line-height: 36px; color: #bdc3c7; text-shadow: 2px 2px #000;}
@@ -145,4 +147,53 @@ div.profile-topbox div.profile-topbox2 div.tab-box ul.nav.nav-tabs {
 div.photo a.more-link {position: absolute; bottom: 25px; text-align: center; width: 40%; margin: 0 30%; padding: 5px; font-size: 18px; line-height: 18px; color: #000; background-color: #fff; border-radius: 25px; display: none; opacity: .8; font-variant: small-caps;}
 div.photo a.more-link:hover {position: absolute; bottom: 25px; font-size: 18px; line-height: 18px; color: #000; text-decoration: none; opacity: 1;}
 div#photos.transitions-enabled.masonry div.photo:hover a.more-link {display: inline;}
+
+
+@media screen and (max-width: 500px){
+    .profile-topbox1 {
+    float: left;
+    margin: 0px 0 0;
+    padding: 0;
+    width: 40%;}
+
+    div.profile-lyrics {width: 100%;}
+
+    #profile-box1 {
+    background-color: #ecf0f1;
+    border: 0 solid #000;
+    float: left;
+    margin: 0 0 0 50%;
+    opacity: 1;
+    padding: 0;
+    width: 50%; display: none;}
+
+    div.profile-topbox2 div.container-fluid {
+    background-color: whitesmoke;
+    border-radius: 5px;
+    color: #000;
+    float: left;
+    margin: 0;
+    padding: 25px 2.5%;
+    width: 60%;}
+
+    div.video-photo-box{float: left;
+    padding: 25px 5%;
+    width: 100%;}
+
+    div#photos.transitions-enabled.masonry {width: 100% !important; height: auto;}
+    div#photos.transitions-enabled.masonry div.photo {width: 45% !important; height: auto; margin: 5px;}
+    div#photos.transitions-enabled.masonry div.photo img {width: 100%; height: auto;}
+
+    div.profile-topbox2 div.panel.panel-default.follow-box div.panel-heading {padding: 2px;}
+    div.profile-topbox div.follow-box h3 {
+    color: #000;
+    font-size: 12px;
+    line-height: 12px;
+    padding: 2px;}
+    div.profile-topbox2 h1 {font-size: 16px; line-height: 16px;}
+    div.profile-topbox2 div.profile-location {font-size: 14px; line-height:14px;}
+    div.profile-topbox2 h2 {font-size: 14px; line-height:14px;}
+    div.video-photo-box div.profile-video2 p iframe {width: 100%;}
+
+    }
 
