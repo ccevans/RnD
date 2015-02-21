@@ -19,10 +19,3 @@
 //= require masonry/jquery.masonry
 //= require_tree .
 //= require jquery.countdown.min
-
-
-$('.vote')
-  .on('ajax:send', function () { $(this).addClass('loading'); })
-  .on('ajax:complete', function () { $(this).removeClass('loading'); })
-  .on('ajax:error', function () { $(this).after('<div class="error">There was an issue.</div>'); })
-  .on('ajax:success', function(e, data, status, xhr) { $(this).html(data.count); });
