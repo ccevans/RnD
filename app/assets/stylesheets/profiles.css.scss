@@ -124,7 +124,7 @@ div#photos.transitions-enabled.masonry div.photo:hover a.delete-link {display: i
 
 div.profile-topbox3 div.dropdown.open ul.dropdown-menu {background-color: #fff !important; padding: 0; color: #000; float: left; position: static;}
 div.profile-topbox3 div.dropdown.open ul.dropdown-menu li a {border-radius: 4px;}
-div.profile-topbox3 div.dropdown.open ul.dropdown-menu li {text-align: center;}
+div.profile-topbox3 div.dropdown.open ul.dropdown-menu li {text-align: center; padding: 2px 0;}
 
 ul.dropdown-menu li div#photo-form form#new_photo.simple_form.new_photo {width: 90%; margin: 5px 5%;}
 form#new_photo.simple_form.new_photo div.form-group.string.optional.photo_link label.string.optional.control-label {float: left; padding: 5px 2px; font-weight: normal;}
@@ -256,6 +256,7 @@ div.video-photo-box div.profile-video2 p iframe {width: 100%;}
     width: 80%;}
     div.photo a.more-link:hover {text-decoration: none; opacity: 1;}
 
+    div.profile-topbox3 div.dropdown.open ul.dropdown-menu {width: 80%; margin: 0 10%; background-color: #fff !important; padding: 0; color: #000; float: left; position: static;}
 
 
     }
