@@ -122,8 +122,15 @@ div.photo a.delete-link {position: absolute; top: 0; right: 0; font-size: 18px; 
 div.photo a.delete-link:hover {position: absolute; top: 0; right: 0; font-size: 18px; line-height: 18px; color: #bdc3c7; text-shadow: 2px 2px #000;}
 div#photos.transitions-enabled.masonry div.photo:hover a.delete-link {display: inline;}
 
-div.profile-topbox3 div.dropdown.open ul.dropdown-menu {background-color: #bdc3c7 !important; padding: 0; color: #000;}
+div.profile-topbox3 div.dropdown.open ul.dropdown-menu {background-color: #fff !important; padding: 0; color: #000; float: left; position: static;}
 div.profile-topbox3 div.dropdown.open ul.dropdown-menu li a {border-radius: 4px;}
+div.profile-topbox3 div.dropdown.open ul.dropdown-menu li {text-align: center;}
+
+ul.dropdown-menu li div#photo-form form#new_photo.simple_form.new_photo {width: 90%; margin: 5px 5%;}
+form#new_photo.simple_form.new_photo div.form-group.string.optional.photo_link label.string.optional.control-label {float: left; padding: 5px 2px; font-weight: normal;}
+form#new_photo.simple_form.new_photo div.form-group.string.optional.photo_link input#photo_link.string.optional.form-control {width: 80%;}
+form#new_photo.simple_form.new_photo div.form-group.string.optional.photo_link {margin: 10px 5px;}
+
 
 div.video-photo-box div.profile-video a.fancybox-media {position: absolute; top: 0; margin-top: 100px; left: 45%; font-size: 36px; line-height: 36px; color: #fff; text-shadow: 2px 2px #000;}
 div.video-photo-box div.profile-video a.fancybox-media:hover {position: absolute; top: 0; margin-top: 100px; left: 45%; font-size: 36px; line-height: 36px; color: #bdc3c7; text-shadow: 2px 2px #000;}
