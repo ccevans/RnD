@@ -221,14 +221,33 @@ div.video-photo-box div.profile-video2 p iframe {width: 100%;}
     div.tab-box ul.nav.nav-tabs li.active a {
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
     color: #000;
-    font-size: 16px;
-    line-height: 16px;}
+    font-size: 18px;
+    line-height: 18px;}
     div.tab-box ul.nav.nav-tabs li a {
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
     color: #000;
-    font-size: 14px;
-    line-height: 14px;}
+    font-size: 16px;
+    line-height: 16px;}
     div.tab-box ul.nav.nav-tabs li a {padding: 4px;}
+
+    .soon-info {width: 100%; padding: 10px 5%; font-size: 18px; line-height: 20px; color: #000; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif;}
+    div.profile-topbox2 div.profile-follow-button {font-size: 14px; line-height: 14px;}
+    div.photo a.more-link {
+    background-color: #fff;
+    border-radius: 10px;
+    bottom: 10px;
+    color: #000;
+    display: none;
+    font-size: 14px;
+    font-variant: small-caps;
+    line-height: 14px;
+    margin: 0 10%;
+    opacity: 0.8;
+    padding: 5px;
+    position: absolute;
+    text-align: center;
+    width: 80%;}
+    div.photo a.more-link:hover {text-decoration: none; opacity: 1;}
 
 
 
