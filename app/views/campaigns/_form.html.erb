@@ -2,12 +2,16 @@
 
       <%= f.error_notification %>
 
+  <%= f.file_field :image, label: "Experiment Image" %>
   <%= f.input :title, label: "Title" %>
   <%= f.input :description, label: "Tell us more" %>
-  <%= f.input :timer, label: "Time" %>
-  <%= f.input :timer2, label: "Time2" %>
+   <%= f.input :rules, label: "Enter rules" %>
+   <%= f.input :reward, label: "Enter rewards" %>
+  <%= f.input :timer, label: "Time for Lyric Submission" %>
+  <%= f.input :timer2, label: "Time for Design Submission" %>
+  
   <%= f.collection_select :status, Campaign::STATUS, :to_s, :humanize %>
-  <%= f.file_field :image %>
+  
 
     <%= f.input :artist, label: "Artist" %>
   <%= f.input :song, label: "Song" %>

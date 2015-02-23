@@ -31,99 +31,82 @@
 
         </div>
 
-        <div class="container-extra">
-           <ul>
-      <li>
-        <h2>
-            <% unless art.campaign.timer2.nil? || art.campaign.timer2.empty? %>
-              <span class="timer-line" data-countdown= <%= art.campaign.timer2 %>></span>
+            <div class="container-extra">
+              <ul>
+                  <li><%= art.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
+
+                <li><%= art.commentarts.count %> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></li>
+
+                <li><%= art.get_upvotes.size %> <strong>Votes</strong></li>
+              
+                    <li><% unless art.campaign.timer2.nil? || art.campaign.timer2.empty? %>
+                      <strong><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Left</strong> | 
+                  <span class="timer-line" data-countdown= <%= art.campaign.timer2 %>></span>
+                <% end %></li>
+
+              </ul>
+
+              <% if art.campaign.title.present? %>
+            <ul>
+              <li><strong>Posted By:</strong>  
+                <% if art.user.avatar.present? %>
+                <%= image_tag art.user.avatar.url(:mini) %>
+                <% end %> 
+                <% if art.user.username.present? %>
+                <%= link_to art.user.username, profile_url(:id => art.user.username) %>
+                <% end %></li>
+              <li><strong>Experiment</strong> |  <%= link_to art.campaign.title, campaign_url(art.campaign) %> </li>
+            </ul>
             <% end %>
-        </h2>
-          
-        <h2><%= art.get_upvotes.size %> Votes</h2>
+        <ul>
+          <li>
+              
+              <ul class="vote-column">
+                   <%= link_to voteof5_art_path(art), class: 'voteup', remote: true, data: { type: :json }, method: :put do %>
+                <li><div class="vote-button">
+                  5
+                </div></li>
+                  <% end %>
+                  <%= link_to voteof4_art_path(art), class: 'voteup', remote: true, data: { type: :json }, method: :put do %>
+                <li><div class="vote-button">
+                  4
+                </div></li>
+                  <% end %>
+                  <%= link_to voteof3_art_path(art), class: 'voteup', remote: true, data: { type: :json }, method: :put do %>
+                <li><div class="vote-button">
+                  3
+                </div></li>
+                  <% end %>
+                    <%= link_to voteof2_art_path(art), class: 'voteup', remote: true, data: { type: :json }, method: :put do %>
+                <li><div class="vote-button">
+                  2
+                </div></li>
+                  <% end %>
+                  <%= link_to voteof1_art_path(art), class: 'voteup', remote: true, data: { type: :json }, method: :put do %>
+                
+                <li><div class="vote-button">
+                  1
+                </div></li>
+                  <% end %>
+                  
+               
+                </ul>
 
-        <% if can? :manage, :all %>
-            <% if art.get_upvotes.size == 0 %>
-            <h2>No votes yet</h2>
-            <% else %>
-            <h2><%= art.get_upvotes.sum(:vote_weight) / art.get_upvotes.size %> / 5</h2>
+          </li>
+          <li>
+                  <% if can? :manage, :all %>
+                <% if art.get_upvotes.size == 0 %>
+                <h2>No votes yet</h2>
+                <% else %>
+                <h2><%= art.get_upvotes.sum(:vote_weight) / art.get_upvotes.size %> / 5</h2>
+                <% end %>
             <% end %>
-        <% end %>
+          </li>
+        </ul>
+            <ul>
+            </ul>
+          </div>
 
-          <%= link_to voteof1_art_path(art), method: :put do %>
-            <h2>1</h2>
-              <% end %>
-              <%= link_to voteof2_art_path(art), method: :put do %>
-            <h2>2</h2>
-              <% end %>
-              <%= link_to voteof3_art_path(art), method: :put do %>
-            <h2>3</h2>
-              <% end %>
-              <%= link_to voteof4_art_path(art), method: :put do %>
-            <h2>4</h2>
-              <% end %>
-              <%= link_to voteof5_art_path(art), method: :put do %>
-            <h2>5</h2>
-              <% end %>
-
-      </li>
-    </ul>
-
-    
-
-         <ul>
-              <li><%= art.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
-
-            <li><%= art.commentarts.count %> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></li>
-              <li>
-                <% unless art.user.avatar.nil? %>
-                <a class="popoverExampleTwo" data-placement="auto left" data-trigger="click" return false;><%= image_tag art.user.avatar.url(:mini) %></a><% end %><% unless art.user.username.nil? || art.user.username.empty? %><%= link_to art.user.username, profile_url(:id => art.user.username) %><% end %></li>
-
-                          <!-- Popover 2 hidden content -->
-                          <div class="popoverExampleTwoHiddenContent" style="display: none">
-                             <div>
-                              <% unless art.user.avatar.nil? %>
-                              <%= image_tag art.user.avatar.url(:thumb) %>
-                              <% end %>
-                              <% unless art.user.username.nil? || art.user.username.empty? %>
-                                  <%= link_to art.user.username, profile_url(:id => art.user.username) %>
-                                  <% end %>
-                                  
-                                  </br>
-                                  <div class="following-show">
-                                    <p><%= art.user.follow_count %> Following  | 
-                                    <%= art.user.followers_count %> Followers</p>
-                                    <% if user_signed_in? %>
-                                      <% if current_user == art.user %>
-                                        <p></p>
-                                      <% elsif  art.user.all_following.include?(current_user) %>
-                                        <%= link_to "Unfollow", unfollow_profile_path(art.user.username) %>
-                                      <% else %>
-                                        <%= link_to "Follow", follow_profile_path(art.user.username) %>
-                                      <% end %>
-                                    <% else %>
-                                      <p><%= link_to "Sign Up To Follow", new_user_registration_path %></p>
-                                    <% end %>
-                                  </div>
-                                  <hr>
-                                  <% unless art.user.points.nil? %>
-                                  <div class="points-show">
-                                    Points | <%= art.user.points %>
-                                  </div>
-                                  <% end %>
-
-
-                             </div>
-                          </div>  
-                          <!-- Popover 2 hidden title -->
-                          <div class="popoverExampleTwoHiddenTitle" style="display: none">
-                             
-                          </div> 
-
-          </ul>
-          <br />
-
-      </div>
       </div>
       <% end %>
 
@@ -150,8 +133,6 @@
 
 
 </section>
-
-<%= image_tag 'lyric-background3.png', :class => "background-lyric" %>
 
 
 <script>
@@ -181,14 +162,15 @@ $(function(){
     .on('update.countdown', function(event) {
       var format = '%-H hr %-M min %-S sec';
       var format2 = '%-H hr %-M min';  
+      var format3 = '%-d day%!d';
       if (event.offset.days < 1) {
           $this.closest('.price-info').addClass('red-status');
       }   
       if(event.offset.days > 0) {
-        format = '%-d day%!d, ' + format2;
+        format = '%-d day%!d, ' ;
       }
       if(event.offset.weeks > 0) {
-        format = '%-w week%!w ' + format2;
+        format = '%-w week%!w ' + format3;
       }
     
      $(this).html(event.strftime(format));
@@ -265,3 +247,14 @@ $(window).scroll(function () {
   $('.results').html("<%= j render(:partial => 'homeinfo/index') %>")
 
 </script>
+
+  <script>
+
+      $('.voteup')
+    .on('ajax:success', function (e, data, status, xhr) { 
+      $('.up').html(data.count);
+      $('.votebox2').html('You already voted');
+      $('.votebox').addClass('hidden');
+    });
+
+    </script>

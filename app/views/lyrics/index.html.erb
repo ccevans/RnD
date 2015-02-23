@@ -44,54 +44,44 @@
         <% end %>
         <ul>
         <li><%= lyric.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
-        <li><%= lyric.get_upvotes.size %> 
-          <%= link_to like_lyric_path(lyric), method: :get do %>
-              <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+
+
+          <li><span class="up <%= lyric.id %>"><%= lyric.get_upvotes.size %> </span>
+          <%= link_to like_lyric_path(lyric), class: ['voteup', lyric.id], remote: true, data: { type: :json }, method: :get do %>
+          <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+            <% end %>
+            <span class="down <%= lyric.id %>"><%= lyric.get_downvotes.size %></span>
+          <%= link_to dislike_lyric_path(lyric), class: ['votedown', lyric.id], remote: true, data: { type: :json }, method: :get do %>
+          <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
             <% end %>
           </li>
+
+
+          <script>
+
+    $('.voteup' + '.<%= lyric.id %>')
+  .on('ajax:success', function (e, data, status, xhr) { 
+    $('.up' + '.<%= lyric.id %>').html(data.count);
+    $('.down' + '.<%= lyric.id %>').html(data.count2);
+  });
+
+    </script>
+
+      <script>
+
+    $('.votedown' + '.<%= lyric.id %>')
+  .on('ajax:success', function (e, data, status, xhr) { 
+    
+    $('.down' + '.<%= lyric.id %>').html(data.count2);
+    $('.up' + '.<%= lyric.id %>').html(data.count);
+  });
+
+    </script>
+
+      
         <li><%= lyric.comments.count %> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></li>
-        <li><% if lyric.user.avatar.present? %><a class="popoverExampleTwo" data-placement="auto left" data-trigger="click" return false;><%= image_tag lyric.user.avatar.url(:mini) %></a><% end %><% if lyric.user.username.present? %><%= link_to lyric.user.username, profile_url(:id => lyric.user.username) %><% end%></li>
+        <li><% if lyric.user.avatar.present? %><%= image_tag lyric.user.avatar.url(:mini) %><% end %><% if lyric.user.username.present? %><%= link_to lyric.user.username, profile_url(:id => lyric.user.username) %><% end%></li>
 
-                    <!-- Popover 2 hidden content -->
-                          <div class="popoverExampleTwoHiddenContent" style="display: none">
-                             <div>
-                              <% if lyric.user.avatar.present? %>
-                              <%= image_tag lyric.user.avatar.url(:thumb) %>
-                              <% end %>
-                              <% if lyric.user.username.present? %>
-                                  <%= link_to lyric.user.username, profile_url(:id => lyric.user.username) %>
-                                  <% end %>
-                                  </br>
-                                  <div class="following-show">
-                                    <p><%= lyric.user.follow_count %> Following  | 
-                                    <%= lyric.user.followers_count %> Followers</p>
-                                    <% if user_signed_in? %>
-                                      <% if current_user == lyric.user %>
-                                        <p></p>
-                                      <% elsif  lyric.user.all_following.include?(current_user) %>
-                                        <%= link_to "Unfollow", unfollow_profile_path(lyric.user.username) %>
-                                      <% else %>
-                                        <%= link_to "Follow", follow_profile_path(lyric.user.username) %>
-                                      <% end %>
-                                    <% else %>
-                                      <p><%= link_to "Sign Up To Follow", new_user_registration_path %></p>
-                                    <% end %>
-                                  </div>
-                                  <hr>
-                                   <% if lyric.user.points.present? %>
-                                  <div class="points-show">
-                                   
-                                    Points | <%= lyric.user.points %>
-                                  </div>
-                                  <% end %>
-
-
-                             </div>
-                          </div>  
-                          <!-- Popover 2 hidden title -->
-                          <div class="popoverExampleTwoHiddenTitle" style="display: none">
-                             
-                          </div> 
 
         </ul>
         <br />
@@ -118,12 +108,6 @@
     </div>
 
    
-
-        
-    <br>
-    <div class="lyric-footer">
-      <%= link_to 'New Lyric', new_campaign_lyric_path %>
-    </div>
 </section>
 
 <section class="home-info">
@@ -224,5 +208,7 @@ $(window).scroll(function () {
 });
 
 </script>
+
+  
 
 

@@ -1,6 +1,7 @@
 <section class="campaign-section2"
 <% unless @campaign.image.nil? %>
 <div class="campaign-header">
+
     <%= image_tag @campaign.image.url(:large) %>
 </div>  
 <% end %>
@@ -19,15 +20,16 @@
         <% end %>
       </br>
 
+      <div class="button-box">
         <div class="timer-button">
-          <h4>Rhymes</h4>
+          <h4><span class="glyphicon glyphicon-time" aria-hidden="true"></span>Rhyme Submissions</h4>
         <% if @campaign.status == "free" %>
               <%= link_to 'Add Lyrics', new_campaign_lyric_path(@campaign, @lyric), class: "submitbutton" %>
         <% elsif @campaign.timer.nil? || @campaign.timer.empty? %>
             <div class="timer-button2">Not open for submissions yet</div>
         <% else %>
           <% unless @campaign.timer.nil? || @campaign.timer.empty? %>
-           <span class="glyphicon glyphicon-time" aria-hidden="true"></span><span class="timer-line" data-countdown= <%= @campaign.timer %> ></span><br />
+           <span class="timer-line" data-countdown= <%= @campaign.timer %> ></span><br />
            <% end %>
 
             <%= link_to 'Add Lyrics', new_campaign_lyric_path(@campaign, @lyric), class: "submitbutton" %>
@@ -36,20 +38,21 @@
         </div> 
 
         <div class="timer-button">
-          <h4>Designs</h4>
+          <h4><span class="glyphicon glyphicon-time" aria-hidden="true"></span>Design Submissions</h4>
         <% if @campaign.status == "free" %>
             <%= link_to 'Submit Designs', new_campaign_art_path(@campaign, @art), class: "submitbutton" %>
         <% elsif @campaign.timer2.nil? || @campaign.timer2.empty? %>
             <div class="timer-button2">Not open for submissions yet</div>
         <% else %>
             <% unless @campaign.timer2.nil? || @campaign.timer2.empty? %>
-              <span class="glyphicon glyphicon-time" aria-hidden="true"></span><span class="timer-line" data-countdown= <%= @campaign.timer2 %> ></span><br />
+              <span class="timer-line" data-countdown= <%= @campaign.timer2 %> ></span><br />
               <% end %>
 
              <%= link_to 'Submit Designs', new_campaign_art_path(@campaign, @art), class: "submitbutton" %>
           
         <% end %>
         </div>
+      </div>
        </div>
        
        <div class="admin-footer">
@@ -74,7 +77,6 @@
         <div class="tab-content">
           <div role="tabpanel" class="tab-pane active" id="home">
               <div class="campaign-lyric">
-                <h2>Lyrics</h2>
                 <% @lyrics.each do |lyric| %>
                   <div class="campaign-lyric-each">
                     <% unless lyric.line.nil? || lyric.line.empty? %>
@@ -98,7 +100,7 @@
           </div>
           <div role="tabpanel" class="tab-pane" id="profile">
           <div class="art-container">
-              <h2>Submitted Designs</h2>
+            
               <div id="campaign-art" class="transitions-enabled">
                  
                 <% @arts.each do |art| %>

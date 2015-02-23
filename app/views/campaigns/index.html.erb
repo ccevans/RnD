@@ -1,26 +1,16 @@
 
 <section class="campaign-section2">
-<section class="campaign-section">
-  <div id="campaigns" class="transitions-enabled">
-        <div class="free-campaign">
-          <div class="campaign-img">
-                <% unless @free_campaign.image.nil? %>
-                  <%= image_tag @free_campaign.image.url(:medium) %>
-                  <% end %>
-              </div> 
-               <%= link_to 'Add Your Fav Lyrics & Designs', @free_campaign %>
-
-        </div>
-  </section>
 
 <section class="campaign-section">
-<h1>Current Experiments</h1>
-<div id="campaigns2" class="transitions-enabled">
+<%= image_tag 'currentexperiments.jpg', :class => "info-image" %>
+<div id="campaigns2">
   <% @open_campaigns.each do |open_campaign| %>
     <div class="campaign-md">
        <% unless open_campaign.image.nil? %>
         <div class="campaign-img">
-            <%= image_tag open_campaign.image.url(:medium) %>
+            <%= link_to open_campaign do %>
+            <%= image_tag open_campaign.image.url(:large) %>
+            <% end %>
         </div> 
         <% end %>
 
@@ -29,10 +19,21 @@
              <% unless open_campaign.title.nil? || open_campaign.title.empty? %>
             <li><strong><%= link_to simple_format(open_campaign.title), open_campaign %></strong></li>
             <% end %>
-            <% unless open_campaign.timer.nil? || open_campaign.timer.empty? %>
-            <li><%= open_campaign.timer %> Left</li>
+             <% if open_campaign.timer.nil? || open_campaign.timer.empty? %>
+                <li>Rhyme Submission: Not Open Yet</li>
+              <% else %>
+                <% unless open_campaign.timer.nil? || open_campaign.timer.empty? %>
+                <li>Rhyme Submission: <span class="timer-line" data-countdown= <%= open_campaign.timer %> ></span></li>
+                <% end %>
             <% end %>
-            <li>Reward: $100 plus royalties</li>
+              <% if open_campaign.timer2.nil? || open_campaign.timer2.empty? %>
+                <li>Design Submission: Not Open Yet</li>
+              <% else %>
+                <% unless open_campaign.timer2.nil? || open_campaign.timer2.empty? %>
+                <li>Design Submission: <span class="timer-line" data-countdown= <%= open_campaign.timer2 %> ></span></li>
+                <% end %>
+            <% end %>
+            
           </ul>
 
         </div>
@@ -42,13 +43,15 @@
 </section>
 
 <section class="campaign-section">
-<h1>Past Experiments</h1>
-<div id="campaigns3" class="transitions-enabled">
+<%= image_tag 'pastexperiments.jpg', :class => "info-image" %>
+<div id="campaigns3" >
       <% @closed_campaigns.each do |closed_campaign| %>
     <div class="campaign-md">
       <% unless closed_campaign.image.nil? %>
         <div class="campaign-img">
-            <%= image_tag closed_campaign.image.url(:medium) %>
+            <%= link_to closed_campaign do %>
+            <%= image_tag closed_campaign.image.url(:large) %>
+            <% end %>
         </div> 
         <% end %>
 
@@ -57,10 +60,6 @@
             <% unless closed_campaign.title.nil? || closed_campaign.title.empty? %>
             <li><strong><%= link_to simple_format(closed_campaign.title), closed_campaign %></strong></li>
             <% end %>
-            <% unless closed_campaign.timer.nil? || closed_campaign.timer.empty? %>
-            <li><%= closed_campaign.timer %> Left</li>
-            <% end %>
-            <li>Reward: $100 plus royalties</li>
           </ul>
 
         </div>
@@ -87,6 +86,35 @@
 
   $('.results').html("<%= j render(:partial => 'homeinfo/index') %>")
 
+</script>
+
+<script type="text/javascript">
+    $('[data-countdown]').each(function() {
+      var $this = $(this), finalDate = $(this).data('countdown');
+    
+    $this.countdown(finalDate)
+
+    .on('update.countdown', function(event) {
+      var format = '%-H hr %-M min %-S sec';
+      var format2 = '%-H hr %-M min';  
+      if (event.offset.days < 1) {
+          $this.closest('.price-info').addClass('red-status');
+      }   
+      if(event.offset.days > 0) {
+        format = '%-d day%!d, ' + format2;
+      }
+      if(event.offset.weeks > 0) {
+        format = '%-w week%!w ' + format2;
+      }
+    
+     $(this).html(event.strftime(format));
+   })
+   .on('finish.countdown', function(event) {
+     $(this).html('Closed for Submissions');
+    $this.closest('.timer-button').addClass('disabled').attr('disabled', 'disabled');
+      });
+    
+    });
 </script>
 
 <script>

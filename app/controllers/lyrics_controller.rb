@@ -17,13 +17,13 @@ class LyricsController < ApplicationController
 
 		case params[:sort_by]
 	      when 'most_liked'
-	        @lyrics = apply_scopes(Lyric).all.order(:cached_votes_up => :desc).paginate(:page => params[:page], :per_page => 100)
+	        @lyrics = apply_scopes(Lyric).all.order(:cached_votes_up => :desc).paginate(:page => params[:page], :per_page => 10)
 	       when 'most_viewed'
-	        @lyrics = apply_scopes(Lyric).all.order(:counter_cache => :desc).paginate(:page => params[:page], :per_page => 100)
+	        @lyrics = apply_scopes(Lyric).all.order(:counter_cache => :desc).paginate(:page => params[:page], :per_page => 10)
 	      when 'most_recent'
-	        @lyrics = apply_scopes(Lyric).all.order("created_at DESC").paginate(:page => params[:page], :per_page => 100)
+	        @lyrics = apply_scopes(Lyric).all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
 	      else
-	        @lyrics = apply_scopes(Lyric).all.order("created_at DESC").paginate(:page => params[:page], :per_page => 100)
+	        @lyrics = apply_scopes(Lyric).all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
 	    end
 
 

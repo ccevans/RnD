@@ -222,11 +222,39 @@
 									        <ul>
 									        	<li><span class="profile-time"><%= time_ago_in_words(lyric.created_at) %> ago </span></li>
 									        <li><%= lyric.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
-									        <li><%= lyric.get_upvotes.size %> 
-									          <%= link_to like_lyric_path(lyric), method: :get do %>
-									              <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-									            <% end %>
-									          </li>
+
+									                <li><span class="up <%= lyric.id %>"><%= lyric.get_upvotes.size %> </span>
+										          <%= link_to like_lyric_path(lyric), class: ['voteup', lyric.id], remote: true, data: { type: :json }, method: :get do %>
+										          <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+										            <% end %>
+										            <span class="down <%= lyric.id %>"><%= lyric.get_downvotes.size %></span>
+										          <%= link_to dislike_lyric_path(lyric), class: ['votedown', lyric.id], remote: true, data: { type: :json }, method: :get do %>
+										          <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+										            <% end %>
+										          </li>
+
+
+										  	<script>
+
+										    $('.voteup' + '.<%= lyric.id %>')
+										  .on('ajax:success', function (e, data, status, xhr) { 
+										    $('.up' + '.<%= lyric.id %>').html(data.count);
+										    $('.down' + '.<%= lyric.id %>').html(data.count2);
+										  });
+
+										    </script>
+
+										      <script>
+
+										    $('.votedown' + '.<%= lyric.id %>')
+										  .on('ajax:success', function (e, data, status, xhr) { 
+										    
+										    $('.down' + '.<%= lyric.id %>').html(data.count2);
+										    $('.up' + '.<%= lyric.id %>').html(data.count);
+										  });
+
+										    </script>
+
 									        <li><%= lyric.comments.count %> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></li>
 									        <li><% if lyric.user.avatar.present? %><a class="popoverExampleTwo" data-placement="auto left" data-trigger="click" return false;><%= image_tag lyric.user.avatar.url(:mini) %></a><% end %><% if lyric.user.username.present? %><%= link_to lyric.user.username, profile_url(:id => lyric.user.username) %><% end%></li>
 
@@ -420,6 +448,7 @@ $(window).scroll(function () {
   $('.results').html("<%= j render(:partial => 'homeinfo/index') %>")
 
 </script>
+
 
 
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150218232236) do
+ActiveRecord::Schema.define(version: 20150221202143) do
 
   create_table "adminlyrics", force: true do |t|
     t.text     "line"
@@ -95,6 +95,8 @@ ActiveRecord::Schema.define(version: 20150218232236) do
     t.string   "album"
     t.string   "song"
     t.string   "link"
+    t.text     "reward"
+    t.text     "rules"
   end
 
   create_table "commentarts", force: true do |t|

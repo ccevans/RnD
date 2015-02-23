@@ -12,23 +12,23 @@ div.container-post-extra {width: 30%; height: auto; float: left; padding: 0; mar
 
 div.container-post-extra ul li a span.glyphicon.glyphicon-step-backward {font-size: 24px;}
 div.container-post-extra ul li a span.glyphicon.glyphicon-step-forward {font-size: 24px;}
-div.container-post-desc {width: 70%; float: left; margin: 0; color: #fff; padding: 20px; font-size: 20px; line-height: 24px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;}
+div.container-post-desc {width: 70%; float: left; margin: 0; color: #000; padding: 20px; font-size: 20px; line-height: 24px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;}
 
-div.container-show div.container-post h1 {color: #fff;}
+div.container-show div.container-post h1 {color: #000;}
 
 .container-post-index {width: 400px; margin: 25px; }
 #posts {margin: 0 auto;}
 
-div.container-post-index a {color: #fff; font-size: 30px; line-height: 34px; text-align: left; font-family: 'Fredoka One', cursive; text-shadow: 0px 0px #bdc3c7;}
-div.container-post-index a:hover {color: #95a5a6; font-size: 30px; line-height: 34px; text-align: left; text-decoration: none; border: none; text-shadow: 0px 0px #bdc3c7;}
+div.container-post-index a {color: #000; font-size: 30px; line-height: 34px; text-align: left; font-family: 'Fredoka One', cursive; text-shadow: 0px 0px #bdc3c7;}
+div.container-post-index a:hover {color: #1cccaa; font-size: 30px; line-height: 34px; text-align: left; text-decoration: none; border: none; text-shadow: 0px 0px #bdc3c7;}
 
 
 
-div.container-post-index ul {list-style:none; color: #fff; clear: both;}
+div.container-post-index ul {list-style:none; color: #000; clear: both;}
 div.container-post-index ul li {float: left; padding: 5px; width: auto;}
 
 div.container-post-index ul li a {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #fff; text-shadow: none;}
-div.container-post-index ul li a:hover {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #f1c40f; text-shadow: none;}
+div.container-post-index ul li a:hover {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #1cccaa; text-shadow: none;}
 
 div.container-post-index ul.tag-list {margin-top: 0; margin-bottom: 0; padding: 0;}
 div.container-post-index ul.tag-list li {float: left; width: auto; margin-top: 0; margin-bottom: 0;}
