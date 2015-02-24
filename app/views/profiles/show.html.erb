@@ -285,14 +285,27 @@
 			    </div>
 			    <div role="tabpanel" class="tab-pane" id="profile">
 			    	<% if can? :manage, :all %>
-			    	    		<% if @arts.any? %>
-							<% @arts.each do |art| %>
-								<div class="well">
-									<%= image_tag art.image.url(:small) %>
-									<hr />
-									<span class="profile-time"><%= time_ago_in_words(art.created_at) %> ago </span>
-								</div>
-							<% end %>
+			    	    <% if @arts.any? %>
+							 <div class="art-container">
+            
+					              <div id="campaign-art" class="transitions-enabled">
+					                 
+					                <% @arts.each do |art| %>
+					                  <div class="campaign-art-each">
+					  
+					                    <%= link_to "/campaigns/2/lyrics/#{art.id}" do %>
+
+					                    <% unless art.image.nil? %>
+					                    <%= image_tag art.image.url(:small) %>
+					                    <% end %>
+					                  <% end %>
+					                  </div>
+					                <% end %>
+					              </div>
+					            </div>
+
+
+
 						<% elsif current_user == @user %>
 							<p>No art posted yet.  <%= link_to 'Add Your Favorite Artwork', "/campaigns/2/arts/new" %></p>
 						<% else %>

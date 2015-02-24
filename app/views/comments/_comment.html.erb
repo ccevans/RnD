@@ -1,5 +1,5 @@
 
-			<div class="comment">
+			<div class="comment <%= comment.id %>">
 			<% unless comment.user.avatar.nil? %>
 
 				<%= image_tag comment.user.avatar.url(:mini) %>
@@ -13,6 +13,14 @@
 				<p class="content"> <%= comment.content %></p>
 				<% end %>
 				<p class="time-created"><%= time_ago_in_words(comment.created_at) %></p>
+
+					<% if can? :destroy, comment %>
+				<%= link_to @comment, class: "delete-link", remote: true, method: :delete,  data: { confirm: 'Are you sure?' } do %>
+				<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+
+				<% end %>
+				<% end %>
+
 				<hr />
 			</div>
 

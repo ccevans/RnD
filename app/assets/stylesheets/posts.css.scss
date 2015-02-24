@@ -4,7 +4,7 @@
 
 html body form#edit_post_5.simple_form.edit_post {margin-top: 125px;}
 div.container-show {background-color: #fff; color: #000;}
-div.container-post {float: left; width: 70%; height: auto; min-height: 100px; color: #000;}
+div.container-post {float: left; width: 70%; height: auto; min-height: 200px; color: #000;}
 
 div.container-post img {float: left; width: 100%; height: auto;}
 
@@ -16,18 +16,18 @@ div.container-post-desc {width: 70%; float: left; margin: 0; color: #000; paddin
 
 div.container-show div.container-post h1 {color: #000;}
 
-.container-post-index {width: 400px; margin: 25px; }
+.container-post-index {width: 400px; margin: 50px 25px; }
 #posts {margin: 0 auto;}
 
-div.container-post-index a {color: #000; font-size: 30px; line-height: 34px; text-align: left; font-family: 'Fredoka One', cursive; text-shadow: 0px 0px #bdc3c7;}
-div.container-post-index a:hover {color: #1cccaa; font-size: 30px; line-height: 34px; text-align: left; text-decoration: none; border: none; text-shadow: 0px 0px #bdc3c7;}
+div.container-post-index a {color: #000; font-size: 24px; line-height: 26px; text-align: left; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif; text-shadow: 0px 0px #bdc3c7;}
+div.container-post-index a:hover {color: #1cccaa; font-size: 24px; line-height: 26px; text-align: left; text-decoration: none; border: none; text-shadow: 0px 0px #bdc3c7;}
 
 
 
 div.container-post-index ul {list-style:none; color: #000; clear: both;}
 div.container-post-index ul li {float: left; padding: 5px; width: auto;}
 
-div.container-post-index ul li a {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #fff; text-shadow: none;}
+div.container-post-index ul li a {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #000; text-shadow: none;}
 div.container-post-index ul li a:hover {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #1cccaa; text-shadow: none;}
 
 div.container-post-index ul.tag-list {margin-top: 0; margin-bottom: 0; padding: 0;}
@@ -44,4 +44,6 @@ html body section.main-section section.post-section div#posts.transitions-enable
 html body form#edit_post_4.simple_form.edit_post {margin-top: 75px;}
 
 section.post-section div#posts.transitions-enabled.masonry {float: left;}
+
+div.post-title a {margin-top: 10px; float: left;}
 

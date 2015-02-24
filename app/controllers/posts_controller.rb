@@ -18,25 +18,6 @@ class PostsController < ApplicationController
 	      else
 	        @posts = apply_scopes(Post).all.order("created_at DESC")
 	    end
-
-	    @posts = Post.all.order(:counter_cache => :desc).take(2)
-
-	   	@arts = Art.all.order(:cached_weighted_total => :desc).take(2)
-
-		 @open_campaigns = Campaign.open.all.order("created_at DESC").take(3)
-
-		 shop_url = "https://904f9b0264e54b02b853afb4449f41d1:e6c5e55a93a848105a2194a645ee8a65@rhymes-and-designs.myshopify.com/admin"
-		 ShopifyAPI::Base.site = shop_url
-		 @products = ShopifyAPI::Product.find(:all, :params => {:limit => 4})
-
-		 @users = User.all.order("RANDOM()").take(4)
-
-		 respond_to do |format|
-    		format.html
-    		format.json
-    		format.js
-    	end
-
 	end
 
 	def show
@@ -91,12 +72,23 @@ class PostsController < ApplicationController
 
 	def upvote
 		@post.upvote_by current_user
-		redirect_to :back
+
+		respond_to do |format|
+    		format.html {redirect_to :back }
+    		format.json { render json: { count: @post.cached_votes_up, count2: @post.cached_votes_down }}
+    		format.js { render :layout => false }
+    	end
+
 	end
 
 	def downvote
 		@post.downvote_by current_user
-		redirect_to :back
+		
+		respond_to do |format|
+    		format.html {redirect_to :back }
+    		format.json { render json: {  count: @post.cached_votes_up, count2: @post.cached_votes_down } }
+    		format.js { render :layout => false }
+    	end
 	end
 
 	def tagged

@@ -21,8 +21,10 @@
     
       <% @arts.each do |art| %>
         <div class="container-art">
-     
-         <div class="container-art2">
+        
+        <% if @current_user.voted_for? art %>
+
+           <div class="container-small">
           <%= link_to campaign_art_path(@campaign, art) do %>
             <% unless art.image.nil? %>
               <%= image_tag art.image.url(:small) %>
@@ -31,13 +33,26 @@
 
         </div>
 
+        <% else %>
+          
+          <div class="container-art2 <%= art.id %>">
+          <%= link_to campaign_art_path(@campaign, art) do %>
+            <% unless art.image.nil? %>
+              <%= image_tag art.image.url(:small) %>
+              <% end %>
+          <% end %>
+
+        </div>
+     
+        <% end %>
+
             <div class="container-extra">
               <ul>
                   <li><%= art.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
 
                 <li><%= art.commentarts.count %> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></li>
 
-                <li><%= art.get_upvotes.size %> <strong>Votes</strong></li>
+                <li><span class="up <%= art.id %>"><%= art.get_upvotes.size %></span> <strong>Votes</strong></li>
               
                     <li><% unless art.campaign.timer2.nil? || art.campaign.timer2.empty? %>
                       <strong><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Left</strong> | 
@@ -60,29 +75,38 @@
             <% end %>
         <ul>
           <li>
+              <% if @current_user.voted_for? art %>
+              <ul class="votebox2">
+              <li><strong>You already voted</strong></li>
+            </ul>
+            <% else %>
+
+            <ul class="votebox2">
+              <li class="votebox3 <%= art.id %>"> </li>
+            </ul>
               
-              <ul class="vote-column">
-                   <%= link_to voteof5_art_path(art), class: 'voteup', remote: true, data: { type: :json }, method: :put do %>
+              <ul class="vote-column <%= art.id %>">
+                   <%= link_to voteof5_art_path(art), class: ['voteup', art.id], remote: true, data: { type: :json }, method: :put do %>
                 <li><div class="vote-button">
                   5
                 </div></li>
                   <% end %>
-                  <%= link_to voteof4_art_path(art), class: 'voteup', remote: true, data: { type: :json }, method: :put do %>
+                  <%= link_to voteof4_art_path(art), class: ['voteup', art.id], remote: true, data: { type: :json }, method: :put do %>
                 <li><div class="vote-button">
                   4
                 </div></li>
                   <% end %>
-                  <%= link_to voteof3_art_path(art), class: 'voteup', remote: true, data: { type: :json }, method: :put do %>
+                  <%= link_to voteof3_art_path(art), class: ['voteup', art.id], remote: true, data: { type: :json }, method: :put do %>
                 <li><div class="vote-button">
                   3
                 </div></li>
                   <% end %>
-                    <%= link_to voteof2_art_path(art), class: 'voteup', remote: true, data: { type: :json }, method: :put do %>
+                    <%= link_to voteof2_art_path(art), class: ['voteup', art.id], remote: true, data: { type: :json }, method: :put do %>
                 <li><div class="vote-button">
                   2
                 </div></li>
                   <% end %>
-                  <%= link_to voteof1_art_path(art), class: 'voteup', remote: true, data: { type: :json }, method: :put do %>
+                  <%= link_to voteof1_art_path(art), class: ['voteup', art.id], remote: true, data: { type: :json }, method: :put do %>
                 
                 <li><div class="vote-button">
                   1
@@ -91,8 +115,57 @@
                   
                
                 </ul>
+              <% end %>
 
           </li>
+
+            <script>
+
+              $('.voteup' + '.<%= art.id %>')
+            .on('ajax:success', function (e, data, status, xhr) { 
+              $('.up' + '.<%= art.id %>').html(data.count);
+              $('.votebox3' + '.<%= art.id %>').html('You already voted');
+              $('.vote-column' + '.<%= art.id %>').addClass('hidden');
+              $('.container-art2' + '.<%= art.id %>').addClass('container-small2')
+            });
+
+            </script>
+
+              <script type="text/javascript">
+                  $('[data-countdown]').each(function() {
+                    var $this = $(this), finalDate = $(this).data('countdown');
+                  
+                  $this.countdown(finalDate)
+
+                  .on('update.countdown', function(event) {
+                    var format = '%-H hr %-M min %-S sec';
+                    var format2 = '%-H hr %-M min';  
+                    var format3 = '%-d day%!d';
+                    if (event.offset.days < 1) {
+                        $this.closest('.price-info').addClass('red-status');
+                    }   
+                    if(event.offset.days > 0) {
+                      format = '%-d day%!d, ' ;
+                    }
+                    if(event.offset.weeks > 0) {
+                      format = '%-w week%!w ' + format3;
+                    }
+                  
+                   $(this).html(event.strftime(format));
+                 })
+                 .on('finish.countdown', function(event) {
+                   $(this).html('Closed for Submissions');
+                   $('.vote-column' + '.<%= art.id %>').addClass('hidden');
+                  $('.vote-column' + '.<%= art.id %>').addClass('disabled').attr('disabled', 'disabled');
+                    });
+                  
+                  });
+              </script>
+
+
+
+
+          <div class="clear"></div>
           <li>
                   <% if can? :manage, :all %>
                 <% if art.get_upvotes.size == 0 %>
@@ -153,35 +226,7 @@ $(function(){
 
 </script>
 
-  <script type="text/javascript">
-    $('[data-countdown]').each(function() {
-      var $this = $(this), finalDate = $(this).data('countdown');
-    
-    $this.countdown(finalDate)
 
-    .on('update.countdown', function(event) {
-      var format = '%-H hr %-M min %-S sec';
-      var format2 = '%-H hr %-M min';  
-      var format3 = '%-d day%!d';
-      if (event.offset.days < 1) {
-          $this.closest('.price-info').addClass('red-status');
-      }   
-      if(event.offset.days > 0) {
-        format = '%-d day%!d, ' ;
-      }
-      if(event.offset.weeks > 0) {
-        format = '%-w week%!w ' + format3;
-      }
-    
-     $(this).html(event.strftime(format));
-   })
-   .on('finish.countdown', function(event) {
-     $(this).html('Closed for Submissions');
-    $this.closest('.timer-button').addClass('disabled').attr('disabled', 'disabled');
-      });
-    
-    });
-</script>
 
 <script>
 // fade in #back-top
@@ -248,13 +293,3 @@ $(window).scroll(function () {
 
 </script>
 
-  <script>
-
-      $('.voteup')
-    .on('ajax:success', function (e, data, status, xhr) { 
-      $('.up').html(data.count);
-      $('.votebox2').html('You already voted');
-      $('.votebox').addClass('hidden');
-    });
-
-    </script>
