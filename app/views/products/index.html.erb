@@ -1,15 +1,84 @@
- <% @products.each do |product| %>
-    <div class="container-md">
+<section class="main-section">
+	<section class="post-section">
+		<div id="products" class="transitions-enabled">
+		 <% @products.each do |product| %>
+		    <div class="container-post-index">
 
 
-    	<%= image_tag product.image.src(:medium) %>
-
-		
+		    	<%= image_tag product.image.src(:medium) %>
 
 
+		        <%= link_to product.title, "http://rhymes-and-designs.myshopify.com/collections/frontpage/products/#{product.handle}" %>
 
-        <%= link_to product.title, "http://rhymes-and-designs.myshopify.com/collections/frontpage/products/#{product.handle}" %>
-     
-      
-      </div>
-    <% end %>
+				<% product.metafields.each do |metafield| %>
+				    <% if metafield.key == "Artist" %>
+				        <strong>Designed By:</strong><%= link_to metafield.value, "/profiles/#{metafield.value}" %>
+				    <% end %>
+				<% end %>
+
+
+
+				<% product.metafields.each do |metafield| %>
+				    <% if metafield.key == "Lyric" %>
+				        <%= link_to 'Experiment', "/campaigns/4/lyrics/#{metafield.value}" %>
+				    <% end %>
+				<% end %>
+
+		      </div>
+		   <% end %>
+		  </div>
+	</section>
+
+	<section class="home-info">
+
+
+        <div class="results"></div>
+          
+
+      </section>
+
+</section>
+
+<script>
+$(window).scroll(function () {
+    var winTop = $(this).scrollTop(),
+        winBottom = winTop + $(this).height(),
+        left = $('.home-info'),
+        leftBottom = left.height(),
+        right = $('.post-section'),
+        rightBottom = right.height();
+    //when the user reached the bottom of '#leftShort' set its position to fixed 
+    //to prevent it from moving on scroll 
+    if (rightBottom <= leftBottom){
+
+
+    } else{
+
+          if (winBottom >= leftBottom) {
+        left.css({
+            'position': 'fixed',
+            'bottom': '0px',
+            
+        });
+    } else {
+        //when the user scrolls back up revert its position to relative
+        // to make it move up together with '#rightLong'
+        left.css({
+            'position': 'relative',
+            'bottom': 'auto'
+
+        });
+    }
+
+    }
+
+
+});
+
+</script>
+
+<script>
+
+  $('.results').html("<%= j render(:partial => 'homeinfo/index') %>")
+
+</script>

@@ -10,17 +10,22 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#"><div class="logo-wrapper">
-            <%= image_tag 'white-logo-rhymes-designs.png', :class => "logo-head" %>
+      <a class="navbar-brand" href="#">
+            <%= image_tag 'rnd-head-logo-final.png', :class => "logo-head2" %>
       </a>
-    </div>
+     
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
+
+      </ul>
+      
+      <ul class="nav navbar-nav navbar-right">
+
         <li class="dropdown2" class="active">
           <a href="#" >SHOP</a>
-          <ul class="dropdown-menu" role="menu">
+          <ul class="shopmenu" role="menu">
             <li><a href="#">LAB ARCHIVES</a></li>
             <li class="divider"></li>
             <li><a href="#">SHINE PURCHASE</a></li>
@@ -29,33 +34,31 @@
           </ul>
         </li>
         <li class="dropdown2">
-          <a href="#">EXPERIMENT</a>
+          <%= link_to 'EXPERIMENT', "/campaigns/" %>
           <ul class="dropdown-menu" role="menu">
-            <li><%= link_to 'Submit Lyrics', "/campaigns/2/lyrics/new" %></li>
-            <li><%= link_to 'Submit Designs', "/campaigns/2/arts/new" %></li>
+            <li><%= link_to 'Submit Lyric/Design', "/campaigns" %></li>
             <li class="divider"></li>
-            <li><%= link_to 'RHYME CENTER', "/campaigns/2/lyrics" %></li>
-            <li><%= link_to 'DESIGN CENTER', "/campaigns/2/arts" %></li>
+            <li><%= link_to 'Vote On Lyrics', "/campaigns/2/lyrics" %></li>
+            <li><%= link_to 'Vote on Designs', "/campaigns/2/arts" %></li>
           </ul>
         </li>
         <li class="dropdown2">
-          <a href="#">REPORTS</a>
+          <%= link_to 'REPORTS', "/posts" %>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Lookbooks & Pics</a></li>
-            <li><a href="#">Events & Recaps</a></li>
-            <li><a href="#">Artists & Art</a></li>
-            <li><a href="#">R&D TV</a></li>
-             <li><a href="#">R&D Gallery</a></li>
+            <li><%= link_to 'Community Blog', "/posts" %></li>
+            <li><%= link_to 'R&D Journey', "http://blog.rhymesanddesigns.com/" %></li>
+            <li><%= link_to 'R&D Community', "/profiles" %></li>
             <li class="divider"></li>
-            <li><a href="#">Social Links</a></li>
+            <li><div class="social-links"><a href="#"><i class="fa fa-instagram"></i></a>
+              <a href="#"><i class="fa fa-facebook-square"></i></a>
+            <a href="#"><i class="fa fa-twitter-square"></i></a></div>
+          </li>
           </ul>
         </li>
-      </ul>
-      
-      <ul class="nav navbar-nav navbar-right">
+
         <% if user_signed_in? %>
           
-          <li class="navbar-brand"><%= link_to 'Add Lyric', "/campaigns/" %></li>
+          
             <li class="dropdown2"><% unless current_user.avatar.nil? %><%= image_tag current_user.avatar.url(:thumb) %><% end %>
             <ul class="dropdown-menu" role="menu">
             <li><% unless current_user.avatar.nil? %><%= image_tag current_user.avatar.url(:mini) %><% end %><% unless current_user.username.nil? || current_user.username.empty? %><%= current_user.username %><% end %></li>
@@ -75,10 +78,8 @@
   
         <% else %>
           <li class="navbar-brand">
-            <%= link_to "Sign Up", new_user_registration_path, class: "active" %></li>
-          <li class="navbar-brand">
-            <%= link_to "Sign In", new_user_session_path, class: "active" %>
-            </li>
+            <%= link_to "Sign Up / Sign In", new_user_registration_path, class: "active" %></li>
+        
         <% end %>
   
         <li id="cart-target" class="toolbar-cart {% if cart.item_count != 0 %}has-items{% endif %}">

@@ -96,7 +96,7 @@ class LyricsController < ApplicationController
 	def downvote
 		@lyric.downvote_by current_user
 
-			 respond_to do |format|
+		respond_to do |format|
     		format.html {redirect_to :back }
     		format.json { render json: {  count: @lyric.cached_votes_up, count2: @lyric.cached_votes_down } }
     		format.js { render :layout => false }
