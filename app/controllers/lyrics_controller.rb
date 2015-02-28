@@ -82,18 +82,26 @@ class LyricsController < ApplicationController
 	end
 
 	def upvote
+
+		if user_signed_in?
 		@lyric.upvote_by current_user
 
 		 respond_to do |format|
     		format.html {redirect_to :back }
     		format.json { render json: { count: @lyric.cached_votes_up, count2: @lyric.cached_votes_down }}
-    	format.js { render :layout => false }
-    
+    		format.js { render :layout => false }
     	end
+
+    	else 
+    		redirect_to login_path
+
+   		end
+    
 
 	end
 
 	def downvote
+		if user_signed_in?
 		@lyric.downvote_by current_user
 
 		respond_to do |format|
@@ -101,6 +109,11 @@ class LyricsController < ApplicationController
     		format.json { render json: {  count: @lyric.cached_votes_up, count2: @lyric.cached_votes_down } }
     		format.js { render :layout => false }
     	end
+
+    	else 
+    		redirect_to login_path
+
+   		end
 	end
 
 	def tagged

@@ -22,7 +22,7 @@
       <% @arts.each do |art| %>
         <div class="container-art">
         
-        <% if @current_user.voted_for? art %>
+      <% if user_signed_in? && (@current_user.voted_for? art) %>
 
            <div class="container-small">
           <%= link_to campaign_art_path(@campaign, art) do %>
@@ -63,7 +63,7 @@
 
               <% if art.campaign.title.present? %>
             <ul>
-              <li><strong>Posted By:</strong>  
+              <li><strong>Designed By:</strong>  
                 <% if art.user.avatar.present? %>
                 <%= image_tag art.user.avatar.url(:mini) %>
                 <% end %> 
@@ -75,7 +75,7 @@
             <% end %>
         <ul>
           <li>
-              <% if @current_user.voted_for? art %>
+              <% if user_signed_in? && (@current_user.voted_for? art) %>
               <ul class="votebox2">
               <li><strong>You already voted</strong></li>
             </ul>
@@ -140,16 +140,14 @@
                   .on('update.countdown', function(event) {
                     var format = '%-H hr %-M min %-S sec';
                     var format2 = '%-H hr %-M min';  
-                    var format3 = '%-d day%!d';
+                    var format3 = '%D days';
                     if (event.offset.days < 1) {
                         $this.closest('.price-info').addClass('red-status');
                     }   
                     if(event.offset.days > 0) {
-                      format = '%-d day%!d, ' ;
+                      format3;
                     }
-                    if(event.offset.weeks > 0) {
-                      format = '%-w week%!w ' + format3;
-                    }
+                 
                   
                    $(this).html(event.strftime(format));
                  })

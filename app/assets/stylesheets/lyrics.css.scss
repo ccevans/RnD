@@ -5,15 +5,15 @@
 .container-md {width: 80%; margin: 25px 10%; float: left;}
 #lyrics {margin: 0 auto;}
 
-div.container-md a {color: #000; font-size: 30px; line-height: 34px; text-align: left; font-family: 'Fredoka One', cursive; text-shadow: 0px 0px #bdc3c7;}
+div.container-md a {color: #000; font-size: 30px; line-height: 34px; text-align: left; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif; text-shadow: 0px 0px #bdc3c7;}
 div.container-md a:hover {color: #95a5a6; font-size: 30px; line-height: 34px; text-align: left; text-decoration: none; border: none; text-shadow: 0px 0px #bdc3c7;}
 
 div.container-md ul {list-style:none; color: #000; clear: both;}
 div.container-md ul li {float: left; padding: 5px; width: auto;}
 
 div.jumbotron {padding: 5px; margin: 100px 0 0 0;}
-div.jumbotron h1 { text-transform: uppercase; font-size: 18px; color: #000; font-family: 'Fredoka One', cursive; padding: 0; margin: 0;}
-div.jumbotron h2 { font-size: 18px; color: #000; font-family: 'Fredoka One', cursive; padding: 0; margin: 0;}
+div.jumbotron h1 { text-transform: uppercase; font-size: 18px; color: #000; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif; padding: 0; margin: 0;}
+div.jumbotron h2 { font-size: 18px; color: #000; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif; padding: 0; margin: 0;}
 
 div.container-md ul li img {-moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px; margin: 0 5px;}
 
@@ -26,10 +26,10 @@ div.container-show ul {list-style:none; color: #000; clear: both; float: left;}
 div.container-show ul li {float: left; padding: 2px 5px; width: auto;}
 div.container-show ul li img {-moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px; margin: 0 5px;}
 div.container-show ul li a {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #000; text-shadow: none;}
-div.container-show ul li a:hover {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #1cccaa; text-shadow: none; text-decoration: none;}
+div.container-show ul li a:hover {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #1cc7a6; text-shadow: none; text-decoration: none;}
 
 div.container-line {float: left; width: 70%; height: auto; min-height: 100px; color: #000; font-size: 38px; line-height: 38px; padding: 0; text-align: left; font-family: 'Fredoka One', cursive; text-shadow: 1px 1px #bdc3c7;}
-div.container-profile {float: left; width: 40%; padding: 5px; color: #000; font-family: 'Open Sans', serif; font-size: 28px; line-height: 28px; background-color: #ecf0f1; margin: 20px 5%;}
+div.container-profile {float: left; width: 40%; padding: 5px; color: #000; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-size: 28px; line-height: 28px; background-color: #ecf0f1; margin: 20px 5%;}
 div.container-desc {float: left; width: auto; color: #000; padding: 20px; font-size: 24px; line-height: 24px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; border-left: 4px solid #bdc3c7; margin-left: 20px; margin-top: 5px;}
 div.container-comment {float: left; width: 100%; padding: 5px;}
 div.container-more {float: left; width: 100%; padding: 5px 0; height: auto; margin-top: 25px;}
@@ -78,7 +78,7 @@ div.container-show div.container-desc a {color: #bdc3c7; margin: 0 0 5px 5px; fl
 div.container-show div.container-desc p {float: left; margin: 5px 0 0 0;}
 
 div.container-md ul li a {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #000; text-shadow: none;}
-div.container-md ul li a:hover {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #1cccaa; text-shadow: none;}
+div.container-md ul li a:hover {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #1cc7a6; text-shadow: none;}
 
 div.container-md ul.tag-list {margin-top: 0; margin-bottom: 0; padding: 0;}
 div.container-md ul.tag-list li {float: left; width: auto; margin-top: 0; margin-bottom: 0;}
@@ -100,7 +100,7 @@ html body div.container-more ul li div.container-profile hr { border: 1px solid 
 .css4 { font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; }
 .tagcloud {float: left; color: #000; width: 40%; margin: 100px 5% 5px 5%; font-family: 'Fredoka One', cursive;}
 .tagcloud a {color: #fff; text-decoration: none;}
-.tagcloud a:hover {color: #1cccaa; text-decoration: none;}
+.tagcloud a:hover {color: #1cc7a6; text-decoration: none;}
 
 #random_post {width: 25%; padding: 0 5%; margin-top: 125px; float: left;}
 
@@ -132,8 +132,8 @@ div.header-lyric p a:hover {color: #000; text-decoration: none;}
 
 div.stepbackward a span.glyphicon.glyphicon-step-backward {color: #bdc3c7;}
 div.stepforward a span.glyphicon.glyphicon-step-forward {color: #bdc3c7;}
-div.stepbackward a span.glyphicon.glyphicon-step-backward:hover {color: #1cccaa;}
-div.stepforward a span.glyphicon.glyphicon-step-forward:hover {color: #1cccaa;}
+div.stepbackward a span.glyphicon.glyphicon-step-backward:hover {color: #1cc7a6;}
+div.stepforward a span.glyphicon.glyphicon-step-forward:hover {color: #1cc7a6;}
 
 section.lyric-section div.back-footer a {font-size: 30px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #000;}
 section.lyric-section div.back-footer {font-size: 30px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #000;}

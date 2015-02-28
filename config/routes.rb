@@ -3,8 +3,12 @@ Rails.application.routes.draw do
   match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
 
   get 'pages/lyriclab'
-
   get 'pages/launch'
+  get 'pages/how_it_works'
+  get 'pages/about_us'
+  get 'pages/handbook'
+  get 'pages/faqs'
+  get 'pages/partnerships'
 
   get 'tagged' => 'posts#tagged', :as => 'tagged'
 

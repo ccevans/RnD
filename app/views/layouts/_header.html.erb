@@ -10,10 +10,10 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">
+      <%= link_to root_path, class: "navbar-brand" do %>
             <%= image_tag 'rnd-head-logo-final.png', :class => "logo-head2" %>
-      </a>
-     
+      <% end %>
+
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -37,6 +37,7 @@
           <%= link_to 'EXPERIMENT', "/campaigns/" %>
           <ul class="dropdown-menu" role="menu">
             <li><%= link_to 'Submit Lyric/Design', "/campaigns" %></li>
+            <li><%= link_to 'How It Works', "/pages/how_it_works" %></li>
             <li class="divider"></li>
             <li><%= link_to 'Vote On Lyrics', "/campaigns/2/lyrics" %></li>
             <li><%= link_to 'Vote on Designs', "/campaigns/2/arts" %></li>
@@ -49,9 +50,9 @@
             <li><%= link_to 'R&D Journey', "http://blog.rhymesanddesigns.com/" %></li>
             <li><%= link_to 'R&D Community', "/profiles" %></li>
             <li class="divider"></li>
-            <li><div class="social-links"><a href="#"><i class="fa fa-instagram"></i></a>
-              <a href="#"><i class="fa fa-facebook-square"></i></a>
-            <a href="#"><i class="fa fa-twitter-square"></i></a></div>
+            <li><div class="social-links"><a href="https://instagram.com/rhymesdesigns/" target="_blank"><i class="fa fa-instagram"></i></a>
+              <a href="https://www.facebook.com/RhymesDesigns" target="_blank"><i class="fa fa-facebook-square"></i></a>
+            <a href="https://twitter.com/RhymesDesigns" target="_blank"><i class="fa fa-twitter-square"></i></a></div>
           </li>
           </ul>
         </li>

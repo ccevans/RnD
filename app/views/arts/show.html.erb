@@ -36,7 +36,7 @@
 
           <% if @art.campaign.title.present? %>
         <ul>
-          <li><strong>Posted By:</strong>  
+          <li><strong>Designed By:</strong>  
             <% if @art.user.avatar.present? %>
             <%= image_tag @art.user.avatar.url(:mini) %>
             <% end %> 
@@ -49,7 +49,7 @@
     <ul>
       <li>
 
-        <% if @current_user.voted_for? @art %>
+        <% if user_signed_in? && (@current_user.voted_for? @art) %>
             <ul class="votebox2">
             <li><strong>You already voted</strong></li>
           </ul>
@@ -170,7 +170,7 @@
 
               <% if random_art.campaign.title.present? %>
             <ul>
-              <li><strong>Posted By:</strong>  
+              <li><strong>Designed By:</strong>  
                 <% if random_art.user.avatar.present? %>
                 <%= image_tag random_art.user.avatar.url(:mini) %>
                 <% end %> 
@@ -182,7 +182,7 @@
             <% end %>
         <ul>
             <li>
-              <% if @current_user.voted_for? random_art %>
+             <% if user_signed_in? && (@current_user.voted_for? random_art) %>
               <ul class="votebox2">
               <li><strong>You already voted</strong></li>
             </ul>
