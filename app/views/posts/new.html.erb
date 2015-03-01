@@ -1,4 +1,7 @@
+<% if can? :manage, :all %>
+
 Add new post
 
 <%= render 'form' %>
 
+<% end %>
