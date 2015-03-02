@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150302034257) do
+ActiveRecord::Schema.define(version: 20150302051717) do
 
   create_table "adminlyrics", force: true do |t|
     t.text     "line"
