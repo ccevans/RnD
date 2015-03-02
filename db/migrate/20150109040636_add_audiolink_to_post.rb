@@ -1,5 +1,5 @@
 class AddAudiolinkToPost < ActiveRecord::Migration
   def change
-    add_column :posts, :audiolink, :text
+    add_column :posts, :audiolink, :text, :limit => nil
   end
 end
