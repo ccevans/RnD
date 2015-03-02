@@ -1,5 +1,8 @@
 class CommentartsController < ApplicationController
-before_action :authenticate_user!
+	before_action :authenticate_user!
+	before_action :all_commentarts, only: [:create, :destroy]
+	before_action :set_commentarts, only: [:destroy]
+	respond_to :html, :js, :json
 
 	def create
 		@art = Art.find(params[:art_id])
@@ -19,5 +22,22 @@ before_action :authenticate_user!
 			render 'new'
 		end
 	end
+
+	def destroy
+	    @commentart.destroy
+	    redirect_to :back
+	  end
+
+	private
+
+		  def all_commentarts
+	    	@art = Art.find(params[:art_id])
+	    	@commentarts = Commentart.where(art_id: @art)
+	    end
+
+	   def set_commentarts
+
+	      @commentart = Commentart.find(params[:id])
+	    end
 
 end

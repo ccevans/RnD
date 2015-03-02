@@ -12,14 +12,15 @@
 
 				<p class="content"> <%= comment.content %></p>
 				<% end %>
-				<p class="time-created"><%= time_ago_in_words(comment.created_at) %></p>
-
+				<p class="time-created"><%= time_ago_in_words(comment.created_at) %>
 					<% if can? :destroy, comment %>
-				<%= link_to @comment, class: "delete-link", remote: true, method: :delete,  data: { confirm: 'Are you sure?' } do %>
+				<%= link_to lyric_comment_path(@lyric, comment), class: "delete-link", method: :delete,  data: { confirm: 'Are you sure?' } do %>
 				<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 
 				<% end %>
 				<% end %>
+				</p>
+
 
 				<hr />
 			</div>

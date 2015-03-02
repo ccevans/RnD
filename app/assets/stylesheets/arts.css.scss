@@ -138,4 +138,8 @@ form.simple_form.edit_art input.btn.btn-default.post-button {font-size: 16px; ma
 form#new_art.simple_form.new_art input.btn.btn-default.post-button:hover {font-size: 16px; margin: 10px 0; border: none; background-color: #000; color: #fff; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; border-radius: 5px;}
 form.simple_form.edit_art input.btn.btn-default.post-button:hover {font-size: 16px; margin: 10px 0; border: none; background-color: #000; color: #fff; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; border-radius: 5px;}
 
+div.container-show2 div.container-comment h2.comment_count {font-size: 14px;}
+div.container-show2 div.container-comment div.comment hr {width: 100%; float: left; margin: 10px 0 0 0;}
+div.container-show2 div.container-comment div.comment img {float: left; margin: 5px 5px 0 0; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px;}
 
+.vote-confirmed {padding: 15px 10px; width: auto; color: #fff; background-color: #1cc7a6; border-radius: 5px; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif; font-size: 18px; text-align: center;}

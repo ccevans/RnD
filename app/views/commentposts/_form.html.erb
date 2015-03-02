@@ -1,7 +1,7 @@
 <%= simple_form_for([@post, @post.commentposts.build], remote: true) do |f| %>
   <%= f.error_notification %>
 
-  <%= f.input :content, label: "Reply to thread" %>
+  <%= f.input :content, label: "Reply" %>
 	<%= f.button :submit, "Comment", class: "button" %>
 	
 <% end %>

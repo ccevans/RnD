@@ -8,6 +8,14 @@
 		<% unless commentart.content.nil? || commentart.content.empty? %>
 			<p class="content"> <%= commentart.content %></p>	
 			<% end %>		
-			<p class="time-created"><%= time_ago_in_words(commentart.created_at) %></p>
+			<p class="time-created"><%= time_ago_in_words(commentart.created_at) %>
+				<% if can? :destroy, commentart %>
+				<%= link_to art_commentart_path(@art, commentart), class: "delete-link", method: :delete,  data: { confirm: 'Are you sure?' } do %>
+				<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+
+				<% end %>
+				<% end %>
+
+			</p>
 				<hr />
 	</div>

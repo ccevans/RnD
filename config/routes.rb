@@ -43,7 +43,7 @@ resources :lyrics, only: [] do
         get "dislike", to: "lyrics#downvote"
       end
 
-      resources :comments, shallow: true
+      resources :comments
     end
 
 
@@ -58,7 +58,7 @@ resources :lyrics, only: [] do
     end
 
     resources :ratings
-    resources :commentarts, shallow: true
+    resources :commentarts
   end
 
   resources :profiles do

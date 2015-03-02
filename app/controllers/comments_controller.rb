@@ -25,6 +25,7 @@ class CommentsController < ApplicationController
 
 	def destroy
 	    @comment.destroy
+	    redirect_to :back
 	  end
 
 	private
@@ -35,6 +36,7 @@ class CommentsController < ApplicationController
 	    end
 
 	   def set_comments
+
 	      @comment = Comment.find(params[:id])
 	    end
 end

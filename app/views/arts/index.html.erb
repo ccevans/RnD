@@ -79,7 +79,7 @@
           <li>
               <% if user_signed_in? && (@current_user.voted_for? art) %>
               <ul class="votebox2">
-              <li><strong>You already voted</strong></li>
+              <li><div class="vote-confirmed">Thanks for Voting!</div></li>
             </ul>
             <% else %>
 
