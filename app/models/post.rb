@@ -13,5 +13,14 @@ class Post < ActiveRecord::Base
 
 	has_attached_file :image, :styles => { :large => "600x600#", :medium => "400x400#", :small => "200x200#" }, :default_url => "/images/:style/missing.png"
   	validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
+
+  	has_attached_file :image1, :styles => { :large => "600x600#", :medium => "400x400#", :small => "200x200#" }, :default_url => "/images/:style/missing.png"
+  	validates_attachment_content_type :image1, :content_type => /\Aimage\/.*\Z/
+
+  	has_attached_file :image2, :styles => { :large => "600x600#", :medium => "400x400#", :small => "200x200#" }, :default_url => "/images/:style/missing.png"
+  	validates_attachment_content_type :image2, :content_type => /\Aimage\/.*\Z/
+
+  	has_attached_file :image3, :styles => { :large => "600x600#", :medium => "400x400#", :small => "200x200#" }, :default_url => "/images/:style/missing.png"
+  	validates_attachment_content_type :image3, :content_type => /\Aimage\/.*\Z/
   	
 end

@@ -43,7 +43,9 @@
   <h1>Add Post To Community Blog</h1>
   <div class="form-info">Submit a post on a creative project or creative initiatives happening in your community.</div>
 	<%= f.input :title, required: true, autofocus: true %>
+  <div class="imageform-box">
 	<%= f.input :image, required: true, label: "Featured Image", hint: "Format Size: 600 pixels wide by 600 pixels tall; Format Type: JPG" %>
+</div>
 	<%= f.input :description %>
 	<%= f.input :link, label: "Link to More Info", hint: "Format: http://www.rhymesanddesigns.com" %>
 

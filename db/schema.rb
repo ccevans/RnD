@@ -292,7 +292,6 @@ ActiveRecord::Schema.define(version: 20150302034257) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.string   "videolink"
-    t.string   "audiolink"
     t.integer  "cached_votes_total",      default: 0
     t.integer  "cached_votes_score",      default: 0
     t.integer  "cached_votes_up",         default: 0
@@ -301,6 +300,7 @@ ActiveRecord::Schema.define(version: 20150302034257) do
     t.integer  "cached_weighted_total",   default: 0
     t.float    "cached_weighted_average", default: 0.0
     t.integer  "counter_cache",           default: 0
+    t.text     "audiolink"
   end
 
   add_index "posts", ["cached_votes_down"], name: "index_posts_on_cached_votes_down"
