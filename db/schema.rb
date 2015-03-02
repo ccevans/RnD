@@ -300,7 +300,7 @@ ActiveRecord::Schema.define(version: 20150302051717) do
     t.integer  "cached_weighted_total",   default: 0
     t.float    "cached_weighted_average", default: 0.0
     t.integer  "counter_cache",           default: 0
-    t.text     "audiolink"
+    t.string   "audiolink"
   end
 
   add_index "posts", ["cached_votes_down"], name: "index_posts_on_cached_votes_down"
