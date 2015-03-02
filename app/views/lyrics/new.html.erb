@@ -1,9 +1,12 @@
 <% if can? :manage, :all %>
 
-<h1>New lyric</h1>
+<div class="addlyric">
+ <h1>Add Lyric To Experiment</h1>
+
+</div>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', campaign_path(@campaign) %>
+<%= link_to 'Back', campaign_path(@campaign), class: "back-button" %>
 
 <% end %>

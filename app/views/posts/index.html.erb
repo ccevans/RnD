@@ -56,7 +56,9 @@
 
 		<% unless post.image.nil? || post.image.blank? %>
 			<% if post.typeof == 'picture' %>
-				<%= image_tag post.image.url(:medium) %>
+        <%= link_to post_path(post) do %>
+				  <%= image_tag post.image.url(:medium) %>
+        <% end %>
 				<% end %>
 		<% end %>
 

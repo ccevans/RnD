@@ -6,13 +6,23 @@
   <%= f.input :chosen %>
   <% end %>
 
+  <% unless @campaign.title.nil? || @campaign.title.empty? %>
+        <h1 class="exp-title-lyric"> <%= link_to @campaign.title, campaign_path(@campaign) %></h1>
+        <% end %>
+  <% unless @campaign.image.nil? %>
+      <div class="campaign-new-img">
+
+          <%= image_tag @campaign.image.url(:large) %>
+      </div>
+  <% end %>
+
   <% if @lyric.chosen == true %>
   Your lyric has been chosen!
 
   <% if can? :manage, :all %>
 
-  <%= f.input :line, label: "Lyric" %>
-  <%= f.input :description, label: "Tell us more" %>
+  <%= f.input :line, label: "Lyric", input_html: { maxlength: 400 } %>
+  <%= f.input :description, label: "Tell why this lyric is dope or why it inspires or how you relate to it", input_html: { maxlength: 400 } %>
 
 
   <% if @campaign.artist.nil? || @campaign.artist.empty? %>
@@ -37,7 +47,7 @@
     <% else %>
   <p><strong>Link:</strong> <%= @campaign.link %></p>
   <% end %>
-  <%= f.input :tag_list, label: "Tags", input_html: { maxlength: 36 } %>
+  <%= f.input :tag_list, label: "Tags", hint: "Place only relevant tags; Max character of 36", input_html: { maxlength: 36 } %>
   <%= f.button :submit, "Submit", class: "button" %>
 
 
@@ -45,10 +55,8 @@
 
   <% else %>
 
-
-
-  <%= f.input :line, label: "Lyric" %>
-  <%= f.input :description, label: "Tell us more" %>
+  <%= f.input :line, required: true, autofocus: true, label: "Lyric", input_html: { maxlength: 400 } %>
+  <%= f.input :description, label: "Tell why this lyric is dope or why it inspires or how you relate to it", input_html: { maxlength: 400 } %>
 
 
   <% if @campaign.artist.nil? || @campaign.artist.empty? %>
@@ -69,12 +77,12 @@
   <% end %>
   
   <% if @campaign.link.nil? || @campaign.link.empty? %>
-  <%= f.input :link, label: "Link" %>
+  <%= f.input :link, label: "Link", hint: "Link to Track" %>
     <% else %>
   <p><strong>Link:</strong> <%= @campaign.link %></p>
   <% end %>
-  <%= f.input :tag_list, label: "Tags", input_html: { maxlength: 36 } %>
-  <%= f.button :submit, "Submit", class: "button" %>
+  <%= f.input :tag_list, label: "Tags", hint: "Place only relevant tags; Max character of 36", input_html: { maxlength: 36 } %>
+  <%= f.button :submit, "Submit", class: "post-button" %>
 
   <% end %>
 

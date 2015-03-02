@@ -121,4 +121,21 @@ div.container-extra ul li ul.votebox2 li {padding: 0; margin: 0 0 0 0; }
 
 .votebox3 {font-weight: bold;}
 
+.imageform-box {padding: 15px 15px; border: 3px solid #2980b9; width: auto; margin-bottom: 10px;}
+
+form#new_art.simple_form.new_art label {font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #2980b9; font-size: 16px;}
+form.simple_form.edit_art label {font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #2980b9; font-size: 16px;}
+
+form#new_art.simple_form.new_art h1 {font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif; color: #2980b9;}
+form#new_art.simple_form.new_art h2 {font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif; color: #2980b9; font-size: 20px;}
+
+form.simple_form.edit_art h1 {font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif; color: #2980b9;}
+form.simple_form.edit_art h2 {font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif; color: #2980b9; font-size: 20px;}
+
+form#new_art.simple_form.new_art input.btn.btn-default.post-button {font-size: 16px; margin: 10px 0; border: none; background-color: #2980b9; color: #fff; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; border-radius: 5px;}
+form.simple_form.edit_art input.btn.btn-default.post-button {font-size: 16px; margin: 10px 0; border: none; background-color: #2980b9; color: #fff; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; border-radius: 5px;}
+
+form#new_art.simple_form.new_art input.btn.btn-default.post-button:hover {font-size: 16px; margin: 10px 0; border: none; background-color: #000; color: #fff; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; border-radius: 5px;}
+form.simple_form.edit_art input.btn.btn-default.post-button:hover {font-size: 16px; margin: 10px 0; border: none; background-color: #000; color: #fff; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; border-radius: 5px;}
+
 

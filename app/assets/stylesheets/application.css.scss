@@ -23,6 +23,8 @@
 a {text-decoration: none;}
 a:hover {text-decoration: none;}
 
+.adminonly {color: #ff0000 !important;}
+
 div.navbar-header {width: 100%;}
 .logo-head {float: left; width: 50px;}
 .logo-head2 {float: left; width: 375px;}
@@ -126,6 +128,8 @@ li.dropdown2 ul.dropdown-menu li div.social-links a i {float: left; display: inl
 
 li.dropdown2 ul.dropdown-menu li div.social-links {float: left; display: inline; width: 80%; margin: 0 10%;}
 
+form.simple_form.edit_post {margin: 50px 25%;}
+form#new_post.simple_form.new_post {margin: 50px 25%;}
 
 
 @media screen and (max-width: 640px){

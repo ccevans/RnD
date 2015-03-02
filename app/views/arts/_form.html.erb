@@ -6,6 +6,16 @@
   <%= f.input :chosen %>
   <% end %>
 
+    <% unless @campaign.title.nil? || @campaign.title.empty? %>
+        <h1 class="exp-title-lyric"> <%= link_to @campaign.title, campaign_path(@campaign) %></h1>
+        <% end %>
+  <% unless @campaign.image.nil? %>
+      <div class="campaign-new-img">
+
+          <%= image_tag @campaign.image.url(:large) %>
+      </div>
+  <% end %>
+
   <% if @art.chosen == true %>
   Your artwork has been chosen!
 
@@ -16,17 +26,27 @@
   <%= f.input :typeart, label: "Type of Art" %>
  
   <%= f.input :tag_list, label: "Tags", input_html: { maxlength: 36 } %>
-  <%= f.button :submit, "Submit", class: "button" %>
+  <%= f.button :submit, "Submit", class: "post-button" %>
 
 
   <% end %>
 
   <% else %>
 
-  <%= f.file_field :image, label: "Image" %>
-  <%= f.input :description, label: "Tell us more" %>
+  <h2>Add Your Design</h2>
 
-  <%= f.button :submit, "Submit", class: "button" %>
+  <div class="form-info">
+    Choose your image file that you would like to add. Original designs and artwork only.  Make sure you meet the Experiment rules and guidelines.  Your image must be in JPG format (RGB mode not CMYK), 1200 pixels wide x 1200 pixels tall.
+
+  </div>
+
+  <div class="imageform-box">
+  <%= f.file_field :image, label: "Image" %>
+
+  </div>
+  <%= f.input :description, label: "Add more details about your design here" %>
+
+  <%= f.button :submit, "Submit", class: "post-button" %>
 
   <% end %>
 

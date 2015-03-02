@@ -1,12 +1,12 @@
 <%= simple_form_for @post do |f| %>
 
 <% if can? :manage, :all %>
-  <%= f.input :approve %>
+  <span class="adminonly"><%= f.input :approve %></span>
   <% end %>
 
 
 <% if @post.approve == true %>
-  Your post has been approved!
+  <div class="approved-box">Your post has been approved!</div>
 
 <% if can? :manage, :all %>
   <%= f.input :title %>
@@ -36,38 +36,42 @@
 
 
 
-  <%= f.button :submit, "Submit", class: "button" %>
+  <%= f.button :submit, "Submit", class: "post-button" %>
   <% end %>
 
 <% else %>
-	<%= f.input :title %>
-	<%= f.input :image %>
+  <h1>Add Post To Community Blog</h1>
+  <div class="form-info">Submit a post on a creative project or creative iniatives happening in your community.</div>
+	<%= f.input :title, required: true, autofocus: true %>
+	<%= f.input :image, required: true, label: "Featured Image", hint: "Format Size: 600px by 600px; Format Type: .jpg or .png" %>
 	<%= f.input :description %>
-	<%= f.input :link %>
+	<%= f.input :link, label: "Link to More Info", hint: "Format: http://www.rhymesanddesigns.com" %>
+
+  <h2>Choose Type of Post</h2>
 	<%= f.collection_select :typeof, Post::TYPEOFS, :to_s, :humanize, {}, {:onchange => 'displayQuestion(this.value)'} %>
 
-
-
-
 	<div id="audioQuestion" style="display:none;"><br/>
-    <%= f.input :audiolink %>
+    <%= f.input :audiolink, hint: "Input Soundcloud Embed Code. Format: <iframe>....</iframe>" %>
  
   </div>
 
-  <div id="videoQuestion" style="display:block;"><br/>
-    <%= f.input :videolink %>
+  <div id="videoQuestion" style="display:none;"><br/>
+    <%= f.input :videolink, hint: "Input YouTube Share Link. Format: http://youtu.be/1AjULLsdp5E" %>
   </div>
 
-    <div id="pictureQuestion" style="display:none;"><br/>
+    <div id="pictureQuestion" style="display:block;"><br/>
     <%= f.input :image %>
   </div>
   
-  <%= f.input :tag_list, label: "Tags", input_html: { maxlength: 36 } %>
+  <%= f.input :tag_list, label: "Tags", hint: "Place only relevant tags; Max character of 36", input_html: { maxlength: 36 } %>
 
 
+  <div class="form-info">
+    ***All posts are reviewed before posted on community blog.  Can take up to 48 hours for approval but usually only a few hours.
 
+  </div>
 
-	<%= f.button :submit, "Submit", class: "button" %>
+	<%= f.button :submit, "Submit", class: "post-button" %>
 
   <% end %>
 
