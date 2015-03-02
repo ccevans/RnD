@@ -46,6 +46,11 @@
   </div>
   <%= f.input :description, label: "Add more details about your design here" %>
 
+  <%= f.input :legal, label: "I agree to the Legal Terms." %>
+  <div class="form-info">
+  <%= link_to "Legal Terms", '/pages/legal_terms' %>
+</div>
+
   <%= f.button :submit, "Submit", class: "post-button" %>
 
   <% end %>
