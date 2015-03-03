@@ -1,6 +1,7 @@
 <% if can? :manage, :all %>
 
 <section class="campaign-section2"
+
 <% unless @campaign.image.nil? %>
 <div class="campaign-header">
 
@@ -12,6 +13,40 @@
     <div class="campaign-show">
    
     	 <div class="campaignshow-info">
+
+        <div class="campaign-add">
+        <div class="how-box2">
+        
+          <% if @campaign.timer.nil? || @campaign.timer.empty? %>
+              <div class="timer-info">Lyric submissions not open yet</div>
+          <% else %>
+            <% unless @campaign.timer.nil? || @campaign.timer.empty? %>
+            <%= link_to 'Submit Lyrics', new_campaign_lyric_path(@campaign, @lyric), class: "submitbutton" %>
+              <div class="timer-info">
+              <span class="timer-line" data-countdown= <%= @campaign.timer %> ></span><span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+            </div>
+            <% end %>
+          <% end %>
+      </div>
+
+      <div class="how-box2">
+        
+
+             <% if @campaign.timer2.nil? || @campaign.timer2.empty? %>
+            <div class="timer-info">Design submissions not open yet</div>
+            <% else %>
+            <% unless @campaign.timer2.nil? || @campaign.timer2.empty? %>
+            <%= link_to 'Submit Designs', new_campaign_art_path(@campaign, @art), class: "submitbutton" %>
+            <div class="timer-info"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+              <span class="timer-line" data-countdown= <%= @campaign.timer2 %> ></span>
+            </div>
+              <% end %>
+              <% end %>
+      </div>
+
+      </div>
+
+
          <% unless @campaign.title.nil? || @campaign.title.empty? %>
         <h1><strong><%= @campaign.title %></strong></h1>
         <% end %>
@@ -22,39 +57,10 @@
         <% end %>
       </br>
 
-      <div class="button-box">
-        <div class="timer-button">
-          <h4><span class="glyphicon glyphicon-time" aria-hidden="true"></span>Rhyme Submissions</h4>
-        <% if @campaign.status == "free" %>
-              <%= link_to 'Add Lyrics', new_campaign_lyric_path(@campaign, @lyric), class: "submitbutton" %>
-        <% elsif @campaign.timer.nil? || @campaign.timer.empty? %>
-            <div class="timer-button2">Not open for submissions yet</div>
-        <% else %>
-          <% unless @campaign.timer.nil? || @campaign.timer.empty? %>
-           <span class="timer-line" data-countdown= <%= @campaign.timer %> ></span><br />
-           <% end %>
 
-            <%= link_to 'Add Lyrics', new_campaign_lyric_path(@campaign, @lyric), class: "submitbutton" %>
-          
-        <% end %>
-        </div> 
 
-        <div class="timer-button">
-          <h4><span class="glyphicon glyphicon-time" aria-hidden="true"></span>Design Submissions</h4>
-        <% if @campaign.status == "free" %>
-            <%= link_to 'Submit Designs', new_campaign_art_path(@campaign, @art), class: "submitbutton" %>
-        <% elsif @campaign.timer2.nil? || @campaign.timer2.empty? %>
-            <div class="timer-button2">Not open for submissions yet</div>
-        <% else %>
-            <% unless @campaign.timer2.nil? || @campaign.timer2.empty? %>
-              <span class="timer-line" data-countdown= <%= @campaign.timer2 %> ></span><br />
-              <% end %>
 
-             <%= link_to 'Submit Designs', new_campaign_art_path(@campaign, @art), class: "submitbutton" %>
-          
-        <% end %>
-        </div>
-      </div>
+
        </div>
        
        <div class="admin-footer">

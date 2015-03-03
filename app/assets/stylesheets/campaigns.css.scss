@@ -18,11 +18,11 @@
 .campaign-info ul li {padding: 2px 0; width: 100%; float: left;}
 
 
-.campaign-show {float: left; width: 100%; padding: 25px 5% 25px 5%; margin: 0;}
+.campaign-show {float: left; width: 100%; padding: 0; margin: 0;}
 .campaignshow-img {float: left; width: 100%;}
 .campaignshow-img img {float: left; width: 100%; height: auto;}
 .campaignshow-info {float: left; width: 100%; }
-.campaignshow-desc {float: left; width: 90%; padding: 10px 5%;}
+.campaignshow-desc {float: left; width: 100%; padding: 10px 10%;}
 
 .campaign-lyric {float: left; width: 100%; margin: 0; background-color: #fff; padding: 25px 10% 25px 10%;}
 .campaign-lyric-each {float: left; width: 100%;}
@@ -102,4 +102,8 @@ div.how-campaign a {float: left; margin: 0 10px; background-color: none; border:
 div.how-campaign a:hover {float: left; background-color: none; border-radius: 5px; padding: 15px 10px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #000; font-size: 18px; line-height: 18px;}
 div.how-campaign h2 {margin-top: 0; text-shadow: 1px 1px #000;}
 
+.campaign-add {float: left; background-color: #1cc7a6; color: #fff; width: 100%; margin: 0; padding: 10px 5%; min-height: 200px; margin: 0 0 15px 0;}
 
+div.campaign-show div.campaignshow-info h1 {padding: 0 10%;}
+
+.timer-info {float: left; padding: 25px 5px; font-size: 20px; line-height: 20px; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif;}
