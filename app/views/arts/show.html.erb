@@ -53,7 +53,7 @@
 
         <% if user_signed_in? && (@current_user.voted_for? @art) %>
             <ul class="votebox2">
-            <li><strong>You already voted</strong></li>
+            <li><div class="vote-confirmed">Thanks for Voting!</div></li>
           </ul>
           <% else %>
 
@@ -99,9 +99,9 @@
       <li>
               <% if can? :manage, :all %>
             <% if @art.get_upvotes.size == 0 %>
-            <h2>No votes yet</h2>
+            <h2><span class="adminonly">No votes yet</span></h2>
             <% else %>
-            <h2><%= @art.get_upvotes.sum(:vote_weight) / @art.get_upvotes.size %> / 5</h2>
+            <h2><span class="adminonly"><%= @art.get_upvotes.sum(:vote_weight) / @art.get_upvotes.size %> / 5</span></h2>
             <% end %>
         <% end %>
       </li>
@@ -186,7 +186,7 @@
             <li>
              <% if user_signed_in? && (@current_user.voted_for? random_art) %>
               <ul class="votebox2">
-              <li><strong>You already voted</strong></li>
+              <li><div class="vote-confirmed">Thanks for Voting!</div></li>
             </ul>
             <% else %>
 
@@ -243,9 +243,9 @@
           <li>
                   <% if can? :manage, :all %>
                 <% if random_art.get_upvotes.size == 0 %>
-                <h2>No votes yet</h2>
+                <h2><span class="adminonly">No votes yet</span></h2>
                 <% else %>
-                <h2><%= random_art.get_upvotes.sum(:vote_weight) / random_art.get_upvotes.size %> / 5</h2>
+                <h2><span class="adminonly"><%= random_art.get_upvotes.sum(:vote_weight) / random_art.get_upvotes.size %> / 5</span></h2>
                 <% end %>
             <% end %>
           </li>

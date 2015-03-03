@@ -4,6 +4,41 @@
 
 <section class="art-section">
 
+  <div class="works-top" id="works-exp2">
+  <div class="how-campaign">
+  <h2>Design Center</h2>
+  <p>Help the community create products inspired by music.  The community chooses the best lyrics from artists and create designs inspired by the lyrics.  The community chooses the best designs and develop tees and products for the shop.</p>
+
+  <p>Choose an experiment below to submit a lyric and/or design.</p>
+
+  </div>
+
+  <%= image_tag 'design-image.png', :class => "how-image2" %>
+
+  <div class="how-box2">
+    <%= link_to 'How It Works', '/pages/how_it_works', :class => "" %>
+
+  <%= link_to 'Lab Shop', '#', :class => "" %>
+
+  <%= link_to 'Submit Design', '/campaigns/', :class => "" %>
+
+    <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+        Sort
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+        <li role="presentation"><%= link_to 'Most Liked', :controller => 'arts', :sort_by => 'most_liked' %></li>
+        <li role="presentation"><%= link_to 'Most Viewed', :controller => 'arts', :sort_by => 'most_viewed' %></li>
+        <li role="presentation"><%= link_to 'Most Recent', :controller => 'arts', :sort_by => 'most_recent' %></li>
+      </ul>
+    </div>
+
+  </div>
+
+
+  </div>
+
   <div class="sort-box">
     <div class="dropdown">
       <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
@@ -169,9 +204,9 @@
           <li>
                   <% if can? :manage, :all %>
                 <% if art.get_upvotes.size == 0 %>
-                <h2>No votes yet</h2>
+                <h2><span class="adminonly">No votes yet</span></h2>
                 <% else %>
-                <h2><%= art.get_upvotes.sum(:vote_weight) / art.get_upvotes.size %> / 5</h2>
+                <h2><span class="adminonly"><%= art.get_upvotes.sum(:vote_weight) / art.get_upvotes.size %> / 5</span></h2>
                 <% end %>
             <% end %>
           </li>
