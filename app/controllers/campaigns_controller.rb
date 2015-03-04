@@ -4,6 +4,7 @@ class CampaignsController < ApplicationController
 		has_scope :free
 		has_scope :open
 		has_scope :closed
+		has_scope :chosen
 
 	def index
 		@campaigns = Campaign.all.order("created_at DESC")
@@ -14,6 +15,7 @@ class CampaignsController < ApplicationController
 	end
 
 	def show
+		@chosen_lyrics = Lyric.chosen.where(campaign_id: @campaign.id)
 		@lyrics = Lyric.where(campaign_id: @campaign.id).order(:cached_votes_up => :desc)
 		@arts = Art.where(campaign_id: @campaign.id).order(:cached_weighted_total => :desc)
 		@time = Time.now 

@@ -38,21 +38,23 @@
         <% else %>
               <div class="how-box2">
               
+              <div class="timer-box2">
                 <% if @campaign.timer.nil? || @campaign.timer.empty? %>
                     <div class="timer-info">Lyric submissions not open yet</div>
                 <% else %>
                   <% unless @campaign.timer.nil? || @campaign.timer.empty? %>
-                  <%= link_to 'Submit Lyrics', new_campaign_lyric_path(@campaign, @lyric), class: "submitbutton" %>
+                  <%= link_to 'Submit Lyrics', new_campaign_lyric_path(@campaign, @lyric), class: "submitbutton" %><span class="add-timer">Lyrics:</span>
                     <div class="timer-info"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>
                     <span class="timer-line" data-countdown= <%= @campaign.timer %> ></span>
                   </div>
                   <% end %>
                 <% end %>
+              </div>
             </div>
 
             <div class="how-box2">
               
-
+                <div class="timer-box2">
                    <% if @campaign.timer2.nil? || @campaign.timer2.empty? %>
                   <div class="timer-info">Design submissions not open yet</div>
                   <% else %>
@@ -63,6 +65,7 @@
                   </div>
                     <% end %>
                     <% end %>
+                  </div>
             </div>
         <% end %>
 
@@ -120,7 +123,26 @@
       </br>
 
 
+      <div id="lyric-chosen" class="chosen-box">
+        <h1>Chosen Lyric(s)</h1>
+        <% @chosen_lyrics.each do |chosen_lyric| %>
 
+            <div class="campaign-lyric-each">
+                    <% unless chosen_lyric.line.nil? || chosen_lyric.line.empty? %>
+                    <span class="quote-span">"</span>
+           
+                    <%= link_to chosen_lyric.line, campaign_lyric_path(@campaign, chosen_lyric), class: 'chosen_lyric' %><span class="quote-span2">"</span>
+                    <% end %>
+                  <ul>
+              <li><% unless chosen_lyric.user.avatar.nil? %><%= image_tag chosen_lyric.user.avatar.url(:mini) %><% end %><% unless chosen_lyric.user.username.nil? || chosen_lyric.user.username.empty? %><%= link_to chosen_lyric.user.username, profile_url(:id => chosen_lyric.user.username) %><% end %></li>
+          </ul>
+          </div>
+
+
+        <% end %>
+
+
+      </div>
 
 
        </div>
@@ -224,7 +246,7 @@
    })
    .on('finish.countdown', function(event) {
      $(this).html('Closed for Submissions');
-    $this.closest('.timer-button').addClass('disabled').attr('disabled', 'disabled');
+    $this.closest('.timer-box2').addClass('disabled').attr('disabled', 'disabled');
       });
     
     });

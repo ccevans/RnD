@@ -10,5 +10,6 @@ class Lyric < ActiveRecord::Base
 	 scope :by_campaign, -> campaign_id { where("camapign_id = ?", :campaign_id) }
 	 scope :most_liked, order(:cached_votes_up => :desc)
 	 scope :most_recent, order("created_at desc")
+	 scope :chosen, -> { where(:chosen => true) }
 	
 end

@@ -104,7 +104,7 @@ div.how-campaign h2 {margin-top: 0; text-shadow: 1px 1px #000;}
 
 .campaign-add {float: left; background-color: #1cc7a6; color: #fff; width: 100%; margin: 0; padding: 5px 5%; min-height: 200px; margin: 0 0 15px 0;}
 
-div.campaign-show div.campaignshow-info h1 {font-size: 24px; line-height: 16px;}
+div.campaign-show div.campaignshow-info h1 {padding: 0 10%;}
 
 .timer-info {float: left; padding: 25px 5px; font-size: 20px; line-height: 20px; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif;}
 
@@ -119,3 +119,17 @@ div.campaign-show div.campaignshow-info h1 {font-size: 24px; line-height: 16px;}
 
 div.campaign-add div.campaign-halfbox div.how-box2 {padding: 0 5%;}
 
+div.campaignshow-info div.campaign-add div.campaign-halfbox h1 {padding: 0; font-size: 24px; line-height: 16px;}
+
+div.timer-box2.disabled span.add-timer {display: inherit; padding: 25px 5px; float: left; font-size: 20px; line-height: 20px; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif;}
+
+div.timer-box2 span.add-timer { display: none; padding: 25px 5px; float: left; font-size: 20px; line-height: 20px; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif;}
+.chosen-box {width: 100%; float: left; padding: 0 10%;}
+.quote-span {padding: 0 0 50px 0; float: left; color: #1cc7a6; font-size: 76px; line-height: 26px; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif;}
+.quote-span2 {padding: 0 0 0 0; float: right; color: #1cc7a6; font-size: 76px; line-height: 56px; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif;}
+
+div#lyric-chosen.chosen-box h1 {font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif; color: #1cc7a6;}
+
+div#lyric-chosen.chosen-box div.campaign-lyric-each {float: left; }
+
+div.campaign-lyric-each a.chosen_lyric { width: 80%;}

@@ -26,6 +26,8 @@ class LyricsController < ApplicationController
 	        @lyrics = apply_scopes(Lyric).all.order("created_at DESC").paginate(:page => params[:page], :per_page => 50)
 	    end
 
+	    @current_campaign = Campaign.open.order("created_at DESC").last
+
 	end
 
 	def show
