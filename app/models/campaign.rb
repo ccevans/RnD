@@ -7,6 +7,7 @@ class Campaign < ActiveRecord::Base
 	scope :free, -> { where(:status => "free") }
 	scope :open, -> { where(:status => "open") }
 	scope :closed, -> { where(:status => "closed") }
+	
 
 	STATUS = %w[free open closed]
 
