@@ -155,7 +155,7 @@ class LyricsController < ApplicationController
 
 
 	def post_params
-		params.require(:lyric).permit(:line, :description, :artist, :song, :album, :link, :tag_list, :chosen)
+		params.require(:lyric).permit(:line, :description, :artist, :song, :album, :link, :tag_list, :chosen, :personal)
 	end
 
 end

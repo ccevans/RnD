@@ -1,66 +1,164 @@
+<% if can? :manage, :all %>
+
 <section class="main-section">
-<% if user_signed_in? %>
-  <div class="header-lyric">
-    <h1>Community Blog</h1>
-    <h2><%= current_user.name %></h2>
-    <p>Vote on your favorite lyrics or contribute the lyrics from your favorite artists.  <br /><%= link_to "Submit Lyrics", '/campaigns/2/lyrics/new' %></p>
-
-  </div>  
-<% else %>
-  <div class="header-lyric">
-     <h1>Community Blog</h1>
-    <h2><%= link_to "Join To Contribute", new_user_registration_path %></h2>
-    <p>Vote on your favorite lyrics or contribute the lyrics from your favorite artists. <br /><%= link_to "Submit Lyrics", '/campaigns/2' %></p>
-  </div>  
-<% end %>
-
-    <div class="tagcloud">
-         <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
-            <%= link_to tag.name, tagged_url(tag.name), :class => css_class %>
-        <% end %>
-    </div>
 
 <section class="post-section">
 
-     <%= link_to 'Most Liked', :controller => 'posts', :sort_by => 'most_liked' %>
+<div class="works-top" id="works-exp2">
+  <div class="how-campaign">
+  <h2>"Inspire Passion" Blog</h2>
+  <p>Help the community create products inspired by music.  The community chooses the best lyrics from artists and create designs inspired by the lyrics.  The community chooses the best designs and develop tees and products for the shop.</p>
 
-   <%= link_to 'Most Recent', :controller => 'posts', :sort_by => 'most_recent' %>
+  <p>Choose an experiment below to submit a lyric and/or design.</p>
+
+  </div>
+
+  <div class="how-box2">
+    <%= link_to 'How It Works', '/pages/how_it_works', :class => "" %>
+
+  <%= link_to 'Lab Shop', '#', :class => "" %>
+
+  <%= link_to 'Submit Post', '/posts/', :class => "" %>
+
+    <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+        Sort
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+        <li role="presentation"><%= link_to 'Most Liked', :controller => 'posts', :sort_by => 'most_liked' %></li>
+        <li role="presentation"><%= link_to 'Most Viewed', :controller => 'posts', :sort_by => 'most_viewed' %></li>
+        <li role="presentation"><%= link_to 'Most Recent', :controller => 'posts', :sort_by => 'most_recent' %></li>
+      </ul>
+    </div>
+
+
+        <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+        Filter
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+
+         <% @tags.each do |tag| %>
+              <% if tag.taggings_count > 4 %>
+              <li role="presentation"><%= link_to tag.name, tagged_url(:tag => tag.name) %></li>
+              <% end %>
+          
+            <% end %>
+      </ul>
+    </div>
+
+
+  </div>
+
+
+  </div>
+
+    <div class="sort-box">
+    <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+        Sort
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+        <li role="presentation"><%= link_to 'Most Liked', :controller => 'posts', :sort_by => 'most_liked' %></li>
+        <li role="presentation"><%= link_to 'Most Viewed', :controller => 'posts', :sort_by => 'most_viewed' %></li>
+        <li role="presentation"><%= link_to 'Most Recent', :controller => 'posts', :sort_by => 'most_recent' %></li>
+      </ul>
+    </div>
+
+
+        <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+        Filter
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+
+         <% @tags.each do |tag| %>
+              <% if tag.taggings_count > 4 %>
+              <li role="presentation"><%= link_to tag.name, tagged_url(:tag => tag.name) %></li>
+              <% end %>
+          
+            <% end %>
+      </ul>
+    </div>
+  </div>
+
 
   <div id="posts" class="transitions-enabled">
     <% @posts.each do |post| %>
     <div class="container-post-index">
 
-        
-        <%= link_to post.title, post_path(post) %>
+       <% unless post.videolink.nil? || post.videolink.empty? %>
+      <% if post.typeof == 'video' %>
+        <div class="video-box">
+        <p><%= raw(youtube_embed(post.videolink)) %></p>
+        </div>
+      <% end %>
+    <% end %>
 
-        <% unless post.videolink.nil? || post.videolink.empty? %>
-			<% if post.typeof == 'video' %>
-				<div class="video-box">
-				<p><%= raw(youtube_embed(post.videolink)) %></p>
-				</div>
-			<% end %>
-		<% end %>
+    <% unless post.audiolink.nil? || post.audiolink.empty? %>
+      <% if post.typeof == 'audio' %>
+        <p><%= raw(post.audiolink) %></p>
+        <% end %>
+    <% end %>
 
-		<% unless post.audiolink.nil? || post.audiolink.empty? %>
-			<% if post.typeof == 'audio' %>
-				<p><%= raw(post.audiolink) %></p>
-				<% end %>
-		<% end %>
+    <% unless post.image.nil? || post.image.blank? %>
+      <% if post.typeof == 'picture' %>
+        <%= link_to post_path(post) do %>
+          <%= image_tag post.image.url(:medium) %>
+        <% end %>
+        <% end %>
+    <% end %>
 
-		<% unless post.image.nil? || post.image.blank? %>
-			<% if post.typeof == 'picture' %>
-				<%= image_tag post.image.url(:medium) %>
-				<% end %>
-		<% end %>
+    <% if post.title.present? %> 
+        <div class="post-title"><%= link_to post.title, post_path(post) %></div>
+    <% end %>
+
         <ul>
         <li><%= post.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
-        <li><%= post.get_upvotes.size %> 
-          <%= link_to like_post_path(post), method: :get do %>
-              <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+
+          <li><span class="up <%= post.id %>"><%= post.get_upvotes.size %> </span>
+          <%= link_to like_post_path(post), class: ['voteup', post.id], remote: true, data: { type: :json }, method: :get do %>
+          <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+            <% end %>
+            <span class="down <%= post.id %>"><%= post.get_downvotes.size %></span>
+          <%= link_to dislike_post_path(post), class: ['votedown', post.id], remote: true, data: { type: :json }, method: :get do %>
+          <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
             <% end %>
           </li>
+
+
+              <script>
+
+                $('.voteup' + '.<%= post.id %>')
+              .on('ajax:success', function (e, data, status, xhr) { 
+                $('.up' + '.<%= post.id %>').html(data.count);
+                $('.down' + '.<%= post.id %>').html(data.count2);
+              });
+
+                </script>
+
+                  <script>
+
+                $('.votedown' + '.<%= post.id %>')
+              .on('ajax:success', function (e, data, status, xhr) { 
+                
+                $('.down' + '.<%= post.id %>').html(data.count2);
+                $('.up' + '.<%= post.id %>').html(data.count);
+              });
+
+                </script>
+
         <li><%= post.commentposts.count %> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></li>
-        <li><%= image_tag post.user.avatar.url(:mini) %><%= link_to post.user.username, profile_url(:id => post.user.username) %></li>
+        <li><% if post.user.avatar.present? %>
+          <%= image_tag post.user.avatar.url(:mini) %>
+          <% end %>
+          <% if post.user.username.present? %><%= link_to post.user.username, profile_url(:id => post.user.username) %>
+          <% end %></li> 
+
         </ul>
         <br />
         <ul class="tag-list">
@@ -73,28 +171,105 @@
       
       </div>
     <% end %>
+
+    <div class="back-top" title="Top of Page"> <a href="#top" onclick="return false;"><i class="glyphicon glyphicon-chevron-up"></i> Back to Top</a></div> 
   </div>
 
-  
-
- <br>
-    <div class="paginate-box">
-      <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
-    </div>
-
-   
-
-        
-    <br>
-    <div class="lyric-footer">
-      <%= link_to 'New Post', new_post_path %>
-    </div>
-</section>
 </section>
 
-
-<%= image_tag 'lyric-background3.png', :class => "background-lyric" %>
-
+      <section class="home-info">
 
 
-	<%= link_to "Add new post", new_post_path %>
+        <div class="results"></div>
+          
+
+      </section>
+
+
+</section>
+
+<% end %>
+
+
+<script>
+$(function(){
+
+
+    // Enabling Popover Example 2 - JS (hidden content and title capturing)
+    $(".popoverExampleTwo").popover({
+        html : true, 
+        content: function() {
+          return $('.popoverExampleTwoHiddenContent').html();
+        },
+        title: function() {
+          return $('.popoverExampleTwoHiddenTitle').html();
+        }
+    });
+});
+
+</script>
+
+<script>
+// fade in #back-top
+$(function () {
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 300) {
+            $('.back-top').fadeIn();
+        } else {
+            $('.back-top').fadeOut();
+        }
+    });
+
+    // scroll body to 0px on click
+    $('.back-top').click(function () {
+        $('body,html').animate({
+            scrollTop: 0
+        }, 1600);
+        return false;
+    });
+});
+</script>
+
+<script>
+$(window).scroll(function () {
+    var winTop = $(this).scrollTop(),
+        winBottom = winTop + $(this).height(),
+        left = $('.home-info'),
+        leftBottom = left.height(),
+        right = $('.post-section'),
+        rightBottom = right.height();
+    //when the user reached the bottom of '#leftShort' set its position to fixed 
+    //to prevent it from moving on scroll 
+    if (rightBottom <= leftBottom){
+
+
+    } else{
+
+          if (winBottom >= leftBottom) {
+        left.css({
+            'position': 'fixed',
+            'bottom': '0px',
+            
+        });
+    } else {
+        //when the user scrolls back up revert its position to relative
+        // to make it move up together with '#rightLong'
+        left.css({
+            'position': 'relative',
+            'bottom': 'auto'
+
+        });
+    }
+
+    }
+
+
+});
+
+</script>
+
+<script>
+
+  $('.results').html("<%= j render(:partial => 'homeinfo/index') %>")
+
+</script>

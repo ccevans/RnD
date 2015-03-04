@@ -1,8 +1,10 @@
 class VideosController < ApplicationController
-
+	before_action :find_video, only: [:show, :edit, :update, :destroy]
 	before_action :authenticate_user!, except: [:index]
+	has_scope :approve
 
 	def index
+		@videos = Video.all.order("created_at DESC")
 	end
 
 	def new
@@ -40,6 +42,10 @@ class VideosController < ApplicationController
 
 
 	private
+
+		def find_video
+			@video = Video.find(params[:id])
+		end
 
 		def video_params
 			params.require(:video).permit(:title, :videolink, :approve, :image)

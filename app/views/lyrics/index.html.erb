@@ -140,7 +140,10 @@
       
         <li><%= lyric.comments.count %> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></li>
         <li><% if lyric.user.avatar.present? %><%= image_tag lyric.user.avatar.url(:mini) %><% end %><% if lyric.user.username.present? %><%= link_to lyric.user.username, profile_url(:id => lyric.user.username) %><% end%></li>
-
+       
+        <% if lyric.personal == true %>
+        <li><span data-toggle="tooltip" data-placement="top" title="Submitted By Artist"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></span></li>
+       <% end %>
 
         </ul>
         <br />
@@ -269,6 +272,11 @@ $(window).scroll(function () {
 
 </script>
 
+<script>
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
   
 
 

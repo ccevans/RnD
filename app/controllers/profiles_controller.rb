@@ -2,6 +2,7 @@ class ProfilesController < ApplicationController
   before_action :all_photos, only: [:show]
   before_action :set_photos, only: [:destroy]
 	before_action :find_post, only: [:show, :follow, :unfollow]
+  has_scope :approve
 
   respond_to :html, :json, :js
 
@@ -14,7 +15,7 @@ class ProfilesController < ApplicationController
 
 
   def show
-    
+    @approved_videos = Video.approve.where(user_id: @user)
     @videos = Video.where(user_id: @user)
     @video = Video.where(user_id: @user).first
   	@user = User.find_by_username(params[:id])

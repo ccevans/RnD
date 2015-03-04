@@ -1,1 +1,23 @@
+<% if can? :manage, :all %>
+
 Video Page
+
+
+<% @videos.each do |video| %>
+    <div class="container-post-index">
+    	<%= raw(youtube_embed(video.videolink)) %>
+
+    	<ul>
+    	 <li><% if video.user.avatar.present? %>
+          <%= image_tag video.user.avatar.url(:mini) %>
+          <% end %>
+          <% if video.user.username.present? %><%= link_to video.user.username, profile_url(:id => video.user.username) %>
+          <% end %></li> 
+          <li>Approval: <%= video.approve %></li>
+          <li><%= link_to 'Edit', edit_video_path(video) %></li>
+          <li><%= link_to 'Destroy', video, method: :delete, data: {confirm: "Are you sure?"} %></li>
+      </ul>
+    </div>
+    	<% end %>
+
+<% end %>

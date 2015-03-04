@@ -3,12 +3,68 @@
 
 <section class="lyric-section">
 
+<div class="works-top" id="works-exp2">
+  <div class="how-campaign">
+  <h2>Rhyme Center</h2>
+  <p>Help the community create products inspired by music.  The community chooses the best lyrics from artists and create designs inspired by the lyrics.  The community chooses the best designs and develop tees and products for the shop.</p>
+
+  <p>Choose an experiment below to submit a lyric and/or design.</p>
+
+  </div>
+
+  <%= image_tag 'rhyme-image.png', :class => "how-image2" %>
+
+  <div class="how-box2">
+    <%= link_to 'How It Works', '/pages/how_it_works', :class => "" %>
+
+  <%= link_to 'Lab Shop', '#', :class => "" %>
+
+  <%= link_to 'Add Lyric', new_campaign_lyric_path(Campaign.last), :class => "" %>
+
+
+    <div class="dropdown">
+      <button class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+        Sort
+        <span class="caret"></span>
+      </button>
+
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+        <li role="presentation"><%= link_to 'Most Liked', :controller => 'lyrics', :sort_by => 'most_liked' %></li>
+        <li role="presentation"><%= link_to 'Most Viewed', :controller => 'lyrics', :sort_by => 'most_viewed' %></li>
+        <li role="presentation"><%= link_to 'Most Recent', :controller => 'lyrics', :sort_by => 'most_recent' %></li>
+      </ul>
+    </div>
+
+    <div class="dropdown">
+      <button class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+        Filter
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+
+         <% @tags.each do |tag| %>
+              <% if tag.taggings_count > 4 %>
+              <li role="presentation"><%= link_to tag.name, campaign_tagged_url(:tag => tag.name) %></li>
+              <% end %>
+          
+            <% end %>
+      </ul>
+    </div>
+
+  
+
+  </div>
+
+
+  </div>
+
   <div class="sort-box">
     <div class="dropdown">
       <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
         Sort
         <span class="caret"></span>
       </button>
+
       <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
         <li role="presentation"><%= link_to 'Most Liked', :controller => 'lyrics', :sort_by => 'most_liked' %></li>
         <li role="presentation"><%= link_to 'Most Viewed', :controller => 'lyrics', :sort_by => 'most_viewed' %></li>
@@ -31,6 +87,8 @@
             <% end %>
       </ul>
     </div>
+
+
   </div>
 
 
@@ -82,7 +140,10 @@
       
         <li><%= lyric.comments.count %> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></li>
         <li><% if lyric.user.avatar.present? %><%= image_tag lyric.user.avatar.url(:mini) %><% end %><% if lyric.user.username.present? %><%= link_to lyric.user.username, profile_url(:id => lyric.user.username) %><% end%></li>
-
+       
+        <% if lyric.personal == true %>
+        <li><span data-toggle="tooltip" data-placement="top" title="Submitted By Artist"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></span></li>
+       <% end %>
 
         </ul>
         <br />
@@ -210,3 +271,10 @@ $(window).scroll(function () {
 });
 
 </script>
+
+<script>
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+  

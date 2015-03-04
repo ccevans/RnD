@@ -1,6 +1,4 @@
 
-
-
 <section class="profile-back">
 <div class="profile-lyrics">
 	<% if @user.profileimg.present? %>
@@ -183,10 +181,20 @@
 		      	<li role="presentation"><%= link_to "Account", edit_user_registration_path %></li>
 		      	<% if @videos.any? %>
 
+		      	<% if @approved_videos.any? %>
+
+		      	<% else %>
+		      		<li role="presentation">Video Approval Pending</li>
+
+		      	<% end %>
+
+
+
 		      	<% else %>
 		        <li role="presentation"><%= link_to 'Add Video', new_video_path %></li>
 		        <% end %>
 		        <li role="presentation"><%= link_to 'Add Photo', new_photo_path, remote: true %></li>
+
 		        <li role="presentation"><div id="photo-form" style="display:none;"></div></li>
 		        
 		      </ul>
@@ -326,13 +334,90 @@
 			    <div role="tabpanel" class="tab-pane" id="messages">
 			    	<% if can? :manage, :all %>
 			    	    <% if @posts.any? %>
-							<% @posts.each do |post| %>
-								<div class="well">
-									<%= image_tag post.image.url(:small) %>
-									<hr />
-									<span class="profile-time"><%= time_ago_in_words(post.created_at) %> ago </span>
-								</div>
-							<% end %>
+
+							  <div id="posts" class="transitions-enabled">
+							    <% @posts.each do |post| %>
+							    <div class="container-post-index">
+
+							       <% unless post.videolink.nil? || post.videolink.empty? %>
+										<% if post.typeof == 'video' %>
+											<div class="video-box">
+											<p><%= raw(youtube_embed(post.videolink)) %></p>
+											</div>
+										<% end %>
+									<% end %>
+
+									<% unless post.audiolink.nil? || post.audiolink.empty? %>
+										<% if post.typeof == 'audio' %>
+											<p><%= raw(post.audiolink) %></p>
+											<% end %>
+									<% end %>
+
+									<% unless post.image.nil? || post.image.blank? %>
+										<% if post.typeof == 'picture' %>
+							        <%= link_to post_path(post) do %>
+											  <%= image_tag post.image.url(:medium) %>
+							        <% end %>
+											<% end %>
+									<% end %>
+
+							    <% if post.title.present? %> 
+							        <div class="post-title"><%= link_to post.title, post_path(post) %></div>
+							    <% end %>
+
+							        <ul>
+							        <li><%= post.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
+
+							          <li><span class="up <%= post.id %>"><%= post.get_upvotes.size %> </span>
+							          <%= link_to like_post_path(post), class: ['voteup', post.id], remote: true, data: { type: :json }, method: :get do %>
+							          <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+							            <% end %>
+							            <span class="down <%= post.id %>"><%= post.get_downvotes.size %></span>
+							          <%= link_to dislike_post_path(post), class: ['votedown', post.id], remote: true, data: { type: :json }, method: :get do %>
+							          <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+							            <% end %>
+							          </li>
+
+
+							              <script>
+
+							                $('.voteup' + '.<%= post.id %>')
+							              .on('ajax:success', function (e, data, status, xhr) { 
+							                $('.up' + '.<%= post.id %>').html(data.count);
+							                $('.down' + '.<%= post.id %>').html(data.count2);
+							              });
+
+							                </script>
+
+							                  <script>
+
+							                $('.votedown' + '.<%= post.id %>')
+							              .on('ajax:success', function (e, data, status, xhr) { 
+							                
+							                $('.down' + '.<%= post.id %>').html(data.count2);
+							                $('.up' + '.<%= post.id %>').html(data.count);
+							              });
+
+							                </script>
+
+							        <li><%= post.commentposts.count %> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></li>
+							        <li><% if post.user.avatar.present? %>
+							          <%= image_tag post.user.avatar.url(:mini) %>
+							          <% end %>
+							          <% if post.user.username.present? %><%= link_to post.user.username, profile_url(:id => post.user.username) %>
+							          <% end %></li> 
+
+							        </ul>
+							     
+							      
+							      </div>
+							    <% end %>
+
+							  </div>
+
+
+
+
 						<% elsif current_user == @user %>
 							<p>No blog post posted yet.  <%= link_to 'Whats link to post? CC', "/campaigns/2/arts/new" %></p>
 						<% else %>

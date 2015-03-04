@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-
+div.tab-box div.tab-content div#posts.transitions-enabled.masonry {width: 100% !important;}
 .profilesection {width: 100%; margin: 0; padding: 0; position: absolute; top: 300px; left: 0; z-index: 100; background-color: #fff;}
 .profile-header {width: 100%; margin: 50px 0 0 0; padding: 0; float: left;}
 .profile-main img {width: 100%; height: auto; float: left; border-radius: 0px; -moz-border-radius: 0px; -webkit-border-radius: 0px; margin: 50px 0 5px 0;}
@@ -122,9 +122,14 @@ div.photo a.delete-link {position: absolute; top: 0; right: 0; font-size: 18px; 
 div.photo a.delete-link:hover {position: absolute; top: 0; right: 0; font-size: 18px; line-height: 18px; color: #1cc7a6; text-shadow: 2px 2px #000;}
 div#photos.transitions-enabled.masonry div.photo:hover a.delete-link {display: inline;}
 
-div.profile-topbox3 div.dropdown.open ul.dropdown-menu {background-color: #fff !important; padding: 0; color: #000; float: left; position: static;}
-div.profile-topbox3 div.dropdown.open ul.dropdown-menu li a {border-radius: 4px;}
+div.profile-topbox3 div.dropdown.open ul.dropdown-menu { padding: 0; color: #fff; float: left; position: static;}
+div.profile-topbox3 div.dropdown.open ul.dropdown-menu li a {border-radius: 0; color: #fff; font-size: 18px; line-height: 18px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;}
+div.profile-topbox3 div.dropdown.open ul.dropdown-menu li a:hover {background-color: #fff; border-radius: 0; color: #1cc7a6; font-size: 18px; line-height: 18px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;}
+div.profile-topbox3 div.dropdown.open ul.dropdown-menu li h5 {font-size: 20px; line-height: 20px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;}
 div.profile-topbox3 div.dropdown.open ul.dropdown-menu li {text-align: center; padding: 2px 0;}
+
+div#photo-form form#new_photo.simple_form.new_photo div.form-group.string.optional.photo_link p.help-block {color: #fff;}
+div.profile-topbox3 div.dropdown.open ul.dropdown-menu li div#photo-form {border-top: 2px solid #fff; padding-top: 5px; }
 
 ul.dropdown-menu li div#photo-form form#new_photo.simple_form.new_photo {width: 90%; margin: 5px 5%;}
 form#new_photo.simple_form.new_photo div.form-group.string.optional.photo_link label.string.optional.control-label {float: left; padding: 5px 2px; font-weight: normal;}
