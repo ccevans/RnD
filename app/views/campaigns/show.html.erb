@@ -122,7 +122,7 @@
         <% end %>
       </br>
 
-
+      <% if @chosen_lyrics.any? %>
       <div id="lyric-chosen" class="chosen-box">
         <h1>Chosen Lyric(s)</h1>
         <% @chosen_lyrics.each do |chosen_lyric| %>
@@ -143,8 +143,9 @@
 
 
       </div>
+      <% end %>
 
-
+      <% if @chosen_arts.any? %>
       <div id="art-chosen" class="chosen-box">
         <h1>Chosen Design(s)</h1>
 
@@ -158,10 +159,8 @@
                   <% end %>
                   </div>
                 <% end %>
-
-
-
       </div>
+      <% end %>
 
 
        </div>
