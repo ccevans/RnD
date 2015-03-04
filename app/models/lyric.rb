@@ -11,5 +11,6 @@ class Lyric < ActiveRecord::Base
 	 scope :most_liked, order(:cached_votes_up => :desc)
 	 scope :most_recent, order("created_at desc")
 	 scope :chosen, -> { where(:chosen => true) }
+	 
 	
 end

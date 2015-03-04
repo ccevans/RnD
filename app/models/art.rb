@@ -9,6 +9,7 @@ class Art < ActiveRecord::Base
 	
 
 	scope :by_tags, -> tags { where(:tags => tags) }
+	scope :chosen, -> { where(:chosen => true) }
 	
 
 	has_attached_file :image, :styles => { :large => "1200x1200#", :medium => "500x500#", :small => "300x300#" }, :default_url => "/images/:style/missing.png"

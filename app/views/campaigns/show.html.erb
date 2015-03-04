@@ -145,6 +145,25 @@
       </div>
 
 
+      <div id="art-chosen" class="chosen-box">
+        <h1>Chosen Design(s)</h1>
+
+                <% @chosen_arts.each do |chosen_art| %>
+                  <div class="campaign-art-each">
+                    <%= link_to campaign_art_path(@campaign, chosen_art) do %>
+
+                    <% unless chosen_art.image.nil? %>
+                    <%= image_tag chosen_art.image.url(:medium) %>
+                    <% end %>
+                  <% end %>
+                  </div>
+                <% end %>
+
+
+
+      </div>
+
+
        </div>
        
 

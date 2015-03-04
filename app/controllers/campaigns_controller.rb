@@ -16,6 +16,7 @@ class CampaignsController < ApplicationController
 
 	def show
 		@chosen_lyrics = Lyric.chosen.where(campaign_id: @campaign.id)
+		@chosen_arts = Art.chosen.where(campaign_id: @campaign.id)
 		@lyrics = Lyric.where(campaign_id: @campaign.id).order(:cached_votes_up => :desc)
 		@arts = Art.where(campaign_id: @campaign.id).order(:cached_weighted_total => :desc)
 		@time = Time.now 
