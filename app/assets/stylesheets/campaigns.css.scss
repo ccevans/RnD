@@ -102,8 +102,20 @@ div.how-campaign a {float: left; margin: 0 10px; background-color: none; border:
 div.how-campaign a:hover {float: left; background-color: none; border-radius: 5px; padding: 15px 10px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #000; font-size: 18px; line-height: 18px;}
 div.how-campaign h2 {margin-top: 0; text-shadow: 1px 1px #000;}
 
-.campaign-add {float: left; background-color: #1cc7a6; color: #fff; width: 100%; margin: 0; padding: 10px 5%; min-height: 200px; margin: 0 0 15px 0;}
+.campaign-add {float: left; background-color: #1cc7a6; color: #fff; width: 100%; margin: 0; padding: 5px 5%; min-height: 200px; margin: 0 0 15px 0;}
 
-div.campaign-show div.campaignshow-info h1 {padding: 0 10%;}
+div.campaign-show div.campaignshow-info h1 {font-size: 24px; line-height: 16px;}
 
 .timer-info {float: left; padding: 25px 5px; font-size: 20px; line-height: 20px; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif;}
+
+.next-prev {color: #fff; position: absolute; right: 0; padding: 5px; }
+.next-prev a {color: #fff; text-decoration: none;}
+
+.campaign-status {float: left; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #fff; font-size: 24px; line-height: 24px; margin: 15px 0;}
+
+.campaign-boxinfo {float: left; width: 100%; padding: 10px 0;}
+.campaign-halfbox {float: left; width: 60%; padding: 0; margin: 0;}
+.campaign-halfbox2 {float: left; width: 40%; padding: 0; margin: 0;}
+
+div.campaign-add div.campaign-halfbox div.how-box2 {padding: 0 5%;}
+

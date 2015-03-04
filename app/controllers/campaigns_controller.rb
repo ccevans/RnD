@@ -17,6 +17,18 @@ class CampaignsController < ApplicationController
 		@lyrics = Lyric.where(campaign_id: @campaign.id).order(:cached_votes_up => :desc)
 		@arts = Art.where(campaign_id: @campaign.id).order(:cached_weighted_total => :desc)
 		@time = Time.now 
+
+		if @campaign == Campaign.last
+			@next_campaign = Campaign.order(id: :asc).first
+		else
+			@next_campaign = Campaign.where("id > ?", @campaign).order(id: :asc).first
+		end
+
+		if @campaign == Campaign.first
+			@previous_campaign = Campaign.order(id: :asc).last
+		else
+			@previous_campaign = Campaign.where("id < ?", @campaign).order(id: :desc).first
+		end
 	end
 
 	def new

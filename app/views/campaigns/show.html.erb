@@ -15,33 +15,95 @@
     	 <div class="campaignshow-info">
 
         <div class="campaign-add">
-        <div class="how-box2">
-        
-          <% if @campaign.timer.nil? || @campaign.timer.empty? %>
-              <div class="timer-info">Lyric submissions not open yet</div>
-          <% else %>
-            <% unless @campaign.timer.nil? || @campaign.timer.empty? %>
-            <%= link_to 'Submit Lyrics', new_campaign_lyric_path(@campaign, @lyric), class: "submitbutton" %>
-              <div class="timer-info">
-              <span class="timer-line" data-countdown= <%= @campaign.timer %> ></span><span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+
+       
+
+          <div class="campaign-halfbox">
+
+                <% unless @campaign.title.nil? || @campaign.title.empty? %>
+                    <h1><strong><%= @campaign.title %></strong></h1>
+                <% end %>
+
+          <div class="campaign-status">
+              Experiment: <span style="text-transform: uppercase;"><%= @campaign.status %></span>
+          </div>
+
+        <% if @campaign.status == "closed" %>
+            
+
+
+
+
+
+        <% else %>
+              <div class="how-box2">
+              
+                <% if @campaign.timer.nil? || @campaign.timer.empty? %>
+                    <div class="timer-info">Lyric submissions not open yet</div>
+                <% else %>
+                  <% unless @campaign.timer.nil? || @campaign.timer.empty? %>
+                  <%= link_to 'Submit Lyrics', new_campaign_lyric_path(@campaign, @lyric), class: "submitbutton" %>
+                    <div class="timer-info"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                    <span class="timer-line" data-countdown= <%= @campaign.timer %> ></span>
+                  </div>
+                  <% end %>
+                <% end %>
             </div>
-            <% end %>
-          <% end %>
+
+            <div class="how-box2">
+              
+
+                   <% if @campaign.timer2.nil? || @campaign.timer2.empty? %>
+                  <div class="timer-info">Design submissions not open yet</div>
+                  <% else %>
+                  <% unless @campaign.timer2.nil? || @campaign.timer2.empty? %>
+                  <%= link_to 'Submit Designs', new_campaign_art_path(@campaign, @art), class: "submitbutton" %>
+                  <div class="timer-info"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                    <span class="timer-line" data-countdown= <%= @campaign.timer2 %> ></span>
+                  </div>
+                    <% end %>
+                    <% end %>
+            </div>
+        <% end %>
+
       </div>
+          <div class="campaign-halfbox2">
+              <div class="campaign-boxinfo">
 
-      <div class="how-box2">
-        
+                <h3>Rewards:</h3>
 
-             <% if @campaign.timer2.nil? || @campaign.timer2.empty? %>
-            <div class="timer-info">Design submissions not open yet</div>
-            <% else %>
-            <% unless @campaign.timer2.nil? || @campaign.timer2.empty? %>
-            <%= link_to 'Submit Designs', new_campaign_art_path(@campaign, @art), class: "submitbutton" %>
-            <div class="timer-info"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-              <span class="timer-line" data-countdown= <%= @campaign.timer2 %> ></span>
+                <%= simple_format(@campaign.reward) %>
+
+
+                *For Design Submissions
+
+
+              </div>
+
+                      <div class="campaign-boxinfo">
+
+                <h3>Rules:</h3>
+
+                <%= simple_format(@campaign.rules) %>
+
+
+              </div>
             </div>
-              <% end %>
-              <% end %>
+
+               <div class="admin-footer">
+                  <% if can? :update, @campaign %>
+                <%= link_to 'Edit', edit_campaign_path(@campaign) %> | 
+                <% end %>
+                <% if can? :destroy, @campaign %>
+                <%= link_to 'Destroy', campaign_path(@campaign), method: :delete, data: {confirm: "Are you sure?" } %>   
+                <% end %>
+              </div>
+
+      <div class="next-prev">
+
+        Experiments: <% if @campaign == Campaign.first %> <span style="color: #000;">Prev</span> <% else %><%= link_to 'Prev', campaign_path(@previous_campaign) %> <% end %><strong>/</strong> <% if @campaign == Campaign.last %> <span style="color: #000;">Next</span> <% else %> <%= link_to 'Next', campaign_path(@next_campaign) %><% end %>
+
+
       </div>
 
       </div>
@@ -63,14 +125,7 @@
 
        </div>
        
-       <div class="admin-footer">
-          <% if can? :update, @campaign %>
-        <%= link_to 'Edit', edit_campaign_path(@campaign) %> | 
-        <% end %>
-        <% if can? :destroy, @campaign %>
-        <%= link_to 'Destroy', campaign_path(@campaign), method: :delete, data: {confirm: "Are you sure?" } %>   
-        <% end %>
-      </div>
+
   </div>
 
     <div class="tab-box" role="tabpanel">
