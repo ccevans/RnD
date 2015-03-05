@@ -7,3 +7,8 @@ $ ->
 		$('#arts').masonry
 			itemSelector: '.container-art'
 			isFitWidth: true
+
+
+
+
+
