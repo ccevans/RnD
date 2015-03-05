@@ -37,7 +37,6 @@ gem 'figaro'
 gem 'font-awesome-sass'
 
 
-gem 'heroku_rails_deflate', group: :production
 
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
