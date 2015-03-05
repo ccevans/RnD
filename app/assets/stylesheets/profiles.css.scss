@@ -4,6 +4,8 @@
 
 
 div.tab-box div.tab-content div#posts.transitions-enabled.masonry {width: 100% !important;}
+section.profile-section-index div#profiles.transitions-enabled.masonry {float: left;}
+
 .profilesection {width: 100%; margin: 0; padding: 0; position: absolute; top: 300px; left: 0; z-index: 100; background-color: #fff;}
 .profile-header {width: 100%; margin: 50px 0 0 0; padding: 0; float: left;}
 .profile-main img {width: 100%; height: auto; float: left; border-radius: 0px; -moz-border-radius: 0px; -webkit-border-radius: 0px; margin: 50px 0 5px 0;}
@@ -45,7 +47,7 @@ div.container-profiles ul li img {-moz-border-radius: 10px; -webkit-border-radiu
 div.container-profiles ul li a {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #fff; text-shadow: none;}
 div.container-profiles ul li a:hover {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #1cc7a6; text-shadow: none;}
 
-.profile-section-index {float: left; border-top: 0px solid #fff; width: 100%; margin: 0 0 0 0; padding: 25px 0; z-index: 10; background-color: #fff; }
+.profile-section-index {position: absolute; left: 0; border-top: 0px solid #fff; width: 80%; border-top: 0px solid #fff; margin: 0 0 0 0; padding: 25px 0; z-index: 10; background-color: #fff;}
 
 div#settings.tab-pane.active div.well img {width: 100%; height: auto;}
 

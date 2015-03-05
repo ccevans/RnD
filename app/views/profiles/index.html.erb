@@ -1,5 +1,36 @@
+<section class="main-section">
 
 <section class="profile-section-index">
+
+<div class="works-top" id="works-exp2">
+  <div class="how-campaign">
+  <h2>"Inspire Passion" Blog</h2>
+  <p>Help the community create products inspired by music.  The community chooses the best lyrics from artists and create designs inspired by the lyrics.  The community chooses the best designs and develop tees and products for the shop.</p>
+
+  <p>Choose an experiment below to submit a lyric and/or design.</p>
+
+  </div>
+
+  <div class="how-box2">
+    <%= link_to 'How It Works', '/pages/how_it_works', :class => "" %>
+
+  <%= link_to 'Lab Shop', '#', :class => "" %>
+
+  <%= link_to 'Submit Post', '/posts/', :class => "" %>
+
+    <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+        Sort
+        <span class="caret"></span>
+      </button>
+
+    </div>
+
+
+  </div>
+
+
+  </div>
 
   <div id="profiles" class="transitions-enabled">
 		<% @users.each do |user| %>
@@ -24,3 +55,58 @@
 	</div>
 
 </section>
+
+     <section class="home-info">
+
+
+        <div class="results"></div>
+          
+
+      </section>
+
+</section>
+
+
+<script>
+$(window).scroll(function () {
+    var winTop = $(this).scrollTop(),
+        winBottom = winTop + $(this).height(),
+        left = $('.home-info'),
+        leftBottom = left.height(),
+        right = $('.profile-section-index'),
+        rightBottom = right.height();
+    //when the user reached the bottom of '#leftShort' set its position to fixed 
+    //to prevent it from moving on scroll 
+    if (rightBottom <= leftBottom){
+
+
+    } else{
+
+          if (winBottom >= leftBottom) {
+        left.css({
+            'position': 'fixed',
+            'bottom': '0px',
+            
+        });
+    } else {
+        //when the user scrolls back up revert its position to relative
+        // to make it move up together with '#rightLong'
+        left.css({
+            'position': 'relative',
+            'bottom': 'auto'
+
+        });
+    }
+
+    }
+
+
+});
+
+</script>
+
+<script>
+
+  $('.results').html("<%= j render(:partial => 'homeinfo/index') %>")
+
+</script>
