@@ -1,3 +1,18 @@
 // Place all the styles related to the Video controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+form#new_video.simple_form.new_video label {font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #2980b9; font-size: 16px;}
+form.simple_form.edit_video label {font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #2980b9; font-size: 16px;}
+
+form#new_video.simple_form.new_video h1 {font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif; color: #2980b9;}
+form#new_video.simple_form.new_video h2 {font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif; color: #2980b9; font-size: 20px;}
+
+form.simple_form.edit_video h1 {font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif; color: #2980b9;}
+form.simple_form.edit_video h2 {font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif; color: #2980b9; font-size: 20px;}
+
+form#new_video.simple_form.new_video input.btn.btn-default.post-button {font-size: 16px; margin: 10px 0; border: none; background-color: #2980b9; color: #fff; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; border-radius: 5px;}
+form.simple_form.edit_video input.btn.btn-default.post-button {font-size: 16px; margin: 10px 0; border: none; background-color: #2980b9; color: #fff; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; border-radius: 5px;}
+
+form#new_video.simple_form.new_video input.btn.btn-default.post-button:hover {font-size: 16px; margin: 10px 0; border: none; background-color: #000; color: #fff; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; border-radius: 5px;}
+form.simple_form.edit_video input.btn.btn-default.post-button:hover {font-size: 16px; margin: 10px 0; border: none; background-color: #000; color: #fff; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; border-radius: 5px;}

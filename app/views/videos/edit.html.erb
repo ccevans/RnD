@@ -1,7 +1,10 @@
 <% if can? :manage, :all %>
-
-Edit Video
+<div class="addlyric">
+<h1>Edit Video</h1>
+</div>
 
 <%= render 'form' %>
+
+<%= link_to 'Back', profile_url(:id => current_user.username), class: "back-button" %>
 
 <% end %>

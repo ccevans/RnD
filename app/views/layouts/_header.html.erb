@@ -64,9 +64,9 @@
           
             <li class="dropdown2"><% unless current_user.avatar.nil? %><%= image_tag current_user.avatar.url(:thumb) %><% end %>
             <ul class="dropdown-menu" role="menu">
-            <li><% unless current_user.avatar.nil? %><%= image_tag current_user.avatar.url(:mini) %><% end %><% unless current_user.username.nil? || current_user.username.empty? %><%= current_user.username %><% end %></li>
+            <li><span class="profile-li"><% unless current_user.avatar.nil? %><%= image_tag current_user.avatar.url(:mini) %><% end %><% unless current_user.username.nil? || current_user.username.empty? %><%= current_user.username %><% end %></span></li>
             <% unless current_user.points.nil? %>
-            <li>Community Score: <%= current_user.points %></li>
+            <li><span class="profile-li">Lab Score: <%= current_user.points %></span></li>
             <% end %>
             <li class="divider"></li>
             <li><% if current_user.username.present? %>

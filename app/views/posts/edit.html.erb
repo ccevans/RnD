@@ -1,7 +1,11 @@
 <% if can? :manage, :all %>
 
-Edit post
+<div class="addlyric">
+<h1>Edit post</h1>
+</div>
 
 <%= render 'form' %>
+
+<%= link_to 'Blog', posts_path, class: "back-button" %>
 
 <% end %>

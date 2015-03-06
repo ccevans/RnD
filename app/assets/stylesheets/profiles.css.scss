@@ -62,10 +62,7 @@ div.profile-topbox2 div.profile-location {float: left; width: 100%; color: #000;
 div.profile-topbox2 hr {width: 80%; clear: both; float: left; margin: 5px 10%; background-color: #000;}
 div.profile-topbox2 div.profile-location a {color: #000; text-decoration: none;}
 div.profile-topbox2 div.profile-location a:hover {color: #1cc7a6; text-decoration: none;}
-div.profile-topbox2 div.profile-follow-button {float: left; width: 100%; color: #000; text-align: center; padding: 5px 0 5px 0; margin: 0; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-size: 16px; line-height: 16px;}
- 
-div.profile-topbox2 div.profile-follow-button a {color: #000; text-decoration: none;}
-div.profile-topbox2 div.profile-follow-button a:hover {color: #1cc7a6; text-decoration: none;}
+div.profile-topbox2 div.profile-follow-button {float: left; width: 100%; color: #000; text-align: center; padding: 25px 0 25px 0; margin: 0; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-size: 16px; line-height: 16px;}
 
 div.profile-topbox div.follow-box {float: left; width: 40%; color: #000; padding: 0; margin: 5px 5%; border: none;}
 
@@ -164,6 +161,14 @@ div#photos.transitions-enabled.masonry div.photo:hover a.more-link {display: inl
 
 div.video-photo-box div.profile-video2 p iframe {width: 100%;}
 
+div.profile-follow-button a {background-color: #1cc7a6;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 18px; padding: 15px 10px;}
+
+div.profile-follow-button a:hover {background-color: #1cc7a6;
+    border-radius: 5px;
+    font-size: 18px; padding: 15px 10px;}
 
 @media screen and (max-width: 640px){
     .profile-topbox1 {

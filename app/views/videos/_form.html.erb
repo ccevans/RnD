@@ -7,14 +7,14 @@
   <% end %>
 
   <% if @video.approve == true %>
-  Your video has been approved.
+  <div class="approved-box">Your video has been approved.</div>
 
   <% if can? :manage, :all %>
   <%= f.input :title, label: "Title" %>
   <%= f.file_field :image %>
   <%= f.input :videolink, label: "Add Youtube Video Link" %>
 
-  <%= f.button :submit, "Submit", class: "button" %>
+  <%= f.button :submit, "Submit", class: "post-button" %>
 
 
   <% end %>
@@ -22,10 +22,10 @@
   <% else %>
 
   <%= f.input :title, label: "Title" %>
-  <%= f.file_field :image %>
-  <%= f.input :videolink, label: "Add Youtube Video Link" %>
 
-  <%= f.button :submit, "Submit", class: "button" %>
+  <%= f.input :videolink, label: "Add Youtube Video Link", hint: "Input YouTube Share Link. Format: http://youtu.be/1AjULLsdp5E" %>
+
+  <%= f.button :submit, "Submit", class: "post-button" %>
 
   <% end %>
 
