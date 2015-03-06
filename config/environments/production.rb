@@ -7,7 +7,7 @@ Rails.application.configure do
   config.assets.compile = true
   config.assets.digest = true
 
-  RAILS_ENV=production rake assets:precompile
+  
 
   # Code is not reloaded between requests.
   config.cache_classes = true
