@@ -1,12 +1,14 @@
 <% if can? :manage, :all %>
 
 <div class="addlyric">
-<h1>Add New Post To Blog</h1>
+<h1>Add Post To Community Blog</h1>
 </div>
 
 <%= render 'form' %>
 
+<div class="formpage-footer">
 <%= link_to 'Blog', posts_path, class: "back-button" %>
+</div>
 
 
 <% end %>

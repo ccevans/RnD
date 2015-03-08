@@ -37,6 +37,11 @@
 
         <% else %>
               <div class="how-box2">
+              <% if @chosen_lyrics.any? %>
+              <div class="timer-info">
+              <%= link_to "Chosen Lyric(s)", '#lyric-chosen' %>
+            </div>
+              <% else %>
               
               <div class="timer-box2">
                 <% if @campaign.timer.nil? || @campaign.timer.empty? %>
@@ -50,9 +55,16 @@
                   <% end %>
                 <% end %>
               </div>
+
+            <% end %>
             </div>
 
             <div class="how-box2">
+              <% if @chosen_arts.any? %>
+                  <div class="timer-info">
+                  <%= link_to "Chosen Design(s)", '#art-chosen' %>
+                </div>
+               <% else %>
               
                 <div class="timer-box2">
                    <% if @campaign.timer2.nil? || @campaign.timer2.empty? %>
@@ -66,6 +78,7 @@
                     <% end %>
                     <% end %>
                   </div>
+                  <% end %>
             </div>
         <% end %>
 
@@ -124,7 +137,7 @@
 
       <% if @chosen_lyrics.any? %>
       <div id="lyric-chosen" class="chosen-box">
-        <h1>Chosen Lyric(s)</h1>
+        <h1>Chosen Lyric(s)</h1><div class="clear"></div>
         <% @chosen_lyrics.each do |chosen_lyric| %>
 
             <div class="campaign-lyric-each">
@@ -147,8 +160,8 @@
 
       <% if @chosen_arts.any? %>
       <div id="art-chosen" class="chosen-box">
-        <h1>Chosen Design(s)</h1>
-
+        <h1>Chosen Design(s)</h1><div class="clear"></div>
+        
                 <% @chosen_arts.each do |chosen_art| %>
                   <div class="campaign-art-each">
                     <%= link_to campaign_art_path(@campaign, chosen_art) do %>

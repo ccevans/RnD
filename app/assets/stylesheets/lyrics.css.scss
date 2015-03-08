@@ -198,7 +198,8 @@ form.simple_form.edit_lyric input.btn.btn-default.post-button:hover {font-size: 
 
 div.form-info {font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #2980b9; font-size: 14px;}
 
-.back-button {float: left; font-size: 16px; margin: 25px 25%; border: none; background-color: #2980b9; color: #fff; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; border-radius: 5px; padding: 6px 12px; text-align: center;}
+.back-button {float: left; font-size: 16px; margin: 0 10px 0 0; border: none; background-color: #2980b9; color: #fff; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; border-radius: 5px; padding: 6px 12px; text-align: center;}
+.back-button:hover {float: left; font-size: 16px; margin: 0 10px 0 0; border: none; background-color: #000; color: #fff; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; border-radius: 5px; padding: 6px 12px; text-align: center;}
 
 .addlyric {width: 50%; margin: 75px 25% 0 25%;}
 .addlyric h1 {font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif; color: #2980b9;}
@@ -220,3 +221,5 @@ div#works-exp2.works-top .how-box2 span.glyphicon.glyphicon-menu-up {color: #fff
 
 div.container-md ul li span.glyphicon.glyphicon-star {color: #1abc9c;}
 div.container-show div.container-extra ul li span span.glyphicon.glyphicon-star {color: #1abc9c;}
+
+.formpage-footer {float: left; margin: 25px 25%;}

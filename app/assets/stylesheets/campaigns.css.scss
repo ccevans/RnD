@@ -128,7 +128,7 @@ div.timer-box2 span.add-timer { display: none; padding: 25px 5px; float: left; f
 .quote-span {padding: 0 0 50px 0; float: left; color: #1cc7a6; font-size: 76px; line-height: 26px; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif;}
 .quote-span2 {padding: 0 0 0 0; float: right; color: #1cc7a6; font-size: 76px; line-height: 56px; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif;}
 
-div.chosen-box h1 {font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif; color: #1cc7a6;}
+div.chosen-box h1 {float: left; margin: 25px; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif; color: #fff; width: auto; padding: 6px 12px !important; background-color: #1cc7a6; border-radius: 5px;}
 
 div.chosen-box div.campaign-lyric-each {float: left; }
 
