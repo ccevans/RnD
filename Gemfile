@@ -15,7 +15,7 @@ gem 'devise', '~> 3.4.1'
 gem 'devise_invitable', '~> 1.3.4'
 gem 'paperclip', '~> 4.2.1'
 gem 'acts_as_votable', '~> 0.10.0'
-gem 'bootstrap-sass', '~> 3.3.1.0'
+
 gem 'cancan', '~> 1.6.10'
 gem 'impressionist', '~> 1.5.1'
 gem 'acts_as_follower', '~> 0.2.1'
@@ -35,6 +35,7 @@ gem 'shopify_api', '~> 3.2.6'
 gem 'thor', '~> 0.18.1'
 gem 'figaro'
 gem 'font-awesome-sass'
+gem 'bootstrap-sass', '~> 3.3.3'
 
 
 
