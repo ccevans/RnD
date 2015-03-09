@@ -1,5 +1,3 @@
-<% if can? :manage, :all %>
-
 <section class="art-section">
   <div class="stepbackward">
       <%= link_to campaign_art_path(@campaign, @previous_art) do %>
@@ -271,8 +269,6 @@
 
 </section>
 
-
-<% end %>
 
 <script>
 $(function(){
