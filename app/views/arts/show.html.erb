@@ -55,9 +55,16 @@
           </ul>
           <% else %>
 
-          <ul class="votebox2">
-            <li class="votebox3 <%= @art.id %>"> </li>
-          </ul>
+             <% if user_signed_in? %>
+                <ul class="votebox2">
+                  <li><div class="vote-confirmed <%= @art.id %>">Vote</div></li>
+                </ul>
+              <% else %>
+                <ul class="votebox2">
+                  <li><%= link_to 'Sign In To Vote', new_user_registration_path, class: "vote-confirmed" %> </li>
+                </ul>
+              <% end %>
+
           
           <ul class="vote-column <%= @art.id %>">
               
@@ -188,9 +195,15 @@
             </ul>
             <% else %>
 
-            <ul class="votebox2">
-              <li class="votebox3 <%= random_art.id %>"> </li>
-            </ul>
+              <% if user_signed_in? %>
+                <ul class="votebox2">
+                  <li><div class="vote-confirmed <%= random_art.id %>">Vote</div></li>
+                </ul>
+              <% else %>
+                <ul class="votebox2">
+                  <li><%= link_to 'Sign In To Vote', new_user_registration_path, class: "vote-confirmed" %> </li>
+                </ul>
+              <% end %>
               
               <ul class="vote-column <%= random_art.id %>">
                    <%= link_to voteof5_art_path(random_art), class: ['voteup', random_art.id], remote: true, data: { type: :json }, method: :put do %>
@@ -231,7 +244,7 @@
               $('.voteup' + '.<%= random_art.id %>')
             .on('ajax:success', function (e, data, status, xhr) { 
               $('.up' + '.<%= random_art.id %>').html(data.count);
-              $('.votebox3' + '.<%= random_art.id %>').html('You already voted');
+              $('.vote-confirmed' + '.<%= random_art.id %>').html('Thanks for Voting!');
               $('.vote-column' + '.<%= random_art.id %>').addClass('hidden');
             });
 
@@ -337,7 +350,7 @@ $(function(){
       $('.voteup' + '.<%= @art.id %>')
     .on('ajax:success', function (e, data, status, xhr) { 
       $('.up' + '.<%= @art.id %>').html(data.count);
-      $('.votebox3' + '.<%= @art.id %>').html('You already voted');
+      $('.vote-confirmed' + '.<%= @art.id %>').html('Thanks for Voting!');
       $('.vote-column' + '.<%= @art.id %>').addClass('hidden');
     });
 

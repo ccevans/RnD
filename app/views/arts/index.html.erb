@@ -112,13 +112,20 @@
           <li>
               <% if user_signed_in? && (@current_user.voted_for? art) %>
               <ul class="votebox2">
-              <li><div class="vote-confirmed">Thanks for Voting!</div></li>
-            </ul>
-            <% else %>
+                <li><div class="vote-confirmed">Thanks for Voting!</div></li>
+              </ul>
 
-            <ul class="votebox2">
-              <li class="votebox3 <%= art.id %>"> </li>
-            </ul>
+            <% else %>
+              <% if user_signed_in? %>
+                <ul class="votebox2">
+                  <li><div class="vote-confirmed <%= art.id %>">Vote</div></li>
+                </ul>
+              <% else %>
+                <ul class="votebox2">
+                  <li><%= link_to 'Sign In To Vote', new_user_registration_path, class: "vote-confirmed" %> </li>
+                </ul>
+              <% end %>
+
               
               <ul class="vote-column <%= art.id %>">
                    <%= link_to voteof5_art_path(art), class: ['voteup', art.id], remote: true, data: { type: :json }, method: :put do %>
@@ -159,7 +166,7 @@
               $('.voteup' + '.<%= art.id %>')
             .on('ajax:success', function (e, data, status, xhr) { 
               $('.up' + '.<%= art.id %>').html(data.count);
-              $('.votebox3' + '.<%= art.id %>').html('You already voted');
+              $('.vote-confirmed' + '.<%= art.id %>').html('Thanks for Voting!');
               $('.vote-column' + '.<%= art.id %>').addClass('hidden');
               $('.container-art2' + '.<%= art.id %>').addClass('container-small2')
             });

@@ -102,18 +102,22 @@
 
         <% end %>
         <ul>
-        <li><%= lyric.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
 
-
-          <li><span class="up <%= lyric.id %>"><%= lyric.get_upvotes.size %> </span>
+          <li><span class="updown-button"><span class="up <%= lyric.id %>"><%= lyric.get_upvotes.size %> </span>
           <%= link_to like_lyric_path(lyric), class: ['voteup', lyric.id], remote: true, data: { type: :json }, method: :get do %>
           <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
             <% end %>
-            <span class="down <%= lyric.id %>"><%= lyric.get_downvotes.size %></span>
+          </span>
+        </li>
+        <li>
+            <span class="updown-button"><span class="down <%= lyric.id %>"><%= lyric.get_downvotes.size %></span>
           <%= link_to dislike_lyric_path(lyric), class: ['votedown', lyric.id], remote: true, data: { type: :json }, method: :get do %>
           <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
             <% end %>
+          </span>
           </li>
+
+          <li><%= lyric.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
 
 
   <script>
