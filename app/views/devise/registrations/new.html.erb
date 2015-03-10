@@ -1,5 +1,9 @@
   
     <%= image_tag 'logo-epic.png', :class => "logo-head-launch3" %>
+
+    <%= link_to new_session_path(resource_name), class: "btn btn-block btn-social btn-login" do %>
+       Log In
+    <% end %>
    
       <%= link_to "/users/auth/twitter", class: "btn btn-block btn-social btn-twitter" do %>
       <i class="fa fa-twitter"></i> Sign in with Twitter
@@ -15,6 +19,9 @@
     <%= link_to "#signup", class: "btn btn-block btn-social btn-email" do %>
       <i class="fa fa-envelope-o"></i> Sign in with Email
     <% end %>
+
+
+
 
 
 <div id="signup">
@@ -50,6 +57,8 @@
 <%= render "devise/shared/links" %>
 </div>
 </div>
+
+<%= render 'layouts/footer' %>
 
 
 

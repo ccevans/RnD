@@ -1,19 +1,29 @@
 <div class="footer-rnd">
 	<ul>
-		<li>About Us</li>
-		<li>How It Works</li>
-		<li>Partnerships</li>
-		<li>Vocal Artists</li>
-		<li>Visual Artists</li>
-		<li>FAQs</li>
+		<h1>Company</h1>
+		<li><%= link_to 'About Us', pages_about_us_path %></li>
+		<li><%= link_to 'How It Works', pages_how_it_works_path %></li>
+		<li><%= link_to 'Partnerships', pages_partnerships_path %></li>
+		<li><%= link_to 'Vocal Artists', '#' %></li>
+		<li><%= link_to 'Visual Artists', '#' %></li>
+	</ul>
+
+	<ul>
+		<h1>Tools</h1>
+		<li><%= link_to 'Experiments', campaigns_path %></li>
+		<li><%= link_to 'R&D Community', profiles_path %></li>
+		<li><%= link_to 'Rhyme Center', campaign_lyrics_path(Campaign.last) %></li>
+		<li><%= link_to 'Design Center', campaign_arts_path(Campaign.last) %></li>
+		<li><%= link_to 'Lab Points', '#' %></li>
 	</ul>
 
 		<ul>
-		<li>Community</li>
-		<li>Rhyme Center</li>
-		<li>Design Center</li>
-		<li>Experiments</li>
-		<li>Community Points</li>
+		<h1>Support</h1>
+		<li><%= link_to 'Legal Terms', campaigns_path %></li>
+		<li><%= link_to 'FAQs', profiles_path %></li>
+		<li><%= link_to 'Twitter', campaign_lyrics_path(Campaign.last) %></li>
+		<li><%= link_to 'Facebook', campaign_arts_path(Campaign.last) %></li>
+		<li><%= link_to 'Instagram', '#' %></li>
 	</ul>
 
 
