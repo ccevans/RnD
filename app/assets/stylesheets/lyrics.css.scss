@@ -231,3 +231,11 @@ div.container-show div.container-extra ul li span.updown-button a span.glyphicon
 
 div.container-md ul li span.updown-button a span.glyphicon {font-size: 24px; line-height: 24px; color: #fff;}
 div.container-md ul li span.updown-button a span.glyphicon:hover {font-size: 24px; line-height: 24px; color: #000;}
+div.container-md ul li span.updown-button.nohover a span.glyphicon:hover {font-size: 24px; line-height: 24px; color: #fff; pointer-events: none !important; cursor: none !important;}
+.container-md ul li span.glyphicon.glyphicon-question-sign {color: #1cc7a6;}
+div.container-extra ul li span.glyphicon.glyphicon-question-sign {color: #1cc7a6;}
+
+div.container-md ul li a.vote-confirmed {float: left; margin: 5px 0; padding: 15px 10px; width: auto; color: #fff; background-color: #1cc7a6; border-radius: 5px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-size: 18px; text-align: center;}
+div.container-md ul li a.vote-confirmed:hover {float: left; margin: 5px 0; padding: 15px 10px; width: auto; color: #000; background-color: #1cc7a6; border-radius: 5px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-size: 18px; text-align: center;}
+
+

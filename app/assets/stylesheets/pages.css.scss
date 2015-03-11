@@ -2,6 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.aboutus-section {float: left; width: 100%; padding: 50px 0 0 0; }
+.about-half {float: left; width: 50%; height: auto;}
+.about-box1 {float: left; width: 100%; height: auto; margin: 0; padding: 0; }
+#about-more {background-color: #1cc7a6; color: #fff;}
+#about-passion {background-color: #1cc7a6;}
+#about-more2 {background-color: #2c3e50; color: #fff;}
+.aboutus-info {width: 100%; padding: 25px 10%; font-size: 18px; line-height: 20px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; }
+.aboutus-pillars {text-align: right; width: 100%; padding: 25px 10%; font-size: 58px; line-height: 60px; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif; color:  #000;}
+
 #launch-top {width: 60%; float: left; margin: 0 0 0 0; padding: 0; color: #fff; height: auto; background-color: none;}
 #launch-box {width: 350px; float: left; margin: 0 0 0 10px;}
 #launch-box2 {width: 350px; float: left; margin: 0 0 0 0;}

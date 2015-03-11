@@ -6,9 +6,7 @@
 <div class="works-top" id="works-exp2">
   <div class="how-campaign">
   <h2>Rhyme Center</h2>
-  <p>Help the community create products inspired by music.  The community chooses the best lyrics from artists and create designs inspired by the lyrics.  The community chooses the best designs and develop tees and products for the shop.</p>
-
-  <p>Choose an experiment below to submit a lyric and/or design.</p>
+  <p>The community chooses their favorite lyrics to inspire designs. The community then chooses their favorite designs to develop tees and products for the shop.</p>
 
   </div>
 
@@ -103,6 +101,7 @@
         <% end %>
         <ul>
 
+          <% if user_signed_in? %>
           <li><span class="updown-button"><span class="up <%= lyric.id %>"><%= lyric.get_upvotes.size %> </span>
           <%= link_to like_lyric_path(lyric), class: ['voteup', lyric.id], remote: true, data: { type: :json }, method: :get do %>
           <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
@@ -115,7 +114,29 @@
           <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
             <% end %>
           </span>
+
           </li>
+
+          <% else %>
+
+          <li><span class="updown-button"><span class="up <%= lyric.id %>"><%= lyric.get_upvotes.size %> </span>
+          <%= link_to_if user_signed_in?, like_lyric_path(lyric), class: ['voteup', lyric.id], remote: true, data: { type: :json }, method: :get do %>
+          <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+            <% end %>
+          </span>
+        </li>
+        <li>
+            <span class="updown-button"><span class="down <%= lyric.id %>"><%= lyric.get_downvotes.size %></span>
+          <%= link_to_if user_signed_in?, dislike_lyric_path(lyric), class: ['votedown', lyric.id], remote: true, data: { type: :json }, method: :get do %>
+          <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+            <% end %>
+          </span>
+        
+          <span type="button" data-toggle="tooltip" data-placement="top" title="Sign In To Vote" class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+          </li>
+
+
+          <% end %>
 
           <li><%= lyric.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
 

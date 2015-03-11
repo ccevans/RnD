@@ -25,19 +25,46 @@
 <div class="container-extra">
    <ul>
 
-        <li><span class="updown-button"><span class="up <%= @lyric.id %>"><%= @lyric.get_upvotes.size %> </span>
+          <% if user_signed_in? %>
+          <li><span class="updown-button"><span class="up <%= @lyric.id %>"><%= @lyric.get_upvotes.size %> </span>
           <%= link_to like_lyric_path(@lyric), class: ['voteup', @lyric.id], remote: true, data: { type: :json }, method: :get do %>
           <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
             <% end %>
           </span>
         </li>
-          <li>
+        <li>
             <span class="updown-button"><span class="down <%= @lyric.id %>"><%= @lyric.get_downvotes.size %></span>
           <%= link_to dislike_lyric_path(@lyric), class: ['votedown', @lyric.id], remote: true, data: { type: :json }, method: :get do %>
           <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
             <% end %>
           </span>
+
           </li>
+
+          <% else %>
+
+          <li><span class="updown-button"><span class="up <%= @lyric.id %>"><%= @lyric.get_upvotes.size %> </span>
+          <%= link_to_if user_signed_in?, like_lyric_path(@lyric), class: ['voteup', @lyric.id], remote: true, data: { type: :json }, method: :get do %>
+          <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+            <% end %>
+          </span>
+        </li>
+        <li>
+            <span class="updown-button"><span class="down <%= @lyric.id %>"><%= @lyric.get_downvotes.size %></span>
+          <%= link_to_if user_signed_in?, dislike_lyric_path(@lyric), class: ['votedown', @lyric.id], remote: true, data: { type: :json }, method: :get do %>
+          <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+            <% end %>
+          </span>
+        
+          <span type="button" data-toggle="tooltip" data-placement="top" title="Sign In To Vote" class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+          </li>
+
+
+          <% end %>
+
+
+
+
     </ul>
       <ul>
           <li><%= @lyric.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
@@ -170,19 +197,42 @@
         <% end %>
         <ul>
 
+         <% if user_signed_in? %>
           <li><span class="updown-button"><span class="up <%= random_lyric.id %>"><%= random_lyric.get_upvotes.size %> </span>
           <%= link_to like_lyric_path(random_lyric), class: ['voteup', random_lyric.id], remote: true, data: { type: :json }, method: :get do %>
           <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
             <% end %>
           </span>
-          </li>
-          <li>
+        </li>
+        <li>
             <span class="updown-button"><span class="down <%= random_lyric.id %>"><%= random_lyric.get_downvotes.size %></span>
           <%= link_to dislike_lyric_path(random_lyric), class: ['votedown', random_lyric.id], remote: true, data: { type: :json }, method: :get do %>
           <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
             <% end %>
           </span>
+
           </li>
+
+          <% else %>
+
+          <li><span class="updown-button"><span class="up <%= random_lyric.id %>"><%= random_lyric.get_upvotes.size %> </span>
+          <%= link_to_if user_signed_in?, like_lyric_path(random_lyric), class: ['voteup', random_lyric.id], remote: true, data: { type: :json }, method: :get do %>
+          <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+            <% end %>
+          </span>
+        </li>
+        <li>
+            <span class="updown-button"><span class="down <%= random_lyric.id %>"><%= random_lyric.get_downvotes.size %></span>
+          <%= link_to_if user_signed_in?, dislike_lyric_path(random_lyric), class: ['votedown', random_lyric.id], remote: true, data: { type: :json }, method: :get do %>
+          <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+            <% end %>
+          </span>
+        
+          <span type="button" data-toggle="tooltip" data-placement="top" title="Sign In To Vote" class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+          </li>
+
+
+          <% end %>
 
           <li><%= random_lyric.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
 
