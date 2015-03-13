@@ -9,8 +9,8 @@ class CampaignsController < ApplicationController
 	def index
 		@campaigns = Campaign.all.order("created_at DESC")
 		@free_campaign = Campaign.free.first
-		@open_campaigns = Campaign.open.all
-		@closed_campaigns = Campaign.closed.all
+		@open_campaigns = Campaign.open.all.order("created_at DESC")
+		@closed_campaigns = Campaign.closed.all.order("created_at DESC")
 
 	end
 

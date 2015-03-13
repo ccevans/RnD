@@ -28,7 +28,7 @@ div.container-show ul li img {-moz-border-radius: 10px; -webkit-border-radius: 1
 div.container-show ul li a {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #000; text-shadow: none;}
 div.container-show ul li a:hover {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #1cc7a6; text-shadow: none; text-decoration: none;}
 
-div.container-line {float: left; width: 70%; height: auto; min-height: 100px; color: #000; font-size: 38px; line-height: 38px; padding: 0; text-align: left; font-family: 'Fredoka One', cursive; text-shadow: 1px 1px #bdc3c7;}
+div.container-line {float: left; width: 70%; height: auto; min-height: 100px; color: #000; font-size: 24px; line-height: 30px; padding: 0; text-align: left; font-family: 'Fredoka One', cursive; text-shadow: 1px 1px #bdc3c7;}
 div.container-profile {float: left; width: 40%; padding: 5px; color: #000; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-size: 28px; line-height: 28px; background-color: #ecf0f1; margin: 20px 5%;}
 div.container-desc {float: left; width: auto; color: #000; padding: 20px; font-size: 24px; line-height: 24px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; border-left: 4px solid #bdc3c7; margin-left: 20px; margin-top: 5px;}
 div.container-comment {float: left; width: 100%; padding: 5px;}
@@ -229,13 +229,12 @@ div.container-show div.container-extra ul li span.updown-button a span.glyphicon
 
 div.container-show div.container-extra ul li span.updown-button a span.glyphicon:hover {font-size: 24px; line-height: 24px; color: #000;}
 
-div.container-md ul li span.updown-button a span.glyphicon {font-size: 24px; line-height: 24px; color: #fff;}
-div.container-md ul li span.updown-button a span.glyphicon:hover {font-size: 24px; line-height: 24px; color: #000;}
-div.container-md ul li span.updown-button.nohover a span.glyphicon:hover {font-size: 24px; line-height: 24px; color: #fff; pointer-events: none !important; cursor: none !important;}
-.container-md ul li span.glyphicon.glyphicon-question-sign {color: #1cc7a6;}
-div.container-extra ul li span.glyphicon.glyphicon-question-sign {color: #1cc7a6;}
+ul li span.updown-button a span.glyphicon {font-size: 24px; line-height: 24px; color: #fff;}
+ul li span.updown-button a span.glyphicon:hover {font-size: 24px; line-height: 24px; color: #000;}
+ul li span.updown-button.nohover a span.glyphicon:hover {font-size: 24px; line-height: 24px; color: #fff; pointer-events: none !important; cursor: none !important;}
+ul li span.glyphicon.glyphicon-question-sign {color: #1cc7a6;}
 
-div.container-md ul li a.vote-confirmed {float: left; margin: 5px 0; padding: 15px 10px; width: auto; color: #fff; background-color: #1cc7a6; border-radius: 5px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-size: 18px; text-align: center;}
-div.container-md ul li a.vote-confirmed:hover {float: left; margin: 5px 0; padding: 15px 10px; width: auto; color: #000; background-color: #1cc7a6; border-radius: 5px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-size: 18px; text-align: center;}
+ul li a.vote-confirmed {float: left; margin: 5px 0; padding: 15px 10px; width: auto; color: #fff; background-color: #1cc7a6; border-radius: 5px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-size: 18px; text-align: center;}
+ul li a.vote-confirmed:hover {float: left; margin: 5px 0; padding: 15px 10px; width: auto; color: #000; background-color: #1cc7a6; border-radius: 5px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-size: 18px; text-align: center;}
 
 

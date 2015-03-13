@@ -198,16 +198,78 @@
                     <% unless lyric.line.nil? || lyric.line.empty? %>
                     <%= link_to lyric.line, campaign_lyric_path(@campaign, lyric) %>
                     <% end %>
-                  <ul>
-              <li><%= lyric.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
-              <li><%= lyric.get_upvotes.size %> 
-                <%= link_to like_lyric_path(lyric), method: :get do %>
-                    <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-                  <% end %>
-                </li>
-              <li><%= lyric.comments.count %> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></li>
-              <li><% unless lyric.user.avatar.nil? %><%= image_tag lyric.user.avatar.url(:mini) %><% end %><% unless lyric.user.username.nil? || lyric.user.username.empty? %><%= link_to lyric.user.username, profile_url(:id => lyric.user.username) %><% end %></li>
-          </ul>
+                    
+                    <ul>
+                      <% if user_signed_in? %>
+                      <li><span class="updown-button"><span class="up <%= lyric.id %>"><%= lyric.get_upvotes.size %> </span>
+                      <%= link_to like_lyric_path(lyric), class: ['voteup', lyric.id], remote: true, data: { type: :json }, method: :get do %>
+                      <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+                        <% end %>
+                      </span>
+                    </li>
+                    <li>
+                        <span class="updown-button"><span class="down <%= lyric.id %>"><%= lyric.get_downvotes.size %></span>
+                      <%= link_to dislike_lyric_path(lyric), class: ['votedown', lyric.id], remote: true, data: { type: :json }, method: :get do %>
+                      <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                        <% end %>
+                      </span>
+
+                      </li>
+
+                      <% else %>
+
+                      <li><span class="updown-button"><span class="up <%= lyric.id %>"><%= lyric.get_upvotes.size %> </span>
+                      <%= link_to_if user_signed_in?, like_lyric_path(lyric), class: ['voteup', lyric.id], remote: true, data: { type: :json }, method: :get do %>
+                      <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+                        <% end %>
+                      </span>
+                    </li>
+                    <li>
+                        <span class="updown-button"><span class="down <%= lyric.id %>"><%= lyric.get_downvotes.size %></span>
+                      <%= link_to_if user_signed_in?, dislike_lyric_path(lyric), class: ['votedown', lyric.id], remote: true, data: { type: :json }, method: :get do %>
+                      <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                        <% end %>
+                      </span>
+                    
+                      <span type="button" data-toggle="tooltip" data-placement="top" title="Sign In To Vote" class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+                      </li>
+
+
+                      <% end %>
+
+                      <li><%= lyric.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
+
+
+              <script>
+
+                $('.voteup' + '.<%= lyric.id %>')
+              .on('ajax:success', function (e, data, status, xhr) { 
+                $('.up' + '.<%= lyric.id %>').html(data.count);
+                $('.down' + '.<%= lyric.id %>').html(data.count2);
+              });
+
+                </script>
+
+                  <script>
+
+                $('.votedown' + '.<%= lyric.id %>')
+              .on('ajax:success', function (e, data, status, xhr) { 
+                
+                $('.down' + '.<%= lyric.id %>').html(data.count2);
+                $('.up' + '.<%= lyric.id %>').html(data.count);
+              });
+
+                </script>
+
+                  
+                    <li><%= lyric.comments.count %> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></li>
+                    <li><% if lyric.user.avatar.present? %><%= image_tag lyric.user.avatar.url(:mini) %><% end %><% if lyric.user.username.present? %><%= link_to lyric.user.username, profile_url(:id => lyric.user.username) %><% end%></li>
+                   
+                    <% if lyric.personal == true %>
+                    <li><span data-toggle="tooltip" data-placement="top" title="Submitted By Artist"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></span></li>
+                   <% end %>
+
+                    </ul>
           </div>
           <% end %>
       
@@ -323,4 +385,10 @@ $(window).scroll(function () {
 
 });
 
+</script>
+
+<script>
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
 </script>
