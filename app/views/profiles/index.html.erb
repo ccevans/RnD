@@ -34,7 +34,13 @@
 			 <div class="container-profiles">
 			 	<% if user.avatar.present? %>
 					<%= image_tag user.avatar.url(:thumb) %>
-					<% end %>
+			
+          <% elsif %>
+            <div class="profile-mainx">
+              <%= image_tag 'red-gasmask.png' %>
+            </div>
+
+          <% end %>
 				<% if user.username.present? %>
 				   <div class="user-row"><%= link_to user.username, "/profiles/#{user.username}" %></div>
 				   <% end %>
