@@ -3,12 +3,14 @@ class ProfilesController < ApplicationController
   before_action :set_photos, only: [:destroy]
 	before_action :find_post, only: [:show, :follow, :unfollow]
   has_scope :approve
+  has_scope :featured
 
   respond_to :html, :json, :js
 
   def index
     @users = User.all.order("created_at DESC")
     @user = User.find_by_username(params[:id])
+    @featured_users = User.featured.all.order("created_at DESC")
 
 
   end

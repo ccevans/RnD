@@ -3,8 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-div.tab-box div.tab-content div#posts.transitions-enabled.masonry {width: 100% !important;}
-section.profile-section-index div#profiles.transitions-enabled.masonry {float: left;}
+div.tab-box div.tab-content div#posts {width: 100% !important;}
+section.profile-section-index div#profiles {float: left;}
 
 .profilesection {width: 100%; margin: 0; padding: 0; position: absolute; top: 300px; left: 0; z-index: 100; background-color: #fff;}
 .profile-header {width: 100%; margin: 50px 0 0 0; padding: 0; float: left;}
@@ -31,13 +31,13 @@ div.profile-header img {width: 100%; height: auto;}
 #profile-box1 h2 {text-align: center; font-size: 14px; line-height: 14px; margin: 0px 0 5px 0; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #bdc3c7;}
 #profile-box1 h1 {text-align: center; margin: 5px 0; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #000;}
 
-.container-profiles {width: auto; max-width: 200px; height: auto; margin: 25px; }
+.container-profiles {width: auto; max-width: 300px; height: auto; margin: 25px; float: left;}
 #profiles {margin: 0 auto;}
 
 div.container-profiles a {color: #000; font-size: 18px; line-height: 20px; text-align: left; font-family: 'Fredoka One', cursive; text-shadow: 0px 0px #bdc3c7;}
 div.container-profiles a:hover {color: #1cc7a6; font-size: 18px; line-height: 20px; text-align: left; text-decoration: none; border: none; text-shadow: 0px 0px #bdc3c7;}
 
-div.container-profiles.masonry-brick img {border-radius: 5px;}
+div.container-profiles img {border-radius: 5px;}
 
 div.container-profiles ul {list-style:none; color: #000; clear: both;}
 div.container-profiles ul li {float: left; padding: 5px; width: auto;}
@@ -47,7 +47,7 @@ div.container-profiles ul li img {-moz-border-radius: 10px; -webkit-border-radiu
 div.container-profiles ul li a {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #fff; text-shadow: none;}
 div.container-profiles ul li a:hover {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #1cc7a6; text-shadow: none;}
 
-.profile-section-index {position: absolute; left: 0; border-top: 0px solid #fff; width: 80%; border-top: 0px solid #fff; margin: 0 0 0 0; padding: 25px 0; z-index: 10; background-color: #fff;}
+.profile-section-index {position: absolute; left: 0; border-top: 0px solid #fff; width: 80%; border-top: 0px solid #fff; margin: 0 0 0 0; padding: 25px 0 0 0; z-index: 10; background-color: #fff;}
 
 div#settings.tab-pane.active div.well img {width: 100%; height: auto;}
 
@@ -119,7 +119,7 @@ span.glyphicon.glyphicon-cog {font-size: 28px; line-height: 28px;}
 
 div.photo a.delete-link {position: absolute; top: 0; right: 0; font-size: 18px; line-height: 18px; color: #fff; text-shadow: 2px 2px #000; display: none;}
 div.photo a.delete-link:hover {position: absolute; top: 0; right: 0; font-size: 18px; line-height: 18px; color: #1cc7a6; text-shadow: 2px 2px #000;}
-div#photos.transitions-enabled.masonry div.photo:hover a.delete-link {display: inline;}
+div#photos div.photo:hover a.delete-link {display: inline;}
 
 div.profile-topbox3 div.dropdown.open ul.dropdown-menu { padding: 0; color: #fff; float: left; position: static;}
 div.profile-topbox3 div.dropdown.open ul.dropdown-menu li a {border-radius: 0; color: #fff; font-size: 18px; line-height: 18px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;}
@@ -157,7 +157,7 @@ div.profile-topbox div.profile-topbox2 div.tab-box ul.nav.nav-tabs {
 
 div.photo a.more-link {position: absolute; bottom: 25px; text-align: center; width: 40%; margin: 0 30%; padding: 5px; font-size: 18px; line-height: 18px; color: #000; background-color: #fff; border-radius: 25px; display: none; opacity: .8; font-variant: small-caps;}
 div.photo a.more-link:hover {position: absolute; bottom: 25px; font-size: 18px; line-height: 18px; color: #1cc7a6; text-decoration: none; opacity: 1;}
-div#photos.transitions-enabled.masonry div.photo:hover a.more-link {display: inline;}
+div#photos div.photo:hover a.more-link {display: inline;}
 
 div.video-photo-box div.profile-video2 p iframe {width: 100%;}
 
@@ -172,6 +172,24 @@ div.profile-follow-button a:hover {background-color: #1cc7a6;
 
 .profile-mainx {width: 50px; height: auto;}
 .profile-mainx img {width: 100%; height: auto;}
+
+.profile-mainz {width: 300px; height: auto;}
+.profile-mainz img {width: 100%; height: auto;}
+
+div#profiles h1 {font-size: 28px; line-height: 28px; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif; color: #000; width: 100%; padding: 0 5%; margin: 0;}
+
+.signin-profile {float: left; margin: 50px 0; width: 100%; padding: 0 10%; color: #000; font-size: 18px; line-height: 18px; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif;}
+div#profiles div.navbar-brand {background-color: #1cc7a6;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 18px;
+    height: 50px;
+    line-height: 20px;
+    padding: 15px;
+    margin: 0 15px 0 0;}
+.view-profiles {padding: 15px 0;}
+div#profiles div.navbar-brand a.active {color: #fff; float: left; padding: 15px 0;}
+div#profiles div.navbar-brand a.active:hover {color: #000; float: left; padding: 15px 0; text-decoration: none;}
 
 @media screen and (max-width: 640px){
     .profile-topbox1 {
@@ -204,9 +222,9 @@ div.profile-follow-button a:hover {background-color: #1cc7a6;
     padding: 25px 5%;
     width: 100%;}
 
-    div#photos.transitions-enabled.masonry {width: 100% !important; height: auto;}
-    div#photos.transitions-enabled.masonry div.photo {width: 45% !important; height: auto; margin: 5px;}
-    div#photos.transitions-enabled.masonry div.photo img {width: 100%; height: auto;}
+    div#photos {width: 100% !important; height: auto;}
+    div#photos div.photo {width: 45% !important; height: auto; margin: 5px;}
+    div#photos div.photo img {width: 100%; height: auto;}
 
     div.profile-topbox2 div.panel.panel-default.follow-box div.panel-heading {padding: 2px;}
     div.profile-topbox div.follow-box h3 {

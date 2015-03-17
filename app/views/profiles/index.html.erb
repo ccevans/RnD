@@ -1,5 +1,8 @@
 <section class="main-section">
 
+
+<% if user_signed_in? %>
+
 <section class="profile-section-index">
 
 <div class="works-top" id="works-exp2">
@@ -57,6 +60,88 @@
   <%= render 'layouts/footer' %>
 
 </section>
+
+<% else %>
+
+<section class="profile-section-index">
+
+<div class="works-top" id="works-exp2">
+  <div class="how-campaign">
+  <h2>R&D Community</h2>
+  <p>Join The Community and Inspire Passion.</p>
+
+  </div>
+
+  <div class="how-box2">
+  <%= link_to 'How It Works', pages_how_it_works_path, :class => "" %>
+
+  <%= link_to 'Lab Shop', '#', :class => "" %>
+
+  <%= link_to "Sign Up / Sign In", new_user_registration_path, :class => "" %>
+
+    <div class="dropdown hidden disabled">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+        Sort
+        <span class="caret"></span>
+      </button>
+
+    </div>
+
+
+  </div>
+
+
+  </div>
+
+  <div id="profiles">
+
+<h1>Featured Profiles</h1>
+
+    <% @featured_users.each do |featured_user| %>
+
+       <div class="container-profiles">
+        <% if featured_user.avatar.present? %>
+          <%= image_tag featured_user.avatar.url(:medium) %>
+      
+          <% elsif %>
+            <div class="profile-mainz">
+              <%= image_tag 'red-gasmask.png' %>
+            </div>
+
+          <% end %>
+        <% if featured_user.username.present? %>
+           <div class="user-row"><%= link_to featured_user.username, "/profiles/#{featured_user.username}" %></div>
+           <% end %>
+    
+        <% if featured_user.location.present? %>
+           <div class="user-row"><%= featured_user.location %></div>
+        <% end %>
+        </div>
+
+
+    <% end %>
+      <div class="clear"></div>
+      <div class="signin-profile">
+      <div class="navbar-brand">
+            <%= link_to "Sign Up / Sign In", new_user_registration_path, class: "active" %>
+          </div>
+          <div class="view-profiles">
+          To View All of Community
+        </div>
+        </div>
+
+  </div>
+
+  <%= render 'layouts/footer' %>
+
+</section>
+
+
+
+
+
+
+<% end %>
 
      <section class="home-info">
 
