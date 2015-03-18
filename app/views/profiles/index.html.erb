@@ -35,7 +35,9 @@
 		<% @users.each do |user| %>
 
 			 <div class="container-profiles">
+        <%= link_to "/profiles/#{user.username}" do %>
 			 	<% if user.avatar.present? %>
+
 					<%= image_tag user.avatar.url(:thumb) %>
 			
           <% elsif %>
@@ -43,6 +45,7 @@
               <%= image_tag 'red-gasmask.png' %>
             </div>
 
+          <% end %>
           <% end %>
 				<% if user.username.present? %>
 				   <div class="user-row"><%= link_to user.username, "/profiles/#{user.username}" %></div>
@@ -101,6 +104,7 @@
     <% @featured_users.each do |featured_user| %>
 
        <div class="container-profiles">
+        <%= link_to "/profiles/#{featured_user.username}" do %>
         <% if featured_user.avatar.present? %>
           <%= image_tag featured_user.avatar.url(:medium) %>
       
@@ -109,6 +113,7 @@
               <%= image_tag 'red-gasmask.png' %>
             </div>
 
+          <% end %>
           <% end %>
         <% if featured_user.username.present? %>
            <div class="user-row"><%= link_to featured_user.username, "/profiles/#{featured_user.username}" %></div>
