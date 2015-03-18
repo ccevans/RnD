@@ -21,7 +21,7 @@
 @import "font-awesome";
 
 .footer-rnd {float: left; background-color: #7f8c8d; color: #fff; width: 100%; padding: 20px 10%; margin: 0 0 0 0; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;}
-.footer-rnd ul {float: left; width: 30%; list-style-type: none;}
+.footer-rnd ul {float: left; width: 30%; list-style-type: none; padding: 0 5%;}
 .footer-rnd ul h1 {font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif; font-size: 22px; line-height: 22px;}
 .footer-rnd a {color: #fff; text-decoration: none; }
 .footer-rnd a:hover {color: #1cc7a6; text-decoration: none;}
@@ -185,9 +185,29 @@ div.profile-box2 h1 {
     float: left;
     margin: 5px 5% 10px;
     width: 90%;}
+}
 
+.logo-head2-mobile {display: none !important;}
+
+
+
+@media screen and (max-width: 640px){
+    .logo-head2 {float: left; width: 375px; display: none !important;}
+    .navbar-toggle {float: left !important;}
+    .logo-head2-mobile {display: block !important; float: left; width: 100%;}
+    .navbar-brand {
+        float: left;
+        font-size: 18px;
+        height: 50px;
+        line-height: 20px;
+        padding: 15px;
+        width: 175px;}
+
+    .footer-rnd {float: left; background-color: #7f8c8d; color: #fff; width: 100%; padding: 20px 5%; margin: 0 0 0 0; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;}
+    .footer-rnd ul {float: left; width: 30%; list-style-type: none; padding: 0 5%;}
+    .footer-rnd ul h1 {font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif; font-size: 16px; line-height: 16px;}
+    .footer-rnd a {color: #fff; text-decoration: none; }
+    .footer-rnd a:hover {color: #1cc7a6; text-decoration: none;}
 
 
 }
-
-

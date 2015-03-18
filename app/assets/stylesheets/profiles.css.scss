@@ -292,6 +292,13 @@ div#profiles div.navbar-brand a.active:hover {color: #000; float: left; padding:
 
     div.profile-topbox3 div.dropdown.open ul.dropdown-menu {width: 80%; margin: 0 10%; background-color: #fff !important; padding: 0; color: #000; float: left; position: absolute; right: 0;}
 
+    div.profile-follow-button a {background-color: #1cc7a6;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 14px; padding: 10px 6px;}
 
+    div.profile-follow-button a:hover {background-color: #1cc7a6;
+    border-radius: 5px;
+    font-size: 14px; padding: 10px 6px; color: #000; text-decoration: none;}
     }
 
