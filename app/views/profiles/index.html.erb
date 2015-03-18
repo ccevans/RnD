@@ -95,6 +95,7 @@
 
   <div id="profiles">
 
+<% if @featured_users.any? %>
 <h1>Featured Profiles</h1>
 
     <% @featured_users.each do |featured_user| %>
@@ -119,6 +120,7 @@
         </div>
 
 
+    <% end %>
     <% end %>
       <div class="clear"></div>
       <div class="signin-profile">
