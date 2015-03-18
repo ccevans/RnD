@@ -221,8 +221,8 @@ li.dropdown2 ul.dropdown-menu li span.profile-li img {margin-right: 5px;}
     .footer-rnd a {color: #fff; text-decoration: none; }
     .footer-rnd a:hover {color: #1cc7a6; text-decoration: none;}
 
-    section.main-section section.home-info {display: none;}
-    section.main-section section.profile-section-index {width: 100%;}
+    section.main-section section.home-info {display: none !important;}
+    section.main-section section.profile-section-index {width: 100% !important;}
 
 
 }
