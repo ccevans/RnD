@@ -152,8 +152,8 @@ li.dropdown2 ul.dropdown-menu li span.profile-li img {margin-right: 5px;}
 }
 
 div.navbar-header div#bs-example-navbar-collapse-1.navbar-collapse.collapse.in {float: left; clear: both; width: 100%;}
-div.navbar-header div#bs-example-navbar-collapse-1.navbar-collapse.collapse.in ul.nav.navbar-nav.navbar-right li.dropdown2 ul.dropdown-menu {float: left; }
-div.navbar-header div#bs-example-navbar-collapse-1.navbar-collapse.collapse.in ul.nav.navbar-nav.navbar-right li.dropdown2 ul.dropdown-menu {position: relative;}
+div.navbar-header div#bs-example-navbar-collapse-1.navbar-collapse.collapse.in ul.nav.navbar-nav.navbar-right li.dropdown2 ul.dropdown-menu {float: left; position: relative; clear: both;}
+div.navbar-header div#bs-example-navbar-collapse-1.navbar-collapse.collapse.in ul.nav.navbar-nav.navbar-right li.dropdown2 {float: left; clear: both;}
 
 @media screen and (min-width: 640px) and (max-width: 900px){
 
