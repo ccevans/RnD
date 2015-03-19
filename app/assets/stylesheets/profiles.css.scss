@@ -191,9 +191,15 @@ div#profiles div.navbar-brand {background-color: #1cc7a6;
 div#profiles div.navbar-brand a.active {color: #fff; float: left; padding: 15px 0;}
 div#profiles div.navbar-brand a.active:hover {color: #000; float: left; padding: 15px 0; text-decoration: none;}
 
-div#works-exp2.works-top div a i {float: left; margin: 0 10px; font-size: 30px; line-height: 30px; color: #fff; border: 3px solid #fff; padding: 10px; border-radius: 30px; text-decoration: none;}
-div#works-exp2.works-top div a i:hover {float: left; margin: 0 10px; font-size: 30px; line-height: 30px; color: #000; border: 3px solid #fff; padding: 10px; border-radius: 30px; text-decoration: none;}
+div#works-exp2.works-top div a i {float: left; font-size: 30px; line-height: 30px; color: #fff;  text-decoration: none;}
+div#works-exp2.works-top div a i:hover {float: left; font-size: 30px; line-height: 30px; color: #000;  text-decoration: none;}
 .how-box2-mobile {width: 100%; float: left; display: none;}
+div.how-box2-mobile a {float: left; margin: 10px; background-color: none; border: 3px solid #fff; border-radius: 5px; padding: 15px 10px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #fff; font-size: 18px; line-height: 18px; text-decoration: none;}
+div.how-box2-mobile a:hover {float: left; background-color: none; border-radius: 5px; padding: 15px 10px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #000; font-size: 18px; line-height: 18px; text-decoration: none;}
+div.how-box2-mobile div.dropdown button.dropdown-toggle {float: left; margin: 10px; background-color: #1cc7a6 !important; border: 3px solid #fff; border-radius: 5px; padding: 15px 10px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #fff; font-size: 18px; line-height: 18px;}
+div.how-box2-mobile div.dropdown.open ul.dropdown-menu li a {border: none; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important; font-size: 18px; line-height: 18px; color: #fff;  padding: 3px 20px; width: 100%;  border-radius: 0; margin: 0;}
+div.how-box2-mobile div.dropdown.open ul.dropdown-menu li a:hover {border: none; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important; font-size: 18px; line-height: 18px; color: #1cc7a6; padding: 3px 20px; width: 100%; background-color: #fff; border-radius: 0; margin: 0;}
+div.how-box2-mobile div.dropdown {padding: 0;}
 
 @media screen and (min-width: 640px) and (max-width: 900px){
 

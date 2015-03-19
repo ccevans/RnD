@@ -32,10 +32,13 @@
 
   </div>
 
+    <div class="how-box2-mobile">
+    <%= link_to 'How It Works', pages_how_it_works_path, :class => "" %>
 
-  </div>
+  <%= link_to 'Lab Shop', '#', :class => "" %>
 
-  <div class="sort-box">
+  <%= link_to 'Submit Design', new_campaign_art_path(Campaign.last), :class => "" %>
+
     <div class="dropdown">
       <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
         Sort
@@ -47,6 +50,10 @@
         <li role="presentation"><%= link_to 'Most Recent', :controller => 'arts', :sort_by => 'most_recent' %></li>
       </ul>
     </div>
+
+  </div>
+
+
   </div>
 
 
