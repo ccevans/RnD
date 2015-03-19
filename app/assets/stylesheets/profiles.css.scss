@@ -31,7 +31,7 @@ div.profile-header img {width: 100%; height: auto;}
 #profile-box1 h2 {text-align: center; font-size: 14px; line-height: 14px; margin: 0px 0 5px 0; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #bdc3c7;}
 #profile-box1 h1 {text-align: center; margin: 5px 0; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #000;}
 
-.container-profiles {width: auto; max-width: 300px; height: auto; margin: 25px; float: left;}
+.container-profiles {width: 25%; max-width: 300px; min-width: 100px; height: auto; margin: 25px; float: left;}
 #profiles {margin: 0 auto;}
 
 div.container-profiles a {color: #000; font-size: 18px; line-height: 20px; text-align: left; font-family: 'Fredoka One', cursive; text-shadow: 0px 0px #bdc3c7;}
@@ -46,6 +46,20 @@ div.container-profiles ul li img {-moz-border-radius: 10px; -webkit-border-radiu
 
 div.container-profiles ul li a {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #fff; text-shadow: none;}
 div.container-profiles ul li a:hover {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #1cc7a6; text-shadow: none;}
+
+.container-profiles-small {width: 20%; max-width: 100px; min-width: 40px; height: auto; margin: 25px; float: left;}
+div.container-profiles-small a {color: #000; font-size: 18px; line-height: 20px; text-align: left; font-family: 'Fredoka One', cursive; text-shadow: 0px 0px #bdc3c7;}
+div.container-profiles-small a:hover {color: #1cc7a6; font-size: 18px; line-height: 20px; text-align: left; text-decoration: none; border: none; text-shadow: 0px 0px #bdc3c7;}
+
+div.container-profiles-small img {border-radius: 5px;}
+
+div.container-profiles-small ul {list-style:none; color: #000; clear: both;}
+div.container-profiles-small ul li {float: left; padding: 5px; width: auto;}
+
+div.container-profiles-small ul li img {-moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px; margin: 0 5px;}
+
+div.container-profiles-small ul li a {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #fff; text-shadow: none;}
+div.container-profiles-small  ul li a:hover {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #1cc7a6; text-shadow: none;}
 
 .profile-section-index {position: absolute; left: 0; border-top: 0px solid #fff; width: 80%; border-top: 0px solid #fff; margin: 0 0 0 0; padding: 25px 0 0 0; z-index: 10; background-color: #fff;}
 
@@ -170,11 +184,11 @@ div.profile-follow-button a:hover {background-color: #1cc7a6;
     border-radius: 5px;
     font-size: 18px; padding: 15px 10px;}
 
-.profile-mainx {width: 50px; height: auto;}
-.profile-mainx img {width: 100%; height: auto;}
+.profile-mainx {width: 100%; height: auto;}
+.profile-mainx img {width: 100%; height: auto; max-width: 50px;}
 
-.profile-mainz {width: 300px; height: auto;}
-.profile-mainz img {width: 100%; height: auto;}
+.profile-mainz {width: 100%; height: auto;}
+.profile-mainz img {width: 100%; height: auto; max-width: 300px;}
 
 div#profiles h1 {font-size: 28px; line-height: 28px; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif; color: #000; width: 100%; padding: 0 5%; margin: 0;}
 
@@ -200,6 +214,8 @@ div.how-box2-mobile div.dropdown button.dropdown-toggle {float: left; margin: 10
 div.how-box2-mobile div.dropdown.open ul.dropdown-menu li a {border: none; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important; font-size: 18px; line-height: 18px; color: #fff;  padding: 3px 20px; width: 100%;  border-radius: 0; margin: 0;}
 div.how-box2-mobile div.dropdown.open ul.dropdown-menu li a:hover {border: none; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important; font-size: 18px; line-height: 18px; color: #1cc7a6; padding: 3px 20px; width: 100%; background-color: #fff; border-radius: 0; margin: 0;}
 div.how-box2-mobile div.dropdown {padding: 0;}
+
+div#profiles hr {float: left; width: 80%; margin: 25px 10%; color: #000; border: 2px solid #000;}
 
 @media screen and (min-width: 640px) and (max-width: 900px){
 

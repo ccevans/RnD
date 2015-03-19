@@ -45,13 +45,53 @@
   </div>
 
   <div id="profiles" class="transitions-enabled">
+    <% if @featured_users.any? %>
+      <h1>Featured Profiles</h1>
+
+       <% @featured_users.each do |featured_user| %>
+
+       <div class="container-profiles">
+        <%= link_to "/profiles/#{featured_user.username}" do %>
+        <% if featured_user.avatar.present? %>
+          <div class="profile-mainz">
+          <%= image_tag featured_user.avatar.url(:medium) %>
+        </div>
+      
+          <% elsif %>
+            <div class="profile-mainz">
+              <%= image_tag 'red-gasmask.png' %>
+            </div>
+
+          <% end %>
+          <% end %>
+        <% if featured_user.username.present? %>
+           <div class="user-row"><%= link_to featured_user.username, "/profiles/#{featured_user.username}" %></div>
+           <% end %>
+    
+        <% if featured_user.location.present? %>
+           <div class="user-row"><%= featured_user.location %></div>
+        <% end %>
+        </div>
+
+
+    <% end %>
+
+    <div class="clear"></div>
+
+     <hr>
+
+    <% end %>
+
+    <div class="clear"></div>
+
 		<% @users.each do |user| %>
 
-			 <div class="container-profiles">
+			 <div class="container-profiles-small">
         <%= link_to "/profiles/#{user.username}" do %>
 			 	<% if user.avatar.present? %>
-
+          <div class="profile-mainx">
 					<%= image_tag user.avatar.url(:thumb) %>
+        </div>
 			
           <% elsif %>
             <div class="profile-mainx">
@@ -136,7 +176,9 @@
        <div class="container-profiles">
         <%= link_to "/profiles/#{featured_user.username}" do %>
         <% if featured_user.avatar.present? %>
+          <div class="profile-mainz">
           <%= image_tag featured_user.avatar.url(:medium) %>
+        </div>
       
           <% elsif %>
             <div class="profile-mainz">
