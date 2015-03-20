@@ -134,5 +134,18 @@ div.chosen-box div.campaign-lyric-each {float: left; }
 
 div.campaign-lyric-each a.chosen_lyric { width: 80%;}
 
+@media screen and (max-width: 640px){
+	.campaign-section2 {width: 100% !important;}
+	.home-info {display: none !important;}
+
+	section.campaign-section {width: 100%; padding: 0;}
+	div#campaigns2 div.campaign-md {padding: 25px 5%;}
+	div#campaigns3 div.campaign-md {padding: 25px 5%;}
+	div.campaign-info ul li {font-size: 12px; line-height: 12px;}
+	div.campaign-info ul li strong a {font-size: 16px; line-height: 16px;}
+	div.campaign-info ul li strong a:hover {font-size: 16px; line-height: 16px;}
+
+	}
+
 
 
