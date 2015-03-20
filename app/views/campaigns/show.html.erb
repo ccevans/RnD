@@ -59,6 +59,34 @@
             <% end %>
             </div>
 
+            <div class="how-box2-mobile">
+             <% if @chosen_lyrics.any? %>
+              <div class="timer-info">
+              <%= link_to "Chosen Lyric(s)", '#lyric-chosen' %>
+            </div>
+              <% else %>
+              
+              <div class="timer-box2">
+                <% if @campaign.timer.nil? || @campaign.timer.empty? %>
+                    <div class="timer-info">Lyric submissions not open yet</div>
+                <% else %>
+                  <% unless @campaign.timer.nil? || @campaign.timer.empty? %>
+                      <%= link_to new_campaign_lyric_path(@campaign, @lyric) do %>
+                        <i class="fa fa-headphones"></i>
+                      <% end %>
+                  <span class="add-timer">Lyrics:</span>
+                    <div class="timer-info"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                    <span class="timer-line" data-countdown= <%= @campaign.timer %> ></span>
+                  </div>
+                  <% end %>
+                <% end %>
+              </div>
+
+            <% end %>
+
+
+            </div>
+
             <div class="how-box2">
               <% if @chosen_arts.any? %>
                   <div class="timer-info">
@@ -72,6 +100,30 @@
                   <% else %>
                   <% unless @campaign.timer2.nil? || @campaign.timer2.empty? %>
                   <%= link_to 'Submit Designs', new_campaign_art_path(@campaign, @art), class: "submitbutton" %>
+                  <div class="timer-info"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                    <span class="timer-line" data-countdown= <%= @campaign.timer2 %> ></span>
+                  </div>
+                    <% end %>
+                    <% end %>
+                  </div>
+                  <% end %>
+            </div>
+
+              <div class="how-box2-mobile">
+              <% if @chosen_arts.any? %>
+                  <div class="timer-info">
+                  <%= link_to "Chosen Design(s)", '#art-chosen' %>
+                </div>
+               <% else %>
+              
+                <div class="timer-box2">
+                   <% if @campaign.timer2.nil? || @campaign.timer2.empty? %>
+                  <div class="timer-info">Design submissions not open yet</div>
+                  <% else %>
+                  <% unless @campaign.timer2.nil? || @campaign.timer2.empty? %>
+                      <%= link_to new_campaign_art_path(@campaign, @art) do %>
+                        <i class="fa fa-paint-brush"></i>
+                      <% end %>
                   <div class="timer-info"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>
                     <span class="timer-line" data-countdown= <%= @campaign.timer2 %> ></span>
                   </div>
