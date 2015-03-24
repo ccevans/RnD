@@ -147,14 +147,21 @@ div.container-extra ul li ul.votebox2 li a.vote-confirmed {float: left; margin: 
 div.container-extra ul li ul.votebox2 li a.vote-confirmed:hover {float: left; margin: 5px 0; padding: 15px 10px; width: auto; color: #000; background-color: #1cc7a6; border-radius: 5px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-size: 18px; text-align: center;}
 
 @media screen and (max-width: 640px){
+    .art-section {width: 100% !important;}
+    section.art-section div.container-show2 {margin: 50px 0 !important;}
+    div.container-show2 div.container-art2 {width: 100% !important;}
+    div.container-show2 div.container-extra {width: 100% !important;}
     div.container-art {margin: 25px 5%; width: 90%;}
     div.container-art div.container-small {width: 100% !important;}
     div.container-art div.container-art2 {width: 100% !important;}
     div.container-art div.container-extra {width: 100% !important;}
     .vote-confirmed {font-size: 14px; padding: 10px 5px;}
     div.container-art ul {padding: 0 !important;}
-    div.container-art div.container-extra ul li ul.votebox2 {width: auto !important; float: left; clear: none;}
-    div.container-art div.container-extra ul li ul.vote-column {width: auto !important; float: left; clear: none;}
-    div.container-art div.container-extra ul li ul.vote-column a.voteup li {width: auto !important; float: left;}
-    div.container-art div.container-extra ul li ul.vote-column a.voteup li div.vote-button {font-size: 16px; line-height: 16px; margin: 0 2px; padding: 12px 15px !important;}
+    div.container-show2 div.container-extra ul {padding: 0 !important;}
+    div.container-extra ul li ul.votebox2 {width: auto !important; float: left; clear: none;}
+    div.container-extra ul li ul.vote-column {width: auto !important; float: left; clear: none;}
+    div.container-extra ul li ul.vote-column a.voteup li {width: auto !important; float: left;}
+    div.container-extra ul li ul.vote-column a.voteup li div.vote-button {font-size: 16px; line-height: 16px; margin: 0 2px; padding: 12px 15px !important;}
+    div.container-comment form#new_commentart.simple_form.new_commentart {width: 80% !important; margin: 0 10% !important;}
+
 }
