@@ -17,13 +17,31 @@ class LyricsController < ApplicationController
 
 		case params[:sort_by]
 	      when 'most_liked'
-	        @lyrics = apply_scopes(Lyric).all.order(:cached_votes_up => :desc).paginate(:page => params[:page], :per_page => 50)
+	      		if params[:tag].present? 
+		    		@lyrics = Lyric.tagged_with(params[:tag]).order(:cached_votes_up => :desc).paginate(:page => params[:page], :per_page => 50)
+		  		else 
+		    		@lyrics = apply_scopes(Lyric).all.order(:cached_votes_up => :desc).paginate(:page => params[:page], :per_page => 50)
+		    	end
 	       when 'most_viewed'
-	        @lyrics = apply_scopes(Lyric).all.order(:counter_cache => :desc).paginate(:page => params[:page], :per_page => 50)
+	       		if params[:tag].present? 
+		    		@lyrics = Lyric.tagged_with(params[:tag]).order(:counter_cache => :desc).paginate(:page => params[:page], :per_page => 50)
+		  		else 
+		    		@lyrics = apply_scopes(Lyric).all.order(:counter_cache => :desc).paginate(:page => params[:page], :per_page => 50)
+		    	end
+	        
 	      when 'most_recent'
-	        @lyrics = apply_scopes(Lyric).all.order("created_at DESC").paginate(:page => params[:page], :per_page => 50)
+	      		if params[:tag].present? 
+		    		@lyrics = Lyric.tagged_with(params[:tag]).order("created_at DESC").paginate(:page => params[:page], :per_page => 50)
+		  		else 
+		    		@lyrics = apply_scopes(Lyric).all.order("created_at DESC").paginate(:page => params[:page], :per_page => 50)
+		  		end 
+	        
 	      else
-	        @lyrics = apply_scopes(Lyric).all.order("created_at DESC").paginate(:page => params[:page], :per_page => 50)
+			    if params[:tag].present? 
+		    		@lyrics = Lyric.tagged_with(params[:tag]).order("created_at DESC").paginate(:page => params[:page], :per_page => 50)
+		  		else 
+		    		@lyrics = apply_scopes(Lyric).all.order("created_at DESC").paginate(:page => params[:page], :per_page => 50)
+		  		end 
 	    end
 
 	end
@@ -118,12 +136,34 @@ class LyricsController < ApplicationController
 
 	def tagged
 
-  		if params[:tag].present? 
-    		@lyrics = Lyric.tagged_with(params[:tag]).order("created_at desc").paginate(:page => params[:page], :per_page => 10)
-  		else 
-    		@lyrics = apply_scopes(Lyric).all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
-
-  		end  
+		case params[:sort_by]
+	      when 'most_liked'
+	      		if params[:tag].present? 
+		    		@lyrics = Lyric.tagged_with(params[:tag]).order(:cached_votes_up => :desc).paginate(:page => params[:page], :per_page => 50)
+		  		else 
+		    		@lyrics = apply_scopes(Lyric).all.order(:cached_votes_up => :desc).paginate(:page => params[:page], :per_page => 50)
+		    	end
+	       when 'most_viewed'
+	       		if params[:tag].present? 
+		    		@lyrics = Lyric.tagged_with(params[:tag]).order(:counter_cache => :desc).paginate(:page => params[:page], :per_page => 50)
+		  		else 
+		    		@lyrics = apply_scopes(Lyric).all.order(:counter_cache => :desc).paginate(:page => params[:page], :per_page => 50)
+		    	end
+	        
+	      when 'most_recent'
+	      		if params[:tag].present? 
+		    		@lyrics = Lyric.tagged_with(params[:tag]).order("created_at DESC").paginate(:page => params[:page], :per_page => 50)
+		  		else 
+		    		@lyrics = apply_scopes(Lyric).all.order("created_at DESC").paginate(:page => params[:page], :per_page => 50)
+		  		end 
+	        
+	      else
+			    if params[:tag].present? 
+		    		@lyrics = Lyric.tagged_with(params[:tag]).order("created_at DESC").paginate(:page => params[:page], :per_page => 50)
+		  		else 
+		    		@lyrics = apply_scopes(Lyric).all.order("created_at DESC").paginate(:page => params[:page], :per_page => 50)
+		  		end 
+	    end
 	end
 
 	def tag_cloud

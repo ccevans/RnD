@@ -241,5 +241,12 @@ ul li a.vote-confirmed:hover {float: left; margin: 5px 0; padding: 15px 10px; wi
     ul li span.updown-button a span.glyphicon {font-size: 18px; line-height: 18px; color: #fff;}
     ul li span.updown-button a span.glyphicon:hover {font-size: 18px; line-height: 18px; color: #000;}
     ul li span.updown-button.nohover a span.glyphicon:hover {font-size: 18px; line-height: 18px; color: #fff; pointer-events: none !important; cursor: none !important;}
-        
+    .lyric-section {width: 100%; margin: 0 0 0 0; padding: 50px 0 0 0;}
+
+    div.container-md a {color: #000; font-size: 20px; line-height: 22px; text-align: left; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif; text-shadow: 0px 0px #bdc3c7;}
+    div.container-md a:hover {color: #95a5a6; font-size: 20px; line-height: 22px; text-align: left; text-decoration: none; border: none; text-shadow: 0px 0px #bdc3c7;}
+    div.container-md ul {padding: 0 !important;}
+    div.container-md ul li {padding: 10px 5px 10px 5px !important;}
+    div.how-box2-mobile div.dropdown button {padding: 10px !important;}
+
 }

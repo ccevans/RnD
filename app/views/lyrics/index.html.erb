@@ -53,13 +53,23 @@
 
   </div>
 
+      <div class="how-box2-mobile">
 
-  </div>
+    <%= link_to pages_how_it_works_path do %>
+      <i class="fa fa-paper-plane"></i>
+    <% end %>
 
-  <div class="sort-box">
-    <div class="dropdown">
-      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-        Sort
+    <%= link_to '#' do %>
+      <i class="fa fa-flask"></i>
+    <% end %>
+
+    <%= link_to new_campaign_lyric_path(Campaign.last) do %>
+      <i class="fa fa-headphones"></i>
+    <% end %>
+
+        <div class="dropdown">
+      <button class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+        <span class="glyphicon glyphicon glyphicon-sort" aria-hidden="true"></span>
         <span class="caret"></span>
       </button>
 
@@ -71,8 +81,8 @@
     </div>
 
     <div class="dropdown">
-      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-        Filter
+      <button class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+        <span class="glyphicon glyphicon glyphicon-filter" aria-hidden="true"></span>
         <span class="caret"></span>
       </button>
       <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
@@ -87,9 +97,12 @@
     </div>
 
 
+
   </div>
 
 
+
+  </div>
 
   <div id="lyrics" class="transitions-enabled">
     <% @lyrics.each do |lyric| %>
