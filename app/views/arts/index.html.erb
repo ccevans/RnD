@@ -33,15 +33,22 @@
   </div>
 
     <div class="how-box2-mobile">
-    <%= link_to 'How It Works', pages_how_it_works_path, :class => "" %>
+          <%= link_to pages_how_it_works_path do %>
+      <i class="fa fa-paper-plane"></i>
+    <% end %>
 
-  <%= link_to 'Lab Shop', '#', :class => "" %>
+    <%= link_to '#' do %>
+      <i class="fa fa-flask"></i>
+    <% end %>
 
-  <%= link_to 'Submit Design', new_campaign_art_path(Campaign.last), :class => "" %>
+    <%= link_to new_campaign_art_path(Campaign.last) do %>
+      <i class="fa fa-paint-brush"></i>
+    <% end %>
 
     <div class="dropdown">
       <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-        Sort
+        <span class="glyphicon glyphicon glyphicon-sort" aria-hidden="true"></span>
+
         <span class="caret"></span>
       </button>
       <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
