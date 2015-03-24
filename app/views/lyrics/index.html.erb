@@ -187,18 +187,21 @@
 
         </ul>
         <br />
+        <% if lyric.tags.any? %>
         <ul class="tag-list">
-        <li><% lyric.tags.any? %>
+        <li>
+          <span class="glyphicon glyphicon glyphicon-tags" aria-hidden="true"></span>
           <% lyric.tags.each do |tag| %>
           <%= link_to tag.name, campaign_tagged_url(:tag => tag.name) %>
           <% end %></li>
         </ul>
+        <% end %>
      
       
       </div>
     <% end %>
 
-    <div class="back-top" title="Top of Page"> <a href="#top" onclick="return false;"><i class="glyphicon glyphicon-chevron-up"></i> Back to Top</a></div> 
+    <div class="back-top" title="Top of Page"> <a href="#top" onclick="return false;"><i class="glyphicon glyphicon-chevron-up"></i></a></div> 
 
   </div>
 
