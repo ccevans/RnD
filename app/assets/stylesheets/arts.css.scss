@@ -146,3 +146,8 @@ div.container-show2 div.container-comment div.comment img {float: left; margin: 
 div.container-extra ul li ul.votebox2 li a.vote-confirmed {float: left; margin: 5px 0; padding: 15px 10px; width: auto; color: #fff; background-color: #1cc7a6; border-radius: 5px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-size: 18px; text-align: center;}
 div.container-extra ul li ul.votebox2 li a.vote-confirmed:hover {float: left; margin: 5px 0; padding: 15px 10px; width: auto; color: #000; background-color: #1cc7a6; border-radius: 5px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-size: 18px; text-align: center;}
 
+@media screen and (max-width: 640px){
+    div.container-art {margin: 25px 5%; width: 90%;}
+    div.container-art div.container-small {width: 100% !important;}
+    div.container-art div.container-art2 {width: 100% !important;}
+}
