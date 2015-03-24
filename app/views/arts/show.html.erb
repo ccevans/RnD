@@ -16,7 +16,7 @@
 
   <div class="container-art2">
       <% unless @art.image.nil? %>
-      <%= image_tag @art.image.url(:medium) %>
+      <%= image_tag @art.image.url(:large) %>
       <% end %>
   </div>
           <div class="container-extra">
@@ -154,7 +154,7 @@
          <div class="container-art2">
           <%= link_to campaign_art_path(@campaign, random_art) do %>
             <% unless random_art.image.nil? %>
-              <%= image_tag random_art.image.url(:small) %>
+              <%= image_tag random_art.image.url(:large) %>
               <% end %>
           <% end %>
 

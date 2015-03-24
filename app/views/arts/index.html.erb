@@ -74,7 +74,7 @@
            <div class="container-small">
           <%= link_to campaign_art_path(@campaign, art) do %>
             <% unless art.image.nil? %>
-              <%= image_tag art.image.url(:small) %>
+              <%= image_tag art.image.url(:large) %>
               <% end %>
           <% end %>
 
@@ -85,7 +85,7 @@
           <div class="container-art2 <%= art.id %>">
           <%= link_to campaign_art_path(@campaign, art) do %>
             <% unless art.image.nil? %>
-              <%= image_tag art.image.url(:small) %>
+              <%= image_tag art.image.url(:large) %>
               <% end %>
           <% end %>
 
