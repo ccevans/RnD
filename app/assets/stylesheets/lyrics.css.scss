@@ -127,8 +127,8 @@ div.header-lyric p a:hover {color: #000; text-decoration: none;}
 
 .pagination > .disabled > span, .pagination > .disabled > span:hover, .pagination > .disabled > span:focus, .pagination > .disabled > a, .pagination > .disabled > a:hover, .pagination > .disabled > a:focus {background-color: none !important; border: none !important;}
 
-.stepbackward {position: absolute; top: 150px; left: 5%; width: auto; font-size: 40px; color: #000;}
-.stepforward {position: absolute; top: 150px; right: 5%; width: auto; font-size: 40px; color: #000;}
+.stepbackward {position: absolute; top: 150px; left: 5%; width: auto; font-size: 40px;}
+.stepforward {position: absolute; top: 150px; right: 5%; width: auto; font-size: 40px;}
 
 div.stepbackward a span.glyphicon.glyphicon-step-backward {color: #bdc3c7;}
 div.stepforward a span.glyphicon.glyphicon-step-forward {color: #bdc3c7;}
@@ -248,5 +248,11 @@ ul li a.vote-confirmed:hover {float: left; margin: 5px 0; padding: 15px 10px; wi
     div.container-md ul {padding: 0 !important;}
     div.container-md ul li {padding: 10px 5px 10px 5px !important;}
     div.how-box2-mobile div.dropdown button {padding: 10px !important;}
+
+    .stepbackward {position: absolute; top: 150px; left: 1%; width: auto; font-size: 30px;}
+    .stepforward {position: absolute; top: 150px; right: 1%; width: auto; font-size: 30px;}
+    .lyric-section div.container-show {margin-top: 50px !important;}
+    div.container-show div.container-line {color: #000; font-size: 20px; line-height: 22px; width: 100%;}
+    div.container-show div.container-extra {width: 100%;}
 
 }

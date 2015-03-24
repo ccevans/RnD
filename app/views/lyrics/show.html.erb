@@ -76,6 +76,7 @@
         <% unless @lyric.tags.nil? || @lyric.tags.empty? %>
         <ul>
     <li>
+        <span class="glyphicon glyphicon glyphicon-tags" aria-hidden="true"></span>
         <% @lyric.tags.each do |tag| %>
           <%= link_to tag.name, campaign_tagged_url(:tag => tag.name) %>
         <% end %>
@@ -268,12 +269,15 @@
 
         </ul>
         <br />
+        <% if random_lyric.tags.any? %>
         <ul class="tag-list">
-        <li><% random_lyric.tags.any? %>
+        <li>
+          <span class="glyphicon glyphicon glyphicon-tags" aria-hidden="true"></span>
           <% random_lyric.tags.each do |tag| %>
           <%= link_to tag.name, campaign_tagged_url(:tag => tag.name) %>
           <% end %></li>
         </ul>
+          <% end %>
      
       
       </div>
