@@ -28,7 +28,7 @@ div.container-show ul li img {-moz-border-radius: 10px; -webkit-border-radius: 1
 div.container-show ul li a {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #000; text-shadow: none;}
 div.container-show ul li a:hover {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #1cc7a6; text-shadow: none; text-decoration: none;}
 
-div.container-line {float: left; width: 70%; height: auto; min-height: 100px; color: #000; font-size: 24px; line-height: 30px; padding: 0; text-align: left; font-family: 'Fredoka One', cursive; text-shadow: 1px 1px #bdc3c7;}
+div.container-line {float: left; width: 70%; height: auto; min-height: 100px; color: #000; font-size: 24px; line-height: 30px; padding: 0; text-align: left; font-family: 'Fredoka One', cursive;}
 div.container-profile {float: left; width: 40%; padding: 5px; color: #000; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-size: 28px; line-height: 28px; background-color: #ecf0f1; margin: 20px 5%;}
 div.container-desc {float: left; width: auto; color: #000; padding: 20px; font-size: 24px; line-height: 24px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; border-left: 4px solid #bdc3c7; margin-left: 20px; margin-top: 5px;}
 div.container-comment {float: left; width: 100%; padding: 5px;}
@@ -249,10 +249,13 @@ ul li a.vote-confirmed:hover {float: left; margin: 5px 0; padding: 15px 10px; wi
     div.container-md ul li {padding: 10px 5px 10px 5px !important;}
     div.how-box2-mobile div.dropdown button {padding: 10px !important;}
 
-    .stepbackward {position: absolute; top: 150px; left: 1%; width: auto; font-size: 30px;}
-    .stepforward {position: absolute; top: 150px; right: 1%; width: auto; font-size: 30px;}
+    .stepbackward {position: absolute; top: 100px; left: 1%; width: auto; font-size: 30px;}
+    .stepforward {position: absolute; top: 100px; right: 1%; width: auto; font-size: 30px;}
     .lyric-section div.container-show {margin-top: 50px !important;}
     div.container-show div.container-line {color: #000; font-size: 20px; line-height: 22px; width: 100%;}
     div.container-show div.container-extra {width: 100%;}
+    div.container-show div.container-extra ul {padding: 0 !important;}
+    div.container-desc {float: left; width: auto; color: #000; padding: 15px; font-size: 20px; line-height: 20px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; border-left: 4px solid #bdc3c7; margin-left: 20px; margin-top: 5px;}
+    div.container-comment form#new_comment.simple_form.new_comment {width: 80% !important; margin: 0 10% !important;}
 
 }
