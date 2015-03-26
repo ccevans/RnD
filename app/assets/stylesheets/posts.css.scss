@@ -16,7 +16,7 @@ div.container-post-desc {width: 70%; float: left; margin: 0; color: #000; paddin
 
 div.container-show div.container-post h1 {color: #000;}
 
-.container-post-index {width: 400px; margin: 50px 25px; }
+.container-post-index {max-width: 400px; margin: 50px 5%; width: 90%;}
 #posts {margin: 0 auto;}
 
 div.container-post-index a {color: #000; font-size: 24px; line-height: 26px; text-align: left; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif; text-shadow: 0px 0px #bdc3c7;}
@@ -33,7 +33,7 @@ div.container-post-index ul li a:hover {font-size: 14px; line-height: 14px; font
 div.container-post-index ul.tag-list {margin-top: 0; margin-bottom: 0; padding: 0;}
 div.container-post-index ul.tag-list li {float: left; width: auto; margin-top: 0; margin-bottom: 0;}
 
-.post-section {position: absolute; left: 0; border-top: 0px solid #fff; width: 80%; border-top: 0px solid #fff; margin: 0 0 0 0; padding: 25px 0; z-index: 10; background-color: #fff;}
+.post-section {position: absolute; left: 0; border-top: 0px solid #fff; width: 80%; border-top: 0px solid #fff; margin: 0 0 0 0; padding: 25px 0 0 0; z-index: 10; background-color: #fff;}
 
 .video-box {width: 100%; height: auto; float: left;}
 
@@ -69,4 +69,14 @@ form.simple_form.edit_post input.btn.btn-default.post-button:hover {font-size: 1
 div.form-info {font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #2980b9; font-size: 14px; margin-bottom: 10px;}
 
 div.container-show div.container-post h1 {margin: 0 0 15px 0;}
+
+div#posts div.container-post-index a img {width: 100%;}
+
+@media screen and (max-width: 640px){
+ 	a i.fa.fa-info {padding: 0 8px;}
+	section.post-section div#works-exp2 div.how-campaign {width: 100%;}
+	.post-section {width: 100%; padding: 50px 0 25px 0;}
+	div#posts div.container-post-index ul {padding: 0 !important;}
+
+}
 

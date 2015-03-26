@@ -12,6 +12,23 @@ class Art < ActiveRecord::Base
 	scope :chosen, -> { where(:chosen => true) }
 	
 
-	has_attached_file :image, :styles => { :large => "1200x1200#", :medium => "500x500#", :small => "300x300#" }, :default_url => "/images/:style/missing.png"
+	has_attached_file :image, 
+		:processors => [:watermark], 
+		:url => "/system/:class/:attachment/:id_partition/:style/:filename",
+  		:path => ":rails_root/public/system/:class/:attachment/:id_partition/:style/:filename",
+		:styles => { 
+			:large => {
+					:geometry => "1200x1200#",
+	                :watermark_path => Rails.root.join('app/assets/images/watermark.png'),
+	                :position => 'SouthWest'
+				}, 
+			:medium => "500x500#", 
+			:small => "300x300#"
+			}, 
+			:default_url => "/images/:style/missing.png"
+
   	validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
+
+
+
 end
