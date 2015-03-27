@@ -23,9 +23,9 @@ class ProfilesController < ApplicationController
   	@user = User.find_by_username(params[:id])
   	if @user
       
-  		@lyrics = @user.lyrics.all
-      @arts = @user.arts.all
-      @posts = @user.posts.all
+  		@lyrics = @user.lyrics.all.order("created_at DESC")
+      @arts = @user.arts.all.order("created_at DESC")
+      @posts = @user.posts.all.order("created_at DESC")
   		render action: :show
   	else
   		render file: 'public/404', status: 404, formats: [:html]

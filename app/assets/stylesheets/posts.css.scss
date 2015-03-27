@@ -33,21 +33,46 @@ div.container-post-index ul li a:hover {font-size: 14px; line-height: 14px; font
 div.container-post-index ul.tag-list {margin-top: 0; margin-bottom: 0; padding: 0;}
 div.container-post-index ul.tag-list li {float: left; width: auto; margin-top: 0; margin-bottom: 0;}
 
+.container-post-profile {max-width: 400px; margin: 50px 5%; width: 90%;}
+
+div.container-post-profile a {color: #000; font-size: 24px; line-height: 26px; text-align: left; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif; text-shadow: 0px 0px #bdc3c7;}
+div.container-post-profile a:hover {color: #1cc7a6; font-size: 24px; line-height: 26px; text-align: left; text-decoration: none; border: none; text-shadow: 0px 0px #bdc3c7;}
+
+
+
+div.container-post-profile ul {list-style:none; color: #000; clear: both;}
+div.container-post-profile ul li {float: left; padding: 5px; width: auto;}
+
+div.container-post-profile ul li a {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #000; text-shadow: none;}
+div.container-post-profile ul li a:hover {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #1cc7a6; text-shadow: none;}
+
+div.container-post-profile ul.tag-list {margin-top: 0; margin-bottom: 0; padding: 0;}
+div.container-post-profile ul.tag-list li {float: left; width: auto; margin-top: 0; margin-bottom: 0;}
+
+div#posts div.container-post-profile p iframe {width: 100%; min-height: 300px; float: left;}
+
+div.container-post-profile ul li img {border-radius: 10px;}
+
+div#posts div.container-post-profile a img {width: 100%;}
+
+
+
+
 .post-section {position: absolute; left: 0; border-top: 0px solid #fff; width: 80%; border-top: 0px solid #fff; margin: 0 0 0 0; padding: 25px 0 0 0; z-index: 10; background-color: #fff;}
 
 .video-box {width: 100%; height: auto; float: left;}
 
-div#posts.transitions-enabled.masonry div.container-post-index.masonry-brick p iframe {width: 100%; min-height: 300px; float: left;}
+div#posts div.container-post-index p iframe {width: 100%; min-height: 300px; float: left;}
 
-html body section.main-section section.post-section div#posts.transitions-enabled.masonry {width: 100% !important;}
+.main-section section.post-section div#posts {width: 100% !important;}
 
-html body form#edit_post_4.simple_form.edit_post {margin-top: 75px;}
+form#edit_post_4.simple_form.edit_post {margin-top: 75px;}
 
-section.post-section div#posts.transitions-enabled.masonry {float: left;}
+section.post-section div#posts {float: left;}
 
 div.post-title a {margin-top: 10px; float: left;}
 
-div.container-post-index.masonry-brick ul li img {border-radius: 10px;}
+div.container-post-index ul li img {border-radius: 10px;}
 
 form.simple_form.edit_post label {font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #2980b9; font-size: 16px;}
 form#new_post.simple_form.new_post label {font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #2980b9; font-size: 16px;}
@@ -77,6 +102,7 @@ div#posts div.container-post-index a img {width: 100%;}
 	section.post-section div#works-exp2 div.how-campaign {width: 100%;}
 	.post-section {width: 100%; padding: 50px 0 25px 0;}
 	div#posts div.container-post-index ul {padding: 0 !important;}
+	div#posts div.container-post-profile ul {padding: 0 !important;}
 
 }
 

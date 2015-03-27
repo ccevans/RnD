@@ -228,19 +228,44 @@
 									        <%= link_to lyric.line, "/campaigns/2/lyrics/#{lyric.id}" %>
 									        <% end %>
 									        <ul>
-									        	<li><span class="profile-time"><%= time_ago_in_words(lyric.created_at) %> ago </span></li>
+
+									               <% if user_signed_in? %>
+												          <li><span class="updown-button"><span class="up <%= lyric.id %>"><%= lyric.get_upvotes.size %> </span>
+												          <%= link_to like_lyric_path(lyric), class: ['voteup', lyric.id], remote: true, data: { type: :json }, method: :get do %>
+												          <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+												            <% end %>
+												          </span>
+												        </li>
+												        <li>
+												            <span class="updown-button"><span class="down <%= lyric.id %>"><%= lyric.get_downvotes.size %></span>
+												          <%= link_to dislike_lyric_path(lyric), class: ['votedown', lyric.id], remote: true, data: { type: :json }, method: :get do %>
+												          <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+												            <% end %>
+												          </span>
+
+												          </li>
+
+												          <% else %>
+
+												          <li><span class="updown-button"><span class="up <%= lyric.id %>"><%= lyric.get_upvotes.size %> </span>
+												          <%= link_to_if user_signed_in?, like_lyric_path(lyric), class: ['voteup', lyric.id], remote: true, data: { type: :json }, method: :get do %>
+												          <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+												            <% end %>
+												          </span>
+												        </li>
+												        <li>
+												            <span class="updown-button"><span class="down <%= lyric.id %>"><%= lyric.get_downvotes.size %></span>
+												          <%= link_to_if user_signed_in?, dislike_lyric_path(lyric), class: ['votedown', lyric.id], remote: true, data: { type: :json }, method: :get do %>
+												          <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+												            <% end %>
+												          </span>
+												        
+												          <span type="button" data-toggle="tooltip" data-placement="top" title="Sign In To Vote" class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+												          </li>
+
+
+												          <% end %>	
 									        <li><%= lyric.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
-
-									                <li><span class="up <%= lyric.id %>"><%= lyric.get_upvotes.size %> </span>
-										          <%= link_to like_lyric_path(lyric), class: ['voteup', lyric.id], remote: true, data: { type: :json }, method: :get do %>
-										          <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
-										            <% end %>
-										            <span class="down <%= lyric.id %>"><%= lyric.get_downvotes.size %></span>
-										          <%= link_to dislike_lyric_path(lyric), class: ['votedown', lyric.id], remote: true, data: { type: :json }, method: :get do %>
-										          <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-										            <% end %>
-										          </li>
-
 
 										  	<script>
 
@@ -265,9 +290,12 @@
 
 									        <li><%= lyric.comments.count %> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></li>
 									        <li><% if lyric.user.avatar.present? %><a class="popoverExampleTwo" data-placement="auto left" data-trigger="click" return false;><%= image_tag lyric.user.avatar.url(:mini) %></a><% end %><% if lyric.user.username.present? %><%= link_to lyric.user.username, profile_url(:id => lyric.user.username) %><% end%></li>
+									        
 
 									        </ul>
-									     
+									     	<ul>
+									     		<li><span class="profile-time"><%= time_ago_in_words(lyric.created_at) %> ago </span></li>
+									     	</ul>
 									      
 									      </div>
 							<% end %>
@@ -335,9 +363,9 @@
 			    	<% if can? :manage, :all %>
 			    	    <% if @posts.any? %>
 
-							  <div id="posts" class="transitions-enabled">
+							  <div id="posts">
 							    <% @posts.each do |post| %>
-							    <div class="container-post-index">
+							    <div class="container-post-profile">
 
 							       <% unless post.videolink.nil? || post.videolink.empty? %>
 										<% if post.typeof == 'video' %>
@@ -366,17 +394,46 @@
 							    <% end %>
 
 							        <ul>
+
+							        	<% if user_signed_in? %>
+								          <li><span class="updown-button"><span class="up <%= post.id %>"><%= post.get_upvotes.size %> </span>
+								          <%= link_to like_post_path(post), class: ['voteup', post.id], remote: true, data: { type: :json }, method: :get do %>
+								          <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+								            <% end %>
+								          </span>
+								        </li>
+								        <li>
+								            <span class="updown-button"><span class="down <%= post.id %>"><%= post.get_downvotes.size %></span>
+								          <%= link_to dislike_post_path(post), class: ['votedown', post.id], remote: true, data: { type: :json }, method: :get do %>
+								          <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+								            <% end %>
+								          </span>
+
+								          </li>
+
+								          <% else %>
+
+								          <li><span class="updown-button"><span class="up <%= post.id %>"><%= post.get_upvotes.size %> </span>
+								          <%= link_to_if user_signed_in?, like_post_path(post), class: ['voteup', post.id], remote: true, data: { type: :json }, method: :get do %>
+								          <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+								            <% end %>
+								          </span>
+								        </li>
+								        <li>
+								            <span class="updown-button"><span class="down <%= post.id %>"><%= post.get_downvotes.size %></span>
+								          <%= link_to_if user_signed_in?, dislike_post_path(post), class: ['votedown', post.id], remote: true, data: { type: :json }, method: :get do %>
+								          <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+								            <% end %>
+								          </span>
+								        
+								          <span type="button" data-toggle="tooltip" data-placement="top" title="Sign In To Vote" class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+								          </li>
+
+
+								          <% end %>
+
 							        <li><%= post.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
 
-							          <li><span class="up <%= post.id %>"><%= post.get_upvotes.size %> </span>
-							          <%= link_to like_post_path(post), class: ['voteup', post.id], remote: true, data: { type: :json }, method: :get do %>
-							          <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
-							            <% end %>
-							            <span class="down <%= post.id %>"><%= post.get_downvotes.size %></span>
-							          <%= link_to dislike_post_path(post), class: ['votedown', post.id], remote: true, data: { type: :json }, method: :get do %>
-							          <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-							            <% end %>
-							          </li>
 
 
 							              <script>

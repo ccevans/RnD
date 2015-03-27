@@ -9,9 +9,3 @@ $ ->
 		$('#photos').masonry
 			itemSelector: '.photo'
 			isFitWidth: true
-
-$ ->
-	$('#posts').imagesLoaded ->
-		$('#posts').masonry
-			itemSelector: '.container-post-index'
-			isFitWidth: true
