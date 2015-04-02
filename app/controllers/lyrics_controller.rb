@@ -4,10 +4,12 @@ class LyricsController < ApplicationController
 	has_scope :by_tags
 	has_scope :by_campaign, :using => [:campaign_id]
 	load_and_authorize_resource :only => [:show, :edit, :update, :destroy]
-	before_action :find_post, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
+	before_action :find_post, only: [:show, :edit, :update, :destroy, :upvote, :downvote, :add_points]
 	before_action :set_campaign, except: [:upvote, :downvote]
 	before_action :authenticate_user!, except: [:index, :show, :tagged]
 	impressionist :actions => [:show,:index], :unique => [:impressionable_type, :impressionable_id, :session_hash]
+	before_action :add_points, only: [:upvote, :downvote]
+
 
 	respond_to :html, :json, :js
 
@@ -115,6 +117,17 @@ class LyricsController < ApplicationController
 
    		end
 	end
+
+	def add_points
+		if user_signed_in?
+		unless (current_user.voted_for? @lyric)
+
+          @current_user.add_points(1, category: 'lyric')
+        
+      	end
+      end
+	end
+
 
 	def tagged
 

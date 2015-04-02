@@ -1,3 +1,5 @@
+<% if user_signed_in? && current_user.points > 69 %>
+
 
 <section class="campaign-section2">
 
@@ -124,6 +126,17 @@
 <%= render 'layouts/footer' %>
 
 </section>
+
+<% else %>
+
+<section class="campaign-section2">
+
+  Get ya points up!
+
+
+</section>
+
+<% end %>
 
 <section class="home-info">
 

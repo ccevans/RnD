@@ -217,6 +217,28 @@ div.how-box2-mobile div.dropdown {padding: 0;}
 
 div#profiles hr {float: left; width: 80%; margin: 25px 10%; color: #000; border: 2px solid #000;}
 
+#accordion.dashlist {margin: 25px 0; width: 100%; padding: 0 10%; float: left;}
+
+.dashlist .panel-heading {background-color: #1abc9c !important; color: #fff !important; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif;}
+.points-lab2 {font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif; font-size: 26px; line-height: 26px; text-align: right;}
+.points-lab2-done {font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif; font-size: 26px; line-height: 26px; text-align: right; color: #7f8c8d;}
+
+.dashlist .panel .panel-heading h4.panel-title a {font-size: 26px; color: #fff; text-decoration: none;}
+.dashlist .panel .panel-heading h4.panel-title a:hover {font-size: 26px; color: #000; text-decoration: none;}
+.right-circle {float: right;}
+.left-circle {padding: 0 20px 0 10px;}
+li.list-group-item span.left-circle i.fa.fa-circle-o {font-size: 26px; color: #1cc7a6 !important; }
+li.list-group-item span.left-circle i.fa.fa-check-circle-o {font-size: 26px; color: #1cc7a6 !important; }
+ul.list-group li.list-group-item {padding: 15px; font-size: 22px;}
+span.right-circle span i.fa {padding: 0 5px !important;}
+
+li.list-group-item span.left-circle i.fa.fa-circle-o:hover:before {
+  content: "\f192"
+}
+
+.labpoints-box {font-size: 80px; line-height: 80px; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif; color: #1abc9c; float: left; width: 100%; padding: 0 10%; margin: 75px 0 0 0;}
+div.labpoints-box span.left-circle {float: right;}
+
 @media screen and (min-width: 640px) and (max-width: 900px){
 
     ul.nav.navbar-nav.navbar-right li.dropdown2 a {font-size: 14px; line-height: 16px;}
@@ -234,6 +256,8 @@ div#profiles hr {float: left; width: 80%; margin: 25px 10%; color: #000; border:
 
 
 @media screen and (max-width: 640px){
+    .labpoints-box {font-size: 40px; line-height: 40px; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif; color: #1abc9c; float: left; width: 100%; padding: 0 10%; margin: 25px 0 0 0;}
+
     .profile-topbox1 {
     float: left;
     margin: -25px 0 0 0;

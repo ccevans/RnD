@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 	before_action :set_user, only: [:show, :edit, :update, :destroy, :finish_signup]
-
+  
+  
   # GET /users/:id.:format
   def show
     # authorize! :read, @user
@@ -50,6 +51,7 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
   
   private
     def set_user
@@ -61,6 +63,8 @@ class UsersController < ApplicationController
       accessible << [ :password, :password_confirmation ] unless params[:user][:password].blank?
       params.require(:user).permit(accessible)
     end
+
+    
 
 	
 end

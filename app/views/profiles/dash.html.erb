@@ -1,0 +1,478 @@
+<section class="main-section">
+	<% if user_signed_in? %>
+
+	<section class="lyric-section">
+
+		<div class="labpoints-box">
+			Lab Points Dashboard
+			<span class="left-circle"><i class="fa fa-flask"></i><%= current_user.points %></span>
+
+		</div>
+			<div class="panel-group dashlist" id="accordion" role="tablist" aria-multiselectable="true">
+
+				<div class="panel panel-default">
+			    <div class="panel-heading" role="tab" id="headingOne">
+			      <h4 class="panel-title">
+			        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+			          Check Points
+			        </a>
+			        <span class="right-circle">
+			        <span class="points-lab2"><i class="fa fa-flask"></i> <%= current_user.points %> </span> 
+			    	</span>
+			      </h4>
+			    </div>
+			    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+				  <div class="panel-body">
+				       
+				  </div>
+
+			      <ul class="list-group">
+					  <li class="list-group-item">
+					  	<% if current_user.points > 69 %>
+					  	<span class="left-circle"><i class="fa fa-check-circle-o"></i></span>Congrats! Access Granted To Site Early<span class="right-circle">
+			        <span class="points-lab2-done"><i class="fa fa-unlock"></i>70</span>
+			    	</span>
+
+					  	<% else %>
+					  	<span class="left-circle"><i class="fa fa-circle-o"></i></span>Get Access To Site Early By Updating Profile<span class="right-circle">
+			        <span class="points-lab2"><i class="fa fa-lock"></i>70</span>
+			    	</span>
+			    	<% end %>
+
+			    	</li>
+
+					<li class="list-group-item">
+					  	<% if current_user.points > 199 %>
+					  	<span class="left-circle"><i class="fa fa-check-circle-o"></i></span>Use Code "5Off200" for $5 Off<span class="right-circle">
+			        <span class="points-lab2-done"><i class="fa fa-unlock"></i>200</span>
+			    	</span>
+
+					  	<% else %>
+					  	<span class="left-circle"><i class="fa fa-circle-o"></i></span>Get Code For $5 Off Next Order <span class="right-circle">
+			        <span class="points-lab2"><i class="fa fa-lock"></i>200</span>
+			    	</span>
+			    	<% end %>
+
+			    	</li>
+
+
+					</ul>
+
+			      
+			    </div>
+			  </div>
+
+
+			  <div class="panel panel-default">
+			    <div class="panel-heading" role="tab" id="headingTwo">
+			      <h4 class="panel-title">
+			        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+			          Profile Lab Points 
+			        </a>
+			        <span class="right-circle">
+			        <span class="points-lab2"><i class="fa fa-flask"></i><%= @profile_points %> </span> 
+			    	</span>
+			      </h4>
+			    </div>
+			    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+				    <div class="panel-body">
+				        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. <%= current_user.points(category: 'avatar') %>
+				      </div>
+
+			      <ul class="list-group">
+					  <li class="list-group-item">
+					  	<% if current_user.username.present? %>
+					  	<span class="left-circle"><i class="fa fa-check-circle-o"></i></span>Sign Up for Community<span class="right-circle">
+			        <span class="points-lab2-done"><i class="fa fa-flask"></i>50</span>
+			    	</span>
+
+					  	<% else %>
+					  	<span class="left-circle"><i class="fa fa-circle-o"></i></span>Sign Up for Community<span class="right-circle">
+			        <span class="points-lab2"><i class="fa fa-plus"></i>50</span>
+			    	</span>
+			    	<% end %>
+
+			    	</li>
+
+			    	 <li class="list-group-item">
+
+					<% if current_user.avatar.present? %>
+					  	<span class="left-circle"><i class="fa fa-check-circle-o"></i></span>Add Profile Pic<span class="right-circle">
+			        <span class="points-lab2-done"><i class="fa fa-flask"></i>10</span>
+			    	</span>
+
+					  	<% else %>
+					  	<span class="left-circle"><i class="fa fa-circle-o"></i></span>Add Profile Pic<span class="right-circle">
+			        <span class="points-lab2"><i class="fa fa-plus"></i>10</span>
+			    	</span>
+			    	<% end %>
+
+			    	</li>
+
+			    	<li class="list-group-item">
+
+					<% if current_user.profileimg.present? %>
+					  	<span class="left-circle"><i class="fa fa-check-circle-o"></i></span>Add Profile Header Pic<span class="right-circle">
+			        <span class="points-lab2-done"><i class="fa fa-flask"></i>10</span>
+			    	</span>
+
+					  	<% else %>
+					  	<span class="left-circle"><i class="fa fa-circle-o"></i></span>Add Profile Header Pic<span class="right-circle">
+			        <span class="points-lab2"><i class="fa fa-plus"></i>10</span>
+			    	</span>
+			    	<% end %>
+
+			    	</li>
+
+			    	<li class="list-group-item">
+
+					<% if current_user.bio.present? %>
+					  	<span class="left-circle"><i class="fa fa-check-circle-o"></i></span>Add Bio To Profile<span class="right-circle">
+			        <span class="points-lab2-done"><i class="fa fa-flask"></i>10</span>
+			    	</span>
+
+					  	<% else %>
+					  	<span class="left-circle"><i class="fa fa-circle-o"></i></span>Add Bio To Profile<span class="right-circle">
+			        <span class="points-lab2"><i class="fa fa-plus"></i>10</span>
+			    	</span>
+			    	<% end %>
+
+			    	</li>
+
+			    	<li class="list-group-item">
+
+					<% if current_user.passion.present? %>
+					  	<span class="left-circle"><i class="fa fa-check-circle-o"></i></span>Add Passion To Profile<span class="right-circle">
+			        <span class="points-lab2-done"><i class="fa fa-flask"></i>10</span>
+			    	</span>
+
+					  	<% else %>
+					  	<span class="left-circle"><i class="fa fa-circle-o"></i></span>Add Passion To Profile<span class="right-circle">
+			        <span class="points-lab2"><i class="fa fa-plus"></i>10</span>
+			    	</span>
+			    	<% end %>
+
+			    	</li>
+
+			    	<li class="list-group-item">
+
+					<% if current_user.location.present? %>
+					  	<span class="left-circle"><i class="fa fa-check-circle-o"></i></span>Add Location To Profile<span class="right-circle">
+			        <span class="points-lab2-done"><i class="fa fa-flask"></i>5</span>
+			    	</span>
+
+					  	<% else %>
+					  	<span class="left-circle"><i class="fa fa-circle-o"></i></span>Add Location To Profile<span class="right-circle">
+			        <span class="points-lab2"><i class="fa fa-plus"></i>5</span>
+			    	</span>
+			    	<% end %>
+
+			    	</li>
+
+			    	<li class="list-group-item">
+
+					<% if current_user.website.present? %>
+					  	<span class="left-circle"><i class="fa fa-check-circle-o"></i></span>Add Website To Profile<span class="right-circle">
+			        <span class="points-lab2-done"><i class="fa fa-flask"></i>5</span>
+			    	</span>
+
+					  	<% else %>
+					  	<span class="left-circle"><i class="fa fa-circle-o"></i></span>Add Website To Profile<span class="right-circle">
+			        <span class="points-lab2"><i class="fa fa-plus"></i>5</span>
+			    	</span>
+			    	<% end %>
+
+			    	</li>
+
+
+					</ul>
+			    </div>
+			  </div>
+			  <div class="panel panel-default">
+			    <div class="panel-heading" role="tab" id="headingThree">
+			      <h4 class="panel-title">
+			        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+			          Community Blog Points
+			        </a>
+			        <span class="right-circle">
+			        <span class="points-lab2"><i class="fa fa-flask"></i> <%= current_user.points(category: 'blog') %> </span> 
+			    	</span>
+			      </h4>
+			    </div>
+			    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+
+			    	<div class="panel-body">
+				        Get 10 points for each lyric submitted to the experiments for voting.  Get 1 point for each lyric you vote for in the Rhyme Center.  If your lyric is one of the lyrics chosen for an experiment, you will get bonus points of atleast 100.
+				      </div>
+
+			      <ul class="list-group">
+					  <li class="list-group-item">
+					  	<% if @approved_posts.any? %>
+					  	<span class="left-circle"><i class="fa fa-check-circle-o"></i></span><%= @approved_posts.count %> Approved Posts Added<span class="right-circle">
+			        <span class="points-lab2-done"><i class="fa fa-flask"></i><%= (10 * @approved_posts.count) %></span>
+			    	</span>
+
+					  	<% else %>
+					  	<span class="left-circle"><i class="fa fa-circle-o"></i></span>Start Adding Posts<span class="right-circle">
+			        <span class="points-lab2"><i class="fa fa-times"></i>10</span>
+			    	</span>
+			    	<% end %>
+
+			    	</li>
+
+			    	 <li class="list-group-item">
+
+
+
+					<% if current_user.votes.for_type(Post).votables.count > 0 %>
+					  	<span class="left-circle"><i class="fa fa-check-circle-o"></i></span><%= current_user.votes.for_type(Post).votables.count %> Posts Voted On<span class="right-circle">
+			        <span class="points-lab2-done"><i class="fa fa-flask"></i><%= ( current_user.votes.for_type(Post).votables.count) %></span>
+			    	</span>
+
+					  	<% else %>
+					  	<span class="left-circle"><i class="fa fa-circle-o"></i></span>Start Voting On Posts<span class="right-circle">
+			        <span class="points-lab2"><i class="fa fa-times"></i>1</span>
+			    	</span>
+			    	<% end %>
+
+			    	</li>
+
+			    	<li class="list-group-item">
+					  	<% if current_user.points(category: 'bonus_post') > 0 %>
+					  	<span class="left-circle"><i class="fa fa-check-circle-o"></i></span>Community Blog Bonus Points<span class="right-circle">
+			        <span class="points-lab2-done"><i class="fa fa-flask"></i><%= current_user.points(category: 'bonus_lyric') %></span>
+			    	</span>
+
+					  	<% else %>
+					  	<span class="left-circle"><i class="fa fa-circle-o"></i></span>Get Community Blog Bonus Points<span class="right-circle">
+			        <span class="points-lab2"><i class="fa fa-plus"></i>?</span>
+			    	</span>
+			    	<% end %>
+
+			    	</li>
+
+			    	
+
+					</ul>
+			    	
+
+			    </div>
+			  </div>
+
+
+			  <div class="panel panel-default">
+			    <div class="panel-heading" role="tab" id="headingFour">
+			      <h4 class="panel-title">
+			        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+			          Rhyme Center Lab Points
+			        </a>
+			        <span class="right-circle">
+			        <span class="points-lab2"><i class="fa fa-flask"></i> <%= current_user.points(category: 'lyric') %> </span> 
+			    	</span>
+			      </h4>
+			    </div>
+			    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+			      <div class="panel-body">
+				        Get 10 points for each lyric submitted to the experiments for voting.  Get 1 point for each lyric you vote for in the Rhyme Center.  If your lyric is one of the lyrics chosen for an experiment, you will get bonus points of atleast 100.
+				      </div>
+
+			      <ul class="list-group">
+					  <li class="list-group-item">
+					  	<% if current_user.lyrics.any? %>
+					  	<span class="left-circle"><i class="fa fa-check-circle-o"></i></span><%= current_user.lyrics.count %> Lyrics Added<span class="right-circle">
+			        <span class="points-lab2-done"><i class="fa fa-flask"></i><%= (10 * current_user.lyrics.count) %></span>
+			    	</span>
+
+					  	<% else %>
+					  	<span class="left-circle"><i class="fa fa-circle-o"></i></span>Start Adding Lyrics<span class="right-circle">
+			        <span class="points-lab2"><i class="fa fa-times"></i>10</span>
+			    	</span>
+			    	<% end %>
+
+			    	</li>
+
+			    	 <li class="list-group-item">
+
+
+
+					<% if current_user.votes.for_type(Lyric).votables.count > 0 %>
+					  	<span class="left-circle"><i class="fa fa-check-circle-o"></i></span><%= current_user.votes.for_type(Lyric).votables.count %> Lyrics Voted On<span class="right-circle">
+			        <span class="points-lab2-done"><i class="fa fa-flask"></i><%= ( current_user.votes.for_type(Lyric).votables.count) %></span>
+			    	</span>
+
+					  	<% else %>
+					  	<span class="left-circle"><i class="fa fa-circle-o"></i></span>Start Voting On Lyrics<span class="right-circle">
+			        <span class="points-lab2"><i class="fa fa-times"></i>1</span>
+			    	</span>
+			    	<% end %>
+
+			    	</li>
+
+			    	<li class="list-group-item">
+					  	<% if current_user.points(category: 'bonus_lyric') > 0 %>
+					  	<span class="left-circle"><i class="fa fa-check-circle-o"></i></span>Rhyme Center Bonus Points<span class="right-circle">
+			        <span class="points-lab2-done"><i class="fa fa-flask"></i><%= current_user.points(category: 'bonus_lyric') %></span>
+			    	</span>
+
+					  	<% else %>
+					  	<span class="left-circle"><i class="fa fa-circle-o"></i></span>Get Rhyme Center Bonus Points<span class="right-circle">
+			        <span class="points-lab2"><i class="fa fa-plus"></i>?</span>
+			    	</span>
+			    	<% end %>
+
+			    	</li>
+
+			    	
+
+					</ul>
+			    </div>
+			  </div>
+
+			  <div class="panel panel-default">
+			    <div class="panel-heading" role="tab" id="headingFive">
+			      <h4 class="panel-title">
+			        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+			          Design Center Lab Points
+			        </a>
+			        <span class="right-circle">
+			        <span class="points-lab2"><i class="fa fa-flask"></i> <%= current_user.points(category: 'design') %> </span> 
+			    	</span>
+			      </h4>
+			    </div>
+			    <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+				        <div class="panel-body">
+				        Get 10 points for each lyric submitted to the experiments for voting.  Get 1 point for each lyric you vote for in the Rhyme Center.  If your lyric is one of the lyrics chosen for an experiment, you will get bonus points of atleast 100.
+				      </div>
+
+			      <ul class="list-group">
+					  <li class="list-group-item">
+					  	<% if current_user.arts.any? %>
+					  	<span class="left-circle"><i class="fa fa-check-circle-o"></i></span><%= current_user.arts.count %> Designs Submitted<span class="right-circle">
+			        <span class="points-lab2-done"><i class="fa fa-flask"></i><%= (100 * current_user.arts.count) %></span>
+			    	</span>
+
+					  	<% else %>
+					  	<span class="left-circle"><i class="fa fa-circle-o"></i></span>Start Submitting Designs<span class="right-circle">
+			        <span class="points-lab2"><i class="fa fa-times"></i>100</span>
+			    	</span>
+			    	<% end %>
+
+			    	</li>
+
+			    	 <li class="list-group-item">
+
+
+
+					<% if current_user.votes.for_type(Art).votables.count > 0 %>
+					  	<span class="left-circle"><i class="fa fa-check-circle-o"></i></span><%= current_user.votes.for_type(Art).votables.count %> Designs Voted On<span class="right-circle">
+			        <span class="points-lab2-done"><i class="fa fa-flask"></i><%= ( 2 * current_user.votes.for_type(Art).votables.count) %></span>
+			    	</span>
+
+					  	<% else %>
+					  	<span class="left-circle"><i class="fa fa-circle-o"></i></span>Start Voting On Designs<span class="right-circle">
+			        <span class="points-lab2"><i class="fa fa-times"></i>2</span>
+			    	</span>
+			    	<% end %>
+
+			    	</li>
+
+			    	<li class="list-group-item">
+					  	<% if current_user.points(category: 'bonus_design') > 0 %>
+					  	<span class="left-circle"><i class="fa fa-check-circle-o"></i></span>Get Design Center Bonus Points<span class="right-circle">
+			        <span class="points-lab2-done"><i class="fa fa-flask"></i><%= current_user.points(category: 'bonus_design') %></span>
+			    	</span>
+
+					  	<% else %>
+					  	<span class="left-circle"><i class="fa fa-circle-o"></i></span>Get Design Center Bonus Points<span class="right-circle">
+			        <span class="points-lab2"><i class="fa fa-plus"></i>?</span>
+			    	</span>
+			    	<% end %>
+
+			    	</li>
+
+			    	
+
+					</ul>
+
+			      
+			    </div>
+			  </div>
+			</div>
+
+
+
+
+
+
+
+
+		<%= render 'layouts/footer' %>
+	</section>
+
+	<% else %>
+
+	<section class="lyric-section">
+
+	</section>
+
+	<% end %>
+
+	<section class="home-info">
+
+
+  		<div class="results"></div>
+    
+
+	</section>
+
+
+
+
+
+
+</section>
+
+
+<script>
+
+  $('.results').html("<%= j render(:partial => 'homeinfo/index') %>")
+
+</script>
+
+<script>
+$(window).scroll(function () {
+    var winTop = $(this).scrollTop(),
+        winBottom = winTop + $(this).height(),
+        left = $('.home-info'),
+        leftBottom = left.height(),
+        right = $('.lyric-section'),
+        rightBottom = right.height();
+    //when the user reached the bottom of '#leftShort' set its position to fixed 
+    //to prevent it from moving on scroll 
+    if (rightBottom <= leftBottom){
+
+
+    } else{
+
+          if (winBottom >= leftBottom) {
+        left.css({
+            'position': 'fixed',
+            'bottom': '0px',
+            
+        });
+    } else {
+        //when the user scrolls back up revert its position to relative
+        // to make it move up together with '#rightLong'
+        left.css({
+            'position': 'relative',
+            'bottom': 'auto'
+
+        });
+    }
+
+    }
+
+
+});
+
+</script>

@@ -6,6 +6,7 @@ class PostsController < ApplicationController
 	load_and_authorize_resource :only => [:show, :edit, :update, :destroy]
 	impressionist :actions => [:show,:index], :unique => [:impressionable_type, :impressionable_id, :session_hash]
 	respond_to :html, :json, :js
+	before_action :add_points, only: [:upvote, :downvote]
 
 	def index
 		case params[:sort_by]
@@ -18,6 +19,7 @@ class PostsController < ApplicationController
 	      else
 	        @posts = apply_scopes(Post).all.order("created_at DESC")
 	    end
+
 	end
 
 	def show
@@ -89,6 +91,16 @@ class PostsController < ApplicationController
     		format.json { render json: {  count: @post.cached_votes_up, count2: @post.cached_votes_down } }
     		format.js { render :layout => false }
     	end
+	end
+
+	def add_points
+		if user_signed_in?
+		unless (current_user.voted_for? @post)
+
+          @current_user.add_points(1, category: 'blog')
+        
+      	end
+      end
 	end
 
 	def tagged

@@ -1,5 +1,9 @@
 
+
 <section class="main-section">
+
+<% if user_signed_in? && current_user.points > 69 %>
+
 
 <section class="lyric-section">
 
@@ -216,6 +220,15 @@
 
    
 </section>
+
+<% else %>
+
+<section class="lyric-section">
+  Get ya points up
+
+  </section>
+
+  <% end %>
 
 <section class="home-info">
 

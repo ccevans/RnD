@@ -1,4 +1,4 @@
-
+<% if user_signed_in? && current_user.points > 69 %>
 
 <div class="addlyric">
  <h1>Add Lyric To Experiment</h1>
@@ -13,6 +13,12 @@
 <%= link_to 'More Experiments', campaigns_path, class: "back-button" %>
 
 </div>
+
+<% else %>
+
+Get ya points up!
+
+<% end %>
 
 <%= render 'layouts/footer' %>
 

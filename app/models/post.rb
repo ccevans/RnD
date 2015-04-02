@@ -4,6 +4,7 @@ class Post < ActiveRecord::Base
 	belongs_to :user
 	has_many :commentposts
 	acts_as_taggable_on :tags
+	scope :approved, -> { where(:approve => true) }
 
 	scope :by_tags, -> tags { where(:tags => tags) }
 

@@ -12,8 +12,14 @@ def create
 
   def update
     @user = resource # Needed for Merit
+
     super
   end
+
+
+  
+
+
 
   # GET /resource/sign_up
   # def new

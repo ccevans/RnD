@@ -1,6 +1,6 @@
+<% if user_signed_in? && current_user.points > 69 %>
 
-
-<section class="campaign-section2"
+<section class="campaign-section2">
 
 <% unless @campaign.image.nil? %>
 <div class="campaign-header">
@@ -355,6 +355,14 @@
 
   <%= render 'layouts/footer' %>
 </section>
+
+<% else %>
+
+<section class="campaign-section2">
+  Get ya points up
+  </section>
+
+  <% end %>
 
 <section class="home-info">
 

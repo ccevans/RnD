@@ -6,7 +6,8 @@ class ArtsController < ApplicationController
 	before_action :set_campaign, except: [:voteof1, :voteof2, :voteof3, :voteof4, :voteof5]
 	before_action :authenticate_user!, except: [:index, :show, :tagged]
 	impressionist :actions=>[:show,:index], :unique => [:impressionable_type, :impressionable_id, :session_hash]
-	
+	before_action :add_points, only: [:voteof1, :voteof2, :voteof3, :voteof4, :voteof5]
+
 	respond_to :html, :json, :js
 
 
@@ -142,6 +143,16 @@ class ArtsController < ApplicationController
     		format.json { render json: {  count: @art.cached_votes_up } }
     		format.js { render :layout => false }
     	end
+	end
+
+	def add_points
+		if user_signed_in?
+		unless (current_user.voted_for? @art)
+
+          @current_user.add_points(2, category: 'design')
+        
+      	end
+      end
 	end
 
 

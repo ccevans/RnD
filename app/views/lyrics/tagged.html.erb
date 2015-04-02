@@ -1,13 +1,14 @@
 <section class="main-section">
 
+<% if user_signed_in? && current_user.points > 69 %>
+
+
 <section class="lyric-section">
 
 <div class="works-top" id="works-exp2">
   <div class="how-campaign">
   <h2>Rhyme Center</h2>
-  <p>Help the community create products inspired by music.  The community chooses the best lyrics from artists and create designs inspired by the lyrics.  The community chooses the best designs and develop tees and products for the shop.</p>
-
-  <p>Choose an experiment below to submit a lyric and/or design.</p>
+  <p>The community chooses their favorite lyrics to inspire designs. The community then chooses their favorite designs to develop tees and products for the shop.</p>
 
   </div>
 
@@ -54,13 +55,25 @@
 
   </div>
 
+      <div class="how-box2-mobile">
 
-  </div>
+    <%= link_to pages_how_it_works_path do %>
+      <i class="fa fa-info"></i>
+    <% end %>
 
-  <div class="sort-box">
-    <div class="dropdown">
-      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-        Sort
+    <%= link_to '#' do %>
+       <span class="glyphicon glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+    <% end %>
+
+    <%= link_to new_campaign_lyric_path(Campaign.last) do %>
+      <i class="fa fa-headphones"></i>
+    <% end %>
+
+    <div class="clear"></div>
+
+        <div class="dropdown">
+      <button class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+        <span class="glyphicon glyphicon glyphicon-sort" aria-hidden="true"></span>
         <span class="caret"></span>
       </button>
 
@@ -72,8 +85,8 @@
     </div>
 
     <div class="dropdown">
-      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-        Filter
+      <button class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+        <span class="glyphicon glyphicon glyphicon-filter" aria-hidden="true"></span>
         <span class="caret"></span>
       </button>
       <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
@@ -88,9 +101,12 @@
     </div>
 
 
+
   </div>
 
 
+
+  </div>
 
   <div id="lyrics" class="transitions-enabled">
     <% @lyrics.each do |lyric| %>
@@ -102,6 +118,7 @@
         <% end %>
         <ul>
 
+          <% if user_signed_in? %>
           <li><span class="updown-button"><span class="up <%= lyric.id %>"><%= lyric.get_upvotes.size %> </span>
           <%= link_to like_lyric_path(lyric), class: ['voteup', lyric.id], remote: true, data: { type: :json }, method: :get do %>
           <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
@@ -114,7 +131,29 @@
           <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
             <% end %>
           </span>
+
           </li>
+
+          <% else %>
+
+          <li><span class="updown-button"><span class="up <%= lyric.id %>"><%= lyric.get_upvotes.size %> </span>
+          <%= link_to_if user_signed_in?, like_lyric_path(lyric), class: ['voteup', lyric.id], remote: true, data: { type: :json }, method: :get do %>
+          <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+            <% end %>
+          </span>
+        </li>
+        <li>
+            <span class="updown-button"><span class="down <%= lyric.id %>"><%= lyric.get_downvotes.size %></span>
+          <%= link_to_if user_signed_in?, dislike_lyric_path(lyric), class: ['votedown', lyric.id], remote: true, data: { type: :json }, method: :get do %>
+          <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+            <% end %>
+          </span>
+        
+          <span type="button" data-toggle="tooltip" data-placement="top" title="Sign In To Vote" class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+          </li>
+
+
+          <% end %>
 
           <li><%= lyric.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
 
@@ -150,18 +189,21 @@
 
         </ul>
         <br />
+        <% if lyric.tags.any? %>
         <ul class="tag-list">
-        <li><% lyric.tags.any? %>
+        <li>
+          <span class="glyphicon glyphicon glyphicon-tags" aria-hidden="true"></span>
           <% lyric.tags.each do |tag| %>
           <%= link_to tag.name, campaign_tagged_url(:tag => tag.name) %>
           <% end %></li>
         </ul>
+        <% end %>
      
       
       </div>
     <% end %>
 
-    <div class="back-top" title="Top of Page"> <a href="#top" onclick="return false;"><i class="glyphicon glyphicon-chevron-up"></i> Back to Top</a></div> 
+    <div class="back-top" title="Top of Page"> <a href="#top" onclick="return false;"><i class="glyphicon glyphicon-chevron-up"></i></a></div> 
 
   </div>
 
@@ -176,6 +218,15 @@
 
    
 </section>
+
+<% else %>
+
+<section class="lyric-section">
+  Get ya points up
+
+  </section>
+
+  <% end %>
 
 <section class="home-info">
 
@@ -282,3 +333,4 @@ $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
 </script>
+  

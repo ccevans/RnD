@@ -1,5 +1,7 @@
 <section class="main-section">
 
+<% if user_signed_in? && current_user.points > 69 %>
+
 <section class="art-section">
 
   <div class="works-top" id="works-exp2">
@@ -247,6 +249,16 @@
 
 
   </section>
+
+<% else %>
+
+  <section class="art-section">
+
+    Get ya points up!
+
+  </section>
+
+<% end %>
 
 <section class="home-info">
 

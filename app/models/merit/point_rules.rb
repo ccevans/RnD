@@ -13,9 +13,17 @@ module Merit
     include Merit::PointRulesMethods
 
     def initialize
-      score 10, :on => 'users#update' do
-         user.username.present?
-       end
+      score 50, :on => 'user/registrations#create', model_name: 'User', category: 'profile'
+
+       
+       # score 10, :on => 'user/registrations#update', model_name: 'User' do |user|
+        # current_user.avatar.present?
+       #end
+
+
+ 
+
+       
       #
       # score 15, :on => 'reviews#create', :to => [:reviewer, :reviewed]
       #
@@ -24,9 +32,21 @@ module Merit
       #   'photos#create'
       # ]
 
-      score 20, on: 'lyrics#create', to: :user, description: 'Plus 20 points'
+      score 10, on: 'lyrics#create', to: :user, description: 'Plus 20 points', category: 'lyric'
 
-      score (-20), on: 'lyrics#destroy', to: :user
+      score (-10), on: 'lyrics#destroy', to: :user, category: 'lyric'
+
+      score 100, on: 'arts#create', to: :user, description: 'Plus 100 points', category: 'design'
+
+      score (-100), on: 'arts#destroy', to: :user, category: 'design'
+
+      score 10, on: 'posts#update', to: :user, category: 'blog' do |post|
+        post.approve == true
+      end
+
+    
+
+
     end
   end
 end

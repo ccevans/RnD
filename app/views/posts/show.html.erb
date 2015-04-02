@@ -40,18 +40,51 @@
     	</div>
     	
     <div class="container-post-extra">
+
     	 <ul>
-            <li><%= @post.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
-             
-            <li><span class="up <%= @post.id %>"><%= @post.get_upvotes.size %> </span>
+
+        <% if user_signed_in? %>
+          <li><span class="updown-button"><span class="up <%= @post.id %>"><%= @post.get_upvotes.size %> </span>
           <%= link_to like_post_path(@post), class: ['voteup', @post.id], remote: true, data: { type: :json }, method: :get do %>
           <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
             <% end %>
-            <span class="down <%= @post.id %>"><%= @post.get_downvotes.size %></span>
+          </span>
+        </li>
+        <li>
+            <span class="updown-button"><span class="down <%= @post.id %>"><%= @post.get_downvotes.size %></span>
           <%= link_to dislike_post_path(@post), class: ['votedown', @post.id], remote: true, data: { type: :json }, method: :get do %>
           <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
             <% end %>
+          </span>
+
           </li>
+
+          <% else %>
+
+          <li><span class="updown-button"><span class="up <%= @post.id %>"><%= @post.get_upvotes.size %> </span>
+          <%= link_to_if user_signed_in?, like_post_path(@post), class: ['voteup', @post.id], remote: true, data: { type: :json }, method: :get do %>
+          <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+            <% end %>
+          </span>
+        </li>
+        <li>
+            <span class="updown-button"><span class="down <%= @post.id %>"><%= @post.get_downvotes.size %></span>
+          <%= link_to_if user_signed_in?, dislike_post_path(@post), class: ['votedown', @post.id], remote: true, data: { type: :json }, method: :get do %>
+          <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+            <% end %>
+          </span>
+        
+          <span type="button" data-toggle="tooltip" data-placement="top" title="Sign In To Vote" class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+          </li>
+
+
+          <% end %>
+          </ul>
+
+          <ul>
+            <li><%= @post.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
+             
+
           <li><%= @post.commentposts.count %> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></li>
            
             
@@ -128,48 +161,79 @@
 
 
 
-      <div id="posts" class="transitions-enabled">
+  <div id="posts">
     <% @random_posts.each do |random_post| %>
     <div class="container-post-index">
 
        <% unless random_post.videolink.nil? || random_post.videolink.empty? %>
-            <% if random_post.typeof == 'video' %>
-                <div class="video-box">
-                <p><%= raw(youtube_embed(random_post.videolink)) %></p>
-                </div>
-            <% end %>
-        <% end %>
+      <% if random_post.typeof == 'video' %>
+        <div class="video-box">
+        <p><%= raw(youtube_embed(random_post.videolink)) %></p>
+        </div>
+      <% end %>
+    <% end %>
 
-        <% unless random_post.audiolink.nil? || random_post.audiolink.empty? %>
-            <% if random_post.typeof == 'audio' %>
-                <p><%= raw(random_post.audiolink) %></p>
-                <% end %>
+    <% unless random_post.audiolink.nil? || random_post.audiolink.empty? %>
+      <% if random_post.typeof == 'audio' %>
+        <p><%= raw(random_post.audiolink) %></p>
         <% end %>
+    <% end %>
 
-        <% unless random_post.image.nil? || random_post.image.blank? %>
-            <% if random_post.typeof == 'picture' %>
+    <% unless random_post.image.nil? || random_post.image.blank? %>
+      <% if random_post.typeof == 'picture' %>
         <%= link_to post_path(random_post) do %>
-                  <%= image_tag random_post.image.url(:medium) %>
+          <%= image_tag random_post.image.url(:medium) %>
         <% end %>
-                <% end %>
         <% end %>
+    <% end %>
 
     <% if random_post.title.present? %> 
         <div class="post-title"><%= link_to random_post.title, post_path(random_post) %></div>
     <% end %>
 
         <ul>
-        <li><%= random_post.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
-
-          <li><span class="up <%= random_post.id %>"><%= random_post.get_upvotes.size %> </span>
+          <% if user_signed_in? %>
+          <li><span class="updown-button"><span class="up <%= random_post.id %>"><%= random_post.get_upvotes.size %> </span>
           <%= link_to like_post_path(random_post), class: ['voteup', random_post.id], remote: true, data: { type: :json }, method: :get do %>
           <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
             <% end %>
-            <span class="down <%= random_post.id %>"><%= random_post.get_downvotes.size %></span>
+          </span>
+        </li>
+        <li>
+            <span class="updown-button"><span class="down <%= random_post.id %>"><%= random_post.get_downvotes.size %></span>
           <%= link_to dislike_post_path(random_post), class: ['votedown', random_post.id], remote: true, data: { type: :json }, method: :get do %>
           <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
             <% end %>
+          </span>
+
           </li>
+
+          <% else %>
+
+          <li><span class="updown-button"><span class="up <%= random_post.id %>"><%= random_post.get_upvotes.size %> </span>
+          <%= link_to_if user_signed_in?, like_post_path(random_post), class: ['voteup', random_post.id], remote: true, data: { type: :json }, method: :get do %>
+          <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+            <% end %>
+          </span>
+        </li>
+        <li>
+            <span class="updown-button"><span class="down <%= random_post.id %>"><%= random_post.get_downvotes.size %></span>
+          <%= link_to_if user_signed_in?, dislike_post_path(random_post), class: ['votedown', random_post.id], remote: true, data: { type: :json }, method: :get do %>
+          <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+            <% end %>
+          </span>
+        
+          <span type="button" data-toggle="tooltip" data-placement="top" title="Sign In To Vote" class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+          </li>
+
+
+          <% end %>
+
+
+
+
+        <li><%= random_post.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
+
 
 
               <script>
@@ -213,7 +277,7 @@
       </div>
     <% end %>
 
-    <div class="back-top" title="Top of Page"> <a href="#top" onclick="return false;"><i class="glyphicon glyphicon-chevron-up"></i> Back to Top</a></div> 
+    <div class="back-top" title="Top of Page"> <a href="#top" onclick="return false;"><i class="glyphicon glyphicon-chevron-up"></i></a></div> 
   </div>
 
   <%= render 'layouts/footer' %>

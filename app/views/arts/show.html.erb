@@ -1,3 +1,5 @@
+<% if user_signed_in? && current_user.points > 69 %>
+
 <section class="art-section">
   <div class="stepbackward">
       <%= link_to campaign_art_path(@campaign, @previous_art) do %>
@@ -275,6 +277,14 @@
  
 
   </section>
+
+<% else %>
+
+  <section class="art-section">
+
+  </section>
+
+<% end %>
 
   <section class="home-info">
 
