@@ -44,7 +44,7 @@
 
   </div>
 
-  <div id="profiles" class="transitions-enabled">
+  <div id="profiles">
     <% if @featured_users.any? %>
       <h1>Featured Profiles</h1>
 
@@ -70,6 +70,10 @@
     
         <% if featured_user.location.present? %>
            <div class="user-row"><%= featured_user.location %></div>
+        <% end %>
+
+        <% if featured_user.points.present? %>
+           <div class="user-row"><span class="points-lab2"><i class="fa fa-flask"></i> <%= featured_user.points %> </span> </div>
         <% end %>
         </div>
 
@@ -107,6 +111,10 @@
 				<% if user.location.present? %>
 				   <div class="user-row"><%= user.location %></div>
 				<% end %>
+
+        <% if user.points.present? %>
+           <div class="user-row"><span class="points-lab2"><i class="fa fa-flask"></i> <%= user.points %> </span> </div>
+        <% end %>
 		   	</div>
 
 
@@ -194,6 +202,9 @@
     
         <% if featured_user.location.present? %>
            <div class="user-row"><%= featured_user.location %></div>
+        <% end %>
+        <% if featured_user.points.present? %>
+           <div class="user-row"><span class="points-lab2"><i class="fa fa-flask"></i> <%= featured_user.points %> </span> </div>
         <% end %>
         </div>
 
