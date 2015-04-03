@@ -223,8 +223,89 @@
 
 <% else %>
 
-<section class="lyric-section">
-  Get ya points up
+<section id="vid" class="lyric-section">
+
+  <div id="P1" class="player" 
+     data-property="{videoURL:'https://youtu.be/hbd8uFe_gfU',containment:'#vid',startAt:0,mute:true,autoPlay:true,loop:true,opacity:1,showControls:false,addRaster:true}">
+</div>
+
+
+
+
+  <div class="temp-access">
+        <div class="temp-access1">
+          <h1 class="time-launch">5.1.15</h1>
+      <p>Official Launch</p>
+
+        </div>
+
+        <div class="temp-access2">
+
+      <div class="how-box2">
+        <%= link_to "Get Early Access", new_user_registration_path, :class => "" %>
+        
+      </div>
+
+    </div>
+
+        <div class="timer-info"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                    <span class="timer-line" data-countdown= 2015/5/1 00:00:01 ></span>
+                  </div>
+      <div id="launch-links" class="how-box2">
+        <%= link_to "Sign Up / Sign In", new_user_registration_path, :class => "" %>
+        
+          <%= link_to 'How It Works', pages_how_it_works_path, :class => "" %>
+
+        <%= link_to 'Lab Shop', '#', :class => "" %>
+
+        
+      </div>
+      <hr>
+
+      <div class="temp-access1">
+        <h1>Unlock </br>The 1st Experiment!</h1>
+        
+      </div>
+      <div class="temp-access2">
+          <div class="lock-box">
+              <i class="fa fa-lock"></i>
+          </div>
+         
+      </div>
+
+      <hr>
+
+      <div class="temp-access1">
+        <h1><i class="fa fa-users"></i>  </h1>
+      </div>
+      <div class="temp-access2">
+          <h1>Featured Profiles</h1>
+      </div>
+
+      <hr>
+
+      <div class="temp-access1">
+        <h1>Connect & Follow The Journey</h1>
+        
+      </div>
+      <div class="temp-access2">
+          <h1><div class="social-links"><a href="https://instagram.com/rhymesdesigns/" target="_blank"><i class="fa fa-instagram"></i></a>
+              <a href="https://www.facebook.com/RhymesDesigns" target="_blank"><i class="fa fa-facebook-square"></i></a></br>
+            <a href="https://twitter.com/RhymesDesigns" target="_blank"><i class="fa fa-twitter-square"></i></a>
+          <a href="http://blog.rhymesanddesigns.com/" target="_blank"><i class="fa fa-tumblr-square"></i></a>
+        </div></h1>
+      </div>
+
+      <hr>
+
+      <div class="temp-access1">
+        <%= image_tag 'exp-image.png' %>
+      </div>
+      <div class="temp-access2">
+          <h1>Learn </br>How It </br>Works</h1>
+      </div>
+
+  </div>
 
   </section>
 
@@ -335,6 +416,39 @@ $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
 </script>
-  
+
+  <script type="text/javascript">
+    $('[data-countdown]').each(function() {
+      var $this = $(this), finalDate = $(this).data('countdown');
+    
+    $this.countdown(finalDate)
+
+    .on('update.countdown', function(event) {
+      var format = '%-H hr %-M min %-S sec';
+      var format2 = '%-H hr %-M min %-S sec';  
+      if (event.offset.days < 1) {
+          $this.closest('.price-info').addClass('red-status');
+      }   
+      if(event.offset.days > 0) {
+        format = '%-d day%!d, ' + format2;
+      }
+      if(event.offset.weeks > 0) {
+        format = '%-w week%!w ' + format2;
+      }
+    
+     $(this).html(event.strftime(format));
+   })
+   .on('finish.countdown', function(event) {
+     $(this).html();
+    $this.closest('.timer-box2').addClass('disabled').attr('disabled', 'disabled');
+      });
+    
+    });
+</script>
+<script>
+   $(function(){
+      $(".player").YTPlayer();
+    });
+</script>
 
 

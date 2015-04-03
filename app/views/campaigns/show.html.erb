@@ -381,16 +381,16 @@
     $this.countdown(finalDate)
 
     .on('update.countdown', function(event) {
-      var format = '%-H hr %-M min %-S sec';
-      var format2 = '%-H hr %-M min';  
+      var format = '%-H H %-M M %-S S';
+      var format2 = '%-H H %-M M';  
       if (event.offset.days < 1) {
           $this.closest('.price-info').addClass('red-status');
       }   
       if(event.offset.days > 0) {
-        format = '%-d day%!d, ' + format2;
+        format = '%-d D, ' + format2;
       }
       if(event.offset.weeks > 0) {
-        format = '%-w week%!w ' + format2;
+        format = '%-w W ' + format2;
       }
     
      $(this).html(event.strftime(format));
