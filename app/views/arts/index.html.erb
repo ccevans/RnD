@@ -66,8 +66,9 @@
   </div>
 
 
-<div id="arts" class="transitions-enabled">
+<div id="arts">
     
+    <% if @arts.any? %>
       <% @arts.each do |art| %>
         <div class="container-art">
         
@@ -237,7 +238,14 @@
       </div>
       <% end %>
 
-       <div class="back-top" title="Top of Page"> <a href="#top" onclick="return false;"><i class="glyphicon glyphicon-chevron-up"></i></a></div> 
+      <% else %>
+
+
+        <div class="noposts"><h1>No Designs Posted Yet.</h1></div>
+
+      <% end %>
+
+      
 </div>
 
  <br>
@@ -252,10 +260,8 @@
 
 <% else %>
 
-  <section class="art-section">
-
-    Get ya points up!
-
+  <section id="vid" class="art-section">
+    <%= render 'layouts/homepage' %>
   </section>
 
 <% end %>

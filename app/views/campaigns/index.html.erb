@@ -129,10 +129,10 @@
 
 <% else %>
 
-<section class="campaign-section2">
 
-  Get ya points up!
+<section id="vid" class="campaign-section2">
 
+<%= render 'layouts/homepage' %>
 
 </section>
 
@@ -154,7 +154,7 @@
 
 </script>
 
-<script type="text/javascript">
+  <script type="text/javascript">
     $('[data-countdown]').each(function() {
       var $this = $(this), finalDate = $(this).data('countdown');
     
@@ -167,10 +167,10 @@
           $this.closest('.price-info').addClass('red-status');
       }   
       if(event.offset.days > 0) {
-        format = '%-d day%!d, ' + format2;
+        format = '%-d day%!d, ' + format;
       }
       if(event.offset.weeks > 0) {
-        format = '%-w week%!w ' + format2;
+        format = '%-w week%!w ' + format;
       }
     
      $(this).html(event.strftime(format));
@@ -182,6 +182,8 @@
     
     });
 </script>
+
+
 
 <script>
 $(window).scroll(function () {

@@ -250,13 +250,28 @@ div.temp-access div.temp-access2 div.how-box2 a {font-size: 28px; line-height: 2
 div.temp-access div.temp-access2 div.how-box2 a:hover {font-size: 28px; line-height: 28px; margin: 25px; background-color: #1abc9c; color: #fff; border-color: #1abc9c;}
 div.temp-access div#launch-links.how-box2 {padding: 0 20%;}
 div.temp-access hr {width: 80%; padding: 0; margin: 50px 10%; color: #fff; border: 1px solid #fff; float: left;}
-div.temp-access1 h1 i.fa.fa-users {font-size: 126px; line-height: 126px;}
+div.temp-access1 a h1 i.fa.fa-users {font-size: 126px; line-height: 126px;}
 div.temp-access div.temp-access2 h1 div.social-links a i {font-size: 126px; line-height: 126px; color: #fff;}
 div.temp-access div.temp-access2 h1 div.social-links a i:hover {font-size: 126px; line-height: 126px; color: #000;}
+div.temp-access div.temp-access1 a {color: #fff;}
+div.temp-access div.temp-access1 a:hover {color: #000;}
+
+
 
 .lock-box {background: url('eazy.png'); background-size: 100% auto; background-color: #fff; border-radius: 5px; width: 80%; margin: 0 10%; height: 200px;}
 .lock-box i {color: #1abc9c; font-size: 126px; line-height: 126px; margin: 35px auto;}
 .temp-access i:hover {color: #000;}
+div.temp-access div.temp-access2 i.fa.fa-youtube-play {font-size: 126px; line-height: 126px; color: #fff;}
+div.temp-access div.temp-access2 i.fa.fa-youtube-play:hover {font-size: 126px; line-height: 126px; color: #000;}
+
+.launching-soon {font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif; margin: 75px 0; width: 100%; padding: 0 10%; text-align: center; font-size: 28px; line-height: 28px; color: #1cc7a6;}
+.launching-soon h1.time-launch {font-size: 100px; line-height: 104px;}
+.launching-soon div.how-box2 a {font-size: 28px; line-height: 28px; margin: 25px; background-color: #1abc9c; color: #fff;}
+.launching-soon div.how-box2 a:hover {font-size: 28px; line-height: 28px; margin: 25px; background-color: #1abc9c; color: #000;}
+.launching-soon p a {color: #000;}
+.launching-soon p a:hover {color: #1abc9c; text-decoration: none;}
+
+.launching-soon div.how-box2 {padding: 0 10%;}
 
 @media screen and (max-width: 640px){
     .updown-button {float: left; margin: 2px 0; padding: 3px 3px 3px 5px; background-color: #1cc7a6; color: #fff; border-radius: 5px; font-size: 18px; line-height: 18px; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif;}
