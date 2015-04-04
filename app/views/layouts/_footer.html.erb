@@ -4,8 +4,8 @@
 		<li><%= link_to 'About Us', pages_about_us_path %></li>
 		<li><%= link_to 'How It Works', pages_how_it_works_path %></li>
 		<li><%= link_to 'Partnerships', pages_partnerships_path %></li>
-		<li><%= link_to 'Vocal Artists', '#' %></li>
-		<li><%= link_to 'Visual Artists', '#' %></li>
+		<li><%= link_to 'Events', pages_events_path %></li>
+		<li><%= link_to 'Careers', pages_careers_path %></li>
 	</ul>
 
 	<ul>
@@ -14,16 +14,17 @@
 		<li><%= link_to 'R&D Community', profiles_path %></li>
 		<li><%= link_to 'Rhyme Center', campaign_lyrics_path(Campaign.last) %></li>
 		<li><%= link_to 'Design Center', campaign_arts_path(Campaign.last) %></li>
-		<li><%= link_to 'Lab Points', '#' %></li>
+		<li><%= link_to 'Lab Points', dash_path %></li>
 	</ul>
 
 		<ul>
 		<h1>Support</h1>
-		<li><%= link_to 'Legal Terms', campaigns_path %></li>
-		<li><%= link_to 'FAQs', profiles_path %></li>
-		<li><%= link_to 'Twitter', campaign_lyrics_path(Campaign.last) %></li>
-		<li><%= link_to 'Facebook', campaign_arts_path(Campaign.last) %></li>
-		<li><%= link_to 'Instagram', '#' %></li>
+		<li><%= link_to 'Legal Terms', pages_legal_terms_path %></li>
+		<li><%= link_to 'FAQs', pages_faqs_path %></li>
+		<li><%= link_to 'Twitter', 'https://twitter.com/RhymesDesigns', target: "_blank" %></li>
+		<li><%= link_to 'Facebook', 'https://www.facebook.com/RhymesDesigns', target: "_blank" %></li>
+		<li><%= link_to 'Instagram', 'https://instagram.com/rhymesdesigns/', target: "_blank" %></li>
+
 	</ul>
 
 

@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get 'pages/faqs'
   get 'pages/partnerships'
   get 'pages/legal_terms'
+  get 'pages/careers'
+  get 'pages/events'
 
   get 'tagged' => 'posts#tagged', :as => 'tagged'
 
