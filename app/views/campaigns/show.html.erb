@@ -134,6 +134,63 @@
             </div>
         <% end %>
 
+
+        <div class="panel-group dashlist" id="accordion" role="tablist" aria-multiselectable="true">
+
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Lab Check Points
+              </a>
+              <span class="right-circle">
+              <span class="points-lab2"><i class="fa fa-flask"></i> <%= current_user.points %> </span> 
+            </span>
+            </h4>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            Get your lab points up to get special access and discounts.  Watch out for ways to get free gear and early access for contributing to the community.  Get points by updating your profile, voting and submitting lyrics, designs and posts and other things.
+               
+          </div>
+
+            <ul class="list-group">
+            <li class="list-group-item">
+              <% if current_user.points > 69 %>
+              <span class="left-circle"><i class="fa fa-check-circle-o"></i></span>Congrats! Access Granted To Site Early<span class="right-circle">
+              <span class="points-lab2-done"><i class="fa fa-unlock"></i>70</span>
+            </span>
+
+              <% else %>
+              <span class="left-circle"><i class="fa fa-circle-o"></i></span>Get Access To Site Early By Updating Profile<span class="right-circle">
+              <span class="points-lab2"><i class="fa fa-lock"></i>70</span>
+            </span>
+            <% end %>
+
+            </li>
+
+          <li class="list-group-item">
+              <% if current_user.points > 199 %>
+              <span class="left-circle"><i class="fa fa-check-circle-o"></i></span>Use Code "5Off200" for $5 Off<span class="right-circle">
+              <span class="points-lab2-done"><i class="fa fa-unlock"></i>200</span>
+            </span>
+
+              <% else %>
+              <span class="left-circle"><i class="fa fa-circle-o"></i></span>Get Code For $5 Off Next Order <span class="right-circle">
+              <span class="points-lab2"><i class="fa fa-lock"></i>200</span>
+            </span>
+            <% end %>
+
+            </li>
+
+
+          </ul>
+
+            
+          </div>
+        </div>
+      </div>
+
       </div>
           <div class="campaign-halfbox2">
               <div class="campaign-boxinfo">
