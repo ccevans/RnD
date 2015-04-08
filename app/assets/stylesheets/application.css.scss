@@ -42,8 +42,8 @@ div.navbar-header {width: 100%;}
   .dropdown2 {position: relative;}
   .signup-wrapper {float: left; width: auto; padding: 15px; background-color: #8e0010; font: #fff;}
   ul.nav.navbar-nav li.dropdown2 a {font-size: 18px; line-height: 18px; color: #fff; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif;}
-  ul.nav.navbar-nav li.dropdown2 a:hover {font-size: 18px; line-height: 18px; color: #1cc7a6;}
-  .dropdown-menu {background-color: #1cc7a6 !important; color: #fff;}
+  ul.nav.navbar-nav li.dropdown2 a:hover {font-size: 18px; line-height: 18px; color: #1abc9c;}
+  .dropdown-menu {background-color: #1abc9c !important; color: #fff;}
   .icon-cart {
     background: url("//cdn.shopify.com/s/files/1/0705/8087/t/1/assets/icon-cart-small.png") no-repeat scroll 0 -20px rgba(0, 0, 0, 0) !important;}
   html.no-js body div#transparency.wrapper.clearfix div.row.p0 section#content.clearfix div.jumbotron {background-color: #006894; color: #fff;}
@@ -58,7 +58,7 @@ div.navbar-header div#bs-example-navbar-collapse-1.navbar-collapse.collapse.in u
 .alert {font-size: 18px; color: #fff; z-index: 1000; top: 100px; position: fixed; border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; width: 90%; padding: 0 5%; text-align: right;}
 
 ul.nav.navbar-nav.navbar-right li.dropdown2 ul.dropdown-menu li a {font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;font-size: 18px; line-height: 18px; color: #fff;}
-ul.nav.navbar-nav.navbar-right li.dropdown2 ul.dropdown-menu li a:hover {font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-size: 18px; line-height: 18px; color: #1cc7a6;}
+ul.nav.navbar-nav.navbar-right li.dropdown2 ul.dropdown-menu li a:hover {font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-size: 18px; line-height: 18px; color: #1abc9c;}
 
 
 //Account - Edit Profile
@@ -128,8 +128,8 @@ nav.navbar.navbar-inverse.navbar-fixed-top {border: 0px solid #000;}
 
 .shopmenu {display: none;}
 
-ul.nav.navbar-nav.navbar-right li.navbar-brand a.active {background-color: #1cc7a6; color: #fff; border-radius: 2px; font-size: 16px;}
-ul.nav.navbar-nav.navbar-right li.navbar-brand a.active:hover {background-color: #1cc7a6; color: #000; border-radius: 2px; font-size: 16px;}
+ul.nav.navbar-nav.navbar-right li.navbar-brand a.active {background-color: #1abc9c; color: #fff; border-radius: 2px; font-size: 16px;}
+ul.nav.navbar-nav.navbar-right li.navbar-brand a.active:hover {background-color: #1abc9c; color: #000; border-radius: 2px; font-size: 16px;}
 
 li.dropdown2 ul.dropdown-menu li div.social-links a {float: left; display: inline; width: 25%; padding: 3px; margin: 0px;}
 li.dropdown2 ul.dropdown-menu li div.social-links a:hover {color: #000;}
@@ -162,6 +162,48 @@ div.navbar-header div#bs-example-navbar-collapse-1.navbar-collapse.collapse.in u
 .points-lab {font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif; font-size: 18px; line-height: 20px; padding: 5px 20px;}
 
 div#add-email.container {margin-top: 75px;}
+
+div#P1 {width: 100%; height: 600px; margin: 0; padding: 0; position: fixed;}
+
+.temp-access {float: left; text-align: center; width: 100%; padding: 50px 0%; margin: 0;  background: url('green-transparent.png'); color: #fff; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif;}
+.temp-access1 {float: left; text-align: center; width: 50%; padding: 0 5%; margin: 0; color: #fff; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif;}
+.temp-access2  {float: left; text-align: center; width: 50%; padding: 0 5%; margin: 0;  color: #fff; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif;}
+
+.temp-access h1 {font-size: 60px; line-height: 62px; margin: 0; padding: 0;}
+.temp-access img {width: 70%; margin: 5px 15%; float: left;}
+div.temp-access div.timer-info {width: 100%; font-size: 40px; line-height: 40px;}
+div.temp-access div.temp-access2 img {width: 30%; margin: 5px; float: left;}
+div.temp-access div.temp-access1 h1.time-launch {font-size: 100px; line-height: 104px;}
+div.temp-access div.temp-access2 div.how-box2 a {font-size: 28px; line-height: 28px; margin: 25px; background-color: #fff; color: #1abc9c;}
+div.temp-access div.temp-access2 div.how-box2 a:hover {font-size: 28px; line-height: 28px; margin: 25px; background-color: #1abc9c; color: #fff; border-color: #1abc9c;}
+div.temp-access div#launch-links.how-box2 {padding: 0 20%;}
+div.temp-access hr {width: 80%; padding: 0; margin: 50px 10%; color: #fff; border: 1px solid #fff; float: left;}
+div.temp-access1 a h1 i.fa.fa-users {font-size: 126px; line-height: 126px;}
+div.temp-access div.temp-access2 h1 div.social-links a i {font-size: 126px; line-height: 126px; color: #fff;}
+div.temp-access div.temp-access2 h1 div.social-links a i:hover {font-size: 126px; line-height: 126px; color: #000;}
+div.temp-access div.temp-access1 a {color: #fff;}
+div.temp-access div.temp-access1 a:hover {color: #000;}
+
+
+.lock-box {background: url('eazy.png'); background-size: 100% auto; background-color: #fff; border-radius: 5px; width: 80%; margin: 0 10%; height: 200px;}
+.lock-box i {color: #1abc9c; font-size: 126px; line-height: 126px; margin: 35px auto;}
+.temp-access i:hover {color: #000;}
+div.temp-access div.temp-access2 i.fa.fa-youtube-play {font-size: 126px; line-height: 126px; color: #fff;}
+div.temp-access div.temp-access2 i.fa.fa-youtube-play:hover {font-size: 126px; line-height: 126px; color: #000;}
+
+.launching-soon {font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif; margin: 75px 0; width: 100%; padding: 0 10%; text-align: center; font-size: 28px; line-height: 28px; color: #1cc7a6;}
+.launching-soon h1.time-launch {font-size: 100px; line-height: 104px;}
+.launching-soon div.how-box2 a {font-size: 28px; line-height: 28px; margin: 25px; background-color: #1abc9c; color: #fff;}
+.launching-soon div.how-box2 a:hover {font-size: 28px; line-height: 28px; margin: 25px; background-color: #1abc9c; color: #000;}
+.launching-soon p a {color: #000;}
+.launching-soon p a:hover {color: #1abc9c; text-decoration: none;}
+
+.launching-soon div.how-box2 {padding: 0 10%;}
+
+div#background-green.works-top { background: url('black-transparent2.png');}
+div#vid.works-top {padding: 0;}
+
+
 
 @media screen and (min-width: 640px) and (max-width: 900px){
 

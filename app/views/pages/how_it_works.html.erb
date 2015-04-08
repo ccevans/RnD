@@ -1,26 +1,38 @@
 
 
-<div class="works-top">
+
+<div id="vid" class="works-top">
+<div id="background-green" class="works-top">
 	<h1>How It Works</h1>
+
+	<div id="P2">
+		<iframe width="100%" height="400" src="https://www.youtube.com/embed/rZ948let4m0?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+	</div>
+
 	<div class="howitworks-para">
 		R&D has an unique process to create dope products inspired by music with our creative community.  Each experiemnt is themed for a specific artist, music project and/or partnership.  The community submit and vote on their favorite lyrics.  Artists submit designs inspired by the top lyrics.  Top designs are printed and sold where artists are rewarded and share in the profits.
 	</div>
 	<div class="how-box">
-		<%= image_tag 'howitworks-img-1.png', :class => "how-image" %>
+		<%= image_tag 'howitworks-img-1-wht.png', :class => "how-image" %>
 		Experiments inspired by your fav music and artists.
 	</div>
 	<div class="how-box">
-   	<%= image_tag 'howitworks-img-2.png', :class => "how-image" %>
+   	<%= image_tag 'howitworks-img-2-wht.png', :class => "how-image" %>
 		Submit & vote on your fav lyrics from your fav artists.
 		   	</div>
 	<div class="how-box">
-   	<%= image_tag 'howitworks-img-3.png', :class => "how-image" %>
+   	<%= image_tag 'howitworks-img-3-wht.png', :class => "how-image" %>
 		Submit and/or vote on designs inspired by top lyrics.
 	   	</div>
 	<div class="how-box">
-  	<%= image_tag 'howitworks-img-4.png', :class => "how-image" %>
+  	<%= image_tag 'howitworks-img-4-wht.png', :class => "how-image" %>
 		Help create dope tees & products inspired by music.
 	  	</div>
+</div>
+</div>
+
+  <div id="P1" class="player" 
+     data-property="{videoURL:'https://youtu.be/WsOZ86F1nn8',containment:'#vid',startAt:0,mute:true,autoPlay:true,loop:true,opacity:1,showControls:false,addRaster:true,optimizeDisplay: true}">
 </div>
 <div class="works-top" id="works-exp">
 	<h2>Experiments</h2>
@@ -70,3 +82,10 @@
 	</div>
 
 	<%= render 'layouts/footer' %>
+
+
+	<script>
+   $(function(){
+      $(".player").YTPlayer();
+    });
+</script>
