@@ -38,9 +38,35 @@
 .campaign-lyric-each ul li a {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #000; text-shadow: none;}
 .campaign-lyric-each ul li a:hover {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #1cccaa; text-shadow: none;}
 
+
+.campaign-chosen-lyric-each {width: 100%;}
+.campaign-chosen-lyric-each ul {list-style:none; color: #000; clear: both; width: 100%;}
+.campaign-chosen-lyric-each ul li {padding: 10px; width: auto;}
+
+
+.campaign-chosen-lyric-each a {color: #000; font-size: 30px; line-height: 34px; text-align: left; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif;}
+.campaign-chosen-lyric-each a:hover {color: #95a5a6; font-size: 30px; line-height: 34px; text-align: left; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif; text-decoration: none;}
+
+.campaign-chosen-lyric-each ul li img {width: auto; border-radius: 10px; margin: 0 5px;}
+
+.campaign-chosen-lyric-each ul li a {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #000; text-shadow: none;}
+.campaign-chosen-lyric-each ul li a:hover {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #1cccaa; text-shadow: none;}
+
 #campaign-art {margin:0 auto;}
 .campaign-art-each {float: left; width: 200px; margin: 2px;}
-.campaign-art-each img {float: left; width: 100%; height: auto; border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px}
+.campaign-art-each img {float: left; width: 100%; height: auto; border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px;}
+
+
+.campaign-chosen-art-each { width: 90%; margin: 10px 5%;}
+.campaign-chosen-art-each img { width: 100%; height: auto;}
+.campaign-chosen-art-each ul {list-style:none; color: #000; clear: both; width: 100%;}
+.campaign-chosen-art-each ul li {padding: 10px; width: auto;}
+
+.campaign-chosen-art-each ul li img {width: auto; border-radius: 10px; margin: 0 5px;}
+
+.campaign-chosen-art-each ul li a {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #000; text-shadow: none;}
+.campaign-chosen-art-each ul li a:hover {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #1cccaa; text-shadow: none;}
+
 
 
 .art-container {width: 100%; margin: 0 0 0 0; float: left; padding: 25px 10%; background-color: #fff;}
@@ -106,7 +132,7 @@ div.how-campaign h2 {margin-top: 0; text-shadow: 1px 1px #000;}
 
 div.campaign-show div.campaignshow-info h1 {padding: 0 10%;}
 
-.timer-info {float: left; padding: 25px 5px; font-size: 20px; line-height: 20px; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif;}
+.timer-info {float: left; padding: 5px 0; font-size: 20px; line-height: 20px; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif;}
 
 .next-prev {color: #fff; position: absolute; right: 0; padding: 5px; }
 .next-prev a {color: #fff; text-decoration: none;}
@@ -114,7 +140,7 @@ div.campaign-show div.campaignshow-info h1 {padding: 0 10%;}
 .campaign-status {float: left; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #fff; font-size: 24px; line-height: 24px; margin: 15px 0;}
 
 .campaign-boxinfo {float: left; width: 100%; padding: 10px 0;}
-.campaign-halfbox {float: left; width: 60%; padding: 0; margin: 0;}
+.campaign-halfbox {float: left; width: 100%; padding: 0; margin: 0;}
 .campaign-halfbox2 {float: left; width: 40%; padding: 0; margin: 0;}
 
 div.campaign-add div.campaign-halfbox div.how-box2 {padding: 0 5%;}
@@ -135,6 +161,54 @@ div.chosen-box div.campaign-lyric-each {float: left; }
 div.campaign-lyric-each a.chosen_lyric { width: 80%;}
 
 .how-image2-mobile {display: none; width: 30%;}
+
+div.campaign-halfbox div#accordion.panel-group.dashlist div.panel.panel-default div.panel-heading {background-color: #000 !important;}
+div.campaign-halfbox div#accordion.panel-group.dashlist div.panel.panel-default div.panel-heading h4.panel-title a:hover {color: #1abc9c;}
+
+div.campaign-halfbox div#accordion.panel-group.dashlist div.panel.panel-default div div.panel-body a.submitbutton {
+    border-radius: 5px;
+    color: #fff;
+    float: right;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 18px;
+    line-height: 18px;
+    padding: 10px 5px;
+    text-decoration: none;
+    border: 2px solid #1abc9c; background-color: #1abc9c;}
+
+div.campaign-halfbox div#accordion.panel-group.dashlist div.panel.panel-default div div.panel-body a.submitbutton:hover {
+    border-radius: 5px;
+    color: #000;
+    float: right;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 18px;
+    line-height: 18px;
+    padding: 10px 5px;
+    text-decoration: none;
+    border: 2px solid #1abc9c; background-color: #1abc9c;}
+
+div.campaign-halfbox div#accordion.panel-group.dashlist div.panel.panel-default div div.panel-body div.submitbutton {
+	    border-radius: 5px;
+    color: #fff;
+    float: right;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 18px;
+    line-height: 18px;
+    padding: 10px 5px;
+    text-decoration: none;
+    border: 2px solid #1abc9c; background-color: #1abc9c;}
+
+div.campaign-halfbox div#accordion.panel-group.dashlist div.panel.panel-default div ul.list-group li.list-group-item span.glyphicon.glyphicon-question-sign {font-size: 14px; vertical-align: top;}
+div.campaign-halfbox div#accordion.panel-group.dashlist div.panel.panel-default div ul.list-group li.list-group-item a {color: #000; text-decoration: none;}
+div.campaign-halfbox div#accordion.panel-group.dashlist div.panel.panel-default div ul.list-group li.list-group-item a:hover {color: #1abc9c; text-decoration: none;}
+div.campaign-halfbox div#accordion.panel-group.dashlist div.panel.panel-default {border: 0px solid #000;}
+
+div.campaign-chosen-lyric-each i.fa.fa-quote-left {color: #1abc9c; vertical-align: top;}
+div.campaign-chosen-lyric-each i.fa.fa-quote-right {color: #1abc9c; vertical-align: top;}
+
+div.campaign-chosen-lyric-each ul li {font-size: 14px;}
+div.campaign-chosen-art-each ul li {font-size: 14px;}
+
 
 @media screen and (max-width: 640px){
 	.campaign-section2 {width: 100% !important;}

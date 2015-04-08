@@ -28,156 +28,141 @@
               Experiment: <span style="text-transform: uppercase;"><%= @campaign.status %></span>
           </div>
 
-        <% if @campaign.status == "closed" %>
-            
-
-
-
-
-
-        <% else %>
-              <div class="how-box2">
-              <% if @chosen_lyrics.any? %>
-              <div class="timer-info">
-              <%= link_to "Chosen Lyric(s)", '#lyric-chosen' %>
-            </div>
-              <% else %>
-              
-              <div class="timer-box2">
-                <% if @campaign.timer.nil? || @campaign.timer.empty? %>
-                    <div class="timer-info">Lyric submissions not open yet</div>
-                <% else %>
-                  <% unless @campaign.timer.nil? || @campaign.timer.empty? %>
-                  <%= link_to 'Submit Lyrics', new_campaign_lyric_path(@campaign, @lyric), class: "submitbutton" %><span class="add-timer">Lyrics:</span>
-                    <div class="timer-info"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-                    <span class="timer-line" data-countdown= <%= @campaign.timer %> ></span>
-                  </div>
-                  <% end %>
-                <% end %>
-              </div>
-
-            <% end %>
-            </div>
-
-            <div class="how-box2-mobile">
-             <% if @chosen_lyrics.any? %>
-              <div class="timer-info">
-              <%= link_to "Chosen Lyric(s)", '#lyric-chosen' %>
-            </div>
-              <% else %>
-              
-              <div class="timer-box2">
-                <% if @campaign.timer.nil? || @campaign.timer.empty? %>
-                    <div class="timer-info">Lyric submissions not open yet</div>
-                <% else %>
-                  <% unless @campaign.timer.nil? || @campaign.timer.empty? %>
-                      <%= link_to new_campaign_lyric_path(@campaign, @lyric) do %>
-                        <i class="fa fa-headphones"></i>
-                      <% end %>
-                  <span class="add-timer">Lyrics:</span>
-                    <div class="timer-info"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-                    <span class="timer-line" data-countdown= <%= @campaign.timer %> ></span>
-                  </div>
-                  <% end %>
-                <% end %>
-              </div>
-
-            <% end %>
-
-
-            </div>
-
-            <div class="how-box2">
-              <% if @chosen_arts.any? %>
-                  <div class="timer-info">
-                  <%= link_to "Chosen Design(s)", '#art-chosen' %>
-                </div>
-               <% else %>
-              
-                <div class="timer-box2">
-                   <% if @campaign.timer2.nil? || @campaign.timer2.empty? %>
-                  <div class="timer-info">Design submissions not open yet</div>
-                  <% else %>
-                  <% unless @campaign.timer2.nil? || @campaign.timer2.empty? %>
-                  <%= link_to 'Submit Designs', new_campaign_art_path(@campaign, @art), class: "submitbutton" %>
-                  <div class="timer-info"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-                    <span class="timer-line" data-countdown= <%= @campaign.timer2 %> ></span>
-                  </div>
-                    <% end %>
-                    <% end %>
-                  </div>
-                  <% end %>
-            </div>
-
-              <div class="how-box2-mobile">
-              <% if @chosen_arts.any? %>
-                  <div class="timer-info">
-                  <%= link_to "Chosen Design(s)", '#art-chosen' %>
-                </div>
-               <% else %>
-              
-                <div class="timer-box2">
-                   <% if @campaign.timer2.nil? || @campaign.timer2.empty? %>
-                  <div class="timer-info">Design submissions not open yet</div>
-                  <% else %>
-                  <% unless @campaign.timer2.nil? || @campaign.timer2.empty? %>
-                      <%= link_to new_campaign_art_path(@campaign, @art) do %>
-                        <i class="fa fa-paint-brush"></i>
-                      <% end %>
-                  <div class="timer-info"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-                    <span class="timer-line" data-countdown= <%= @campaign.timer2 %> ></span>
-                  </div>
-                    <% end %>
-                    <% end %>
-                  </div>
-                  <% end %>
-            </div>
-        <% end %>
-
-
         <div class="panel-group dashlist" id="accordion" role="tablist" aria-multiselectable="true">
 
         <div class="panel panel-default">
           <div class="panel-heading" role="tab" id="headingOne">
             <h4 class="panel-title">
+              <% if @campaign.timer.nil? || @campaign.timer.empty? %>
               <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Lab Check Points
+                    Rhyme Submissions
               </a>
               <span class="right-circle">
-              <span class="points-lab2"><i class="fa fa-flask"></i> <%= current_user.points %> </span> 
+              <span class="points-lab2"><i class="fa fa-lock"></i> </span> 
             </span>
+            <% elsif @campaign.timer < Time.now %>
+
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Rhyme Submissions
+              </a>
+              <span class="right-circle">
+              <span class="points-lab2"><i class="fa fa-lock"></i> </span> 
+            </span>
+
+
+            <% else %>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Rhyme Submissions
+              </a>
+              <span class="right-circle">
+              <span class="points-lab2"><i class="fa fa-unlock"></i> </span> 
+            </span>
+
+            <% end %>
             </h4>
           </div>
+          <% if @campaign.timer.nil? || @campaign.timer.empty? %>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+
+          <% elsif @campaign.timer < Time.now %>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+
+          <% else %>
           <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+          <% end %>
+
+
           <div class="panel-body">
-            Get your lab points up to get special access and discounts.  Watch out for ways to get free gear and early access for contributing to the community.  Get points by updating your profile, voting and submitting lyrics, designs and posts and other things.
+
+                <% if @campaign.timer.nil? || @campaign.timer.empty? %>
+
+                  <div class="timer-info">Lyric submissions not open yet</div>
+                 <% elsif @campaign.timer < Time.now %>
+                  <div class="timer-info">Lyric submissions closed</div>
+
+                 <% else %>
+
+                 <% if user_signed_in? && current_user.lyrics.where(campaign_id: @campaign.id).count >= 3 %>
+
+                 <div class="timer-info"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                    <span class="timer-line" data-countdown= <%= @campaign.timer %> ></span>
+                  </div>
+
+                  
+
+                  <div class="submitbutton">Max Submits</div>
+
+                 <% elsif user_signed_in? %>
+                  <div class="timer-info"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                    <span class="timer-line" data-countdown= <%= @campaign.timer %> ></span>
+                  </div>
+
+                  <%= link_to 'Submit Lyrics', new_campaign_lyric_path(@campaign, @lyric), class: "submitbutton" %>
+
+                  <% else %>
+                    <div class="timer-info"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                    <span class="timer-line" data-countdown= <%= @campaign.timer %> ></span>
+                  </div>
+
+                  <%= link_to "Sign In To Submit", new_user_registration_path, class: "submitbutton" %>
+
+                  <% end %>
+                <% end %>
                
           </div>
 
-            <ul class="list-group">
+          <% if @campaign.timer.nil? || @campaign.timer.empty? %>
+
+          <ul class="list-group">
             <li class="list-group-item">
-              <% if current_user.points > 69 %>
-              <span class="left-circle"><i class="fa fa-check-circle-o"></i></span>Congrats! Access Granted To Site Early<span class="right-circle">
-              <span class="points-lab2-done"><i class="fa fa-unlock"></i>70</span>
+              <span class="left-circle"><i class="fa fa-lock"></i></span>Submit Lyric To Experiment Soon<span class="right-circle">
+              <span class="points-lab2"><i class="fa fa-flask"></i>10</span>
+            </span>
+
+            </li>
+
+          <li class="list-group-item">
+              <span class="left-circle"><i class="fa fa-lock"></i></span>Vote for Lyrics Soon<span class="right-circle">
+              <span class="points-lab2"><i class="fa fa-flask"></i>1</span>
+            </span>
+
+            </li>
+
+
+          </ul>
+
+          <% elsif @campaign.timer < Time.now %>
+
+           <ul class="list-group">
+            <li class="list-group-item">
+            <% if user_signed_in? && current_user.lyrics.where(campaign_id: @campaign.id).count >= 3 %>
+
+              <span class="left-circle"><i class="fa fa-lock"></i></span><%= current_user.lyrics.where(campaign_id: @campaign.id).count %> / 3 Lyrics Added <span class="right-circle">
+              <span class="points-lab2-done"><i class="fa fa-flask"></i><%= current_user.lyrics.where(campaign_id: @campaign.id).count * 10 %></span>
+              </span>
+
+            <% elsif user_signed_in? && current_user.lyrics.where(campaign_id: @campaign.id).any? %>
+              <span class="left-circle"><i class="fa fa-lock"></i></span><%= current_user.lyrics.where(campaign_id: @campaign.id).count %> / 3 Lyrics Added <span class="right-circle">
+              <span class="points-lab2-done"><i class="fa fa-flask"></i><%= current_user.lyrics.where(campaign_id: @campaign.id).count * 10 %></span>
             </span>
 
               <% else %>
-              <span class="left-circle"><i class="fa fa-circle-o"></i></span>Get Access To Site Early By Updating Profile<span class="right-circle">
-              <span class="points-lab2"><i class="fa fa-lock"></i>70</span>
+              <span class="left-circle"><i class="fa fa-lock"></i></span>No lyrics submitted<span class="right-circle">
+              <span class="points-lab2"><i class="fa fa-flask"></i>0</span>
             </span>
             <% end %>
 
             </li>
 
           <li class="list-group-item">
-              <% if current_user.points > 199 %>
-              <span class="left-circle"><i class="fa fa-check-circle-o"></i></span>Use Code "5Off200" for $5 Off<span class="right-circle">
-              <span class="points-lab2-done"><i class="fa fa-unlock"></i>200</span>
+             <% if user_signed_in? && ((current_user.get_voted Lyric.where(campaign_id: @campaign.id)).count > 0) %>
+              <span class="left-circle"><i class="fa fa-lock"></i></span><%= (current_user.get_voted Lyric.where(campaign_id: @campaign.id)).count %> Lyrics Voted For <span class="right-circle">
+              <span class="points-lab2-done"><i class="fa fa-flask"></i><%= (current_user.get_voted Lyric.where(campaign_id: @campaign.id)).count %></span>
             </span>
 
               <% else %>
-              <span class="left-circle"><i class="fa fa-circle-o"></i></span>Get Code For $5 Off Next Order <span class="right-circle">
-              <span class="points-lab2"><i class="fa fa-lock"></i>200</span>
+              <span class="left-circle"><i class="fa fa-lock"></i></span>No lyrics voted for<span class="right-circle">
+              <span class="points-lab2"><i class="fa fa-flask"></i>0</span>
             </span>
             <% end %>
 
@@ -186,34 +171,379 @@
 
           </ul>
 
+          <% else %>
+            <ul class="list-group">
+            <li class="list-group-item">
+
+            <% if user_signed_in? && current_user.lyrics.where(campaign_id: @campaign.id).count >= 3 %>
+              <span class="left-circle"><i class="fa fa-check-circle-o"></i></span><%= current_user.lyrics.where(campaign_id: @campaign.id).count %> / 3 Lyrics Added <span type="button" data-toggle="tooltip" data-placement="top" title="Max Submissions Reached" class="glyphicon glyphicon-question-sign" aria-hidden="true"></span><span class="right-circle">
+              <span class="points-lab2-done"><i class="fa fa-flask"></i><%= current_user.lyrics.where(campaign_id: @campaign.id).count * 10 %></span>
+            </span>
+
+              <% elsif user_signed_in? && current_user.lyrics.where(campaign_id: @campaign.id).any? %>
+              <span class="left-circle"><i class="fa fa-check-circle-o"></i></span><%= current_user.lyrics.where(campaign_id: @campaign.id).count %> / 3 Lyrics Added <span class="right-circle">
+              <span class="points-lab2-done"><i class="fa fa-flask"></i><%= current_user.lyrics.where(campaign_id: @campaign.id).count * 10 %></span>
+            </span>
+
+              <% else %>
+              <span class="left-circle"><i class="fa fa-circle-o"></i></span><%= link_to 'Submit 1st Lyric To Experiment', new_campaign_lyric_path(@campaign, @lyric) %><span class="right-circle">
+              <span class="points-lab2"><i class="fa fa-flask"></i>10</span>
+            </span>
+            <% end %>
+
+            </li>
+
+          <li class="list-group-item">
+             <% if user_signed_in? && ((current_user.get_voted Lyric.where(campaign_id: @campaign.id)).count > 0) %>
+              <span class="left-circle"><i class="fa fa-check-circle-o"></i></span><%= (current_user.get_voted Lyric.where(campaign_id: @campaign.id)).count %> Lyrics Voted For<span class="right-circle">
+              <span class="points-lab2-done"><i class="fa fa-flask"></i><%= (current_user.get_voted Lyric.where(campaign_id: @campaign.id)).count %></span>
+            </span>
+
+              <% else %>
+              <span class="left-circle"><i class="fa fa-circle-o"></i></span>Vote for Lyrics <span class="right-circle">
+              <span class="points-lab2"><i class="fa fa-flask"></i>1</span>
+            </span>
+            <% end %>
+
+            </li>
+
+
+          </ul>
+
+
+          <% end %>
+
             
           </div>
         </div>
-      </div>
 
-      </div>
-          <div class="campaign-halfbox2">
-              <div class="campaign-boxinfo">
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title">
+              <% if @campaign.timer2.nil? || @campaign.timer2.empty? %>
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Design Submissions
+              </a>
+              <span class="right-circle">
+              <span class="points-lab2"><i class="fa fa-lock"></i> </span> 
+            </span>
+            <% elsif @campaign.timer2 < Time.now %>
 
-                <h3>Rewards:</h3>
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Design Submissions
+              </a>
+              <span class="right-circle">
+              <span class="points-lab2"><i class="fa fa-lock"></i> </span> 
+            </span>
+
+
+            <% else %>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Design Submissions
+              </a>
+              <span class="right-circle">
+              <span class="points-lab2"><i class="fa fa-unlock"></i> </span> 
+            </span>
+
+            <% end %>
+            </h4>
+          </div>
+          <% if @campaign.timer.nil? || @campaign.timer.empty? %>
+
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+
+          <% elsif @campaign.timer2 < Time.now %>
+            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+
+          <% else %>
+            <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
+          <% end %>
+          <div class="panel-body">
+
+                <% if @campaign.timer2.nil? || @campaign.timer2.empty? %>
+
+                  <div class="timer-info">Design submissions not open yet</div>
+                 <% elsif @campaign.timer2 < Time.now %>
+                  <div class="timer-info">Design submissions closed</div>
+
+                 <% else %>
+
+                 <% if user_signed_in? && current_user.arts.where(campaign_id: @campaign.id).count >= 5 %>
+
+                 <div class="timer-info"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                    <span class="timer-line" data-countdown= <%= @campaign.timer2 %> ></span>
+                  </div>
+
+                  
+
+                  <div class="submitbutton">Max Submits</div>
+
+                 <% elsif user_signed_in? %>
+                  <div class="timer-info"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                    <span class="timer-line" data-countdown= <%= @campaign.timer2 %> ></span>
+                  </div>
+
+                  <%= link_to 'Submit Design', new_campaign_art_path(@campaign, @art), class: "submitbutton" %>
+
+                  <% else %>
+                    <div class="timer-info"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                    <span class="timer-line" data-countdown= <%= @campaign.timer2 %> ></span>
+                  </div>
+
+                  <%= link_to "Sign In To Submit", new_user_registration_path, class: "submitbutton" %>
+
+                  <% end %>
+                <% end %>
+               
+          </div>
+
+          <% if @campaign.timer2.nil? || @campaign.timer2.empty? %>
+
+          <ul class="list-group">
+            <li class="list-group-item">
+              <span class="left-circle"><i class="fa fa-lock"></i></span>Submit Designs To Experiment Soon<span class="right-circle">
+              <span class="points-lab2"><i class="fa fa-flask"></i>100</span>
+            </span>
+
+            </li>
+
+          <li class="list-group-item">
+              <span class="left-circle"><i class="fa fa-lock"></i></span>Vote for Designs Soon<span class="right-circle">
+              <span class="points-lab2"><i class="fa fa-flask"></i>2</span>
+            </span>
+
+            </li>
+
+
+          </ul>
+
+          <% elsif @campaign.timer2 < Time.now %>
+
+           <ul class="list-group">
+            <li class="list-group-item">
+            <% if user_signed_in? && current_user.arts.where(campaign_id: @campaign.id).count >= 5 %>
+
+              <span class="left-circle"><i class="fa fa-lock"></i></span><%= current_user.arts.where(campaign_id: @campaign.id).count %> Designs Submitted <span class="right-circle">
+              <span class="points-lab2-done"><i class="fa fa-flask"></i><%= current_user.arts.where(campaign_id: @campaign.id).count * 100 %></span>
+              </span>
+
+            <% elsif user_signed_in? && current_user.arts.where(campaign_id: @campaign.id).any? %>
+              <span class="left-circle"><i class="fa fa-lock"></i></span><%= current_user.arts.where(campaign_id: @campaign.id).count %> Designs Submitted <span class="right-circle">
+              <span class="points-lab2-done"><i class="fa fa-flask"></i><%= current_user.lyrics.where(campaign_id: @campaign.id).count * 100 %></span>
+            </span>
+
+              <% else %>
+              <span class="left-circle"><i class="fa fa-lock"></i></span>No designs submitted<span class="right-circle">
+              <span class="points-lab2"><i class="fa fa-flask"></i>0</span>
+            </span>
+            <% end %>
+
+            </li>
+
+          <li class="list-group-item">
+             <% if user_signed_in? && ((current_user.get_voted Art.where(campaign_id: @campaign.id)).count > 0) %>
+              <span class="left-circle"><i class="fa fa-lock"></i></span><%= (current_user.get_voted Art.where(campaign_id: @campaign.id)).count %> Designs Voted For <span class="right-circle">
+              <span class="points-lab2-done"><i class="fa fa-flask"></i><%= (current_user.get_voted Art.where(campaign_id: @campaign.id)).count * 2 %></span>
+            </span>
+
+              <% else %>
+              <span class="left-circle"><i class="fa fa-lock"></i></span>No designs voted for<span class="right-circle">
+              <span class="points-lab2"><i class="fa fa-flask"></i>0</span>
+            </span>
+            <% end %>
+
+            </li>
+
+
+          </ul>
+
+          <% else %>
+            <ul class="list-group">
+            <li class="list-group-item">
+
+            <% if user_signed_in? && current_user.arts.where(campaign_id: @campaign.id).count >= 5 %>
+              <span class="left-circle"><i class="fa fa-check-circle-o"></i></span><%= current_user.arts.where(campaign_id: @campaign.id).count %> Designs Added <span type="button" data-toggle="tooltip" data-placement="top" title="Max Submissions of 5 Reached" class="glyphicon glyphicon-question-sign" aria-hidden="true"></span><span class="right-circle">
+              <span class="points-lab2-done"><i class="fa fa-flask"></i><%= current_user.arts.where(campaign_id: @campaign.id).count * 100 %></span>
+            </span>
+
+              <% elsif user_signed_in? && current_user.arts.where(campaign_id: @campaign.id).any? %>
+              <span class="left-circle"><i class="fa fa-check-circle-o"></i></span><%= current_user.arts.where(campaign_id: @campaign.id).count %> Designs Added <span class="right-circle">
+              <span class="points-lab2-done"><i class="fa fa-flask"></i><%= current_user.arts.where(campaign_id: @campaign.id).count * 100 %></span>
+            </span>
+
+              <% else %>
+              <span class="left-circle"><i class="fa fa-circle-o"></i></span><%= link_to 'Submit 1st Design To Experiment', new_campaign_art_path(@campaign, @art) %><span class="right-circle">
+              <span class="points-lab2"><i class="fa fa-flask"></i>100</span>
+            </span>
+            <% end %>
+
+            </li>
+
+          <li class="list-group-item">
+             <% if user_signed_in? && ((current_user.get_voted Art.where(campaign_id: @campaign.id)).count > 0) %>
+              <span class="left-circle"><i class="fa fa-check-circle-o"></i></span><%= (current_user.get_voted Art.where(campaign_id: @campaign.id)).count %> Designs Voted For<span class="right-circle">
+              <span class="points-lab2-done"><i class="fa fa-flask"></i><%= (current_user.get_voted Art.where(campaign_id: @campaign.id)).count %></span>
+            </span>
+
+              <% else %>
+              <span class="left-circle"><i class="fa fa-circle-o"></i></span>Vote for Designs <span class="right-circle">
+              <span class="points-lab2"><i class="fa fa-flask"></i>2</span>
+            </span>
+            <% end %>
+
+            </li>
+
+
+          </ul>
+
+
+          <% end %>
+
+            
+          </div>
+        </div>
+
+
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingThree">
+            <h4 class="panel-title">
+
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Rewards / Rules
+              </a>
+     
+            </h4>
+          </div>
+          <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+               
+          </div>
+
+          <ul class="list-group">
+            <li class="list-group-item">
+              
+              <h3>Rewards:</h3>
 
                 <%= simple_format(@campaign.reward) %>
 
+            </li>
 
-                *For Design Submissions
+          <li class="list-group-item">
 
-
-              </div>
-
-                      <div class="campaign-boxinfo">
-
-                <h3>Rules:</h3>
+            <h3>Rules:</h3>
 
                 <%= simple_format(@campaign.rules) %>
 
+            </li>
 
-              </div>
-            </div>
+
+          </ul>
+            
+          </div>
+        </div>
+
+        <% if @chosen_lyrics.any? %>
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingFour">
+            <h4 class="panel-title">
+
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                  <% if @chosen_lyrics.count > 1 %>
+                    Chosen Lyrics
+                    <% else %>
+                    Chosen Lyric
+                    <% end %>
+              </a>
+     
+            </h4>
+          </div>
+          <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+          <div class="panel-body">
+               
+          </div>
+
+          <ul class="list-group">
+              
+              <% @chosen_lyrics.each do |chosen_lyric| %>
+
+              <li class="list-group-item">
+                  <div class="campaign-chosen-lyric-each">
+                          <% unless chosen_lyric.line.nil? || chosen_lyric.line.empty? %>
+                          <i class="fa fa-quote-left"></i>
+
+                 
+                          <%= link_to chosen_lyric.line, campaign_lyric_path(@campaign, chosen_lyric), class: 'chosen_lyric' %><i class="fa fa-quote-right"></i>
+
+                          <% end %>
+                        <ul>
+                    <li>Submitted By:<% unless chosen_lyric.user.avatar.nil? %><%= image_tag chosen_lyric.user.avatar.url(:mini) %><% end %><% unless chosen_lyric.user.username.nil? || chosen_lyric.user.username.empty? %><%= link_to chosen_lyric.user.username, profile_url(:id => chosen_lyric.user.username) %><% end %></li>
+                </ul>
+                </div>
+              </li>
+              <% end %>
+              
+
+          </ul>
+            
+          </div>
+        </div>
+        <% end %>
+
+
+        <% if @chosen_arts.any? %>
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingFive">
+            <h4 class="panel-title">
+
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                    <% if @chosen_arts.count > 1 %>
+                    Chosen Designs
+                    <% else %>
+                    Chosen Design
+                    <% end %>
+              </a>
+     
+            </h4>
+          </div>
+          <div id="collapseFive" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingFive">
+          <div class="panel-body">
+               
+          </div>
+
+          <ul class="list-group">
+
+                        <% @chosen_arts.each do |chosen_art| %>
+                        <li class="list-group-item">
+                          <div class="campaign-chosen-art-each">
+                            <%= link_to campaign_art_path(@campaign, chosen_art) do %>
+
+                            <% unless chosen_art.image.nil? %>
+                            <%= image_tag chosen_art.image.url(:medium) %>
+                            <% end %>
+                          <% end %>
+
+                          <ul>
+                            <li>Designed By:<% unless chosen_art.user.avatar.nil? %><%= image_tag chosen_art.user.avatar.url(:mini) %><% end %><% unless chosen_art.user.username.nil? || chosen_art.user.username.empty? %><%= link_to chosen_art.user.username, profile_url(:id => chosen_art.user.username) %><% end %></li>
+                        </ul>
+                          </div>
+                        </li>
+                        <% end %>
+              
+          </ul>
+            
+          </div>
+        </div>
+        <% end %>
+
+
+
+
+
+
+      </div>
+
+      </div>
+
 
                <div class="admin-footer">
                   <% if can? :update, @campaign %>
@@ -242,50 +572,9 @@
           <%= simple_format(@campaign.description) %>
         </div>
         <% end %>
-      </br>
-
-      <% if @chosen_lyrics.any? %>
-      <div id="lyric-chosen" class="chosen-box">
-        <h1>Chosen Lyric(s)</h1><div class="clear"></div>
-        <% @chosen_lyrics.each do |chosen_lyric| %>
-
-            <div class="campaign-lyric-each">
-                    <% unless chosen_lyric.line.nil? || chosen_lyric.line.empty? %>
-                    <span class="quote-span">"</span>
-           
-                    <%= link_to chosen_lyric.line, campaign_lyric_path(@campaign, chosen_lyric), class: 'chosen_lyric' %><span class="quote-span2">"</span>
-                    <% end %>
-                  <ul>
-              <li><% unless chosen_lyric.user.avatar.nil? %><%= image_tag chosen_lyric.user.avatar.url(:mini) %><% end %><% unless chosen_lyric.user.username.nil? || chosen_lyric.user.username.empty? %><%= link_to chosen_lyric.user.username, profile_url(:id => chosen_lyric.user.username) %><% end %></li>
-          </ul>
-          </div>
 
 
-        <% end %>
-
-
-      </div>
-      <% end %>
-
-      <% if @chosen_arts.any? %>
-      <div id="art-chosen" class="chosen-box">
-        <h1>Chosen Design(s)</h1><div class="clear"></div>
-        
-                <% @chosen_arts.each do |chosen_art| %>
-                  <div class="campaign-art-each">
-                    <%= link_to campaign_art_path(@campaign, chosen_art) do %>
-
-                    <% unless chosen_art.image.nil? %>
-                    <%= image_tag chosen_art.image.url(:medium) %>
-                    <% end %>
-                  <% end %>
-                  </div>
-                <% end %>
-      </div>
-      <% end %>
-
-
-       </div>
+  </div>
        
 
   </div>
