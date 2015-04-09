@@ -19,8 +19,9 @@ class ProfilesController < ApplicationController
 
   def show
     @approved_videos = Video.approve.where(user_id: @user)
+    @approved_video = Video.approve.where(user_id: @user).last
     @videos = Video.where(user_id: @user)
-    @video = Video.where(user_id: @user).first
+    @video = Video.where(user_id: @user).last
   	@user = User.find_by_username(params[:id])
   	if @user
       

@@ -211,6 +211,49 @@ div.campaign-chosen-art-each ul li {font-size: 14px;}
 
 
 @media screen and (max-width: 640px){
+
+	#accordion.dashlist {
+    color: #000;
+    float: left;
+    margin: 25px 0;
+    padding: 0 !important;
+    width: 100%;}
+
+    div#accordion.panel-group.dashlist div.panel.panel-default div h4.panel-title a {font-size: 18px !important;}
+    div#accordion.panel-group.dashlist div.panel.panel-default div h4.panel-title a:hover {font-size: 18px !important;}
+    div#accordion.panel-group.dashlist div.panel.panel-default div div.panel-body div.timer-info {font-size: 18px !important; line-height: 18px !important;}
+    div#accordion.panel-group.dashlist div.panel.panel-default div div.panel-body a.submitbutton {float: left !important;}
+
+    div#accordion.panel-group.dashlist div.panel.panel-default div ul.list-group li.list-group-item {
+    font-size: 16px !important;
+    padding: 10px 5px !important;}
+
+    div#accordion.panel-group.dashlist div.panel.panel-default div ul.list-group li.list-group-item span.right-circle span.points-lab2-done {
+    color: #7f8c8d;
+    font-family: "Fredoka One","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 18px !important;
+    line-height: 18px !important;
+    text-align: right;}
+
+    div#accordion.panel-group.dashlist div.panel.panel-default div ul.list-group li.list-group-item span.right-circle span.points-lab2 {
+    	font-size: 18px !important;
+    line-height: 18px !important;}
+
+   	div#accordion.panel-group.dashlist div.panel.panel-default div ul.list-group li.list-group-item span.left-circle {
+    padding: 0 10px !important;}
+
+    div#accordion.panel-group.dashlist div.panel.panel-default div ul.list-group li.list-group-item span.left-circle i.fa.fa-circle-o {
+    color: #1abc9c !important;
+    font-size: 18px !important;}
+
+    div#accordion.panel-group.dashlist div.panel.panel-default div div.panel-body div.timer-info {font-size: 14px !important;}
+
+    div#accordion.panel-group.dashlist div.panel.panel-default div ul.list-group li.list-group-item h3 {font-size: 18px !important;}
+    div#accordion.panel-group.dashlist div.panel.panel-default div ul.list-group li.list-group-item p {font-size: 14px !important;}
+
+    div#accordion.panel-group.dashlist div.panel.panel-default div ul.list-group li.list-group-item div.campaign-chosen-lyric-each a.chosen_lyric {font-size: 20px !important; line-height: 22px !important;}
+    div#accordion.panel-group.dashlist div.panel.panel-default div ul.list-group li.list-group-item div.campaign-chosen-lyric-each a.chosen_lyric:hover {font-size: 20px !important; line-height: 22px !important;}
+
 	.campaign-section2 {width: 100% !important;}
 	.home-info {display: none !important;}
 

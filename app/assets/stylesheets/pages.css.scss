@@ -88,10 +88,10 @@ div.launch-box-artist h4 {margin-top: 20px;}
 .social-box {width: 100px; padding: 0; margin: 5px auto; }
 div.social-box iframe#twitter-widget-0.twitter-share-button.twitter-tweet-button.twitter-share-button.twitter-count-horizontal {margin-left: 8px;}
 
-.works-top {float: left; width: 100%; min-height: 200px; height: auto; background-color: whitesmoke; padding: 50px 10%; color: #fff; font-size: 20px; line-height: 24px; text-align: center; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif;}
+.works-top {float: left; width: 100%; min-height: 200px; height: auto; background-color: whitesmoke; padding: 50px 10%; color: #2980b9; font-size: 20px; line-height: 24px; text-align: center; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif;}
 .how-image {float: left; width: 100%;}
-.how-box {float: left; width: 25%; margin: 0; padding: 0;}
-.howitworks-para {font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-size: 16px; line-height: 18px; color: #fff; width: 100%; padding: 10px 20%; text-align: center;}
+.how-box {float: left; width: 25%; margin: 0; padding: 0; min-height: 150px;}
+.howitworks-para {font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-size: 16px; line-height: 18px; color: #000; width: 100%; padding: 10px 20%; text-align: center; float: left;}
 #works-exp {background-color: #1abc9c; color: #fff; padding: 10px 10%; text-align: left;}
 #works-rhyme {background-color: #2980b9; color: #fff; padding: 10px 10%; text-align: left;}
 #works-design {background-color: #1abc9c; color: #fff; padding: 10px 10%; text-align: left;}
@@ -105,9 +105,13 @@ div.social-box iframe#twitter-widget-0.twitter-share-button.twitter-tweet-button
 
 .works-top-temp {float: left; width: 100%; min-height: 800px; height: auto; background-color: whitesmoke; padding: 50px 10%; color: #2980b9; font-size: 24px; line-height: 24px; text-align: center; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif;}
 
-#P2 {float: left; width: 70%; margin: 10px 15%; height: auto;}
+#P2 {float: left; min-width: 560px; width: 70%; margin: 10px 15%; height: auto;}
+#P2 iframe {border-radius: 10px;}
 
-#bgndVideo {position: absolute; top: 0; left: 0; height: 900px; width: 100%; float: left; display: inline;}
+div#background-green.works-top { background: url('white-transparent.png');}
+div#vid.works-top {padding: 0;}
+
+.how-image-mobile1 {display: none;}
 
 @media only screen and (min-width: 640px) and (max-width: 900px){
 
@@ -226,6 +230,11 @@ div.social-box iframe#twitter-widget-0.twitter-share-button.twitter-tweet-button
 
 @media screen and (max-width: 500px){
 
+	#P2 {float: left;  width: 100%; min-width: 0; margin: 5px 0%; height: auto; }
+	#P2 iframe {width: 100%; height: 280px;}
+	div#vid.works-top div#background-green.works-top {padding: 50px 0;}
+	div.howitworks-para {padding: 15px 5%;}
+
 		#launch-top {width: 100%; float: left; margin: 0 0 0 0; padding: 0; color: #fff; height: auto; background-color: none;}
 
 	#launch-box {width: 90%; float: left; margin: 0 0 0 10%;}
@@ -302,5 +311,31 @@ div.social-box iframe#twitter-widget-0.twitter-share-button.twitter-tweet-button
 
 
 	}
+
+@media screen and (max-width: 640px){
+
+	#P2 {float: left;  width: 100%; min-width: 0; margin: 5px 0%; height: auto; }
+	#P2 iframe {width: 100%; height: 280px;}
+	div#vid.works-top div#background-green.works-top {padding: 50px 0;}
+	div.howitworks-para {padding: 15px 5%;}
+
+	div#background-green.works-top { background-color: whitesmoke !important; background: whitesmoke url('') !important;}
+  	div#P1.player.mb_YTPlayer {display: none;}
+
+  	.how-box {
+    float: left;
+    font-size: 16px;
+    line-height: 18px;
+    margin: 0;
+    min-width: 150px;
+    padding: 0;
+    width: 25%;}
+
+    .works-top p {width: 100%; font-size: 16px; line-height: 18px;}
+    div#works-rhyme.works-top p {width: 100%; font-size: 16px; line-height: 18px;}
+
+    div#works-rhyme.works-top img.how-image3 {display: none;}
+    .how-image-mobile1 {display: inline; width: 70%; margin: 0;}
+}
 
 

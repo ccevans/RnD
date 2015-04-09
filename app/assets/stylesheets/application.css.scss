@@ -200,8 +200,7 @@ div.temp-access div.temp-access2 i.fa.fa-youtube-play:hover {font-size: 126px; l
 
 .launching-soon div.how-box2 {padding: 0 10%;}
 
-div#background-green.works-top { background: url('black-transparent2.png');}
-div#vid.works-top {padding: 0;}
+
 
 
 
@@ -215,6 +214,27 @@ div#vid.works-top {padding: 0;}
 
 
 @media screen and (max-width: 640px){
+
+    .temp-access {background: #1abc9c;}
+    .temp-access1 {width: 100%;}
+    div.temp-access div.timer-info {
+        font-size: 20px;
+        line-height: 24px;}
+
+    .temp-access h1 {
+    font-size: 40px;
+    line-height: 44px;
+    margin: 0;
+    padding: 0;}
+
+    .temp-access2 {
+    margin: 10px 10%;
+    padding: 0 5%;
+    text-align: center;
+    width: 80%;}
+
+    #vid.campaign-section2 div.temp-access div.temp-access1 img {width: 70% !important;}
+
 
   .simple_form {width: 80%; margin: 0 10%;}
   .addlyric {

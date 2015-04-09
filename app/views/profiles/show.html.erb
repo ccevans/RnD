@@ -128,43 +128,14 @@
 
 
     <div class="profile-video2">
-    	<% if @videos.any? %>
-		    <% @videos.each do |video| %>
-		    	<% if video.approve == true %>
-		    		<% unless video.videolink.nil? || video.videolink.empty? %>
+    	<% if @approved_video.present? %>
+    		<% unless @approved_video.videolink.nil? || @approved_video.videolink.empty? %>
 					
-						<p><%= raw(youtube_embed(video.videolink)) %></p>
-					<% end %>
-		    	<% end %>
-			<% end %>
-		<% end %>
-	</div>
-
-
-    <div class="profile-video">
-    <% if @videos.any? %>
-	    <% @videos.each do |video| %>
-	    	<% if video.approve == true %>
-		    	<% if @video.image.present? %>
-		    		<%= image_tag video.image.url(:medium) %>
-		    		<%= link_to video.videolink, class: "fancybox-media" do %>
-		    		<span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
-		    		<% end %>
-	    		<% else %>
-		    		<% unless video.videolink.nil? || video.videolink.empty? %>
-					
-						<p><%= raw(youtube_embed(video.videolink)) %></p>
+						<p><%= raw(youtube_embed(@approved_video.videolink)) %></p>
 					<% end %>
 
-	    		<% end %>
-	    	
-			<% end %>
-		<% end %>
-	<% elsif current_user == @user %>
-			Add Video to Profile
-	<% else %>
+    	<% end %>
 
-	<% end %>
 	</div>
 
 	</div>
@@ -181,19 +152,26 @@
 		      	<li role="presentation"><%= link_to "Account", edit_user_registration_path %></li>
 		      	<% if @videos.any? %>
 
-		      	<% if @approved_videos.any? %>
+				      	<% if @approved_videos.any? %>
+				      		<li role="presentation"><%= link_to 'Replace Video', new_video_path %></li>
 
-		      	<% else %>
-		      		<li role="presentation">Video Approval Pending</li>
+				      	<% else %>
+				      		<li role="presentation">Video Approval Pending</li>
 
-		      	<% end %>
+				      	<% end %>
 
 
 
 		      	<% else %>
 		        <li role="presentation"><%= link_to 'Add Video', new_video_path %></li>
 		        <% end %>
+
+		        <% if user_signed_in? && current_user.photos.count < 5 %>
 		        <li role="presentation"><%= link_to 'Add Photo', new_photo_path, remote: true %></li>
+
+		        <% else %>
+		        	<li role="presentation">Max Photos of</br> 5 Reached</li>
+		        <% end %>
 
 		        <li role="presentation"><div id="photo-form" style="display:none;"></div></li>
 		        
@@ -219,7 +197,7 @@
 			  <!-- Tab panes -->
 			  <div class="tab-content">
 			    <div role="tabpanel" class="tab-pane" id="home">
-			    	<% if can? :manage, :all %>
+			    	<% if user_signed_in? && current_user.points > 69 %>
 			    		<% if @lyrics.any? %>
 							<% @lyrics.each do |lyric| %>
 									    <div class="container-md">
@@ -300,13 +278,13 @@
 									      </div>
 							<% end %>
 						<% elsif current_user == @user %>
-							<p>No lyrics posted yet.  <%= link_to 'Add Your Favorite Lyrics', "/campaigns/2/lyrics/new" %></p>
+							<p>No lyrics posted yet.  <%= link_to 'Add Lyric', new_campaign_lyric_path(Campaign.last) %></p>
 						<% else %>
 							<p>No lyrics posted yet.</p>		
 						<% end %>
 					<% else %>
 						<div class="soon-info">
-							<p>Rhyme Center where you can participate in our creative process by voting and submitting your favorite lyrics to different Experiments avaialable soon.</p></br>
+							<p>Rhyme Center where you can participate in our creative process by voting and submitting your favorite lyrics to different Experiments available 5.1.15.</p></br>
 							<%= image_tag 'rnd-lab-info2.png', :class => "info-image2" %>
 							<%= image_tag 'rnd-rhyme-info4.png', :class => "info-image2" %>
 							<%= image_tag 'rnd-design-info3.png', :class => "info-image2" %>
@@ -320,7 +298,7 @@
 
 			    </div>
 			    <div role="tabpanel" class="tab-pane" id="profile">
-			    	<% if can? :manage, :all %>
+			    	<% if user_signed_in? && current_user.points > 69 %>
 			    	    <% if @arts.any? %>
 							 <div class="art-container">
             
@@ -343,13 +321,13 @@
 
 
 						<% elsif current_user == @user %>
-							<p>No art posted yet.  <%= link_to 'Add Your Favorite Artwork', "/campaigns/2/arts/new" %></p>
+							<p>No designs submitted yet.  <%= link_to 'Submit Design', new_campaign_art_path(Campaign.last) %></p>
 						<% else %>
-							<p>No art posted yet.</p>		
+							<p>No designs submitted yet.</p>		
 						<% end %>
 					<% else %>
 						<div class="soon-info">
-							<p>Design Center where you can participate in our creative process by voting and submitting artwork to different Experiments avaialable soon.</p></br>
+							<p>Design Center where you can participate in our creative process by voting and submitting artwork to different Experiments available 5.1.15.</p></br>
 							<%= image_tag 'rnd-lab-info2.png', :class => "info-image2" %>
 							<%= image_tag 'rnd-rhyme-info4.png', :class => "info-image2" %>
 							<%= image_tag 'rnd-design-info3.png', :class => "info-image2" %>
@@ -360,7 +338,6 @@
 
 			    </div>
 			    <div role="tabpanel" class="tab-pane" id="messages">
-			    	<% if can? :manage, :all %>
 			    	    <% if @posts.any? %>
 
 							  <div id="posts">
@@ -476,23 +453,10 @@
 
 
 						<% elsif current_user == @user %>
-							<p>No blog post posted yet.  <%= link_to 'Whats link to post? CC', "/campaigns/2/arts/new" %></p>
+							<p>No blog post posted yet.  <%= link_to 'Submit Post', new_post_path %></p>
 						<% else %>
 							<p>No blog post posted yet.</p>		
 						<% end %>
-					<% else %>
-						<div class="soon-info">
-							<p>Community Blog where you can post updates on yourself or your creative community available soon.</p></br>
-
-							<%= image_tag 'rnd-lab-info2.png', :class => "info-image2" %>
-							<%= image_tag 'rnd-rhyme-info4.png', :class => "info-image2" %>
-							<%= image_tag 'rnd-design-info3.png', :class => "info-image2" %>
-							<%= image_tag 'rnd-products-info5.png', :class => "info-image2" %>
-						</div>
-					<% end %>
-
-
-
 
 			    </div>
 
@@ -502,9 +466,7 @@
 					  <div class="transitions-enabled" id="photos"><%= render @photos %></div>
 					  <% elsif current_user == @user %>
 
-					  	<%= link_to new_photo_path, remote: true do %>
-					      <button class="btn btn-default">New</button>
-					    <% end %>
+					  	Add images to your portfolio by clicking on the <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> in the upper right corner.
 					    <% else %>
 					    No items added yet.
 

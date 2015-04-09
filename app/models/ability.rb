@@ -11,11 +11,23 @@ class Ability
         if user.role? :moderator
             can :manage, Lyric
             can :read, :all
-    else
-        can :read, :all
-        can :create, Lyric
-        can :manage, Lyric do |lyric|
-            lyric.try(:user) == user
+        else
+            can :read, :all
+            can :create, Lyric
+            can :manage, Lyric do |lyric|
+                lyric.try(:user) == user
+                end
+            can :manage, Photo do |photo|
+            photo.try(:user) == user
+            end
+            can :manage, Comment do |comment|
+            comment.try(:user) == user
+            end
+            can :manage, Commentart do |commentart|
+            commentart.try(:user) == user
+            end
+            can :manage, Commentpost do |commentpost|
+            commentpost.try(:user) == user
             end
         end
     end
