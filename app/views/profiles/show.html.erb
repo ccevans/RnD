@@ -40,6 +40,21 @@
 		<% if @user.username.present? %>
 			<h2>@<%= @user.username %></h2>
 		<% end %>
+
+		<% if @user.points.present? %>
+		<% if user_signed_in? && current_user == @user %>
+			   <span class="points-lab2">
+           	<%= link_to dash_path do %>
+           	<i class="fa fa-flask"></i> <%= @user.points %> 
+           	<% end %>
+           </span>
+
+		<% else %>
+           <span class="points-lab2">
+           	<i class="fa fa-flask"></i> <%= @user.points %> 
+           </span>
+           <% end %>
+        <% end %>
 				<hr>
 
 		<% if @user.location.present? %>

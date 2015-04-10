@@ -240,6 +240,10 @@ li.list-group-item span.left-circle i.fa.fa-circle-o:hover:before {
 div.labpoints-box span.left-circle {float: right;}
 div.user-row span.points-lab2 {font-size: 16px; line-height: 18px;}
 
+div.profile-topbox div.profile-topbox2 div.profile-topbox3 div.profile-topbox1 span.points-lab2 {float: left; width: 100%; text-align: center;}
+div.profile-topbox div.profile-topbox2 div.profile-topbox3 div.profile-topbox1 span.points-lab2 a {color: #000;}
+div.profile-topbox div.profile-topbox2 div.profile-topbox3 div.profile-topbox1 span.points-lab2 a:hover {color: #1abc9c; text-decoration: none;}
+
 @media screen and (min-width: 640px) and (max-width: 900px){
 
     ul.nav.navbar-nav.navbar-right li.dropdown2 a {font-size: 14px; line-height: 16px;}
@@ -257,6 +261,7 @@ div.user-row span.points-lab2 {font-size: 16px; line-height: 18px;}
 
 
 @media screen and (max-width: 640px){
+
     .labpoints-box {font-size: 40px; line-height: 40px; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif; color: #1abc9c; float: left; width: 100%; padding: 0 10%; margin: 25px 0 0 0;}
 
     .profile-topbox1 {
