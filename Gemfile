@@ -36,7 +36,7 @@ gem 'thor', '~> 0.18.1'
 gem 'figaro'
 gem 'font-awesome-sass'
 gem 'bootstrap-sass', '~> 3.3.3'
-gem 'route_downcaser'
+
 
 
 

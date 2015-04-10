@@ -115,6 +115,12 @@
         <% if user.points.present? %>
            <div class="user-row"><span class="points-lab2"><i class="fa fa-flask"></i> <%= user.points %> </span> </div>
         <% end %>
+
+        <% if can? :manage, :all %>
+
+        <div class="user-row adminonly">ID#: <%= user.id %></div>
+
+        <% end %>
 		   	</div>
 
 

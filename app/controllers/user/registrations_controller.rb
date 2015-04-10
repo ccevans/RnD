@@ -1,6 +1,7 @@
 class User::RegistrationsController < Devise::RegistrationsController
 # before_filter :configure_sign_up_params, only: [:create]
 # before_filter :configure_account_update_params, only: [:update]
+#before_create :to_lower
 
 def create
     @user = build_resource # Needed for Merit
@@ -17,7 +18,11 @@ def create
   end
 
 
-  
+ # private
+  #  def to_lower
+   #   self.username = self.username.downcase
+    #end
+
 
 
 

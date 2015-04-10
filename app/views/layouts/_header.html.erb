@@ -81,7 +81,7 @@
             <% end %>
             <li class="divider"></li>
             <li><% if current_user.username.present? %>
-              <%= link_to "Your Profile", profile_url(:id => current_user.username) %>
+              <%= link_to "Your Profile", profile_url(:id => current_user.username).downcase %>
                 <% end %>
             </li>
             <li><%= link_to "Account", edit_user_registration_path %></li>
