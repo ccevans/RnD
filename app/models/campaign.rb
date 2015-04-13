@@ -1,7 +1,7 @@
 class Campaign < ActiveRecord::Base
 	belongs_to :user
-	has_many :lyrics
-	has_many :arts
+	has_many :lyrics, dependent: :destroy
+	has_many :arts, dependent: :destroy
 
 	scope :by_status, -> status { where(:status => status) }
 	scope :free, -> { where(:status => "free") }
