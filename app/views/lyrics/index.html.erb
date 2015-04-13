@@ -111,6 +111,7 @@
   </div>
 
   <div id="lyrics">
+    <% if @lyrics.any? %>
     <% @lyrics.each do |lyric| %>
     <div class="container-md">
 
@@ -203,6 +204,12 @@
      
       
       </div>
+    <% end %>
+
+    <% else %>
+
+      <div class="noposts"><h1>No Lyrics Posted Yet.</h1></div>
+
     <% end %>
 
     <div class="back-top" title="Top of Page"> <a href="#top" onclick="return false;"><i class="glyphicon glyphicon-chevron-up"></i></a></div> 
