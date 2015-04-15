@@ -16,11 +16,13 @@
     <div class="avatar-img">
       <%= image_tag @user.avatar.url(:thumb) %>
     </div>
-    <%= f.file_field :avatar, hint: "Size of 300px x 300px" %>
+    <%= f.file_field :avatar, label: "Size of 300px x 300px" %>
+    <p>Size of 300px by 300px</p>
     <div class="form-break">Update Profile Background</div>
     <hr>
     <%= image_tag @user.profileimg.url(:medium) %>
-    <%= f.file_field :profileimg, hint: "Size of 1200px x 400px" %>
+    <%= f.file_field :profileimg, label: "Size of 1200px x 400px" %>
+    <p>Size of 1200px by 400px</p>
 
     <div class="form-break">Update Profile</div>
     <hr>

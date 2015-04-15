@@ -20,6 +20,8 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
+form#edit_user.simple_form.edit_user p {color: #bdc3c7; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;}
+
 .closedform {float: left; width: 100%; min-height: 600px; height: auto;}
 .exp-closed {color: #1abc9c; font-size: 125%; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif;}
 span.exp-closed a {color: #1abc9c; text-decoration: none;}
