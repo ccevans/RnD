@@ -590,7 +590,10 @@
         <!-- Tab panes -->
         <div class="tab-content">
           <div role="tabpanel" class="tab-pane active" id="home">
+
+
               <div class="campaign-lyric">
+                <% if @lyrics.any? %>
                 <% @lyrics.each do |lyric| %>
                   <div class="campaign-lyric-each">
                     <% unless lyric.line.nil? || lyric.line.empty? %>
@@ -670,6 +673,11 @@
                     </ul>
           </div>
           <% end %>
+
+
+          <% else %>
+          <div class="noposts"><h1>No Lyrics Posted Yet.</h1></div>
+          <% end %>
       
     </div>
 
@@ -677,8 +685,8 @@
           <div role="tabpanel" class="tab-pane" id="profile">
           <div class="art-container">
             
-              <div id="campaign-art" class="transitions-enabled">
-                 
+              <div id="campaign-art">
+              <% if @arts.any? %>
                 <% @arts.each do |art| %>
                   <div class="campaign-art-each">
                     <%= link_to campaign_art_path(@campaign, art) do %>
@@ -689,6 +697,11 @@
                   <% end %>
                   </div>
                 <% end %>
+
+                 <% else %>
+                  <div class="noposts"><h1>No Designs Posted Yet.</h1></div>
+                  <% end %>
+
               </div>
             </div>
 
