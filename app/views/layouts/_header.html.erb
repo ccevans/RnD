@@ -70,7 +70,11 @@
         <% if user_signed_in? %>
           
           
-            <li class="dropdown2"><% unless current_user.avatar.nil? %><%= image_tag current_user.avatar.url(:thumb) %><% end %>
+            <li class="dropdown2"><% unless current_user.avatar.nil? %>
+              <%= link_to profile_url(:id => current_user.username), class: "user-image" do %>
+              <%= image_tag current_user.avatar.url(:thumb) %>
+              <% end %>
+              <% end %>
             <ul class="dropdown-menu" role="menu">
             <li><span class="profile-li"><% unless current_user.avatar.nil? %><%= image_tag current_user.avatar.url(:mini) %><% end %><% unless current_user.username.nil? || current_user.username.empty? %><%= current_user.username %><% end %></span></li>
             <% unless current_user.points.nil? %>
@@ -81,7 +85,7 @@
             <% end %>
             <li class="divider"></li>
             <li><% if current_user.username.present? %>
-              <%= link_to "Your Profile", profile_url(:id => current_user.username).downcase %>
+              <%= link_to "Your Profile", profile_url(:id => current_user.username) %>
                 <% end %>
             </li>
             <li><%= link_to "Account", edit_user_registration_path %></li>

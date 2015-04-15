@@ -34,7 +34,7 @@ class UsersController < ApplicationController
       if @user.update(user_params)
         @user.skip_reconfirmation! if @user.respond_to?(:skip_confirmation)
         sign_in(@user, :bypass => true)
-        ExampleMailer.sample_email(@user).deliver
+        
         redirect_to root_url, notice: 'Your profile was successfully updated.'
       else
         @show_errors = true
