@@ -83,12 +83,12 @@
 			      <ul class="list-group">
 					  <li class="list-group-item">
 					  	<% if current_user.username.present? %>
-					  	<span class="left-circle"><i class="fa fa-check-circle-o"></i></span>Sign Up for Community<span class="right-circle">
+					  	<span class="left-circle"><i class="fa fa-check-circle-o"></i></span>Member of the Community<span class="right-circle">
 			        <span class="points-lab2-done"><i class="fa fa-flask"></i>50</span>
 			    	</span>
 
 					  	<% else %>
-					  	<span class="left-circle"><i class="fa fa-circle-o"></i></span>Sign Up for Community<span class="right-circle">
+					  	<span class="left-circle"><i class="fa fa-circle-o"></i></span><%= link_to "Sign Up for Community", new_user_registration_path %><span class="right-circle">
 			        <span class="points-lab2"><i class="fa fa-plus"></i>50</span>
 			    	</span>
 			    	<% end %>
@@ -98,12 +98,12 @@
 			    	 <li class="list-group-item">
 
 					<% if current_user.avatar.present? %>
-					  	<span class="left-circle"><i class="fa fa-check-circle-o"></i></span>Add Profile Pic<span class="right-circle">
+					  	<span class="left-circle"><i class="fa fa-check-circle-o"></i></span>Profile Pic Added<span class="right-circle">
 			        <span class="points-lab2-done"><i class="fa fa-flask"></i>10</span>
 			    	</span>
 
 					  	<% else %>
-					  	<span class="left-circle"><i class="fa fa-circle-o"></i></span>Add Profile Pic<span class="right-circle">
+					  	<span class="left-circle"><i class="fa fa-circle-o"></i></span><%= link_to "Add Profile Pic", edit_user_registration_path %><span class="right-circle">
 			        <span class="points-lab2"><i class="fa fa-plus"></i>10</span>
 			    	</span>
 			    	<% end %>
@@ -113,12 +113,12 @@
 			    	<li class="list-group-item">
 
 					<% if current_user.profileimg.present? %>
-					  	<span class="left-circle"><i class="fa fa-check-circle-o"></i></span>Add Profile Header Pic<span class="right-circle">
+					  	<span class="left-circle"><i class="fa fa-check-circle-o"></i></span>Profile Header Pic Added<span class="right-circle">
 			        <span class="points-lab2-done"><i class="fa fa-flask"></i>10</span>
 			    	</span>
 
 					  	<% else %>
-					  	<span class="left-circle"><i class="fa fa-circle-o"></i></span>Add Profile Header Pic<span class="right-circle">
+					  	<span class="left-circle"><i class="fa fa-circle-o"></i></span><%= link_to "Add Profile Header Pic", edit_user_registration_path %><span class="right-circle">
 			        <span class="points-lab2"><i class="fa fa-plus"></i>10</span>
 			    	</span>
 			    	<% end %>
@@ -128,12 +128,12 @@
 			    	<li class="list-group-item">
 
 					<% if current_user.bio.present? %>
-					  	<span class="left-circle"><i class="fa fa-check-circle-o"></i></span>Add Bio To Profile<span class="right-circle">
+					  	<span class="left-circle"><i class="fa fa-check-circle-o"></i></span>Bio To Profile Added<span class="right-circle">
 			        <span class="points-lab2-done"><i class="fa fa-flask"></i>10</span>
 			    	</span>
 
 					  	<% else %>
-					  	<span class="left-circle"><i class="fa fa-circle-o"></i></span>Add Bio To Profile<span class="right-circle">
+					  	<span class="left-circle"><i class="fa fa-circle-o"></i></span><%= link_to "Add Bio To Profile", edit_user_registration_path %><span class="right-circle">
 			        <span class="points-lab2"><i class="fa fa-plus"></i>10</span>
 			    	</span>
 			    	<% end %>
@@ -143,12 +143,12 @@
 			    	<li class="list-group-item">
 
 					<% if current_user.passion.present? %>
-					  	<span class="left-circle"><i class="fa fa-check-circle-o"></i></span>Add Passion To Profile<span class="right-circle">
+					  	<span class="left-circle"><i class="fa fa-check-circle-o"></i></span>Passion To Profile Added<span class="right-circle">
 			        <span class="points-lab2-done"><i class="fa fa-flask"></i>10</span>
 			    	</span>
 
 					  	<% else %>
-					  	<span class="left-circle"><i class="fa fa-circle-o"></i></span>Add Passion To Profile<span class="right-circle">
+					  	<span class="left-circle"><i class="fa fa-circle-o"></i></span><%= link_to "Add Passion To Profile", edit_user_registration_path %><span class="right-circle">
 			        <span class="points-lab2"><i class="fa fa-plus"></i>10</span>
 			    	</span>
 			    	<% end %>
@@ -158,12 +158,12 @@
 			    	<li class="list-group-item">
 
 					<% if current_user.location.present? %>
-					  	<span class="left-circle"><i class="fa fa-check-circle-o"></i></span>Add Location To Profile<span class="right-circle">
+					  	<span class="left-circle"><i class="fa fa-check-circle-o"></i></span>Location To Profile Added<span class="right-circle">
 			        <span class="points-lab2-done"><i class="fa fa-flask"></i>5</span>
 			    	</span>
 
 					  	<% else %>
-					  	<span class="left-circle"><i class="fa fa-circle-o"></i></span>Add Location To Profile<span class="right-circle">
+					  	<span class="left-circle"><i class="fa fa-circle-o"></i></span><%= link_to "Add Location To Profile", edit_user_registration_path %><span class="right-circle">
 			        <span class="points-lab2"><i class="fa fa-plus"></i>5</span>
 			    	</span>
 			    	<% end %>
@@ -173,12 +173,12 @@
 			    	<li class="list-group-item">
 
 					<% if current_user.website.present? %>
-					  	<span class="left-circle"><i class="fa fa-check-circle-o"></i></span>Add Website To Profile<span class="right-circle">
+					  	<span class="left-circle"><i class="fa fa-check-circle-o"></i></span>Website To Profile Added<span class="right-circle">
 			        <span class="points-lab2-done"><i class="fa fa-flask"></i>5</span>
 			    	</span>
 
 					  	<% else %>
-					  	<span class="left-circle"><i class="fa fa-circle-o"></i></span>Add Website To Profile<span class="right-circle">
+					  	<span class="left-circle"><i class="fa fa-circle-o"></i></span><%= link_to "Add Website To Profile", edit_user_registration_path %><span class="right-circle">
 			        <span class="points-lab2"><i class="fa fa-plus"></i>5</span>
 			    	</span>
 			    	<% end %>

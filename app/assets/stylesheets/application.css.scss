@@ -20,6 +20,11 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
+.closedform {float: left; width: 100%; min-height: 600px; height: auto;}
+.exp-closed {color: #1abc9c; font-size: 125%; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif;}
+span.exp-closed a {color: #1abc9c; text-decoration: none;}
+span.exp-closed a:hover {color: #000; text-decoration: none;}
+
 .footer-rnd {float: left; background-color: #7f8c8d; color: #fff; width: 100%; padding: 20px 10%; margin: 0 0 0 0; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;}
 .footer-rnd ul {float: left; width: 30%; list-style-type: none; padding: 0 5%;}
 .footer-rnd ul h1 {font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif; font-size: 22px; line-height: 22px;}

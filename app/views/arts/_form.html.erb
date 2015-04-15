@@ -46,7 +46,7 @@
   </div>
   <%= f.input :description, label: "Add more details about your design here" %>
 
-  <%= f.input :legal, label: "I agree to the Legal Terms." %>
+  <%= f.input :legal, required: true, label: "I agree to the Legal Terms." %>
   <div class="form-info">
   <%= link_to "Legal Terms", pages_legal_terms_path %>
 </div>

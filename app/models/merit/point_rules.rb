@@ -33,7 +33,7 @@ module Merit
       #   'photos#create'
       # ]
 
-      score 10, on: 'lyrics#create', to: :user, description: 'Plus 20 points', category: 'lyric'
+      score 10, on: 'lyrics#create', to: :user, description: 'Plus 10 points', category: 'lyric'
 
       score (-10), on: 'lyrics#destroy', to: :user, category: 'lyric'
 

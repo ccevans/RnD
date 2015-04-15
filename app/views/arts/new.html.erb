@@ -1,36 +1,86 @@
-<% if can? :manage, :all %>
+<% if user_signed_in? && current_user.points > 69 %>
+	
+		<% if @campaign.timer2.nil? || @campaign.timer2.empty? %>
 
-<div class="addlyric">
- <h1>Submit Design To Experiment</h1>
+	<div class="closedform">
+	<div class="addlyric">
+		<h1>Design Submissions Not Open Yet.</h1>
 
-</div>
+	<p>Design submissions is not open yet for <span class="exp-closed"><%= link_to @campaign.title, @campaign %></span> experiment.  Will be available soon, check back later.
 
-<%= render 'form' %>
+		Check out our other experiments</p>
 
-<div class="formpage-footer">
-<%= link_to 'Back', campaign_path(@campaign), class: "back-button" %>
+		</div>
 
-<%= link_to 'More Experiments', campaigns_path, class: "back-button" %>
+		
+			<div class="formpage-footer">
+			<%= link_to 'Back', campaign_path(@campaign), class: "back-button" %>
 
-</div>
+			<%= link_to 'More Experiments', campaigns_path, class: "back-button" %>
 
-
-<%= render 'layouts/footer' %>
-
-<% else %>
-<div class="launching-soon">
-
-	 <h1 class="time-launch">5.1.15</h1>
-      <p>Official Launch</p>
-      <p><%= link_to "Available On Launch Date", dash_path %></p>
-	<div class="how-box2">
-
-	        <%= link_to 'How It Works', pages_how_it_works_path, :class => "" %>
-
-        <%= link_to 'Lab Shop', '#', :class => "" %>
-	        
-	      </div>
-
+			</div>
 	</div>
 
+	<% elsif @campaign.timer2 < Time.now %>
+
+		<div class="closedform">
+		<div class="addlyric">
+
+			<h1>Design Submissions Closed.</h1>
+
+			<p>Design submissions is closed for <span class="exp-closed"><%= link_to @campaign.title, @campaign %></span> experiment.  Sorry you missed it.
+
+				Check out our other experiments.</p>
+
+		</div>
+
+			<div class="formpage-footer">
+			<%= link_to 'Back', campaign_path(@campaign), class: "back-button" %>
+
+			<%= link_to 'More Experiments', campaigns_path, class: "back-button" %>
+
+			</div>
+		</div>
+
+
+
+
+	<% else %>
+
+
+		<div class="addlyric">
+		 <h1>Submit Design To Experiment</h1>
+
+		</div>
+
+		<%= render 'form' %>
+
+		<div class="formpage-footer">
+		<%= link_to 'Back', campaign_path(@campaign), class: "back-button" %>
+
+		<%= link_to 'More Experiments', campaigns_path, class: "back-button" %>
+
+		</div>
+
 	<% end %>
+
+
+	<%= render 'layouts/footer' %>
+
+<% else %>
+	<div class="launching-soon">
+
+		 <h1 class="time-launch">5.1.15</h1>
+	      <p>Official Launch</p>
+	      <p><%= link_to "Available On Launch Date", dash_path %></p>
+		<div class="how-box2">
+
+		        <%= link_to 'How It Works', pages_how_it_works_path, :class => "" %>
+
+	        <%= link_to 'Lab Shop', '#', :class => "" %>
+		        
+		      </div>
+
+		</div>
+
+<% end %>

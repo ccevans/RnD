@@ -1,39 +1,107 @@
 <% if user_signed_in? && current_user.points > 69 %>
 
-<div class="addlyric">
- <h1>Add Lyric To Experiment</h1>
+	<% if @campaign.timer.nil? || @campaign.timer.empty? %>
 
-</div>
+	<div class="closedform">
+	<div class="addlyric">
+		<h1>Lyric Submissions Not Open Yet.</h1>
 
-<%= render 'form' %>
+	<p>Lyric submissions is not open yet for <span class="exp-closed"><%= link_to @campaign.title, @campaign %></span> experiment.  Will be available soon, check back later.
 
-<div class="formpage-footer">
-<%= link_to 'Back', campaign_path(@campaign), class: "back-button" %>
+		Check out our other experiments</p>
 
-<%= link_to 'More Experiments', campaigns_path, class: "back-button" %>
+		</div>
+	</div>
 
-</div>
+	<% elsif @campaign.timer < Time.now %>
 
-<%= render 'layouts/footer' %>
+		<div class="closedform">
+		<div class="addlyric">
+
+			<h1>Lyric Submissions Closed.</h1>
+
+			<p>Lyric submissions is closed for <span class="exp-closed"><%= link_to @campaign.title, @campaign %></span> experiment.  Sorry you missed it.
+
+				Check out our other experiments.</p>
+
+		</div>
+
+			<div class="formpage-footer">
+			<%= link_to 'Back', campaign_path(@campaign), class: "back-button" %>
+
+			<%= link_to 'More Experiments', campaigns_path, class: "back-button" %>
+
+			</div>
+		</div>
+
+
+
+
+	<% else %>
+
+	<% if user_signed_in? && current_user.lyrics.where(campaign_id: @campaign.id).count >= 3 %>
+
+	<div class="closedform">
+		<div class="addlyric">
+
+			<h1>Lyric Submissions Reached Max.</h1>
+
+			<p>Awesome! You already added the max of 3 lryics to the <span class="exp-closed"><%= link_to @campaign.title, @campaign %></span> experiment. Thanks for contributing to the community.
+
+				Check out our other experiments.</p>
+
+		</div>
+
+			<div class="formpage-footer">
+			<%= link_to 'Back', campaign_path(@campaign), class: "back-button" %>
+
+			<%= link_to 'More Experiments', campaigns_path, class: "back-button" %>
+
+			</div>
+		</div>
+
+
+
+
+	<% else %>
+
+		<div class="addlyric">
+		 <h1>Add Lyric To Experiment</h1>
+
+		</div>
+
+		<%= render 'form' %>
+
+		<div class="formpage-footer">
+		<%= link_to 'Back', campaign_path(@campaign), class: "back-button" %>
+
+		<%= link_to 'More Experiments', campaigns_path, class: "back-button" %>
+
+		</div>
+
+	<% end %>
+	<% end %>
+
+	<%= render 'layouts/footer' %>
 
 <% else %>
 
-<div class="launching-soon">
+	<div class="launching-soon">
 
-	 <h1 class="time-launch">5.1.15</h1>
-      <p>Official Launch</p>
-      <p><%= link_to "Update Your Profile To Get Early Access", dash_path %></p>
-	<div class="how-box2">
+		 <h1 class="time-launch">5.1.15</h1>
+	      <p>Official Launch</p>
+	      <p><%= link_to "Update Your Profile To Get Early Access", dash_path %></p>
+		<div class="how-box2">
 
-	        <%= link_to "Get Early Access", new_user_registration_path, :class => "" %>
+		        <%= link_to "Get Early Access", new_user_registration_path, :class => "" %>
 
-	        <%= link_to 'How It Works', pages_how_it_works_path, :class => "" %>
+		        <%= link_to 'How It Works', pages_how_it_works_path, :class => "" %>
 
-        <%= link_to 'Lab Shop', '#', :class => "" %>
-	        
-	      </div>
+	        <%= link_to 'Lab Shop', '#', :class => "" %>
+		        
+		      </div>
 
-	</div>
+		</div>
 
 <% end %>
 
