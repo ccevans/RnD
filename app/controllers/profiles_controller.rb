@@ -4,7 +4,7 @@ class ProfilesController < ApplicationController
 	before_action :find_post, only: [:show, :follow, :unfollow]
   has_scope :approve
   has_scope :featured
-  before_action :add_points, only: [:index, :show, :dash]
+  
 
   respond_to :html, :json, :js
 

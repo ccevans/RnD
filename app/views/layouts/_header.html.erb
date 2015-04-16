@@ -76,7 +76,7 @@
               <% end %>
               <% end %>
             <ul class="dropdown-menu" role="menu">
-            <li><span class="profile-li"><% unless current_user.avatar.nil? %><%= image_tag current_user.avatar.url(:mini) %><% end %><% unless current_user.username.nil? || current_user.username.empty? %><%= current_user.username %><% end %></span></li>
+            <li><span class="profile-li"><% unless current_user.username.nil? || current_user.username.empty? %><%= current_user.username %><% end %></span></li>
             <% unless current_user.points.nil? %>
             <li>
               <%= link_to dash_path do %>
