@@ -18,7 +18,7 @@
   <% end %>
 
   <% if @campaign.description.present? %>
-    <p> <%= simple_format(truncate(@campaign.description, length: 250, separator: ' ')) %></p>
+    <p> <%= simple_format(truncate(@campaign.description, length: 225, separator: ' ')) %></p>
     <% end %>
 
   <% if @lyric.chosen == true %>
