@@ -11,10 +11,15 @@
         <% end %>
   <% unless @campaign.image.nil? %>
       <div class="campaign-new-img">
-
+          <%= link_to campaign_path(@campaign) do %>
           <%= image_tag @campaign.image.url(:large) %>
+          <% end %>
       </div>
   <% end %>
+
+  <% if @campaign.description.present? %>
+    <p> <%= truncate(@campaign.description, length: 250, separator: ' ') %></p>
+    <% end %>
 
   <% if @lyric.chosen == true %>
   <div class="approved-box">Your lyric has been chosen!</div>
