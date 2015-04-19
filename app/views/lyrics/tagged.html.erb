@@ -113,7 +113,7 @@
     <div class="container-md">
 
         <% if lyric.line.present? %>
-        <%= link_to lyric.line, campaign_lyric_path(@campaign, lyric) %>
+        <%= link_to Obscenity.replacement(:nonconsonants).sanitize(lyric.line), campaign_lyric_path(@campaign, lyric) %>
 
         <% end %>
         <ul>

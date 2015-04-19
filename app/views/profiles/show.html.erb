@@ -90,7 +90,7 @@
 		<div class="container-fluid">
   			<% if @user.bio.present? %>
 				<div class="profile-bio">
-					<%= @user.bio %>
+					<%= Obscenity.replacement(:nonconsonants).sanitize(@user.bio) %>
 				</div>
 				<% end %>
 			
@@ -218,7 +218,7 @@
 									    <div class="container-md">
 
 									        <% if lyric.line.present? %>
-									        <%= link_to lyric.line, "/campaigns/2/lyrics/#{lyric.id}" %>
+									        <%= link_to Obscenity.replacement(:nonconsonants).sanitize(lyric.line), "/campaigns/4/lyrics/#{lyric.id}" %>
 									        <% end %>
 									        <ul>
 
@@ -382,7 +382,7 @@
 									<% end %>
 
 							    <% if post.title.present? %> 
-							        <div class="post-title"><%= link_to post.title, post_path(post) %></div>
+							        <div class="post-title"><%= link_to Obscenity.replacement(:nonconsonants).sanitize(post.title), post_path(post) %></div>
 							    <% end %>
 
 							        <ul>

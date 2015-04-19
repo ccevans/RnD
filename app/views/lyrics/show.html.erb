@@ -18,7 +18,7 @@
    <% if @lyric.line.present? %>
   <div class="container-line">
     
-  <%= simple_format(@lyric.line) %>
+  <%= simple_format(Obscenity.replacement(:nonconsonants).sanitize(@lyric.line)) %>
 
   </div>
   <% end %>
@@ -166,7 +166,7 @@
     </div>
      <% unless @lyric.description.nil? || @lyric.description.empty? %>
   <div class="container-desc">
-    <%= simple_format(@lyric.description) %>
+    <%= simple_format(Obscenity.replacement(:nonconsonants).sanitize(@lyric.description)) %>
   </div>
   <% end %>
     
@@ -194,7 +194,7 @@
     <div class="container-md">
 
         <% if random_lyric.line.present? %>
-        <%= link_to random_lyric.line, campaign_lyric_path(@campaign, random_lyric) %>
+        <%= link_to Obscenity.replacement(:nonconsonants).sanitize(random_lyric.line), campaign_lyric_path(@campaign, random_lyric) %>
 
         <% end %>
         <ul>

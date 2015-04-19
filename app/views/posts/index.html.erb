@@ -118,7 +118,7 @@
 		<% end %>
 
     <% if post.title.present? %> 
-        <div class="post-title"><%= link_to post.title, post_path(post) %></div>
+        <div class="post-title"><%= link_to Obscenity.replacement(:nonconsonants).sanitize(post.title), post_path(post) %></div>
     <% end %>
 
         <ul>
