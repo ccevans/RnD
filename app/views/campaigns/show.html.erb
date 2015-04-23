@@ -554,6 +554,12 @@
                 <% end %>
               </div>
 
+              <% if @campaign.credit.present? %>
+                <div class ="credit-header">
+                  Header Artwork by: <%= link_to @campaign.credit, @campaign.creditlink %>
+                </div>
+              <% end %>
+
       <div class="next-prev">
 
         Experiments: <% if @campaign == Campaign.first %> <span style="color: #000;">Prev</span> <% else %><%= link_to 'Prev', campaign_path(@previous_campaign) %> <% end %><strong>/</strong> <% if @campaign == Campaign.last %> <span style="color: #000;">Next</span> <% else %> <%= link_to 'Next', campaign_path(@next_campaign) %><% end %>

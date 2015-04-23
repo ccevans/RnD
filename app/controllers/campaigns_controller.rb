@@ -74,7 +74,7 @@ class CampaignsController < ApplicationController
 	end
 
 	def campaign_params
-		params.require(:campaign).permit(:title, :description, :timer, :timer2, :image, :status, :artist, :song, :album, :link, :reward, :rules, :personal)
+		params.require(:campaign).permit(:title, :description, :timer, :timer2, :image, :status, :artist, :song, :album, :link, :reward, :rules, :personal, :credit, :creditlink)
 	end
 
 end

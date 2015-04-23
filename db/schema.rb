@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150317133311) do
+ActiveRecord::Schema.define(version: 20150423011818) do
 
   create_table "adminlyrics", force: true do |t|
     t.text     "line"
@@ -99,6 +99,8 @@ ActiveRecord::Schema.define(version: 20150317133311) do
     t.text     "reward"
     t.text     "rules"
     t.boolean  "personal"
+    t.string   "credit"
+    t.string   "creditlink"
   end
 
   create_table "commentarts", force: true do |t|
