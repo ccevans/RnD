@@ -1,5 +1,3 @@
-<% if user_signed_in? && current_user.points > 69 %>
-
 <section class="lyric-section">
 
   <div class="stepbackward">
@@ -290,13 +288,6 @@
 
 </section>
 
-<% else %>
-
-<section id="vid" class="lyric-section">
-  <%= render 'layouts/homepage' %>
-  </section>
-
-  <% end %>
 
   <section class="home-info">
 

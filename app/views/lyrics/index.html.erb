@@ -2,9 +2,6 @@
 
 <section class="main-section">
 
-<% if user_signed_in? && current_user.points > 69 %>
-
-
 <section class="lyric-section">
 
 <div class="works-top" id="works-exp2">
@@ -21,7 +18,7 @@
   <div class="how-box2">
     <%= link_to 'How It Works', pages_how_it_works_path, :class => "" %>
 
-  <%= link_to 'Lab Shop', '#', :class => "" %>
+  <%= link_to 'Lab Shop', 'http://shop.rhymesanddesigns.com/', :class => "" %>
 
   <%= link_to 'Add Lyric', new_campaign_lyric_path(Campaign.open.last), :class => "" %>
 
@@ -65,7 +62,7 @@
       <i class="fa fa-info"></i>
     <% end %>
 
-    <%= link_to '#' do %>
+    <%= link_to 'http://shop.rhymesanddesigns.com/' do %>
        <span class="glyphicon glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
     <% end %>
 
@@ -230,15 +227,6 @@
    
 </section>
 
-<% else %>
-
-<section id="vid" class="lyric-section">
-  <%= render 'layouts/homepage' %>
-  </section>
-
-
-
-  <% end %>
 
 <section class="home-info">
 

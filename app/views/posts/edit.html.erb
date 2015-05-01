@@ -1,6 +1,3 @@
-<% if user_signed_in? && current_user.points > 69 %>
-
-
 
 <div class="addlyric">
 <h1>Edit post</h1>
@@ -14,25 +11,4 @@
 
 
 <%= render 'layouts/footer' %>
-
-<% else %>
-
-<div class="launching-soon">
-
-	 <h1 class="time-launch">5.1.15</h1>
-      <p>Official Launch</p>
-      <p><%= link_to "Update Your Profile To Get Early Access", dash_path %></p>
-	<div class="how-box2">
-
-	        <%= link_to "Get Early Access", new_user_registration_path, :class => "" %>
-
-	        <%= link_to 'How It Works', pages_how_it_works_path, :class => "" %>
-
-        <%= link_to 'Lab Shop', '#', :class => "" %>
-	        
-	      </div>
-
-	</div>
-
-<% end %>
 

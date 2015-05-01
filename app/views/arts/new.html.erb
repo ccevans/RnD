@@ -1,6 +1,5 @@
-<% if user_signed_in? && current_user.points > 69 %>
-	
-		<% if @campaign.timer2.nil? || @campaign.timer2.empty? %>
+
+<% if @campaign.timer2.nil? || @campaign.timer2.empty? %>
 
 	<div class="closedform">
 	<div class="addlyric">
@@ -67,20 +66,3 @@
 
 	<%= render 'layouts/footer' %>
 
-<% else %>
-	<div class="launching-soon">
-
-		 <h1 class="time-launch">5.1.15</h1>
-	      <p>Official Launch</p>
-	      <p><%= link_to "Available On Launch Date", dash_path %></p>
-		<div class="how-box2">
-
-		        <%= link_to 'How It Works', pages_how_it_works_path, :class => "" %>
-
-	        <%= link_to 'Lab Shop', '#', :class => "" %>
-		        
-		      </div>
-
-		</div>
-
-<% end %>

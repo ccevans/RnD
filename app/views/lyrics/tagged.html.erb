@@ -1,14 +1,13 @@
 <section class="main-section">
 
-<% if user_signed_in? && current_user.points > 69 %>
-
-
 <section class="lyric-section">
 
 <div class="works-top" id="works-exp2">
   <div class="how-campaign">
   <h2>Rhyme Center</h2>
-  <p>The community chooses their favorite lyrics to inspire designs. The community then chooses their favorite designs to develop tees and products for the shop.</p>
+  <p>This is where it goes down. The community chooses their favorite lyrics to inspire designs. The community then chooses their favorite designs to develop tees and products for the shop.</p>
+
+<p>Vote on the lyrics below to help choose the lyrics that will inspire our next designs.</p>
 
   </div>
 
@@ -17,9 +16,9 @@
   <div class="how-box2">
     <%= link_to 'How It Works', pages_how_it_works_path, :class => "" %>
 
-  <%= link_to 'Lab Shop', '#', :class => "" %>
+  <%= link_to 'Lab Shop', 'http://shop.rhymesanddesigns.com/', :class => "" %>
 
-  <%= link_to 'Add Lyric', new_campaign_lyric_path(Campaign.last), :class => "" %>
+  <%= link_to 'Add Lyric', new_campaign_lyric_path(Campaign.open.last), :class => "" %>
 
 
     <div class="dropdown">
@@ -61,7 +60,7 @@
       <i class="fa fa-info"></i>
     <% end %>
 
-    <%= link_to '#' do %>
+    <%= link_to 'http://shop.rhymesanddesigns.com/' do %>
        <span class="glyphicon glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
     <% end %>
 
@@ -108,7 +107,8 @@
 
   </div>
 
-  <div id="lyrics" class="transitions-enabled">
+  <div id="lyrics">
+    <% if @lyrics.any? %>
     <% @lyrics.each do |lyric| %>
     <div class="container-md">
 
@@ -203,6 +203,12 @@
       </div>
     <% end %>
 
+    <% else %>
+
+      <div class="noposts"><h1>No Lyrics Posted Yet.</h1></div>
+
+    <% end %>
+
     <div class="back-top" title="Top of Page"> <a href="#top" onclick="return false;"><i class="glyphicon glyphicon-chevron-up"></i></a></div> 
 
   </div>
@@ -219,14 +225,6 @@
    
 </section>
 
-<% else %>
-
-
-<section id="vid" class="lyric-section">
-  <%= render 'layouts/homepage' %>
-  </section>
-
-  <% end %>
 
 <section class="home-info">
 
@@ -333,4 +331,3 @@ $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
 </script>
-  

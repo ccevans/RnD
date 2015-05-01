@@ -5,9 +5,9 @@
   <div class="works-top" id="works-exp2">
   <div class="how-campaign">
   <h2>Design Center</h2>
-  <p>Help the community create products inspired by music.  The community chooses the best lyrics from artists and create designs inspired by the lyrics.  The community chooses the best designs and develop tees and products for the shop.</p>
+    <p>This is where it goes down. The community chooses their favorite lyrics to inspire designs. The community then chooses their favorite designs to develop tees and products for the shop.</p>
 
-  <p>Choose an experiment below to submit a lyric and/or design.</p>
+<p>Vote on the designs below to help develop our next tees and products.</p>
 
   </div>
 
@@ -16,7 +16,7 @@
   <div class="how-box2">
     <%= link_to 'How It Works', pages_how_it_works_path, :class => "" %>
 
-  <%= link_to 'Lab Shop', '#', :class => "" %>
+  <%= link_to 'Lab Shop', 'http://shop.rhymesanddesigns.com/', :class => "" %>
 
   <%= link_to 'Submit Design', new_campaign_art_path(Campaign.last), :class => "" %>
 
@@ -34,13 +34,23 @@
 
   </div>
 
+    <div class="how-box2-mobile">
+              <%= link_to pages_how_it_works_path do %>
+      <i class="fa fa-info"></i>
+    <% end %>
 
-  </div>
+    <%= link_to 'http://shop.rhymesanddesigns.com/' do %>
+       <span class="glyphicon glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+    <% end %>
 
-  <div class="sort-box">
+    <%= link_to new_campaign_art_path(Campaign.last) do %>
+      <i class="fa fa-paint-brush"></i>
+    <% end %>
+
     <div class="dropdown">
       <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-        Sort
+        <span class="glyphicon glyphicon glyphicon-sort" aria-hidden="true"></span>
+
         <span class="caret"></span>
       </button>
       <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
@@ -49,11 +59,16 @@
         <li role="presentation"><%= link_to 'Most Recent', :controller => 'arts', :sort_by => 'most_recent' %></li>
       </ul>
     </div>
+
   </div>
 
 
-<div id="arts" class="transitions-enabled">
+  </div>
+
+
+<div id="arts">
     
+    <% if @arts.any? %>
       <% @arts.each do |art| %>
         <div class="container-art">
         
@@ -62,7 +77,7 @@
            <div class="container-small">
           <%= link_to campaign_art_path(@campaign, art) do %>
             <% unless art.image.nil? %>
-              <%= image_tag art.image.url(:small) %>
+              <%= image_tag art.image.url(:large) %>
               <% end %>
           <% end %>
 
@@ -73,7 +88,7 @@
           <div class="container-art2 <%= art.id %>">
           <%= link_to campaign_art_path(@campaign, art) do %>
             <% unless art.image.nil? %>
-              <%= image_tag art.image.url(:small) %>
+              <%= image_tag art.image.url(:large) %>
               <% end %>
           <% end %>
 
@@ -223,7 +238,14 @@
       </div>
       <% end %>
 
-       <div class="back-top" title="Top of Page"> <a href="#top" onclick="return false;"><i class="glyphicon glyphicon-chevron-up"></i> Back to Top</a></div> 
+      <% else %>
+
+
+        <div class="noposts"><h1>No Designs Posted Yet.</h1></div>
+
+      <% end %>
+
+      
 </div>
 
  <br>
@@ -235,6 +257,7 @@
 
 
   </section>
+
 
 <section class="home-info">
 
@@ -334,5 +357,4 @@ $(window).scroll(function () {
   $('.results').html("<%= j render(:partial => 'homeinfo/index') %>")
 
 </script>
-
 
