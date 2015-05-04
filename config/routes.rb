@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'pages/legal_terms'
   get 'pages/careers'
   get 'pages/events'
+  get 'pages/testpage'
 
   get 'tagged' => 'posts#tagged', :as => 'tagged'
 
