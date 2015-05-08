@@ -14,7 +14,7 @@ module Merit
 
     def initialize
       score 50, :on => 'user/registrations#create', model_name: 'User', category: 'profile'
-      
+      score 50, :on => 'user/omniauthCallbacks#after_sign_in_path_for', model_name: 'User', category: 'profile'
 
        
        # score 10, :on => 'user/registrations#update', model_name: 'User' do |user|
