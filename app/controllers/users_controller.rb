@@ -41,9 +41,8 @@ class UsersController < ApplicationController
       else
         @show_errors = true
       end
+      ExampleMailer.sample_email(@user).deliver
     end
-
-    ExampleMailer.sample_email(@user).deliver
   end
 
   # DELETE /users/:id.:format
