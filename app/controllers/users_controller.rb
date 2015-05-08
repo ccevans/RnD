@@ -39,7 +39,7 @@ class UsersController < ApplicationController
       else
         @show_errors = true
       end
-
+          ExampleMailer.sample_email(@user).deliver
     end
   end
 
