@@ -40,6 +40,7 @@ class UsersController < ApplicationController
         @show_errors = true
       end
           ExampleMailer.sample_email(@user).deliver
+          @current_user.add_points(50, category: 'profile')
     end
   end
 
