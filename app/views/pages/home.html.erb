@@ -73,10 +73,11 @@
 		    	</div>
 		    	<div class="home-campaign-info2">
                 <% unless @home_campaign.title.nil? || @home_campaign.title.empty? %>
+                   <%= link_to campaign_path(@home_campaign) do %>
                     <h1><%= @home_campaign.title %></h1>
+                    <% end %>
                 <% end %>
 
-                <%= link_to 'More Info', campaign_path(@home_campaign), :class => "home-button" %>
 		    	</div>
 		       </div>
 
