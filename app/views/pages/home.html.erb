@@ -71,6 +71,13 @@
 		        	<span class="home-number"><%= @home_campaign.lyrics.count %></span> 
 		        	<p>Lyrics</br>Submitted</p>
 		    	</div>
+		    	<div class="home-campaign-info2">
+                <% unless @home_campaign.title.nil? || @home_campaign.title.empty? %>
+                    <h1><%= @home_campaign.title %></h1>
+                <% end %>
+
+                <%= link_to 'More Info', campaign_path(@home_campaign), :class => "home-button" %>
+		    	</div>
 		       </div>
 
 
