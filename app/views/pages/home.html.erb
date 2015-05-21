@@ -70,7 +70,13 @@
 		        <div class="home-campaign-info">
 		        	<span class="home-number"><%= @home_campaign.lyrics.count %></span> 
 		        	<p>Lyrics</br>Submitted</p>
+
+		        	<span class="home-number"><span class="timer-line" data-countdown= <%= @home_campaign.timer %> ></span></span> 
+		        	<p>Days</br>Left</p>
+
 		    	</div>
+
+
 		    	<div class="home-campaign-info2">
                 <% unless @home_campaign.title.nil? || @home_campaign.title.empty? %>
                    <%= link_to campaign_path(@home_campaign) do %>
@@ -103,3 +109,26 @@
 
 
 </div>
+
+
+
+
+
+  <script type="text/javascript">
+    $('[data-countdown]').each(function() {
+      var $this = $(this), finalDate = $(this).data('countdown');
+    
+    $this.countdown(finalDate)
+
+    .on('update.countdown', function(event) {
+      var format = '%D';
+    
+     $(this).html(event.strftime(format));
+   })
+   .on('finish.countdown', function(event) {
+     $(this).html('Closed for Submissions');
+    $this.closest('.timer-button').addClass('disabled').attr('disabled', 'disabled');
+      });
+    
+    });
+</script>
