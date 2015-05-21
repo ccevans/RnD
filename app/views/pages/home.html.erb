@@ -121,7 +121,7 @@
     $this.countdown(finalDate)
 
     .on('update.countdown', function(event) {
-      var format = '%D';
+      var format = '%-D';
     
      $(this).html(event.strftime(format));
    })
