@@ -216,6 +216,55 @@
           </div>
         </div>
 
+    
+
+      <% if @chosen_lyrics.any? %>
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingFour">
+            <h4 class="panel-title">
+
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                  <% if @chosen_lyrics.count > 1 %>
+                    Chosen Lyrics
+                    <% else %>
+                    Chosen Lyric
+                    <% end %>
+              </a>
+     
+            </h4>
+          </div>
+          <div id="collapseFour" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingFour">
+          <div class="panel-body">
+               
+          </div>
+
+          <ul class="list-group">
+              
+              <% @chosen_lyrics.each do |chosen_lyric| %>
+
+              <li class="list-group-item">
+                  <div class="campaign-chosen-lyric-each">
+                          <% unless chosen_lyric.line.nil? || chosen_lyric.line.empty? %>
+                          <i class="fa fa-quote-left"></i>
+
+                 
+                          <%= link_to chosen_lyric.line, campaign_lyric_path(@campaign, chosen_lyric), class: 'chosen_lyric' %><i class="fa fa-quote-right"></i>
+
+                          <% end %>
+                        <ul>
+                    <li>Submitted By:<% unless chosen_lyric.user.avatar.nil? %><%= image_tag chosen_lyric.user.avatar.url(:mini) %><% end %><% unless chosen_lyric.user.username.nil? || chosen_lyric.user.username.empty? %><%= link_to chosen_lyric.user.username, profile_url(:id => chosen_lyric.user.username) %><% end %></li>
+                </ul>
+                </div>
+              </li>
+              <% end %>
+              
+
+          </ul>
+            
+          </div>
+        </div>
+        <% end %>
+
         <div class="panel panel-default">
           <div class="panel-heading" role="tab" id="headingTwo">
             <h4 class="panel-title">
@@ -441,52 +490,7 @@
           </div>
         </div>
 
-        <% if @chosen_lyrics.any? %>
-        <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="headingFour">
-            <h4 class="panel-title">
 
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                  <% if @chosen_lyrics.count > 1 %>
-                    Chosen Lyrics
-                    <% else %>
-                    Chosen Lyric
-                    <% end %>
-              </a>
-     
-            </h4>
-          </div>
-          <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-          <div class="panel-body">
-               
-          </div>
-
-          <ul class="list-group">
-              
-              <% @chosen_lyrics.each do |chosen_lyric| %>
-
-              <li class="list-group-item">
-                  <div class="campaign-chosen-lyric-each">
-                          <% unless chosen_lyric.line.nil? || chosen_lyric.line.empty? %>
-                          <i class="fa fa-quote-left"></i>
-
-                 
-                          <%= link_to chosen_lyric.line, campaign_lyric_path(@campaign, chosen_lyric), class: 'chosen_lyric' %><i class="fa fa-quote-right"></i>
-
-                          <% end %>
-                        <ul>
-                    <li>Submitted By:<% unless chosen_lyric.user.avatar.nil? %><%= image_tag chosen_lyric.user.avatar.url(:mini) %><% end %><% unless chosen_lyric.user.username.nil? || chosen_lyric.user.username.empty? %><%= link_to chosen_lyric.user.username, profile_url(:id => chosen_lyric.user.username) %><% end %></li>
-                </ul>
-                </div>
-              </li>
-              <% end %>
-              
-
-          </ul>
-            
-          </div>
-        </div>
-        <% end %>
 
 
         <% if @chosen_arts.any? %>
