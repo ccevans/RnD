@@ -39,7 +39,7 @@
               <span class="right-circle">
               <span class="points-lab2"><i class="fa fa-lock"></i> </span> 
             </span>
-            <% elsif @campaign.timer < Time.now %>
+            <% elsif @campaign.timer < Time.now.in_time_zone("Eastern Time (US & Canada)") %>
 
               <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                     Rhyme Submissions
@@ -63,7 +63,7 @@
           <% if @campaign.timer.nil? || @campaign.timer.empty? %>
           <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
 
-          <% elsif @campaign.timer < Time.now %>
+          <% elsif @campaign.timer < Time.now.in_time_zone("Eastern Time (US & Canada)") %>
           <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
 
           <% else %>
@@ -76,7 +76,7 @@
                 <% if @campaign.timer.nil? || @campaign.timer.empty? %>
 
                   <div class="timer-info">Lyric submissions not open yet</div>
-                 <% elsif @campaign.timer < Time.now %>
+                 <% elsif @campaign.timer < Time.now.in_time_zone("Eastern Time (US & Canada)") %>
                   <div class="timer-info">Lyric submissions closed</div>
 
                  <% else %>
@@ -130,7 +130,7 @@
 
           </ul>
 
-          <% elsif @campaign.timer < Time.now %>
+          <% elsif @campaign.timer < Time.now.in_time_zone("Eastern Time (US & Canada)") %>
 
            <ul class="list-group">
             <li class="list-group-item">
@@ -226,7 +226,7 @@
               <span class="right-circle">
               <span class="points-lab2"><i class="fa fa-lock"></i> </span> 
             </span>
-            <% elsif @campaign.timer2 < Time.now %>
+            <% elsif @campaign.timer2 < Time.now.in_time_zone("Eastern Time (US & Canada)") %>
 
               <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                     Design Submissions
@@ -251,7 +251,7 @@
 
           <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
 
-          <% elsif @campaign.timer2 < Time.now %>
+          <% elsif @campaign.timer2 < Time.now.in_time_zone("Eastern Time (US & Canada)") %>
             <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
 
           <% else %>
@@ -262,7 +262,7 @@
                 <% if @campaign.timer2.nil? || @campaign.timer2.empty? %>
 
                   <div class="timer-info">Design submissions not open yet</div>
-                 <% elsif @campaign.timer2 < Time.now %>
+                 <% elsif @campaign.timer2 < Time.now.in_time_zone("Eastern Time (US & Canada)") %>
                   <div class="timer-info">Design submissions closed</div>
 
                  <% else %>
@@ -316,7 +316,7 @@
 
           </ul>
 
-          <% elsif @campaign.timer2 < Time.now %>
+          <% elsif @campaign.timer2 < Time.now.in_time_zone("Eastern Time (US & Canada)") %>
 
            <ul class="list-group">
             <li class="list-group-item">
@@ -730,6 +730,7 @@
 
 
 
+
   <script type="text/javascript">
     $('[data-countdown]').each(function() {
       var $this = $(this), finalDate = $(this).data('countdown');
@@ -758,6 +759,7 @@
     
     });
 </script>
+
 
 <script>
 

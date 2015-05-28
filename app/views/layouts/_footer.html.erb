@@ -13,7 +13,7 @@
 		<li><%= link_to 'Experiments', campaigns_path %></li>
 		<li><%= link_to 'R&D Community', profiles_path %></li>
 		<li><%= link_to 'Rhyme Center', campaign_lyrics_path(Campaign.open.last) %></li>
-		<li><%= link_to 'Design Center', campaign_arts_path(Campaign.open.last) %></li>
+		<li><%= link_to 'Design Center', campaign_arts_path(Campaign.open.first) %></li>
 		<li><%= link_to 'Lab Points', dash_path %></li>
 	</ul>
 

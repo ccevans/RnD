@@ -18,7 +18,7 @@
 
   <%= link_to 'Lab Shop', 'http://shop.rhymesanddesigns.com/', :class => "" %>
 
-  <%= link_to 'Submit Design', new_campaign_art_path(Campaign.last), :class => "" %>
+  <%= link_to 'Submit Design', new_campaign_art_path(Campaign.open.first), :class => "" %>
 
     <div class="dropdown">
       <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
@@ -43,7 +43,7 @@
        <span class="glyphicon glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
     <% end %>
 
-    <%= link_to new_campaign_art_path(Campaign.last) do %>
+    <%= link_to new_campaign_art_path(Campaign.open.first) do %>
       <i class="fa fa-paint-brush"></i>
     <% end %>
 

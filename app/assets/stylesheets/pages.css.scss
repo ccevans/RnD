@@ -2,9 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.homepage-box1 {float: left; width: 100%; margin: 50px 0 0 0; padding: 0;}
+.homepage-box1 {float: left; width: 100%; margin: 50px 0 0 0; padding: 0; background-color: #000;}
 .homepage-box2 {float: left; width: 40%; margin: 0; padding: 0;}
-#homepage-vid {float: left; width: 60%; margin: 0; padding: 0;}
+#homepage-vid {float: left; width: 100%; margin: 0; padding: 0;}
 .homepage-lyric {background-color: #3498db; float: left; width: 100%; margin: 0; padding: 10px 5%;}
 div.homepage-lyric div.container-line {width: 100%; color: #fff;}
 .homepage-experiment {float: left; width: 100%; margin: 0; padding: 0; background-color: #95a5a6;}
@@ -23,8 +23,18 @@ div.homepage-experiment div.campaign-md div.home-campaign-info p {font-size: 14p
 div.homepage-experiment div.campaign-md div.home-campaign-info2 h1 {float: left; width: auto; font-size: 18px; line-height: 18px; color: #fff; margin: 10px 0; padding: 0;}
 div.homepage-experiment div.campaign-md div.home-campaign-info2 a.home-button {border: 2px solid #fff; border-radius: 5px; color: #fff; float: left; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-size: 14px; line-height: 14px; margin: 0 10px; padding: 10px 5px; text-decoration: none;}
 div.homepage-experiment div.campaign-md div.home-campaign-info2 a.home-button:hover {border: 2px solid #fff; border-radius: 5px; color: #000; float: left; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-size: 14px; line-height: 14px; margin: 10px; padding: 10px 5px; text-decoration: none;}
-
-
+.homepage-passion {width: 100%; background-color: #000; float: left; padding: 10px 20%; text-align: center; font-size: 40px; line-height: 40px; color: #fff;}
+.video-stuff  {
+    float: left;
+    font-family: "Fredoka One","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 20px;
+    height: 100%;
+    line-height: 24px;
+    min-height: 400px;
+    padding: 0;
+    text-align: center;
+    width: 100%;}
+.homepage-box2b {float: left; width: 60%; margin: 0; padding: 0; background-color: #000;}
 
 .aboutus-section {float: left; width: 100%; padding: 50px 0 0 0; }
 .about-half {float: left; width: 50%; height: auto;}
