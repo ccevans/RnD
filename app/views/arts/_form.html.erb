@@ -16,6 +16,12 @@
       </div>
   <% end %>
 
+    <% if @campaign.description.present? %>
+    <p> <%= simple_format(truncate(@campaign.description, length: 200, separator: ' ')) %></p>
+    <% end %>
+
+<h2>Go to the <%= link_to 'experiment', campaign_path(@campaign) %> page to learn about what lyrics will inpsire the designs you submit.</h2>
+
   <% if @art.chosen == true %>
   Your artwork has been chosen!
 

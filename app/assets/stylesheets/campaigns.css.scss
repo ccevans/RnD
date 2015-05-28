@@ -3,6 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+form#new_art.simple_form.new_art h2 a {text-decoration: underline;}
+form#new_art.simple_form.new_art h2 a:hover {text-decoration: none; color: #1cccaa;}
+
+
 .campaign-md {width: 100%; margin: 0px; padding: 25px 10%; float: left;}
 #campaigns {margin: 0 auto;}
 #campaigns2 {margin: 0 auto;}
