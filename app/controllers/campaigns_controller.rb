@@ -40,7 +40,7 @@ class CampaignsController < ApplicationController
 	end
 
 	def create
-		@chosen_lyrics = Lyric.chosen.where(campaign_id: @campaign.id)
+		
 		@campaign = current_user.campaigns.build(campaign_params)
 
 		if @campaign.save

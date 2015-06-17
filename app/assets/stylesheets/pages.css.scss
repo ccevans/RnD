@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.homepage-profiles {background-color: #000; color: #fff; float: left; width: 100%; margin: 0; padding: 10px 5%;}
+.homepage-profiles h1 {font-size: 24px; margin: 5px 0;}
+.homepage-profiles div.container-profiles div.user-row a {color: #fff; text-shadow: none;}
+
 .word-overlay {float: left; width: 50%; margin: 25px 25%; height: auto; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-size: 18px; line-height: 18px; color: #fff;}
 .homepage-box1 {float: left; width: 100%; margin: 50px 0 0 0; padding: 0; background-color: #000;}
 .homepage-box2 {float: left; width: 40%; margin: 0; padding: 0;}
