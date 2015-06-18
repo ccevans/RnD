@@ -13,7 +13,7 @@ class ProfilesController < ApplicationController
   def index
     @users = User.all.order("created_at DESC")
     @user = User.find_by_username(params[:id])
-    @featured_users = User.featured.all.order("created_at DESC").take(2)
+    @featured_users = User.featured.all.order("created_at DESC")
 
 
   end
