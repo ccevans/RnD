@@ -104,5 +104,13 @@ div#posts div.container-post-index a img {width: 100%;}
 	div#posts div.container-post-index ul {padding: 0 !important;}
 	div#posts div.container-post-profile ul {padding: 0 !important;}
 
+	.post-section div.container-show {margin-top: 50px !important;}
+	.post-section div.container-show div.container-post {color: #000; font-size: 20px; line-height: 22px; width: 100%;}
+	.post-section div.container-show div.container-post-extra {width: 100%;}
+    .post-section div.container-show div.container-post-extra  ul {padding: 0 !important;}
+    div.container-post-desc {float: left; width: auto; color: #000; padding: 15px; font-size: 20px; line-height: 20px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; border-left: 4px solid #bdc3c7; margin-left: 20px; margin-top: 5px;}
+    div.container-comment form#new_commentpost.simple_form.new_commentpost {width: 80% !important; margin: 0 10% !important;}
+
 }
+
 
