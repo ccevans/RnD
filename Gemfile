@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.1.2'
+ruby '2.1.5'
 
 gem 'rails', '4.1.7'
 
@@ -38,6 +38,8 @@ gem 'font-awesome-sass'
 gem 'bootstrap-sass', '~> 3.3.3'
 gem 'obscenity'
 
+gem 'tzinfo-data'
+gem 'coffee-script-source', '1.8.0'
 
 
 
