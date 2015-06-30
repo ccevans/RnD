@@ -51,6 +51,55 @@
 
 
 
+
+
+<section class="campaign-section">
+<%= image_tag 'currentexperiments.jpg', :class => "info-image" %>
+<div id="campaigns2">
+  <% @free_campaigns.each do |free_campaign| %>
+    <div class="campaign-md">
+       <% unless free_campaign.image.nil? %>
+        <div class="campaign-img">
+            <%= link_to free_campaign do %>
+            <%= image_tag free_campaign.image.url(:large) %>
+            <% end %>
+        </div> 
+        <% end %>
+
+        <div class="campaign-info">
+          <ul>
+             <% unless free_campaign.title.nil? || free_campaign.title.empty? %>
+            <li><strong><%= link_to simple_format(free_campaign.title), free_campaign %></strong></li>
+            <% end %>
+             <% if free_campaign.timer.nil? || free_campaign.timer.empty? %>
+                <li>Rhyme Submission: Not Open Yet</li>
+              <% else %>
+                <% unless free_campaign.timer.nil? || free_campaign.timer.empty? %>
+                <li>Rhyme Submission: <span class="timer-line" data-countdown= <%= free_campaign.timer %> ></span></li>
+                <% end %>
+            <% end %>
+              <% if free_campaign.timer2.nil? || free_campaign.timer2.empty? %>
+                <li>Design Submission: Not Open Yet</li>
+              <% else %>
+                <% unless free_campaign.timer2.nil? || free_campaign.timer2.empty? %>
+                <li>Design Submission: <span class="timer-line" data-countdown= <%= free_campaign.timer2 %> ></span></li>
+                <% end %>
+            <% end %>
+            
+          </ul>
+
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>
+
+
+
+
+
+
+
 <section class="campaign-section">
 <%= image_tag 'currentexperiments.jpg', :class => "info-image" %>
 <div id="campaigns2">
