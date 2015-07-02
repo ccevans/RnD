@@ -52,37 +52,38 @@
 
 
 
-
+<% if can? :manage, :all %>
 <section class="campaign-section">
-<%= image_tag 'currentexperiments.jpg', :class => "info-image" %>
+<h1><i class="fa fa-flask"></i> Open Experiment</h1>
+
 <div id="campaigns2">
-  <% @free_campaigns.each do |free_campaign| %>
+  
     <div class="campaign-md">
-       <% unless free_campaign.image.nil? %>
+       <% unless @free_campaign.image.nil? %>
         <div class="campaign-img">
-            <%= link_to free_campaign do %>
-            <%= image_tag free_campaign.image.url(:large) %>
+            <%= link_to @free_campaign do %>
+            <%= image_tag @free_campaign.image.url(:large) %>
             <% end %>
         </div> 
         <% end %>
 
         <div class="campaign-info">
           <ul>
-             <% unless free_campaign.title.nil? || free_campaign.title.empty? %>
-            <li><strong><%= link_to simple_format(free_campaign.title), free_campaign %></strong></li>
+             <% unless @free_campaign.title.nil? || @free_campaign.title.empty? %>
+            <li><strong><%= link_to simple_format(@free_campaign.title), @free_campaign %></strong></li>
             <% end %>
-             <% if free_campaign.timer.nil? || free_campaign.timer.empty? %>
+             <% if @free_campaign.timer.nil? || @free_campaign.timer.empty? %>
                 <li>Rhyme Submission: Not Open Yet</li>
               <% else %>
-                <% unless free_campaign.timer.nil? || free_campaign.timer.empty? %>
-                <li>Rhyme Submission: <span class="timer-line" data-countdown= <%= free_campaign.timer %> ></span></li>
+                <% unless @free_campaign.timer.nil? || @free_campaign.timer.empty? %>
+                <li>Rhyme Submission: <span class="timer-line" data-countdown= <%= @free_campaign.timer %> ></span></li>
                 <% end %>
             <% end %>
-              <% if free_campaign.timer2.nil? || free_campaign.timer2.empty? %>
+              <% if @free_campaign.timer2.nil? || @free_campaign.timer2.empty? %>
                 <li>Design Submission: Not Open Yet</li>
               <% else %>
-                <% unless free_campaign.timer2.nil? || free_campaign.timer2.empty? %>
-                <li>Design Submission: <span class="timer-line" data-countdown= <%= free_campaign.timer2 %> ></span></li>
+                <% unless @free_campaign.timer2.nil? || @free_campaign.timer2.empty? %>
+                <li>Design Submission: <span class="timer-line" data-countdown= <%= @free_campaign.timer2 %> ></span></li>
                 <% end %>
             <% end %>
             
@@ -90,9 +91,10 @@
 
         </div>
       </div>
-    <% end %>
+  
   </div>
 </section>
+<% end %>
 
 
 
@@ -101,7 +103,7 @@
 
 
 <section class="campaign-section">
-<%= image_tag 'currentexperiments.jpg', :class => "info-image" %>
+<h1><i class="fa fa-flask"></i> Current Experiments</h1>
 <div id="campaigns2">
   <% @open_campaigns.each do |open_campaign| %>
     <div class="campaign-md">
@@ -117,7 +119,7 @@
           <ul>
              <% unless open_campaign.title.nil? || open_campaign.title.empty? %>
             <li><strong><%= link_to simple_format(open_campaign.title), open_campaign %></strong></li>
-            <% end %>
+          <% end %>
              <% if open_campaign.timer.nil? || open_campaign.timer.empty? %>
                 <li>Rhyme Submission: Not Open Yet</li>
               <% else %>
@@ -135,14 +137,285 @@
             
           </ul>
 
+        </div>        
+<% if can? :manage, :all %>
+        <div class="campaign-info">
+          <ul>
+             <% unless open_campaign.title.nil? || open_campaign.title.empty? %>
+            <li><strong><%= link_to simple_format(open_campaign.title), open_campaign %></strong></li>
+            <% end %>
+          </ul>
+
+          <% if open_campaign.description.present? %>
+            <div class="para-campaign"><%= simple_format(truncate(open_campaign.description, length: 200, separator: ' ')) %></div>
+            <% end %>          
+
+            <hr>
+
         </div>
+
+        <div class="home-campaign-info2">
+            <h1>Rhyme Submissions</h1>
+
+        </div>
+
+    <% if open_campaign.timer.nil? || open_campaign.timer.empty? %>
+
+        <div class="home-campaign-info">
+      
+          <span class="home-number"><i class="fa fa-lock"></i></span>
+          <p>Not</br>Open</p> 
+
+          <hr>
+
+        </div>
+
+    <% elsif open_campaign.timer < Time.now.in_time_zone("Eastern Time (US & Canada)") %>
+
+        <div class="home-campaign-info">
+          <span class="home-number"><%= open_campaign.lyrics.count %></span> 
+          <p>Lyrics</br>Submitted</p>
+
+          <span class="home-number"><i class="fa fa-lock"></i></span>
+          <p>Closed</p>  
+
+            <div class="button-home">
+             <%= link_to 'Vote on Lyrics', "/campaigns/2/lyrics", :class => "home-button" %>
+
+            </div>
+
+          <hr>        
+
+        </div>
+
+    <% else %>
+
+        <div class="home-campaign-info">
+          <span class="home-number"><%= open_campaign.lyrics.count %></span> 
+          <p>Lyrics</br>Submitted</p>
+
+          <span class="home-number"><span class="timer-line" data-countdown= <%= open_campaign.timer %> ></span></span> 
+          <p>Days</br>Left</p>
+
+            <div class="button-home">
+             <%= link_to 'Submit Lyric', new_campaign_lyric_path(open_campaign, @lyric), :class => "home-button" %>
+             <%= link_to 'Vote on Lyrics', "/campaigns/2/lyrics", :class => "home-button" %>
+
+            </div>
+
+            <hr>
+
+        </div>    
+
+
+    <% end %>
+
+
+
+        <div class="home-campaign-info2">
+            <h1>Design Submissions</h1>
+
+        </div>
+
+   <% if open_campaign.timer2.nil? || open_campaign.timer2.empty? %>
+
+        <div class="home-campaign-info">
+      
+          <span class="home-number"><i class="fa fa-lock"></i></span>
+          <p>Not</br>Open</p> 
+
+        </div>
+
+    <% elsif open_campaign.timer2 < Time.now.in_time_zone("Eastern Time (US & Canada)") %>
+
+        <div class="home-campaign-info">
+          <span class="home-number"><%= open_campaign.arts.count %></span> 
+          <p>Designs</br>Submitted</p>
+
+          <span class="home-number"><i class="fa fa-lock"></i></span>
+          <p>Closed</p>          
+
+            <div class="button-home">
+             <%= link_to 'Vote on Designs', "/campaigns/2/arts", :class => "home-button" %>
+
+            </div> 
+
+        </div>
+
+    <% else %>
+
+        <div class="home-campaign-info">
+          <span class="home-number"><%= open_campaign.arts.count %></span> 
+          <p>Designs</br>Submitted</p>
+
+          <span class="home-number"><span class="timer-line" data-countdown= <%= open_campaign.timer2 %> ></span></span> 
+          <p>Days</br>Left</p>
+
+            <div class="button-home">
+             <%= link_to 'Submit Design', new_campaign_art_path(open_campaign, @art), :class => "home-button" %>
+             <%= link_to 'Vote on Designs', "/campaigns/2/arts", :class => "home-button" %>
+
+            </div>            
+
+        </div>  
+
+      
+
+
+    <% end %>   
+    <% end %> 
+
       </div>
+
     <% end %>
   </div>
 </section>
 
+
+<% if can? :manage, :all %>
 <section class="campaign-section">
-<%= image_tag 'pastexperiments.jpg', :class => "info-image" %>
+<h1><i class="fa fa-flask"></i> Draft Experiments</h1>
+<div id="campaigns2">
+  <% @draft_campaigns.each do |draft_campaign| %>
+    <div class="campaign-md">
+       <% unless draft_campaign.image.nil? %>
+        <div class="campaign-img">
+            <%= link_to draft_campaign do %>
+              <%= image_tag draft_campaign.image.url(:large) %>
+            <% end %>
+        </div> 
+        <% end %>
+
+        <div class="campaign-info">
+          <ul>
+             <% unless draft_campaign.title.nil? || draft_campaign.title.empty? %>
+            <li><strong><%= link_to simple_format(draft_campaign.title), draft_campaign %></strong></li>
+            <% end %>
+          </ul>
+
+          <% if draft_campaign.description.present? %>
+            <div class="para-campaign"><%= simple_format(truncate(draft_campaign.description, length: 200, separator: ' ')) %></div>
+            <% end %>          
+
+            <hr>
+
+        </div>
+
+        <div class="home-campaign-info2">
+            <h1>Rhyme Submissions</h1>
+
+        </div>
+
+  <% if draft_campaign.timer.nil? || draft_campaign.timer.empty? %>
+
+        <div class="home-campaign-info">
+      
+          <span class="home-number"><i class="fa fa-lock"></i></span>
+          <p>Not</br>Open</p> 
+
+          <hr>
+
+        </div>
+
+    <% elsif draft_campaign.timer < Time.now.in_time_zone("Eastern Time (US & Canada)") %>
+
+        <div class="home-campaign-info">
+          <span class="home-number"><%= draft_campaign.lyrics.count %></span> 
+          <p>Lyrics</br>Submitted</p>
+
+          <span class="home-number"><i class="fa fa-lock"></i></span>
+          <p>Closed</p>  
+
+            <div class="button-home">
+             <%= link_to 'Vote on Lyrics', "/campaigns/2/lyrics", :class => "home-button" %>
+
+            </div>
+
+          <hr>        
+
+        </div>
+
+    <% else %>
+
+        <div class="home-campaign-info">
+          <span class="home-number"><%= draft_campaign.lyrics.count %></span> 
+          <p>Lyrics</br>Submitted</p>
+
+          <span class="home-number"><span class="timer-line" data-countdown= <%= draft_campaign.timer %> ></span></span> 
+          <p>Days</br>Left</p>
+
+            <div class="button-home">
+             <%= link_to 'Submit Lyric', new_campaign_lyric_path(draft_campaign, @lyric), :class => "home-button" %>
+             <%= link_to 'Vote on Lyrics', "/campaigns/2/lyrics", :class => "home-button" %>
+
+            </div>
+
+            <hr>
+
+        </div>    
+
+
+    <% end %>
+
+
+
+        <div class="home-campaign-info2">
+            <h1>Design Submissions</h1>
+
+        </div>
+
+    <% if draft_campaign.timer2.nil? || draft_campaign.timer2.empty? %>
+
+        <div class="home-campaign-info">
+      
+          <span class="home-number"><i class="fa fa-lock"></i></span>
+          <p>Not</br>Open</p> 
+
+        </div>
+
+    <% elsif draft_campaign.timer2 < Time.now.in_time_zone("Eastern Time (US & Canada)") %>
+
+        <div class="home-campaign-info">
+          <span class="home-number"><%= draft_campaign.arts.count %></span> 
+          <p>Designs</br>Submitted</p>
+
+          <span class="home-number"><i class="fa fa-lock"></i></span>
+          <p>Closed</p>          
+
+            <div class="button-home">
+             <%= link_to 'Vote on Designs', "/campaigns/2/arts", :class => "home-button" %>
+
+            </div> 
+
+        </div>
+
+    <% else %>
+
+        <div class="home-campaign-info">
+          <span class="home-number"><%= draft_campaign.arts.count %></span> 
+          <p>Designs</br>Submitted</p>
+
+          <span class="home-number"><span class="timer-line" data-countdown= <%= draft_campaign.timer2 %> ></span></span> 
+          <p>Days</br>Left</p>
+
+            <div class="button-home">
+             <%= link_to 'Submit Design', new_campaign_art_path(draft_campaign, @art), :class => "home-button" %>
+             <%= link_to 'Vote on Designs', "/campaigns/2/arts", :class => "home-button" %>
+
+            </div>            
+
+        </div> 
+        <% end %>         
+
+      </div>
+
+    <% end %>
+  </div>
+</section>
+<% end %>
+
+<section class="campaign-section">
+<h1><i class="fa fa-flask"></i>Past Experiments</h1>
 <div id="campaigns3" >
       <% @closed_campaigns.each do |closed_campaign| %>
     <div class="campaign-md">
@@ -190,6 +463,7 @@
 
 </script>
 
+
   <script type="text/javascript">
     $('[data-countdown]').each(function() {
       var $this = $(this), finalDate = $(this).data('countdown');
@@ -197,17 +471,7 @@
     $this.countdown(finalDate)
 
     .on('update.countdown', function(event) {
-      var format = '%-H hr %-M min %-S sec';
-      var format2 = '%-H hr %-M min';  
-      if (event.offset.days < 1) {
-          $this.closest('.price-info').addClass('red-status');
-      }   
-      if(event.offset.days > 0) {
-        format = '%-d day%!d, ' + format;
-      }
-      if(event.offset.weeks > 0) {
-        format = '%-w week%!w ' + format;
-      }
+      var format = '%-D';
     
      $(this).html(event.strftime(format));
    })
@@ -216,6 +480,12 @@
     $this.closest('.timer-button').addClass('disabled').attr('disabled', 'disabled');
       });
     
+    });
+</script>
+
+  <script>
+   $(function(){
+      $(".player").YTPlayer();
     });
 </script>
 

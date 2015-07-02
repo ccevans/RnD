@@ -3,11 +3,29 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+div#campaigns2 div.campaign-md div.home-campaign-info {background-color: #1abc9c;}
+div#campaigns2 div.campaign-md div.home-campaign-info2  {background-color: #1abc9c;}
+div#campaigns2 div.campaign-md div.home-campaign-info p {font-size: 14px; line-height: 16px; width: auto; margin: 0 10px 0 0; padding: 4px; float: left; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #fff;}
+div#campaigns2 div.campaign-md div.home-campaign-info2 h1 {float: left; width: auto; font-size: 18px; line-height: 18px; color: #333; margin: 10px 0; padding: 0;}
+div#campaigns2 div.campaign-md div.home-campaign-info2 a.home-button {border: 2px solid #fff; border-radius: 5px; color: #fff; float: left; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-size: 14px; line-height: 14px; margin: 0 10px; padding: 10px 5px; text-decoration: none;}
+div#campaigns2 div.campaign-md div.home-campaign-info2 a.home-button:hover {border: 2px solid #fff; border-radius: 5px; color: #fff; float: left; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-size: 14px; line-height: 14px; margin: 10px; padding: 10px 5px; text-decoration: none;}
+div#campaigns2 div.campaign-md div.home-campaign-info span.home-number {color: #fff;}
+
+div.home-campaign-info a.home-button {border: 2px solid #fff; border-radius: 5px; color: #fff; float: left; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-size: 14px; line-height: 14px; margin: 0 5px; padding: 10px 5px; text-decoration: none;}
+div.home-campaign-info a.home-button:hover {border: 2px solid #fff; border-radius: 5px; color: #000; float: left; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; font-size: 14px; line-height: 14px; margin: 0 5px; padding: 10px 5px; text-decoration: none;}
+div.home-campaign-info .button-home {width: auto; margin: 0 auto; float: left;}
+
+div#campaigns2 div.campaign-md div.home-campaign-info hr {float: left; width: 100%; margin: 10px 0 0 0;}
+div#campaigns2 div.campaign-md div.campaign-info hr {float: left; width: 90%; margin: 10px 5% 0 5%;}
+div#campaigns2 div.campaign-md div.campaign-info ul li strong a p {margin: 10px 0;}
+div#campaigns2 div.campaign-md div.campaign-info div.para-campaign {float: left; width: 80%; margin: 0 10%;}
+div#campaigns2 div.campaign-md div.campaign-info div.para-campaign p {font-size: 14px; line-height: 16px; width: auto; margin: 0; padding: 4px; float: left; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #fff;}
+
 form#new_art.simple_form.new_art h2 a {text-decoration: underline;}
 form#new_art.simple_form.new_art h2 a:hover {text-decoration: none; color: #1cccaa;}
 
 
-.campaign-md {width: 100%; margin: 0px; padding: 25px 10%; float: left;}
+.campaign-md {width: 100%; margin: 0px; padding: 25px 0%; float: left;}
 #campaigns {margin: 0 auto;}
 #campaigns2 {margin: 0 auto;}
 #campaigns3 {margin: 0 auto;}
@@ -17,7 +35,7 @@ form#new_art.simple_form.new_art h2 a:hover {text-decoration: none; color: #1ccc
 .campaign-img {float: left; margin: 0; padding: 0; width: 100%;}
 .campaign-img img {float: left; width: 100%; height: auto; border-radius: 0px; -moz-border-radius: 0px; -webkit-border-radius: 0px;}
 
-.campaign-info {float: left; margin: 0; padding: 5px 0; width: 100%; background-color: whitesmoke; }
+.campaign-info {float: left; margin: 0; padding: 5px 0; width: 100%; background-color: #1abc9c;}
 .campaign-info ul {list-style: none; width: 95%; float: left; padding: 0 0 0 5%; margin: 0;}
 .campaign-info ul li {padding: 2px 0; width: 100%; float: left;}
 
@@ -105,8 +123,8 @@ div.header-campaign p a:hover {color: #000; text-decoration: none;}
 
 html body section.campaign-section h1 {width: 100%; text-align: center; font-size: 24px; line-height: 24px; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif; color: #000;}
 
-div.campaign-info ul li strong a {width: 100%; text-align: left; color: #000; font-size: 18px; line-height: 18px; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif; }
-div.campaign-info ul li strong a:hover {width: 100%; text-align: left; color: #1cccaa; font-size: 18px; line-height: 18px; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif; text-decoration: none;}
+div.campaign-info ul li strong a {width: 100%; text-align: left; color: #333; font-size: 20px; line-height: 20px; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif; }
+div.campaign-info ul li strong a:hover {width: 100%; text-align: left; color: #000; font-size: 20px; line-height: 20px; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif; text-decoration: none;}
 div.campaign-info ul li {font-size: 14px; line-height: 14px; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif;}
 
 section.campaign-section2 img {width: 100%;}

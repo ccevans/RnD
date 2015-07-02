@@ -5,12 +5,15 @@ class CampaignsController < ApplicationController
 		has_scope :open
 		has_scope :closed
 		has_scope :chosen
+		has_scope :draft
 
 	def index
 		@campaigns = Campaign.all.order("created_at DESC")
 		@free_campaign = Campaign.free.first
 		@open_campaigns = Campaign.open.all.order("created_at DESC")
 		@closed_campaigns = Campaign.closed.all.order("created_at DESC")
+		@draft_campaigns = Campaign.draft.all.order("created_at DESC")
+
 
 	end
 
@@ -21,16 +24,16 @@ class CampaignsController < ApplicationController
 		@arts = Art.where(campaign_id: @campaign.id).order(:cached_weighted_total => :desc)
 		@time = Time.now 
 
-		if @campaign == Campaign.last
-			@next_campaign = Campaign.order(id: :asc).first
+		if @campaign == Campaign.open.last
+			@next_campaign = Campaign.open.order(id: :asc).first
 		else
-			@next_campaign = Campaign.where("id > ?", @campaign).order(id: :asc).first
+			@next_campaign = Campaign.open.where("id > ?", @campaign).order(id: :asc).first
 		end
 
-		if @campaign == Campaign.first
-			@previous_campaign = Campaign.order(id: :asc).last
+		if @campaign == Campaign.open.first
+			@previous_campaign = Campaign.open.order(id: :asc).last
 		else
-			@previous_campaign = Campaign.where("id < ?", @campaign).order(id: :desc).first
+			@previous_campaign = Campaign.open.where("id < ?", @campaign).order(id: :desc).first
 		end
 	end
 

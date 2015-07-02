@@ -7,9 +7,9 @@ class Campaign < ActiveRecord::Base
 	scope :free, -> { where(:status => "free") }
 	scope :open, -> { where(:status => "open") }
 	scope :closed, -> { where(:status => "closed") }
-	
+	scope :draft, -> { where(:status => "draft") }
 
-	STATUS = %w[free open closed]
+	STATUS = %w[draft free open closed]
 
 
 	has_attached_file :image, :styles => { :large => "1200x300#", :medium => "800x200#", :thumb => "80x20#"  }, :default_url => "/images/:style/profile-missing.png"  

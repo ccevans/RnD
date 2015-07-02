@@ -8,6 +8,301 @@
 </div>  
 <% end %>
 
+
+
+<% if @campaign.status == 'free' %>
+
+  <div id="campaigns2">
+    <div class="campaign-show">
+   
+       <div class="campaignshow-info">
+
+        <div class="campaign-add">
+
+       
+
+          <div class="campaign-halfbox">
+
+                <% unless @campaign.title.nil? || @campaign.title.empty? %>
+                    <h1><strong><%= @campaign.title %></strong></h1>
+                <% end %>
+
+        <div class="panel-group dashlist" id="accordion" role="tablist" aria-multiselectable="true">
+
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Rhyme Submissions
+              </a>
+              <span class="right-circle">
+              <span class="points-lab2"><i class="fa fa-unlock"></i> </span> 
+            </span>
+
+            </h4>
+          </div>
+
+          <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+       
+
+
+          <div class="panel-body">
+
+                 <% if user_signed_in? %>
+                  <div class="timer-info"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                    Open for Submissions
+                  </div>
+
+                  <%= link_to 'Submit Lyrics', new_campaign_lyric_path(@campaign, @lyric), class: "submitbutton" %>
+
+                  <% else %>
+                    <div class="timer-info"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                    <span class="timer-line" data-countdown= <%= @campaign.timer %> ></span>
+                  </div>
+
+                  <%= link_to "Sign In To Submit", new_user_registration_path, class: "submitbutton" %>
+
+                  <% end %>
+
+               
+          </div>
+
+            <ul class="list-group">
+            <li class="list-group-item">
+
+              <% if user_signed_in? && current_user.lyrics.where(campaign_id: @campaign.id).any? %>
+              <span class="left-circle"><i class="fa fa-check-circle-o"></i></span><%= current_user.lyrics.where(campaign_id: @campaign.id).count %> / 3 Lyrics Added <span class="right-circle">
+              <span class="points-lab2-done"><i class="fa fa-flask"></i><%= current_user.lyrics.where(campaign_id: @campaign.id).count * 10 %></span>
+            </span>
+
+              <% else %>
+              <span class="left-circle"><i class="fa fa-circle-o"></i></span><%= link_to 'Submit 1st Lyric', new_campaign_lyric_path(@campaign, @lyric) %><span class="right-circle">
+              <span class="points-lab2"><i class="fa fa-flask"></i>10</span>
+            </span>
+            <% end %>
+
+            </li>
+
+          <li class="list-group-item">
+             <% if user_signed_in? && ((current_user.get_voted Lyric.where(campaign_id: @campaign.id)).count > 0) %>
+              <span class="left-circle"><i class="fa fa-check-circle-o"></i></span><%= (current_user.get_voted Lyric.where(campaign_id: @campaign.id)).count %> Lyrics Voted For<span class="right-circle">
+              <span class="points-lab2-done"><i class="fa fa-flask"></i><%= (current_user.get_voted Lyric.where(campaign_id: @campaign.id)).count %></span>
+            </span>
+
+              <% else %>
+              <span class="left-circle"><i class="fa fa-circle-o"></i></span>Vote for Lyrics <span class="right-circle">
+              <span class="points-lab2"><i class="fa fa-flask"></i>1</span>
+            </span>
+            <% end %>
+
+            </li>
+
+
+          </ul>
+
+
+            
+          </div>
+        </div>
+
+   
+
+
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingThree">
+            <h4 class="panel-title">
+
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Rewards / Rules
+              </a>
+     
+            </h4>
+          </div>
+          <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+               
+          </div>
+
+          <ul class="list-group">
+            <li class="list-group-item">
+              
+              <h3>Rewards:</h3>
+
+                <%= simple_format(@campaign.reward) %>
+
+            </li>
+
+          <li class="list-group-item">
+
+            <h3>Rules:</h3>
+
+                <%= simple_format(@campaign.rules) %>
+
+            </li>
+
+
+          </ul>
+            
+          </div>
+        </div>
+
+      </div>
+
+      </div>
+
+
+               <div class="admin-footer">
+                  <% if can? :update, @campaign %>
+                <%= link_to 'Edit', edit_campaign_path(@campaign) %> | 
+                <% end %>
+                <% if can? :destroy, @campaign %>
+                <%= link_to 'Destroy', campaign_path(@campaign), method: :delete, data: {confirm: "Are you sure?" } %>   
+                <% end %>
+              </div>
+
+              <% if @campaign.credit.present? %>
+                <div class ="credit-header">
+                  Header Artwork by: <%= link_to @campaign.credit, @campaign.creditlink %>
+                </div>
+              <% end %>
+
+      <div class="next-prev">
+
+        Experiments:<%= link_to 'Next', campaign_path(@next_campaign) %>
+
+
+      </div>
+
+      </div>
+
+
+         <% unless @campaign.title.nil? || @campaign.title.empty? %>
+        <h1><strong><%= @campaign.title %></strong></h1>
+        <% end %>
+        <% unless @campaign.description.nil? || @campaign.description.empty? %>
+        <div class="campaignshow-desc">
+          <%= simple_format(@campaign.description) %>
+        </div>
+        <% end %>
+
+
+  </div>
+       
+
+  </div>
+
+    <div class="tab-box" role="tabpanel">
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Lyrics</a></li>
+
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="home">
+
+
+              <div class="campaign-lyric">
+                <% if @lyrics.any? %>
+                <% @lyrics.each do |lyric| %>
+                  <div class="campaign-lyric-each">
+                    <% unless lyric.line.nil? || lyric.line.empty? %>
+                    <%= link_to lyric.line, campaign_lyric_path(@campaign, lyric) %>
+                    <% end %>
+                    
+                    <ul>
+                      <% if user_signed_in? %>
+                      <li><span class="updown-button"><span class="up <%= lyric.id %>"><%= lyric.get_upvotes.size %> </span>
+                      <%= link_to like_lyric_path(lyric), class: ['voteup', lyric.id], remote: true, data: { type: :json }, method: :get do %>
+                      <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+                        <% end %>
+                      </span>
+                    </li>
+                    <li>
+                        <span class="updown-button"><span class="down <%= lyric.id %>"><%= lyric.get_downvotes.size %></span>
+                      <%= link_to dislike_lyric_path(lyric), class: ['votedown', lyric.id], remote: true, data: { type: :json }, method: :get do %>
+                      <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                        <% end %>
+                      </span>
+
+                      </li>
+
+                      <% else %>
+
+                      <li><span class="updown-button"><span class="up <%= lyric.id %>"><%= lyric.get_upvotes.size %> </span>
+                      <%= link_to_if user_signed_in?, like_lyric_path(lyric), class: ['voteup', lyric.id], remote: true, data: { type: :json }, method: :get do %>
+                      <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+                        <% end %>
+                      </span>
+                    </li>
+                    <li>
+                        <span class="updown-button"><span class="down <%= lyric.id %>"><%= lyric.get_downvotes.size %></span>
+                      <%= link_to_if user_signed_in?, dislike_lyric_path(lyric), class: ['votedown', lyric.id], remote: true, data: { type: :json }, method: :get do %>
+                      <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                        <% end %>
+                      </span>
+                    
+                      <span type="button" data-toggle="tooltip" data-placement="top" title="Sign In To Vote" class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+                      </li>
+
+
+                      <% end %>
+
+                      <li><%= lyric.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
+
+
+              <script>
+
+                $('.voteup' + '.<%= lyric.id %>')
+              .on('ajax:success', function (e, data, status, xhr) { 
+                $('.up' + '.<%= lyric.id %>').html(data.count);
+                $('.down' + '.<%= lyric.id %>').html(data.count2);
+              });
+
+                </script>
+
+                  <script>
+
+                $('.votedown' + '.<%= lyric.id %>')
+              .on('ajax:success', function (e, data, status, xhr) { 
+                
+                $('.down' + '.<%= lyric.id %>').html(data.count2);
+                $('.up' + '.<%= lyric.id %>').html(data.count);
+              });
+
+                </script>
+
+                  
+                    <li><%= lyric.comments.count %> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></li>
+                    <li><% if lyric.user.avatar.present? %><%= image_tag lyric.user.avatar.url(:mini) %><% end %><% if lyric.user.username.present? %><%= link_to lyric.user.username, profile_url(:id => lyric.user.username) %><% end%></li>
+                   
+                    <% if lyric.personal == true %>
+                    <li><span data-toggle="tooltip" data-placement="top" title="Submitted By Artist"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></span></li>
+                   <% end %>
+
+                    </ul>
+          </div>
+          <% end %>
+
+
+          <% else %>
+          <div class="noposts"><h1>No Lyrics Posted Yet.</h1></div>
+          <% end %>
+      
+    </div>
+
+          </div>
+
+        </div>
+      </div>
+
+  </div>
+
+
+<% else %>
+
   <div id="campaigns2">
     <div class="campaign-show">
    
@@ -563,12 +858,19 @@
                 </div>
               <% end %>
 
+      <% if @campaign.status == 'open' %>
+      
+             
+
       <div class="next-prev">
 
-        Experiments: <% if @campaign == Campaign.first %> <span style="color: #000;">Prev</span> <% else %><%= link_to 'Prev', campaign_path(@previous_campaign) %> <% end %><strong>/</strong> <% if @campaign == Campaign.last %> <span style="color: #000;">Next</span> <% else %> <%= link_to 'Next', campaign_path(@next_campaign) %><% end %>
+        Experiments: <% if @campaign == Campaign.open.first %> <span style="color: #000;">Prev</span> <% else %><%= link_to 'Prev', campaign_path(@previous_campaign) %> <% end %><strong>/</strong> <% if @campaign == Campaign.open.last %> <span style="color: #000;">Next</span> <% else %> <%= link_to 'Next', campaign_path(@next_campaign) %><% end %>
 
 
       </div>
+      <% else %> 
+
+      <% end %>
 
       </div>
 
@@ -720,6 +1022,8 @@
       </div>
 
   </div>
+
+  <% end %>
 
   <%= render 'layouts/footer' %>
 </section>
