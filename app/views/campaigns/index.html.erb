@@ -72,24 +72,30 @@
              <% unless @free_campaign.title.nil? || @free_campaign.title.empty? %>
             <li><strong><%= link_to simple_format(@free_campaign.title), @free_campaign %></strong></li>
             <% end %>
-             <% if @free_campaign.timer.nil? || @free_campaign.timer.empty? %>
-                <li>Rhyme Submission: Not Open Yet</li>
-              <% else %>
-                <% unless @free_campaign.timer.nil? || @free_campaign.timer.empty? %>
-                <li>Rhyme Submission: <span class="timer-line" data-countdown= <%= @free_campaign.timer %> ></span></li>
-                <% end %>
-            <% end %>
-              <% if @free_campaign.timer2.nil? || @free_campaign.timer2.empty? %>
-                <li>Design Submission: Not Open Yet</li>
-              <% else %>
-                <% unless @free_campaign.timer2.nil? || @free_campaign.timer2.empty? %>
-                <li>Design Submission: <span class="timer-line" data-countdown= <%= @free_campaign.timer2 %> ></span></li>
-                <% end %>
-            <% end %>
-            
           </ul>
 
+          <% if @free_campaign.description.present? %>
+            <div class="para-campaign"><%= simple_format(truncate(@free_campaign.description, length: 200, separator: ' ')) %></div>
+            <% end %>          
+
+            <hr>
+
         </div>
+
+        <div class="home-campaign-info">
+          <span class="home-number"><%= @free_campaign.lyrics.count %></span> 
+          <p>Lyrics</br>Submitted</p>
+
+            <div class="button-home">
+             <%= link_to 'Submit Lyric', new_campaign_lyric_path(@free_campaign, @lyric), :class => "home-button" %>
+             <%= link_to 'Vote on Lyrics', "/campaigns/2/lyrics", :class => "home-button" %>
+
+            </div>
+
+        </div> 
+
+
+
       </div>
   
   </div>
@@ -115,31 +121,8 @@
         </div> 
         <% end %>
 
-        <div class="campaign-info">
-          <ul>
-             <% unless open_campaign.title.nil? || open_campaign.title.empty? %>
-            <li><strong><%= link_to simple_format(open_campaign.title), open_campaign %></strong></li>
-          <% end %>
-             <% if open_campaign.timer.nil? || open_campaign.timer.empty? %>
-                <li>Rhyme Submission: Not Open Yet</li>
-              <% else %>
-                <% unless open_campaign.timer.nil? || open_campaign.timer.empty? %>
-                <li>Rhyme Submission: <span class="timer-line" data-countdown= <%= open_campaign.timer %> ></span></li>
-                <% end %>
-            <% end %>
-              <% if open_campaign.timer2.nil? || open_campaign.timer2.empty? %>
-                <li>Design Submission: Not Open Yet</li>
-              <% else %>
-                <% unless open_campaign.timer2.nil? || open_campaign.timer2.empty? %>
-                <li>Design Submission: <span class="timer-line" data-countdown= <%= open_campaign.timer2 %> ></span></li>
-                <% end %>
-            <% end %>
-            
-          </ul>
-
-        </div>        
-<% if can? :manage, :all %>
-        <div class="campaign-info">
+       
+      <div class="campaign-info">
           <ul>
              <% unless open_campaign.title.nil? || open_campaign.title.empty? %>
             <li><strong><%= link_to simple_format(open_campaign.title), open_campaign %></strong></li>
@@ -263,7 +246,7 @@
 
 
     <% end %>   
-    <% end %> 
+
 
       </div>
 
