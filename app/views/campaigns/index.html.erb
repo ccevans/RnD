@@ -18,7 +18,7 @@
 
   <%= link_to 'Lab Shop', 'http://shop.rhymesanddesigns.com/', :class => "" %>
 
-  <%= link_to 'Submit Lyric', new_campaign_lyric_path(Campaign.last), :class => "" %>
+  <%= link_to 'Submit Lyric', new_campaign_lyric_path(Campaign.open.last), :class => "" %>
 
   <%= link_to 'Submit Design', new_campaign_art_path(Campaign.open.first), :class => "" %>
 
@@ -109,7 +109,7 @@
 
 
 
-
+<% if @open_campaigns.any? %>
 <section class="campaign-section">
 <h1><i class="fa fa-flask"></i> Current Experiments</h1>
 <div id="campaigns2">
@@ -255,9 +255,11 @@
     <% end %>
   </div>
 </section>
+<% end %>
 
 
 <% if can? :manage, :all %>
+<% if @draft_campaigns.any? %>
 <section class="campaign-section">
 <h1><i class="fa fa-flask"></i> Draft Experiments</h1>
 <div id="campaigns2">
@@ -398,6 +400,9 @@
   </div>
 </section>
 <% end %>
+<% end %>
+
+
 
 <% if @closed_campaigns.any? %>
 <section class="campaign-section">
