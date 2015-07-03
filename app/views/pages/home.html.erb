@@ -418,9 +418,14 @@
 
               </div>
 
-              	<div class="button-home">
-             	<%= link_to 'Vote on Designs', "/campaigns/2/arts", :class => "home-button" %></div>
+             <div class="button-home">
+              	<%= link_to 'Submit Design', new_campaign_art_path(Campaign.open.first), :class => "home-button" %>
+             	<%= link_to 'Vote on Designs', campaign_arts_path(Campaign.open.first), :class => "home-button" %>
+             </div>
+
             </div>
+
+
 
 			<h1>$1,125 Paid To Artists</h1>
 			<%= link_to 'Artists Learn More', pages_partnerships_path %>
