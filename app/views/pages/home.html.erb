@@ -399,6 +399,26 @@
 		</div>		
 		<div class="homepage-artists">
 
+			<div class="art-container">
+            
+              <div id="campaign-art">
+              <% if @home_arts.any? %>
+                <% @home_arts.each do |home_art| %>
+                  <div class="campaign-art-each">
+                    <%= link_to campaign_art_path(@campaign, home_art) do %>
+
+                    <% unless home_art.image.nil? %>
+                    <%= image_tag home_art.image.url(:small) %>
+                    <% end %>
+                  <% end %>
+                  </div>
+                <% end %>
+
+                 <% end %>
+
+              </div>
+            </div>
+
 			<h1>$1,125 Paid To Artists</h1>
 			<%= link_to 'Artists Learn More', pages_partnerships_path %>
 			
