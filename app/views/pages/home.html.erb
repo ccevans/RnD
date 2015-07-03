@@ -405,12 +405,12 @@
               <% if @home_arts.any? %>
                 <% @home_arts.each do |home_art| %>
                   <div class="campaign-art-each">
-                    <%= link_to campaign_art_path(@campaign, home_art) do %>
+                    
 
                     <% unless home_art.image.nil? %>
                     <%= image_tag home_art.image.url(:small) %>
                     <% end %>
-                  <% end %>
+                
                   </div>
                 <% end %>
 
