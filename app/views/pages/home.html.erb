@@ -391,10 +391,19 @@
 				        <% end %>
 				        </div>
 
-
 				    <% end %>
 
 				    <% end %>
+
+				     <% if user_signed_in? %>
+						<div class="button-home">
+					      <%= link_to 'Update Your Profile', profile_url(:id => current_user.username), :class => "home-button" %>
+				        </div>
+			        <% else %>				    
+						<div class="button-home">
+					      <%= link_to 'Join The Community', new_user_registration_path, :class => "home-button" %>
+				        </div>
+			        <% end %>
 
 		</div>		
 		<div class="homepage-artists">
