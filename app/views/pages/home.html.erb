@@ -24,10 +24,6 @@
 	</div>
 
 
-
-
-		
-
 		<%= image_tag 'rebel.jpg', :class => "info-image" %>
 
 </div>
@@ -38,6 +34,152 @@
 
 
 	<div class="homepage-box2">
+
+
+<div class="homepage-experiment">
+
+
+    <div class="campaign-md">
+       <% unless @home_campaign.image.nil? %>
+        <div class="campaign-img">
+            <%= link_to @home_campaign do %>
+            <%= image_tag @home_campaign.image.url(:large) %>
+            <% end %>
+        </div> 
+        <% end %>
+
+       
+      <div class="campaign-info">
+          <ul>
+             <% unless @home_campaign.title.nil? || @home_campaign.title.empty? %>
+            <li><strong><%= link_to simple_format(@home_campaign.title), @home_campaign %></strong></li>
+            <% end %>
+          </ul>
+
+          <% if @home_campaign.description.present? %>
+            <div class="para-campaign"><%= simple_format(truncate(@home_campaign.description, length: 200, separator: ' ')) %></div>
+            <% end %>          
+
+            <hr>
+
+        </div>
+
+        <div class="home-campaign-info2">
+            <h1>Rhyme Submissions</h1>
+
+        </div>
+
+    <% if @home_campaign.timer.nil? || @home_campaign.timer.empty? %>
+
+        <div class="home-campaign-info">
+      
+          <span class="home-number"><i class="fa fa-lock"></i></span>
+          <p>Not</br>Open</p> 
+
+          <hr>
+
+        </div>
+
+    <% elsif @home_campaign.timer < Time.now.in_time_zone("Eastern Time (US & Canada)") %>
+
+        <div class="home-campaign-info">
+          <span class="home-number"><%= @home_campaign.lyrics.count %></span> 
+          <p>Lyrics</br>Submitted</p>
+
+          <span class="home-number"><i class="fa fa-lock"></i></span>
+          <p>Closed</p>  
+
+            <div class="button-home">
+             <%= link_to 'Vote on Lyrics', "/campaigns/2/lyrics", :class => "home-button" %>
+
+            </div>
+
+          <hr>        
+
+        </div>
+
+    <% else %>
+
+        <div class="home-campaign-info">
+          <span class="home-number"><%= @home_campaign.lyrics.count %></span> 
+          <p>Lyrics</br>Submitted</p>
+
+          <span class="home-number"><span class="timer-line" data-countdown= <%= @home_campaign.timer %> ></span></span> 
+          <p>Days</br>Left</p>
+
+            <div class="button-home">
+             <%= link_to 'Submit Lyric', new_campaign_lyric_path(@home_campaign, @lyric), :class => "home-button" %>
+             <%= link_to 'Vote on Lyrics', "/campaigns/2/lyrics", :class => "home-button" %>
+
+            </div>
+
+            <hr>
+
+        </div>    
+
+
+    <% end %>
+
+
+
+        <div class="home-campaign-info2">
+            <h1>Design Submissions</h1>
+
+        </div>
+
+   <% if @home_campaign.timer2.nil? || @home_campaign.timer2.empty? %>
+
+        <div class="home-campaign-info">
+      
+          <span class="home-number"><i class="fa fa-lock"></i></span>
+          <p>Not</br>Open</p> 
+
+        </div>
+
+    <% elsif @home_campaign.timer2 < Time.now.in_time_zone("Eastern Time (US & Canada)") %>
+
+        <div class="home-campaign-info">
+          <span class="home-number"><%= @home_campaign.arts.count %></span> 
+          <p>Designs</br>Submitted</p>
+
+          <span class="home-number"><i class="fa fa-lock"></i></span>
+          <p>Closed</p>          
+
+            <div class="button-home">
+             <%= link_to 'Vote on Designs', "/campaigns/2/arts", :class => "home-button" %>
+
+            </div> 
+
+        </div>
+
+    <% else %>
+
+        <div class="home-campaign-info">
+          <span class="home-number"><%= @home_campaign.arts.count %></span> 
+          <p>Designs</br>Submitted</p>
+
+          <span class="home-number"><span class="timer-line" data-countdown= <%= @home_campaign.timer2 %> ></span></span> 
+          <p>Days</br>Left</p>
+
+            <div class="button-home">
+             <%= link_to 'Submit Design', new_campaign_art_path(@home_campaign, @art), :class => "home-button" %>
+             <%= link_to 'Vote on Designs', "/campaigns/2/arts", :class => "home-button" %>
+
+            </div>            
+
+        </div>  
+
+      
+
+
+    <% end %>   
+
+
+      </div>
+
+
+		</div>
+
 		<div class="homepage-lyric">
 	  
 			<% if @home_lyric.line.present? %>
@@ -89,38 +231,6 @@
 			</div>
 		</div>
 
-		<div class="homepage-experiment">
-
-			<div class="campaign-md">
-		       <% unless @home_campaign.image.nil? %>
-		        <div class="campaign-img">
-		            <%= link_to @home_campaign do %>
-		            <%= image_tag @home_campaign.image.url(:large) %>
-		            <% end %>
-		        </div> 
-		        <% end %>
-		        <div class="home-campaign-info">
-		        	<span class="home-number"><%= @home_campaign.lyrics.count %></span> 
-		        	<p>Lyrics</br>Submitted</p>
-
-		        	<span class="home-number"><span class="timer-line" data-countdown= <%= @home_campaign.timer %> ></span></span> 
-		        	<p>Days</br>Left</p>
-
-		    	</div>
-
-
-		    	<div class="home-campaign-info2">
-                <% unless @home_campaign.title.nil? || @home_campaign.title.empty? %>
-                   <%= link_to campaign_path(@home_campaign) do %>
-                    <h1><%= @home_campaign.title %></h1>
-                    <% end %>
-                <% end %>
-
-		    	</div>
-		       </div>
-
-
-		</div>
 		<div class="homepage-profiles">
 
 			    <% if @featured_users.any? %>
@@ -163,20 +273,147 @@
 		</div>		
 		<div class="homepage-artists">
 
-			<h1>$1,125</h1>
+			<h1>$1,125 Paid To Artists</h1>
+			<%= link_to 'Artists Learn More', pages_partnerships_path %>
+			
 
 		</div>
 	</div>
 
 </div>
 
+<div class="homepage-box3">
+	<div id="posts2">
+    <% @home_posts.each do |home_post| %>
+    <div class="container-post-index">
+
+       <% unless home_post.videolink.nil? || home_post.videolink.empty? %>
+			<% if home_post.typeof == 'video' %>
+				<div class="video-box">
+				<p><%= raw(youtube_embed(home_post.videolink)) %></p>
+				</div>
+			<% end %>
+		<% end %>
+
+		<% unless home_post.audiolink.nil? || home_post.audiolink.empty? %>
+			<% if home_post.typeof == 'audio' %>
+				<p><%= raw(home_post.audiolink) %></p>
+				<% end %>
+		<% end %>
+
+		<% unless home_post.image.nil? || home_post.image.blank? %>
+			<% if home_post.typeof == 'picture' %>
+        <%= link_to post_path(home_post) do %>
+				  <%= image_tag home_post.image.url(:medium) %>
+        <% end %>
+				<% end %>
+		<% end %>
+
+    <% if home_post.title.present? %> 
+        <div class="post-title"><%= link_to Obscenity.replacement(:nonconsonants).sanitize(home_post.title), post_path(home_post) %></div>
+    <% end %>
+
+        <ul>
+          <% if user_signed_in? %>
+          <li><span class="updown-button"><span class="up <%= home_post.id %>"><%= home_post.get_upvotes.size %> </span>
+          <%= link_to like_post_path(home_post), class: ['voteup', home_post.id], remote: true, data: { type: :json }, method: :get do %>
+          <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+            <% end %>
+          </span>
+        </li>
+        <li>
+            <span class="updown-button"><span class="down <%= home_post.id %>"><%= home_post.get_downvotes.size %></span>
+          <%= link_to dislike_post_path(home_post), class: ['votedown', home_post.id], remote: true, data: { type: :json }, method: :get do %>
+          <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+            <% end %>
+          </span>
+
+          </li>
+
+          <% else %>
+
+          <li><span class="updown-button"><span class="up <%= home_post.id %>"><%= home_post.get_upvotes.size %> </span>
+          <%= link_to_if user_signed_in?, like_post_path(home_post), class: ['voteup', home_post.id], remote: true, data: { type: :json }, method: :get do %>
+          <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+            <% end %>
+          </span>
+        </li>
+        <li>
+            <span class="updown-button"><span class="down <%= home_post.id %>"><%= home_post.get_downvotes.size %></span>
+          <%= link_to_if user_signed_in?, dislike_post_path(home_post), class: ['votedown', home_post.id], remote: true, data: { type: :json }, method: :get do %>
+          <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+            <% end %>
+          </span>
+        
+          <span type="button" data-toggle="tooltip" data-placement="top" title="Sign In To Vote" class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+          </li>
+
+
+          <% end %>
+
+
+
+
+        <li><%= home_post.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
+
+
+
+              <script>
+
+                $('.voteup' + '.<%= home_post.id %>')
+              .on('ajax:success', function (e, data, status, xhr) { 
+                $('.up' + '.<%= home_post.id %>').html(data.count);
+                $('.down' + '.<%= home_post.id %>').html(data.count2);
+              });
+
+                </script>
+
+                  <script>
+
+                $('.votedown' + '.<%= home_post.id %>')
+              .on('ajax:success', function (e, data, status, xhr) { 
+                
+                $('.down' + '.<%= home_post.id %>').html(data.count2);
+                $('.up' + '.<%= home_post.id %>').html(data.count);
+              });
+
+                </script>
+
+        <li><%= home_post.commentposts.count %> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></li>
+        <li><% if home_post.user.avatar.present? %>
+          <%= image_tag home_post.user.avatar.url(:mini) %>
+          <% end %>
+          <% if home_post.user.username.present? %><%= link_to home_post.user.username, profile_url(:id => home_post.user.username) %>
+          <% end %></li> 
+
+        </ul>
+        <br />
+        <ul class="tag-list">
+        <li><% home_post.tags.any? %>
+          <% home_post.tags.each do |tag| %>
+          <%= link_to tag.name, tagged_url(:tag => tag.name) %>
+          <% end %></li>
+        </ul>
+     
+      
+      </div>
+    <% end %>
+
+  </div>
+
+
+
+</div>
 
 
 <div class="homepage-box3">
+	<%= image_tag 'sprite.png', :class => "info-image" %>
 	<div class="image-box">
+		
 
 	</div>
 	<div class="image-box">
+		
 
 	</div>
 
