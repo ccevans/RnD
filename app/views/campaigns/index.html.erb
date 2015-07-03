@@ -18,7 +18,7 @@
 
   <%= link_to 'Lab Shop', 'http://shop.rhymesanddesigns.com/', :class => "" %>
 
-  <%= link_to 'Add Lyric', new_campaign_lyric_path(Campaign.last), :class => "" %>
+  <%= link_to 'Submit Lyric', new_campaign_lyric_path(Campaign.last), :class => "" %>
 
   <%= link_to 'Submit Design', new_campaign_art_path(Campaign.open.first), :class => "" %>
 
@@ -399,6 +399,7 @@
 </section>
 <% end %>
 
+<% if @closed_campaigns.any? %>
 <section class="campaign-section">
 <h1><i class="fa fa-flask"></i>Past Experiments</h1>
 <div id="campaigns3" >
@@ -426,6 +427,7 @@
 
   </div>
 </section>
+<% end %>
 
 <%= render 'layouts/footer' %>
 
