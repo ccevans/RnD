@@ -2,6 +2,25 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+.header-partnership {float: left; width: 100%; height: auto; padding: 60px 10% 0px 10%; margin: 0;}
+.partnership-box {float: left; width: 100%; margin: 0; padding: 25px 5% 50px 5%; background-color: #1abc9c; color: #fff;}
+.features-overall {float: left; width: 100%; margin: 0; padding: 0; background: url('stardust-blue.png');}
+.features-box {float: left; width: 100%; padding: 10px; margin: 10px 0; color: #fff; height: auto;}
+.column-left {width: 28%; margin: 0 2%; float: left;}
+.column-middle {width: 28%; margin: 0 2%; float: left;}
+.column-right {width: 28%; margin: 0 2%; float: left;}
+
+.header-partnership h1 {font-family: "Fredoka One","Helvetica Neue",Helvetica,Arial,sans-serif;}
+.header-partnership ul {float: left; border: none; width: auto; padding: 0 10%; margin: 0; list-style: none;}
+.header-partnership ul li {float: left; width: auto; padding: 0 5px;}
+.header-partnership ul.nav.nav-tabs li a {color: #1abc9c;}
+.header-partnership ul.nav.nav-tabs li.active {margin-bottom: 0px;}
+
+.partnership-box h1 {font-size: 30px; line-height: 30px; text-align: left; font-family: "Fredoka One","Helvetica Neue",Helvetica,Arial,sans-serif; }
+.partnership-box p {width: 60%; margin: 0 40% 0 0;}
+.features-box h1 {font-family: "Fredoka One","Helvetica Neue",Helvetica,Arial,sans-serif; font-size: 26px; line-height: 26px;}
+
 .home-info2 {float: left; border-top: 0px solid #fff; width: 40%; margin: 50px 0 0 60%; padding: 0; z-index: 10; background-color: none; background: none;}
 .page-section2 {position: absolute; left: 0; margin: 0; width: 60%;}
 .page-section2 div.homepage-box1 div#posts2 div.container-post-index {max-width: 1000px !important;}
