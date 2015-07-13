@@ -76,7 +76,7 @@
           </ul>
 
           <% if @free_campaign.description.present? %>
-            <div class="para-campaign"><%= simple_format(truncate(@free_campaign.description, length: 200, separator: ' ')) %></div>
+            <div class="para-campaign"><%= simple_format(truncate(@free_campaign.description, length: 1000, separator: ' ')) %></div>
             <% end %>          
 
             <hr>
