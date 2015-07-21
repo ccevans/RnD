@@ -1,11 +1,518 @@
-<div class="works-top-temp">
+<div>
+<div class="header-partnership">
 	<h1>Partnerships</h1>
-	<div class="howitworks-para">
-		Partnerships page coming soon.
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#vocal" aria-controls="vocal" role="tab" data-toggle="tab">Vocal Artists</a></li>
+    <li role="presentation"><a href="#visual" aria-controls="visual" role="tab" data-toggle="tab">Visual Artists</a></li>
+
+  </ul>
+</div>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="vocal">
+
+   <div id="partnership1" class="partnership-box">
+	<h1>R&D for Vocal Artists</h1>
+
+	<p>Partner with us to be discovered by people who love music and art. R&D brings together the audiences of different talented artists, multiplying fan bases. We provide a unique way to gain new listeners and interact with your top fans. We will turn your lyrics into designs that will be developed into dope tees and other products.</p></br> 
+
+	<h2>Submit To Open Experiment</h2>
+
+	<p>You can take that step to partner with us today by adding your top lyrics to The “Exposure” Experiment. Or encourage your fans to submit their favorite lyrics of yours to the experiment. Get a significant amount of likes from the community and we will partner with you to turn your lyrics into dope gear and promote your work.</p>
+
+	<div class="partnership-buttons">
+
+		<%= link_to "Sign Up", new_user_registration_path, class: "active" %>
+
+		<%= link_to 'Submit Lyric', new_campaign_lyric_path(Campaign.free.last), class: "active" %>
+
 	</div>
+
+	<h2>Experiment Partnerships</h2>
+
+	<p>Got a dope music project dropping soon or recently dropped? Partner with us to develop your own experiment where you can promote your project, gain new fans, and let our community create merch inspired by your work. Email us at art@rhymesanddesigns.com for consideration.</p>
+
+	</div>
+
+
+	<div class="features-overall">
+		<div class="column-left">
+		<div class="features-box">
+			<h1>Gain New Fans.</h1>
+
+			<p>Gain new fans by introducing your design work to the R&D community.
+			</p>
+
+
+		</div>
+
+		<div class="features-box">
+			<h1>Promote Your Work.</h1>
+
+			<p>With your own personal artist page, you can add your work in the portfolio section, and upload videos and pics showcasing your brand. 
+
+			</p>
+
+
+		</div>
+
+
+	</div>
+
+	<div class="column-middle">
+
+		<div class="features-box">
+			<h1>Merch Inspired By Lyrics</h1>
+
+			<p>If the community loves your work, we will turn your design into high quality merch. Each Tee/product will be a walking billboard for your art. 
+			</p>
+
+
+		</div>
+
+		<div class="features-box">
+			<h1>Press and Social Media.</h1>
+
+			<p>Exposing our partners to the world is one of R&D’s top priorities. We produce promotional videos/interviews, partner with blogs, and promote via radio. We also do social chats like our #RnDRhymeChat where we hold a listening session to discuss different projects via Twitter. We will make sure that our growing social media base knows your work.  
+			</p>
+
+
+		</div>
+
+
+	</div>
+	<div class="column-right">
+		<div class="features-box">
+			<h1>Be Part of A Positive Movement.</h1>
+
+			<p>R&D’s mission is to promote artists and inspire passion. Join the community as an artist, and we will help you promote your brand and work.
+
+
+			</p>
+
+
+		</div>					
+
+
+
+		<div class="features-box">
+			<h1>Get Cash.</h1>
+
+			<p>If your design is chosen, you will receive royalties for each product sold online. The normal royalty is 50% of profits. Each experiment provides rewards to the chosen artist. 
+
+
+			</p>
+
+
+		</div>
+	</div>
+
+
+
+	</div>
+
+
+
+
+    </div>
+    <div role="tabpanel" class="tab-pane" id="visual">
+   <div id="partnership1" class="partnership-box">
+	<h1>R&D for Visual Artists</h1>
+
+	<p>Partner with us to earn cash and promote your work. By submitting your designs to one of our experiments, you get a platform to gain recognition from our community and other cool rewards. Partner with us to build your fan base and showcase your work to art and music lovers from all around the world.</p></br> 
+
+	<h2>Submit To An Experiment</h2>
+
+	<p>You can take that step to partner with us today by submitting a design to one of our open experiments. Create the chosen design and get cool rewards and automatic fame in the community.</p>
+
+	<div class="partnership-buttons">
+
+		<%= link_to "Sign Up", new_user_registration_path, class: "active" %>
+
+		<%= link_to 'Submit Design', new_campaign_art_path(Campaign.open.last), class: "active" %>
+
+	</div>
+
+	<h2>Experiment Partnerships</h2>
+
+	<p>Want to partner on an experiment, and design a collection inspired by the lyrics of a music project? Want to be a “Featured” artists on one of our upcoming open experiments? Partner with us to create merch inspired by music, gain new fans, and earn some cash. Email us at art@rhymesanddesigns.com for consideration.</p>
+
+	</div>
+
+
+	<div class="features-overall">
+		<div class="column-left">
+		<div class="features-box">
+			<h1>Gain New Fans.</h1>
+
+			<p>Gain new fans by introducing your design work to the R&D community.  
+
+
+			</p>
+
+
+		</div>
+
+		<div class="features-box">
+			<h1>Promote Your Work.</h1>
+
+			<p>With your own personal artist page, you can add your work in the portfolio section, and upload videos and pics showcasing your brand.  
+
+			</p>
+
+
+		</div>
+
+
+	</div>
+
+	<div class="column-middle">
+
+		<div class="features-box">
+			<h1>Merch Inspired By Lyrics</h1>
+
+			<p>If the community loves your work, we will turn your design into high quality merch. Each Tee/product will be a walking billboard for your art. 
+			</p>
+
+
+		</div>
+
+		<div class="features-box">
+			<h1>Press and Social Media.</h1>
+
+			<p>Exposing our partners to the world is one of R&D’s top priorities. We produce promotional videos/interviews, partner with blogs, and promote via radio. We also do social chats like our #RnDRhymeChat where we hold a listening session to discuss different projects via Twitter. We will make sure that our growing social media base knows your work.  
+			</p>
+
+
+		</div>
+
+
+	</div>
+	<div class="column-right">
+		<div class="features-box">
+			<h1>Be Part of A Positive Movement.</h1>
+
+			<p>R&D’s mission is to promote artists and inspire passion. Join the community as an artist, and we will help you promote your brand and work.
+
+
+			</p>
+
+
+		</div>					
+
+
+
+		<div class="features-box">
+			<h1>Get Cash.</h1>
+
+			<p>If your design is chosen, you will receive royalties for each product sold online. The normal royalty is 50% of profits. Each experiment provides rewards to the chosen artist. 
+
+
+			</p>
+
+
+		</div>
+	</div>
+
+
+
+	</div>
+
+
+
+
+
+    </div>
+    <div role="tabpanel" class="tab-pane" id="brand">
+
+    <div id="partnership3" class="partnership-box">
+	<h1>R&D for Brands</h1>
+
+	<p>PBR art party lumbersexual, Austin vinyl wolf direct trade hashtag. Irony Portland kale chips meditation tote bag, skateboard wolf VHS deep v freegan dreamcatcher. Synth XOXO vegan actually, flexitarian tofu health goth. Flannel flexitarian lo-fi deep v trust fund. Wolf Blue Bottle skateboard, crucifix Helvetica ennui whatever irony brunch readymade flannel roof party. PBR Kickstarter tattooed VHS swag pour-over YOLO banjo, ethical bespoke raw denim chambray fanny pack Carles flannel. Williamsburg PBR&B pug, seitan McSweeney's Godard aesthetic pickled mlkshk lumbersexual hashtag meh.</p>
+
+
+	<%= link_to "Sign Up", new_user_registration_path, class: "active" %>
+
+
+	</div>
+
+
+	<div class="features-overall">
+		<div class="column-left">
+		<div class="features-box">
+			<h1>Submit Your Lyrics.</h1>
+
+			<p>PBR art party lumbersexual, Austin vinyl wolf direct trade hashtag. Irony Portland kale chips meditation tote bag, skateboard wolf VHS deep v freegan dreamcatcher. Synth XOXO vegan actually, flexitarian tofu health goth. Flannel flexitarian lo-fi deep v trust fund. Wolf Blue Bottle skateboard, crucifix Helvetica ennui whatever irony brunch readymade flannel roof party.
+
+
+			</p>
+
+
+		</div>
+
+		<div class="features-box">
+			<h1>Promote Your Work.</h1>
+
+			<p>PBR art party lumbersexual, Austin vinyl wolf direct trade hashtag. Irony Portland kale chips meditation tote bag, skateboard wolf VHS deep v freegan dreamcatcher. Synth XOXO vegan actually, flexitarian tofu health goth. Flannel flexitarian lo-fi deep v trust fund. Wolf Blue Bottle skateboard, crucifix Helvetica ennui whatever irony brunch readymade flannel roof party.
+
+
+			</p>
+
+
+		</div>
+
+		<div class="features-box">
+			<h1>Gain New Listeners and Fans.</h1>
+
+			<p>PBR art party lumbersexual, Austin vinyl wolf direct trade hashtag. Irony Portland kale chips meditation tote bag, skateboard wolf VHS deep v freegan dreamcatcher. Synth XOXO vegan actually, flexitarian tofu health goth. Flannel flexitarian lo-fi deep v trust fund. Wolf Blue Bottle skateboard, crucifix Helvetica ennui whatever irony brunch readymade flannel roof party.
+
+
+			</p>
+
+
+		</div>
+	</div>
+
+	<div class="column-middle">
+
+		<div class="features-box">
+			<h1>Part of Our Social Inititives.</h1>
+
+			<p>PBR art party lumbersexual, Austin vinyl wolf direct trade hashtag. Irony Portland kale chips meditation tote bag, skateboard wolf VHS deep v freegan dreamcatcher. Synth XOXO vegan actually, flexitarian tofu health goth. Flannel flexitarian lo-fi deep v trust fund. Wolf Blue Bottle skateboard, crucifix Helvetica ennui whatever irony brunch readymade flannel roof party.
+
+
+			</p>
+
+
+		</div>
+
+		<div class="features-box">
+			<h1>Part of Our Social Inititives.</h1>
+
+			<p>PBR art party lumbersexual, Austin vinyl wolf direct trade hashtag. Irony Portland kale chips meditation tote bag, skateboard wolf VHS deep v freegan dreamcatcher. Synth XOXO vegan actually, flexitarian tofu health goth. Flannel flexitarian lo-fi deep v trust fund. Wolf Blue Bottle skateboard, crucifix Helvetica ennui whatever irony brunch readymade flannel roof party.
+
+
+			</p>
+
+
+		</div>
+
+		<div class="features-box">
+			<h1>Press and Retail Outlets.</h1>
+
+			<p>PBR art party lumbersexual, Austin vinyl wolf direct trade hashtag. Irony Portland kale chips meditation tote bag, skateboard wolf VHS deep v freegan dreamcatcher. Synth XOXO vegan actually, flexitarian tofu health goth. Flannel flexitarian lo-fi deep v trust fund. Wolf Blue Bottle skateboard, crucifix Helvetica ennui whatever irony brunch readymade flannel roof party.
+
+
+			</p>
+
+
+		</div>
+	</div>
+	<div class="column-right">
+		<div class="features-box">
+			<h1>Be Part of A Positive Movement.</h1>
+
+			<p>PBR art party lumbersexual, Austin vinyl wolf direct trade hashtag. Irony Portland kale chips meditation tote bag, skateboard wolf VHS deep v freegan dreamcatcher. Synth XOXO vegan actually, flexitarian tofu health goth. Flannel flexitarian lo-fi deep v trust fund. Wolf Blue Bottle skateboard, crucifix Helvetica ennui whatever irony brunch readymade flannel roof party.
+
+
+			</p>
+
+
+		</div>		
+
+		<div class="features-box">
+			<h1>Personal Page To Share Your Work.</h1>
+
+			<p>PBR art party lumbersexual, Austin vinyl wolf direct trade hashtag. Irony Portland kale chips meditation tote bag, skateboard wolf VHS deep v freegan dreamcatcher. Synth XOXO vegan actually, flexitarian tofu health goth. Flannel flexitarian lo-fi deep v trust fund. Wolf Blue Bottle skateboard, crucifix Helvetica ennui whatever irony brunch readymade flannel roof party.
+
+
+			</p>
+
+
+		</div>			
+
+
+
+		<div class="features-box">
+			<h1>Get Cash.</h1>
+
+			<p>PBR art party lumbersexual, Austin vinyl wolf direct trade hashtag. Irony Portland kale chips meditation tote bag, skateboard wolf VHS deep v freegan dreamcatcher. Synth XOXO vegan actually, flexitarian tofu health goth. Flannel flexitarian lo-fi deep v trust fund. Wolf Blue Bottle skateboard, crucifix Helvetica ennui whatever irony brunch readymade flannel roof party.
+
+
+			</p>
+
+
+		</div>
+	</div>
+
+
+
+	</div>
+
+
+
+
+
+    </div>
+    <div role="tabpanel" class="tab-pane" id="community">
+
+    <div id="partnership4" class="partnership-box">
+	<h1>R&D for the Community</h1>
+
+	<p>PBR art party lumbersexual, Austin vinyl wolf direct trade hashtag. Irony Portland kale chips meditation tote bag, skateboard wolf VHS deep v freegan dreamcatcher. Synth XOXO vegan actually, flexitarian tofu health goth. Flannel flexitarian lo-fi deep v trust fund. Wolf Blue Bottle skateboard, crucifix Helvetica ennui whatever irony brunch readymade flannel roof party. PBR Kickstarter tattooed VHS swag pour-over YOLO banjo, ethical bespoke raw denim chambray fanny pack Carles flannel. Williamsburg PBR&B pug, seitan McSweeney's Godard aesthetic pickled mlkshk lumbersexual hashtag meh.</p>
+
+
+	<%= link_to "Sign Up", new_user_registration_path, class: "active" %>
+
+
+	</div>
+
+
+	<div class="features-overall">
+		<div class="column-left">
+		<div class="features-box">
+			<h1>Submit Your Lyrics.</h1>
+
+			<p>PBR art party lumbersexual, Austin vinyl wolf direct trade hashtag. Irony Portland kale chips meditation tote bag, skateboard wolf VHS deep v freegan dreamcatcher. Synth XOXO vegan actually, flexitarian tofu health goth. Flannel flexitarian lo-fi deep v trust fund. Wolf Blue Bottle skateboard, crucifix Helvetica ennui whatever irony brunch readymade flannel roof party.
+
+
+			</p>
+
+
+		</div>
+
+		<div class="features-box">
+			<h1>Promote Your Work.</h1>
+
+			<p>PBR art party lumbersexual, Austin vinyl wolf direct trade hashtag. Irony Portland kale chips meditation tote bag, skateboard wolf VHS deep v freegan dreamcatcher. Synth XOXO vegan actually, flexitarian tofu health goth. Flannel flexitarian lo-fi deep v trust fund. Wolf Blue Bottle skateboard, crucifix Helvetica ennui whatever irony brunch readymade flannel roof party.
+
+
+			</p>
+
+
+		</div>
+
+		<div class="features-box">
+			<h1>Gain New Listeners and Fans.</h1>
+
+			<p>PBR art party lumbersexual, Austin vinyl wolf direct trade hashtag. Irony Portland kale chips meditation tote bag, skateboard wolf VHS deep v freegan dreamcatcher. Synth XOXO vegan actually, flexitarian tofu health goth. Flannel flexitarian lo-fi deep v trust fund. Wolf Blue Bottle skateboard, crucifix Helvetica ennui whatever irony brunch readymade flannel roof party.
+
+
+			</p>
+
+
+		</div>
+	</div>
+
+	<div class="column-middle">
+
+		<div class="features-box">
+			<h1>Part of Our Social Inititives.</h1>
+
+			<p>PBR art party lumbersexual, Austin vinyl wolf direct trade hashtag. Irony Portland kale chips meditation tote bag, skateboard wolf VHS deep v freegan dreamcatcher. Synth XOXO vegan actually, flexitarian tofu health goth. Flannel flexitarian lo-fi deep v trust fund. Wolf Blue Bottle skateboard, crucifix Helvetica ennui whatever irony brunch readymade flannel roof party.
+
+
+			</p>
+
+
+		</div>
+
+		<div class="features-box">
+			<h1>Part of Our Social Inititives.</h1>
+
+			<p>PBR art party lumbersexual, Austin vinyl wolf direct trade hashtag. Irony Portland kale chips meditation tote bag, skateboard wolf VHS deep v freegan dreamcatcher. Synth XOXO vegan actually, flexitarian tofu health goth. Flannel flexitarian lo-fi deep v trust fund. Wolf Blue Bottle skateboard, crucifix Helvetica ennui whatever irony brunch readymade flannel roof party.
+
+
+			</p>
+
+
+		</div>
+
+		<div class="features-box">
+			<h1>Press and Retail Outlets.</h1>
+
+			<p>PBR art party lumbersexual, Austin vinyl wolf direct trade hashtag. Irony Portland kale chips meditation tote bag, skateboard wolf VHS deep v freegan dreamcatcher. Synth XOXO vegan actually, flexitarian tofu health goth. Flannel flexitarian lo-fi deep v trust fund. Wolf Blue Bottle skateboard, crucifix Helvetica ennui whatever irony brunch readymade flannel roof party.
+
+
+			</p>
+
+
+		</div>
+	</div>
+	<div class="column-right">
+		<div class="features-box">
+			<h1>Be Part of A Positive Movement.</h1>
+
+			<p>PBR art party lumbersexual, Austin vinyl wolf direct trade hashtag. Irony Portland kale chips meditation tote bag, skateboard wolf VHS deep v freegan dreamcatcher. Synth XOXO vegan actually, flexitarian tofu health goth. Flannel flexitarian lo-fi deep v trust fund. Wolf Blue Bottle skateboard, crucifix Helvetica ennui whatever irony brunch readymade flannel roof party.
+
+
+			</p>
+
+
+		</div>		
+
+		<div class="features-box">
+			<h1>Personal Page To Share Your Work.</h1>
+
+			<p>PBR art party lumbersexual, Austin vinyl wolf direct trade hashtag. Irony Portland kale chips meditation tote bag, skateboard wolf VHS deep v freegan dreamcatcher. Synth XOXO vegan actually, flexitarian tofu health goth. Flannel flexitarian lo-fi deep v trust fund. Wolf Blue Bottle skateboard, crucifix Helvetica ennui whatever irony brunch readymade flannel roof party.
+
+
+			</p>
+
+
+		</div>			
+
+
+
+		<div class="features-box">
+			<h1>Get Cash.</h1>
+
+			<p>PBR art party lumbersexual, Austin vinyl wolf direct trade hashtag. Irony Portland kale chips meditation tote bag, skateboard wolf VHS deep v freegan dreamcatcher. Synth XOXO vegan actually, flexitarian tofu health goth. Flannel flexitarian lo-fi deep v trust fund. Wolf Blue Bottle skateboard, crucifix Helvetica ennui whatever irony brunch readymade flannel roof party.
+
+
+			</p>
+
+
+		</div>
+	</div>
+
+
+
+	</div>
+
+
+
+
+
+
+    </div>
+  </div>
 
 </div>
 
 
 
+
+
+
 <%= render 'layouts/footer' %>
+
+
+
+<script>
+  $(function () {
+    $('#myTab a:last').tab('show')
+  })
+
+  $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+  	e.target // newly activated tab
+  	e.relatedTarget // previous active tab
+	})
+
+  $('#myTab a[href="#vocal"]').tab('show')
+  $('#myTab a[href="#visual"]').tab('show')
+  $('#myTab a[href="#brand"]').tab('show')
+  $('#myTab a[href="#community"]').tab('show')
+</script>
