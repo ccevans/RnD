@@ -24,10 +24,13 @@
 		
 	</div>
 
-
+    <%= link_to 'http://shop.rhymesanddesigns.com/' do %>
 		<%= image_tag 'rebel.jpg', :class => "info-image" %>
+    <% end %>
 
+    <%= link_to 'http://shop.rhymesanddesigns.com/' do %>
 		<%= image_tag 'snapback.png', :class => "info-image" %>
+    <% end %>
 
 </div>
 
@@ -57,7 +60,7 @@
 		<% unless home_post.image.nil? || home_post.image.blank? %>
 			<% if home_post.typeof == 'picture' %>
 			        <%= link_to post_path(home_post) do %>
-							  <%= image_tag home_post.image.url(:medium) %>
+							  <%= image_tag home_post.image.url(:large) %>
 			        <% end %>
 			<% end %>
 		<% end %>
@@ -351,7 +354,7 @@
 			<% end %>
 
 			<div class="button-home">
-			 <%= link_to 'Submit Lyric', new_campaign_lyric_path(Campaign.last), :class => "home-button" %>
+			 <%= link_to 'Submit Lyric', new_campaign_lyric_path(Campaign.free.last), :class => "home-button" %>
 			 <%= link_to 'Vote on Lyrics', "/campaigns/2/lyrics", :class => "home-button" %>
 
 			</div>

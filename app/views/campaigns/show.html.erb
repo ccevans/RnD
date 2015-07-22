@@ -71,7 +71,7 @@
             <li class="list-group-item">
 
               <% if user_signed_in? && current_user.lyrics.where(campaign_id: @campaign.id).any? %>
-              <span class="left-circle"><i class="fa fa-check-circle-o"></i></span><%= current_user.lyrics.where(campaign_id: @campaign.id).count %> / 3 Lyrics Added <span class="right-circle">
+              <span class="left-circle"><i class="fa fa-check-circle-o"></i></span><%= current_user.lyrics.where(campaign_id: @campaign.id).count %> Lyrics Added <span class="right-circle">
               <span class="points-lab2-done"><i class="fa fa-flask"></i><%= current_user.lyrics.where(campaign_id: @campaign.id).count * 10 %></span>
             </span>
 
