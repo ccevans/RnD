@@ -12,8 +12,8 @@ section.profile-section-index div#profiles {float: left; width: 100%;}
 .profile-box {width: 30%; margin: 0px 0 0 0; padding: 5px 25px 50px 25px; background-color: #fff; border: 0px solid #000; float: right; -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100); filter: alpha(opacity=100);-moz-opacity: 1; -khtml-opacity: 1; opacity: 1;}
 #profile-box1 {width: 20%; margin: 0px 0 0 80%; padding: 0px; border: 0px solid #000; float: left; -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100); filter: alpha(opacity=100);-moz-opacity: 1; -khtml-opacity: 1; opacity: 1; background-color: #ecf0f1;}
 .profile-lyrics {background-color: #fff; width: 80%; margin: 0px 0% 0 0%; padding: 0px; position: absolute; left: 0;}
-div.profile-lyrics div.well a {color: #000; font-size: 18px; line-height: 20px; text-align: left; font-family: 'Fredoka One', cursive; text-shadow: 0px 0px #bdc3c7; text-decoration: none;}
-div.profile-lyrics div.well a:hover {color: #000; font-size: 18px; line-height: 20px; text-align: left; font-family: 'Fredoka One', cursive; text-shadow: 0px 0px #bdc3c7; text-decoration: none;}
+div.profile-lyrics div.well a {color: #000; font-size: 18px; line-height: 20px; text-align: left; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif; text-shadow: 0px 0px #bdc3c7; text-decoration: none;}
+div.profile-lyrics div.well a:hover {color: #000; font-size: 18px; line-height: 20px; text-align: left; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif; text-shadow: 0px 0px #bdc3c7; text-decoration: none;}
 div.profile-lyrics div.well .profile-time a {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #000; text-shadow: none;}
 div.profile-lyrics div.well .profile-time a:hover {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #000; text-shadow: none;}
 
@@ -34,7 +34,7 @@ div.profile-header img {width: 100%; height: auto;}
 .container-profiles {width: 25%; max-width: 300px; min-width: 100px; height: auto; margin: 25px; float: left;}
 #profiles {margin: 0 auto;}
 
-div.container-profiles a {color: #000; font-size: 18px; line-height: 20px; text-align: left; font-family: 'Fredoka One', cursive; text-shadow: 0px 0px #bdc3c7;}
+div.container-profiles a {color: #000; font-size: 18px; line-height: 20px; text-align: left; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif; text-shadow: 0px 0px #bdc3c7;}
 div.container-profiles a:hover {color: #1cc7a6; font-size: 18px; line-height: 20px; text-align: left; text-decoration: none; border: none; text-shadow: 0px 0px #bdc3c7;}
 
 div.container-profiles img {border-radius: 5px;}
@@ -48,7 +48,7 @@ div.container-profiles ul li a {font-size: 14px; line-height: 14px; font-family:
 div.container-profiles ul li a:hover {font-size: 14px; line-height: 14px; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; color: #1cc7a6; text-shadow: none;}
 
 .container-profiles-small {width: 35%; max-width: 150px; min-width: 50px; height: auto; margin: 15px; float: left;}
-div.container-profiles-small a {color: #000; font-size: 18px; line-height: 20px; text-align: left; font-family: 'Fredoka One', cursive; text-shadow: 0px 0px #bdc3c7;}
+div.container-profiles-small a {color: #000; font-size: 18px; line-height: 20px; text-align: left; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif; text-shadow: 0px 0px #bdc3c7;}
 div.container-profiles-small a:hover {color: #1cc7a6; font-size: 18px; line-height: 20px; text-align: left; text-decoration: none; border: none; text-shadow: 0px 0px #bdc3c7;}
 
 div.container-profiles-small img {border-radius: 5px;}
@@ -381,7 +381,7 @@ section.lyric-section div#accordion.panel-group.dashlist div.panel.panel-default
     .how-box2 {display: none !important;}
     .how-box2-mobile {width: 100%; float: left; display: inline !important;}
 
-    div.container-profiles-small a {color: #000; font-size: 14px; line-height: 20px; text-align: left; font-family: 'Fredoka One', cursive; text-shadow: 0px 0px #bdc3c7;}
+    div.container-profiles-small a {color: #000; font-size: 14px; line-height: 20px; text-align: left; font-family: 'Fredoka One', "Helvetica Neue",Helvetica,Arial,sans-serif; text-shadow: 0px 0px #bdc3c7;}
     div.container-profiles-small a:hover {color: #1cc7a6; font-size: 14px; line-height: 20px; text-align: left; text-decoration: none; border: none; text-shadow: 0px 0px #bdc3c7;}
 
     div.works-top div.how-campaign h2 {font-size: 22px; line-height: 22px;}
