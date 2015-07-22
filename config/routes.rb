@@ -86,7 +86,7 @@ resources :lyrics, only: [] do
 
 
 
-  root 'pages#home'
+  root 'campaigns#index'
 
   
   

@@ -307,6 +307,18 @@ div.works-top-temp div#faqs.howitworks-para dl dt {margin: 10px 0 2px 0;}
 
 	div.launch-box-artist h2 {font-size: 24px; line-height: 24px; }
 
+    section.home-info2 div.homepage-experiment div.campaign-md div.campaign-info div.para-campaign {width: 90%; margin: 0 5%;}
+    section.home-info2 div.homepage-experiment div.campaign-md div.home-campaign-info2 h1 {font-size: 16px; line-height: 16px;}
+    section.home-info2 div.homepage-experiment div.campaign-md div.home-campaign-info span.home-number {font-size: 30px; line-height: 40px;}
+    section.home-info2 div.homepage-lyric div.container-line {font-size: 16px; line-height: 18px;}
+    section.home-info2 div.homepage-profiles h1 {font-size: 18px;}
+    section.home-info2 div.homepage-profiles div.container-profiles {margin: 10px 10%; width: 80%; min-width: 50px;}
+    section.home-info2 div.homepage-profiles div.container-profiles div.user-row a {font-size: 14px; line-height: 16px;}
+    section.page-section2 div.homepage-box1 div#posts2 div.container-post-index div.video-box p iframe {height: 200px;}
+    section.page-section2 div.homepage-box1 div#posts2 div.container-post-index {margin: 10px 5%;}
+    section.home-info2 div.homepage-lyric div.container-extra ul {padding: 0;}
+    section.home-info2 div.homepage-artists h1 {font-size: 18px; line-height: 18px;}
+
 
 }
 
@@ -321,7 +333,20 @@ div.works-top-temp div#faqs.howitworks-para dl dt {margin: 10px 0 2px 0;}
 
 @media screen and (max-width: 500px){
 
-	#P2 {float: left;  width: 100%; min-width: 0; margin: 5px 0%; height: auto; }
+    section.home-info2 div.homepage-experiment div.campaign-md div.campaign-info div.para-campaign {width: 90%; margin: 0 5%;}
+    section.home-info2 div.homepage-experiment div.campaign-md div.home-campaign-info2 h1 {font-size: 16px; line-height: 16px;}
+	section.home-info2 div.homepage-experiment div.campaign-md div.home-campaign-info span.home-number {font-size: 30px; line-height: 40px;}
+    section.home-info2 div.homepage-lyric div.container-line {font-size: 16px; line-height: 18px;}
+    section.home-info2 div.homepage-profiles h1 {font-size: 18px;}
+    section.home-info2 div.homepage-profiles div.container-profiles {margin: 10px 10%; width: 80%; min-width: 50px;}
+    section.home-info2 div.homepage-profiles div.container-profiles div.user-row a {font-size: 14px; line-height: 16px;}
+    section.page-section2 div.homepage-box1 div#posts2 div.container-post-index div.video-box p iframe {height: 200px;}
+    section.page-section2 div.homepage-box1 div#posts2 div.container-post-index {margin: 10px 5%;}
+    section.home-info2 div.homepage-lyric div.container-extra ul {padding: 0;}
+    section.home-info2 div.homepage-artists h1 {font-size: 18px; line-height: 18px;}
+
+
+    #P2 {float: left;  width: 100%; min-width: 0; margin: 5px 0%; height: auto; }
 	#P2 iframe {width: 100%; height: 280px;}
 	div#vid.works-top div#background-green.works-top {padding: 50px 0;}
 	div.howitworks-para {padding: 15px 5%;}
