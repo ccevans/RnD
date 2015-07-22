@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'pages/events'
   get 'pages/testpage'
   get 'pages/testpage2'
+  get 'pages/home'
 
   get 'tagged' => 'posts#tagged', :as => 'tagged'
 
@@ -85,7 +86,7 @@ resources :lyrics, only: [] do
 
 
 
-  root 'pages#home"
+  root 'pages#home'
   
   
 end
