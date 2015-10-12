@@ -5,6 +5,7 @@ class Post < ActiveRecord::Base
 	has_many :commentposts
 	acts_as_taggable_on :tags
 	scope :approved, -> { where(:approve => true) }
+	include Bootsy::Container
 
 	scope :by_tags, -> tags { where(:tags => tags) }
 

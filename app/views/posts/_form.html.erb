@@ -11,7 +11,7 @@
 <% if can? :manage, :all %>
   <%= f.input :title %>
   <%= f.input :image %>
-  <%= f.input :description %>
+  <%= f.input :description, as: :bootsy %>
   <%= f.input :link %>
   <%= f.collection_select :typeof, Post::TYPEOFS, :to_s, :humanize, {}, {:onchange => 'displayQuestion(this.value)'} %>
 
@@ -44,7 +44,7 @@
   <div class="form-info">Submit a post on a creative project or creative initiatives happening in your community.</div>
 	<%= f.input :title, required: true, autofocus: true %>
 
-	<%= f.input :description %>
+	<%= f.input :description, as: :bootsy %>
 	<%= f.input :link, label: "Link to More Info", hint: "Format: http://www.rhymesanddesigns.com" %>
 
   <h2>Choose Type of Post</h2>

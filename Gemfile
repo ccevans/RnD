@@ -40,7 +40,7 @@ gem 'obscenity'
 
 gem 'tzinfo-data'
 gem 'coffee-script-source', '1.8.0'
-
+gem 'bootsy'
 
 
 gem 'heroku_rails_deflate', :group => :production
