@@ -13,14 +13,12 @@
  *= require_tree .
  *= require_self
  *= require 'masonry/transitions'
-
  */
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import "bootsy";
 
 form#edit_user.simple_form.edit_user p {color: #bdc3c7; font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;}
 

@@ -129,7 +129,7 @@ private
 	end
 
 	def post_params
-		params.require(:post).permit(:title, :description, :link, :typeof, :approve, :image, :videolink, :audiolink, :tag_list, :bootsy_image_gallery_id)
+		params.require(:post).permit(:title, :description, :link, :typeof, :approve, :image, :videolink, :audiolink, :tag_list)
 	end
 
 end

@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  mount Bootsy::Engine => '/bootsy', as: 'bootsy'
   match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
 
   get 'pages/lyriclab'
@@ -87,7 +86,7 @@ resources :lyrics, only: [] do
 
 
 
-  root 'campaigns#index'
+  root 'pages#home'
   
   
 end

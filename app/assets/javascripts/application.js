@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootsy
 //= require cocoon
 //= require bootstrap-sprockets
 //= require jquery.turbolinks
