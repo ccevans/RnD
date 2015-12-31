@@ -143,7 +143,7 @@
        <% unless @post.description.nil? || @post.description.empty? %>
     	<div class="container-post-desc">
     		 
-    		<%= simple_format(Obscenity.replacement(:nonconsonants).sanitize(@post.description)) %>
+    		<%= simple_format(@post.description) %>
     	</div>
     	<% end %>
     		
