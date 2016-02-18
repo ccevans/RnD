@@ -33,6 +33,7 @@ class User < ActiveRecord::Base
   has_many :commentposts, dependent: :destroy
   has_many :videos, dependent: :destroy
   has_many :photos, dependent: :destroy
+  has_many :archives
 
   
   has_attached_file :avatar, :styles => { :medium => "300x300#", :thumb => "50x50#", :mini => "20x20#"  }, :default_url => "/images/:style/black-logo-gasmask.png" 

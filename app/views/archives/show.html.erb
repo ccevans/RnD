@@ -1,0 +1,22 @@
+<div class="works-top-temp">
+
+        <div class="archive<%= @archive.id %>">
+      <% if @archive.link.present? %>
+        <%= link_to @archive.link, :target => "_blank" do %>
+
+          <h1><%= @archive.title %></h1>
+
+
+        <% end %> 
+        <% end %>
+
+         <% if can? :update, @archive %>
+    		<%= link_to 'Edit', edit_archive_path(@archive) %> | 
+    		<% end %>
+    		<% if can? :destroy, @archive %>
+    		<%= link_to 'Destroy', [@archive], method: :delete, data: {confirm: "Are you sure?" } %>
+    		<% end %>
+  
+      </div>
+
+</div>

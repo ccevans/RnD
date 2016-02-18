@@ -1,0 +1,31 @@
+<div class="works-top-temp">
+
+<h1>R&D's Classic Cool Blurb Archive</h1>
+
+<% @archives.each do |archive| %>
+        <div class="archive<%= archive.id %>">
+      <% if archive.link.present? %>
+        <%= link_to archive.link, :target => "_blank" do %>
+
+          <h2><%= archive.title %></h2>
+
+
+        <% end %> 
+
+        <% end %>
+  
+      </div>
+
+
+<% end %>
+
+</div>
+	
+
+
+
+
+<%= render 'layouts/footer' %>		
+
+
+    

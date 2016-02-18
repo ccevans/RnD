@@ -1,0 +1,9 @@
+<%= simple_form_for @archive, html: {multipart:true} do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :title %>
+  <%= f.input :link %>
+
+	<%= f.button :submit, "Add Blurb", class: "button" %>
+	
+<% end %>

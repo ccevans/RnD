@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'pages/testpage'
   get 'pages/testpage2'
   get 'pages/home'
+  get 'pages/blurbarchive'
 
   get 'tagged' => 'posts#tagged', :as => 'tagged'
 
@@ -22,7 +23,7 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => { :registrations => 'user/registrations', :invitations => 'user/invitation', omniauth_callbacks: 'user/omniauth_callbacks'}
 
-
+resources :archives
 
 resources :posts do
   member do
