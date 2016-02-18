@@ -4,7 +4,7 @@
       <% if @archive.link.present? %>
         <%= link_to @archive.link, :target => "_blank" do %>
 
-          <h1><%= @archive.title %></h1>
+          <h1><%= simple_format(@archive.title) %></h1>
 
 
         <% end %> 
