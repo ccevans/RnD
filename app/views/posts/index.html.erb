@@ -161,8 +161,9 @@
 
 
 
-
+          <% if can? :manage, :all %>
         <li><%= post.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
+        <% end %>
 
 
 
