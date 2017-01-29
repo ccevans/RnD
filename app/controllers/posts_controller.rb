@@ -10,8 +10,16 @@ class PostsController < ApplicationController
 
 	def index
 
-	        @posts = apply_scopes(Post).all.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
-	
+		case params[:sort_by]
+	      when 'most_liked'
+	        @posts = apply_scopes(Post).all.order(:cached_votes_up => :desc)
+	    when 'most_viewed'
+	        @posts = apply_scopes(Post).all.order(:counter_cache => :desc)
+	      when 'most_recent'
+	        @posts = apply_scopes(Post).all.order("created_at DESC")
+	      else
+	        @posts = apply_scopes(Post).all.order("created_at DESC")
+	    end
 
 	end
 
