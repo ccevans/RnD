@@ -124,59 +124,7 @@
             </ul>
             <% end %>
         <ul>
-          <% if false %>
-          <li>
-              <% if user_signed_in? && (@current_user.voted_for? art) %>
-              <ul class="votebox2">
-                <li><div class="vote-confirmed">Thanks for Voting!</div></li>
-              </ul>
 
-            <% else %>
-              <% if user_signed_in? %>
-                <ul class="votebox2">
-                  <li><div class="vote-confirmed <%= art.id %>">Vote</div></li>
-                </ul>
-              <% else %>
-                <ul class="votebox2">
-                  <li><%= link_to 'Sign In To Vote', new_user_registration_path, class: "vote-confirmed" %> </li>
-                </ul>
-              <% end %>
-
-              
-              <ul class="vote-column <%= art.id %>">
-                   <%= link_to voteof5_art_path(art), class: ['voteup', art.id], remote: true, data: { type: :json }, method: :put do %>
-                <li><div class="vote-button">
-                  5
-                </div></li>
-                  <% end %>
-                  <%= link_to voteof4_art_path(art), class: ['voteup', art.id], remote: true, data: { type: :json }, method: :put do %>
-                <li><div class="vote-button">
-                  4
-                </div></li>
-                  <% end %>
-                  <%= link_to voteof3_art_path(art), class: ['voteup', art.id], remote: true, data: { type: :json }, method: :put do %>
-                <li><div class="vote-button">
-                  3
-                </div></li>
-                  <% end %>
-                    <%= link_to voteof2_art_path(art), class: ['voteup', art.id], remote: true, data: { type: :json }, method: :put do %>
-                <li><div class="vote-button">
-                  2
-                </div></li>
-                  <% end %>
-                  <%= link_to voteof1_art_path(art), class: ['voteup', art.id], remote: true, data: { type: :json }, method: :put do %>
-                
-                <li><div class="vote-button">
-                  1
-                </div></li>
-                  <% end %>
-                  
-               
-                </ul>
-              <% end %>
-
-          </li>
-          <% end %>
 
             <script>
 
