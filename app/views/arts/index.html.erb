@@ -124,6 +124,7 @@
             </ul>
             <% end %>
         <ul>
+          <% if false %>
           <li>
               <% if user_signed_in? && (@current_user.voted_for? art) %>
               <ul class="votebox2">
@@ -175,6 +176,7 @@
               <% end %>
 
           </li>
+          <% end %>
 
             <script>
 
