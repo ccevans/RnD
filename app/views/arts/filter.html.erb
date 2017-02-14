@@ -67,7 +67,7 @@
 
 
 <div id="arts">
-    
+   <% if false %> 
     <% if @arts.any? %>
       <% @arts.each do |art| %>
         <div class="container-art">
@@ -247,7 +247,10 @@
 
       <% end %>
 
-      
+    <% end %>
+
+    <div class="noposts"><h1>No Designs Posted Yet.</h1></div>
+    
 </div>
 
  <br>
