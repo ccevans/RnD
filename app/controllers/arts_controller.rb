@@ -5,7 +5,7 @@ class ArtsController < ApplicationController
 	before_action :find_post, only: [:show, :edit, :update, :destroy, :voteof1, :voteof2, :voteof3, :voteof4, :voteof5]
 	before_action :set_campaign, except: [:voteof1, :voteof2, :voteof3, :voteof4, :voteof5]
 	before_action :authenticate_user!, except: [:index, :show, :tagged]
-	impressionist :actions=>[:show,:index], :unique => [:impressionable_type, :impressionable_id, :session_hash]
+	#impressionist :actions=>[:show,:index], :unique => [:impressionable_type, :impressionable_id, :session_hash]
 	before_action :add_points, only: [:voteof1, :voteof2, :voteof3, :voteof4, :voteof5]
 
 	respond_to :html, :json, :js

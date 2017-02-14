@@ -17,7 +17,7 @@ gem 'paperclip', '~> 4.2.1'
 gem 'acts_as_votable', '~> 0.10.0'
 
 gem 'cancan', '~> 1.6.10'
-gem 'impressionist', '~> 1.5.1'
+#gem 'impressionist', '~> 1.5.1'
 gem 'acts_as_follower', '~> 0.2.1'
 gem 'merit', '~> 2.3.0'
 gem 'acts-as-taggable-on', '~> 3.4.2'

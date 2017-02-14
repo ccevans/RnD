@@ -116,7 +116,9 @@
     <% end %>
 
         <ul>
+          <% if false %>
         <li><%= post.impressionist_count(:filter=>:session_hash) %> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></li>
+        <% end %>
 
           <li><span class="up <%= post.id %>"><%= post.get_upvotes.size %> </span>
           <%= link_to like_post_path(post), class: ['voteup', post.id], remote: true, data: { type: :json }, method: :get do %>

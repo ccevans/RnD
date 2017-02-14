@@ -7,7 +7,7 @@ class LyricsController < ApplicationController
 	before_action :find_post, only: [:show, :edit, :update, :destroy, :upvote, :downvote, :add_points]
 	before_action :set_campaign, except: [:upvote, :downvote]
 	before_action :authenticate_user!, except: [:index, :show, :tagged]
-	impressionist :actions => [:show,:index], :unique => [:impressionable_type, :impressionable_id, :session_hash]
+	#impressionist :actions => [:show,:index], :unique => [:impressionable_type, :impressionable_id, :session_hash]
 	before_action :add_points, only: [:upvote, :downvote]
 
 
