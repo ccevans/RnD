@@ -7,6 +7,7 @@ class PostsController < ApplicationController
 	#impressionist :actions => [:show,:index], :unique => [:impressionable_type, :impressionable_id, :session_hash]
 	respond_to :html, :json, :js
 	before_action :add_points, only: [:upvote, :downvote]
+	invisible_captcha only: [:create, :update], honeypot: :subtitle
 
 	def index
 

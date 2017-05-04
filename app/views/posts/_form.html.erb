@@ -10,6 +10,7 @@
 
 <% if can? :manage, :all %>
   <%= f.input :title %>
+  <%= f.invisible_captcha :subtitle %>
   <%= f.input :image %>
   <%= f.input :description %>
   <%= f.input :link %>

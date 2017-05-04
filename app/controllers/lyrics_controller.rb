@@ -9,6 +9,7 @@ class LyricsController < ApplicationController
 	before_action :authenticate_user!, except: [:index, :show, :tagged]
 	#impressionist :actions => [:show,:index], :unique => [:impressionable_type, :impressionable_id, :session_hash]
 	before_action :add_points, only: [:upvote, :downvote]
+	invisible_captcha only: [:create, :update], honeypot: :subtitle
 
 
 	respond_to :html, :json, :js

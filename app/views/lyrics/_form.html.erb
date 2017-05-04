@@ -27,6 +27,9 @@
   <% if can? :manage, :all %>
 
   <%= f.input :line, required: true, autofocus: true, label: "Enter Lyric Here", input_html: { maxlength: 400 } %>
+
+    <%= f.invisible_captcha :subtitle %>
+
   <%= f.input :description, label: "Tell why this lyric is dope or why it inspires or how you relate to it", input_html: { maxlength: 400 } %>
 
 
@@ -72,6 +75,9 @@
   <% else %>
 
   <%= f.input :line, required: true, autofocus: true, label: "Enter Lyric Here", input_html: { maxlength: 400 } %>
+  
+    <%= f.invisible_captcha :subtitle %>
+
   <%= f.input :description, label: "Tell why this lyric is dope or why it inspires or how you relate to it", input_html: { maxlength: 400 } %>
 
 

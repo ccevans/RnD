@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.1.5'
+ruby '2.2.6'
 
 gem 'rails', '4.1.7'
 
@@ -37,9 +37,12 @@ gem 'figaro'
 gem 'font-awesome-sass'
 gem 'bootstrap-sass', '~> 3.3.3'
 gem 'obscenity'
+gem 'invisible_captcha'
 
 gem 'tzinfo-data'
 gem 'coffee-script-source', '1.8.0'
+# gem 'bcrypt', '3.1.11'
+gem 'bcrypt', '~> 3.1.11', platforms: [:ruby, :x64_mingw, :mingw]
 
 
 
@@ -50,7 +53,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 group :development, :test do
-	gem 'sqlite3'
+	gem 'sqlite3', '~> 1.3', '>= 1.3.11'
 end
 
 group :production do
